@@ -14,6 +14,3 @@
 - Beaudouin Audrey Nsolo
 - Olof Takman
 ---
-
-.
-.
