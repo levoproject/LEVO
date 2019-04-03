@@ -1,0 +1,74 @@
+body{
+    background-image: url("green_background2.jpg");
+    background-size: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Comfortaa', cursive;
+}
+
+header{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-shadow: 4px 4px 6px #000000;
+    font-size: 75px;
+}
+h1{
+    color: white;
+    width: 50%;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 10px 10px 5px rgb(48, 48, 48);
+    padding: 15px;
+    text-align: center;
+    margin: 25px 0px;
+}
+h2{
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+.radio_button_1{
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    border-radius: 20px;
+    padding: 15px;
+}
+.radio_button_2{
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    border-radius: 20px;
+    padding: 15px;
+}
+h2{
+    color: white;
+}
+form{
+    display: block;
+}
+.button{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(3, 63, 6);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    margin: 20px 0;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+a, a:visited{
+    color: white;
+    font-size: 1.5em;
+}
