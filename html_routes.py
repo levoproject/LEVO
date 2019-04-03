@@ -42,6 +42,7 @@ def get_file():
         my_file.write(json.dumps(links))
         return links
 
+
 @route('/')
 @route('/index/')
 def index_page():
@@ -49,6 +50,7 @@ def index_page():
     Retunerar index.html med tomma placeholders.
     '''
     return template("index", placeholder_link="", placeholder_used_ids="", placeholder_hidden="hidden", p_m_checked="", p_b_checked="", p_s_checked="", p_v_checked="", p_d_checked="")
+
 
 @route('/generate/',method='POST')
 def generate_recipe():
@@ -101,6 +103,7 @@ def generate_recipe():
             p_d_checked = "checked"
         return template("index", placeholder_used_ids=used_ids, placeholder_link=return_link, placeholder_hidden="", p_m_checked=p_m_checked, p_b_checked=p_b_checked, p_s_checked=p_s_checked, p_v_checked=p_v_checked, p_d_checked=p_d_checked)
 
+
 @route("/static/<file_name>")
 def static_files(file_name):
 	'''
@@ -108,5 +111,6 @@ def static_files(file_name):
 	'''
 	# Returnerar den efterfrågade filen
 	return static_file(file_name, root="static")
+
 
 run(host='localhost', port=8080, debug=True)
