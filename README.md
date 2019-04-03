@@ -15,4 +15,7 @@
 - Olof Takman
 ---
 
+## Hjälp
+
+- Detta behöver du ladda ner för att kunna köra vår applikation.
 
