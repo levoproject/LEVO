@@ -18,4 +18,5 @@
 ## Hjälp
 
 - Detta behöver du ladda ner för att kunna köra vår applikation.
+- Här ska det läggas till mer information
 
