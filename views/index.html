@@ -2,35 +2,37 @@
 <html lang="sv">
     <head>
         <meta charser="utf-8">
-        <link href="/static/CSS/style.css" type="text/css" rel="stylesheet">
+        <link href="/static/css/style.css" type="text/css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Comfortaa|Open+Sans" rel="stylesheet">
         <title>LEVO</title>
     </head>
     <body>
-        <header>
-            <h1>LEVO</h1>
-        </header>
-        <main>
-            <h2>Vilket typ av protein?</h2>
-            <div class="radio_button_1">
-                <form action="/generate/" method="POST">
-                    <input type="radio" id="meat" name="protein" value="meat" {{p_m_checked}}>
-                    <label for="meat">Kött</label><br>
-                    <input type="radio" id="bird" name="protein" value="bird" {{p_b_checked}}>
-                    <label for="bird">Fågel</label><br>
-                    <input type="radio" id="sea" name="protein" value="sea" {{p_s_checked}}>
-                    <label for="sea">Hav</label><br>
-                    <input type="radio" id="veg" name="protein" value="veg" {{p_v_checked}}>
-                    <label for="veg">Vegetariskt</label><br>
-                    <input type="radio" id="dont_know" name="protein" value="dont_know" {{p_d_checked}}>
-                    <label for="dont_know">Vet ej</label>
-                    <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
-                    <div id="button">
-                        <button type="submit" class="button button5">Få recept!</button>
-                    </div>
-                    <p><a class="{{placeholder_hidden}}" href="{{placeholder_link}}" target="_blank">Ditt recept!</a></p>
-                </form>
-            </div>
-        </main>
+        <div id="container">
+            <header>
+                <h1>LEVO</h1>
+            </header>
+            <main>
+                <h2>Vilket typ av protein?</h2>
+                <div class="radio_button_1">
+                    <form action="/generate/" method="POST">
+                        <input type="radio" id="meat" name="protein" value="meat" {{p_m_checked}}>
+                        <label for="meat">Kött</label><br>
+                        <input type="radio" id="bird" name="protein" value="bird" {{p_b_checked}}>
+                        <label for="bird">Fågel</label><br>
+                        <input type="radio" id="sea" name="protein" value="sea" {{p_s_checked}}>
+                        <label for="sea">Hav</label><br>
+                        <input type="radio" id="veg" name="protein" value="veg" {{p_v_checked}}>
+                        <label for="veg">Vegetariskt</label><br>
+                        <input type="radio" id="dont_know" name="protein" value="dont_know" {{p_d_checked}}>
+                        <label for="dont_know">Vet ej</label>
+                        <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
+                        <div id="button">
+                            <button type="submit" class="button button5">Få recept!</button>
+                        </div>
+                        <p><a class="{{placeholder_hidden}}" href="{{placeholder_link}}" target="_blank">Ditt recept!</a></p>
+                    </form>
+                </div>
+            </main>
+        </div>
     </body>
 </html>
