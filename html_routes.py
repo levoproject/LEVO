@@ -15,11 +15,12 @@
 
 #   ====================================
 #   Imports
+import bottle
 from bottle import route, run, template, request, get, static_file
 from random import choice
 import json
 
-
+bottle.TEMPLATE_PATH.insert(0, 'views')
 
 #   ====================================
 #   globals
@@ -104,13 +105,28 @@ def generate_recipe():
         return template("index", placeholder_used_ids=used_ids, placeholder_link=return_link, placeholder_hidden="", p_m_checked=p_m_checked, p_b_checked=p_b_checked, p_s_checked=p_s_checked, p_v_checked=p_v_checked, p_d_checked=p_d_checked)
 
 
-@route("/static/<file_name>")
-def static_files(file_name):
+@route("/static/css/<filename>")
+def static_files_css(filename):
 	'''
 	Returnerar statiska filer från mappen "static"
 	'''
-	# Returnerar den efterfrågade filen
-	return static_file(file_name, root="static")
+	return static_file(filename, root="static/css")
+
+
+@route("/static/img/<filename>")
+def static_files_img(filename):
+	'''
+	Returnerar statiska filer från mappen "img"
+	'''
+	return static_file(filename, root="static/img")
+
+
+@route("/static/js/<filename>")
+def static_files_js(filename):
+	'''
+	Returnerar statiska filer från mappen "js"
+	'''
+	return static_file(filename, root="static/js")
 
 
 run(host='localhost', port=8080, debug=True)
