@@ -19,5 +19,3 @@
 
 - Detta behöver du ladda ner för att kunna köra vår applikation.
 
-- Testar att skriva över Lukas kod
-
