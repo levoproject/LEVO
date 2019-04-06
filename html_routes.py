@@ -3,34 +3,16 @@
 import bottle
 from bottle import route, run, template, request, get, static_file
 from random import choice
-import json
 import ReqAPI
 
 
 
 #   ====================================
 #   globals
-load_file = "links.json"
 
 
 
 bottle.TEMPLATE_PATH.insert(0, 'views')
-
-
-def get_file():
-    '''
-    Hämtar lexikonen från json-filen med alla länkar, dess protein och ID:n. Finns inte filen skapas en ny tom.
-    '''
-    try:
-        my_file = open(load_file, "r")
-        links = json.loads(my_file.read())
-        my_file.close()
-        return links
-    except:
-        my_file = open(load_file, "w")
-        links = []
-        my_file.write(json.dumps(links))
-        return links
 
 
 @route('/')
