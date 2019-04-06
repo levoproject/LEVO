@@ -21,7 +21,7 @@ def index_page():
     '''
     Retunerar index.html med tomma placeholders.
     '''
-    return template("index", placeholder_link="", placeholder_used_ids="", placeholder_hidden="hidden", p_m_checked="", p_b_checked="", p_s_checked="", p_v_checked="", p_d_checked="")
+    return template("index", placeholder_link="", placeholder_img="", placeholder_used_ids="", placeholder_hidden="hidden", p_m_checked="", p_b_checked="", p_s_checked="", p_v_checked="", p_d_checked="")
 
 
 @route('/generate/',method='POST')
