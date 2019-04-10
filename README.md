@@ -1,12 +1,12 @@
 # LEVO
 ---
 
-## Vad är LEVO?
+## What is LEVO?
 
->En webbapplikation med syfte att ge inspiration till mat och matlagning. Projektarbete i kursen *Systemutveckling och projekt I*. Mer info hittar du [HÄR](https://docs.google.com/presentation/d/1X_K6_ITrRrIUHdBpHvJVOe0FDB0DabjmPckYjUlQCns/edit?usp=sharing). 
+>LEVO is a web application with the purpose of giving inspiration to food and cooking. It is a Project work in the course * System development and projects I *. More info can be found [HERE](https://docs.google.com/presentation/d/1X_K6_ITrRrIUHdBpHvJVOe0FDB0DabjmPckYjUlQCns/edit?usp=sharing). 
 ---
 
-## Utvecklare
+## Developers
 
 - Lukas Jönsson
 - Victor Persson
@@ -15,9 +15,9 @@
 - Olof Takman
 ---
 
-## Hjälp
+## Help
 
-- Detta behöver du installera för att kunna köra vår applikation:
+- Things you need to run the application:
 - python: https://www.python.org/downloads/
 - pip: https://pypi.org/project/pip/
 - requests: https://pypi.org/project/requests/
