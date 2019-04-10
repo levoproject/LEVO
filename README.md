@@ -17,9 +17,8 @@
 
 ## Hjälp
 
-- Detta behöver du ladda ner för att kunna köra vår applikation.
-
-- Testar att skriva över Lukas kod
-
-- Testar att skriva till servern (Beaudouin)
-
+- Detta behöver du installera för att kunna köra vår applikation:
+- python: https://www.python.org/downloads/
+- pip: https://pypi.org/project/pip/
+- requests: https://pypi.org/project/requests/
+- bottle: https://bottlepy.org/docs/dev/
