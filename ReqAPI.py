@@ -33,6 +33,8 @@ def generate_link(protein):
     parameters = {"key": "f47c7ea8d2666c3df9c93d563bd02d72", "q": ingredient}
     response = requests.get("https://www.food2fork.com/api/search", parameters)
     api_content = json.loads(response.content)
+    if api_content == {'error': 'limit'}:
+        print('Error!')
     if api_content['count'] == 0:
         print(api_content)
         print(parameters) # if the request generates 0 recipes, we can see why
