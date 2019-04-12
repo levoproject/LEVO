@@ -1,7 +1,6 @@
 body{
     margin: 0;
-    background-image: url('tomatoes-and-basil-on-the-table-in-kitchen-189-medium.jpg');
-    
+    background-image: url('/static/img/tomatoes-and-basil-on-the-table-in-kitchen-189-medium.jpg');
     min-height: 100%;
     font-family: 'Open Sans', sans-serif;
     font-family: 'Comfortaa', cursive;
