@@ -13,25 +13,72 @@
             </header>
             <main>
                 <h2>What do you crave?</h2>
-                <div class="radio_button_1">
+                <div class="questions">
                     <form action="/generate/" method="POST">
-                        <input type="radio" id="meat" name="protein" value="meat" {{p_m_checked}}>
+                        <input type="checkbox" id="meat" name="protein" value="meat" {{p_m_checked}}>
                         <label for="meat">Meat</label><br>
-                        <input type="radio" id="bird" name="protein" value="bird" {{p_b_checked}}>
+                        <input type="checkbox" id="bird" name="protein" value="bird" {{p_b_checked}}>
                         <label for="bird">Bird</label><br>
-                        <input type="radio" id="sea" name="protein" value="sea" {{p_s_checked}}>
+                        <input type="checkbox" id="sea" name="protein" value="sea" {{p_s_checked}}>
                         <label for="sea">Sea</label><br>
-                        <input type="radio" id="veg" name="protein" value="veg" {{p_v_checked}}>
+                        <input type="checkbox" id="veg" name="protein" value="veg" {{p_v_checked}}>
                         <label for="veg">Veg</label><br>
-                        <input type="radio" id="dont_know" name="protein" value="dont_know" {{p_d_checked}}>
-                        <label for="dont_know">Don't know</label>
+                        <input type="checkbox" id="dont_know" name="protein" value="dont_know" {{p_d_checked}}>
+                        <label for="dont_know">I'm not sure!</label>
                         <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
-                        <div id="button">
-                            <button type="submit" class="button button5">Få recept!</button>
-                        </div>
-                        <p><a class="{{placeholder_hidden}}" href="{{placeholder_link}}" target="_blank">Ditt recept!</a></p>
-                        <img class="{{placeholder_hidden}}" src="{{placeholder_img}}" width="300">
+                        <div id="get_recipe">
+                            <button type="submit" class="button button5">Give me a recipe, please!</button>
+                        </div> 
+                        <div id="new_question">
+                            <button type="submit" class="button button5">Next question!</button>
+                        </div> 
                     </form>
+                </div>                        
+
+                <h2>Any preferences?</h2>
+                <div class="questions">
+                    <form action="/generate/" method="POST">
+                        <input type="checkbox" id="pasta" name="carbs" value="pasta" {{p_m_checked}}>
+                        <label for="pasta">Pasta</label><br>
+                        <input type="checkbox" id="potato" name="carbs" value="potato" {{p_b_checked}}>
+                        <label for="potato">Potato</label><br>
+                        <input type="checkbox" id="rice" name="carbs" value="rice" {{p_s_checked}}>
+                        <label for="rice">Rice</label><br>
+                        <input type="checkbox" id="dough" name="carbs" value="dough" {{p_v_checked}}>
+                        <label for="dough">Bread</label><br>
+                        <input type="checkbox" id="dont_care" name="carbs" value="dont_care" {{p_d_checked}}>
+                        <label for="dont_care">I don't have any preferences!</label>
+                        <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
+                        <div id="get_recipe">
+                            <button type="submit" class="button button5">Give me a recipe, please!</button>
+                        </div> 
+                        <div id="new_question">
+                            <button type="submit" class="button button5">I'm ready for the last question!</button>
+                        </div> 
+                    </form>
+                </div>
+
+                <h2>Allergies?</h2>
+                <div class="questions">
+                    <form action="/generate/" method="POST">
+                        <input type="checkbox" id="gluten" name="allergies" value="gluten" {{p_m_checked}}>
+                        <label for="gluten">Gluten Intolerance</label><br>
+                        <input type="checkbox" id="lactos" name="allergies" value="lactos" {{p_b_checked}}>
+                        <label for="lactos">Lactos Intolerance</label><br>
+                        <input type="checkbox" id="nuts_seeds" name="allergies" value="nuts_seeds" {{p_s_checked}}>
+                        <label for="nuts_seeds">Nuts and Seeds</label><br>
+                        <input type="checkbox" id="no_allergies" name="allergies" value="no_allergies" {{p_d_checked}}>
+                        <label for="no_allergies">I can eat everything!</label>
+                        <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
+                        <div id="get_recipe">
+                            <button type="submit" class="button button5">Give me a recipe, please!</button>
+                        </div>
+                    </form>
+                </div>  
+                        
+                <div class="your_recipe">
+                        <p><a class="{{placeholder_hidden}}" href="{{placeholder_link}}" target="_blank">Here's your recipes, enjoy!</a></p>
+                        <img class="{{placeholder_hidden}}" src="{{placeholder_img}}" width="300">
                 </div>
             </main>
         </div>

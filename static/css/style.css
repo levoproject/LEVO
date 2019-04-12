@@ -1,7 +1,8 @@
 body{
     margin: 0;
-    background-image: url('/static/img/tomatoes-and-basil-on-the-table-in-kitchen-189-medium.jpg');
-    background-size: 100%;
+    background-image: url('tomatoes-and-basil-on-the-table-in-kitchen-189-medium.jpg');
+    
+    min-height: 100%;
     font-family: 'Open Sans', sans-serif;
     font-family: 'Comfortaa', cursive;
 }
@@ -35,7 +36,7 @@ h2{
     color: white;
     text-shadow: 2px 2px 4px #000000;
 }
-.radio_button_1{
+.questions{
     display: flex;
     justify-content: center;
     color: white;
@@ -43,18 +44,11 @@ h2{
     border-radius: 20px;
     padding: 15px;
 }
-.radio_button_2{
-    display: flex;
-    justify-content: center;
-    color: white;
-    text-shadow: 2px 2px 4px #000000;
-    border-radius: 20px;
-    padding: 15px;
-}
+
 form{
     display: block;
 }
-.button{
+.get_recipe{
     display: flex;
     justify-content: center;
     background-color: rgb(3, 63, 6);
