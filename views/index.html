@@ -15,15 +15,15 @@
                 <h2>What do you crave?</h2>
                 <div class="questions">
                     <form action="/generate/" method="POST">
-                        <input type="checkbox" id="meat" name="protein" value="meat" {{p_m_checked}}>
+                        <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
                         <label for="meat">Meat</label><br>
-                        <input type="checkbox" id="bird" name="protein" value="bird" {{p_b_checked}}>
+                        <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
                         <label for="bird">Bird</label><br>
-                        <input type="checkbox" id="sea" name="protein" value="sea" {{p_s_checked}}>
+                        <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
                         <label for="sea">Sea</label><br>
-                        <input type="checkbox" id="veg" name="protein" value="veg" {{p_v_checked}}>
+                        <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
                         <label for="veg">Veg</label><br>
-                        <input type="checkbox" id="dont_know" name="protein" value="dont_know" {{p_d_checked}}>
+                        <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
                         <label for="dont_know">I'm not sure!</label>
                         <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
                         <div id="get_recipe">
@@ -77,8 +77,13 @@
                 </div>  
                         
                 <div class="your_recipe">
-                        <p><a class="{{placeholder_hidden}}" href="{{placeholder_link}}" target="_blank">Here's your recipes, enjoy!</a></p>
-                        <img class="{{placeholder_hidden}}" src="{{placeholder_img}}" width="300">
+                    <h2>Here's your recipes, enjoy!</h2>
+                    <p><a class="{{placeholder_hidden}}" href="{{placeholder_link_0}}" target="_blank">{{placeholder_title_0}}</a></p>
+                    <img class="{{placeholder_hidden}}" src="{{placeholder_img_0}}" width="300">
+                    <p><a class="{{placeholder_hidden}}" href="{{placeholder_link_1}}" target="_blank">{{placeholder_title_1}}</a></p>
+                    <img class="{{placeholder_hidden}}" src="{{placeholder_img_1}}" width="300">
+                    <p><a class="{{placeholder_hidden}}" href="{{placeholder_link_2}}" target="_blank">{{placeholder_title_2}}</a></p>
+                    <img class="{{placeholder_hidden}}" src="{{placeholder_img_2}}" width="300">
                 </div>
             </main>
         </div>
