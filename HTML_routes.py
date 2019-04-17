@@ -49,6 +49,9 @@ def generate_recipe():
         #Gets 3 recipes' links, titles, image urls and ID:s.
         return_recipe = ReqAPI.generate_link(chosen_protein)
         
+        if return_recipe == "error: connection":
+            return connection_error()
+
         if return_recipe == "error: limit reached":
             return limit_reached()
         
@@ -87,6 +90,13 @@ def limit_reached():
     The message shown to the user if the API request limit is reached.
     '''
     return 'API request limit reached. This web application is still under development. We are using an API(application programming interface) to generate results. The API we are utilizing is free and intended for developing purposes. Therefore there is a daily limit to the number of results we are able to request.'
+
+
+def connection_error():
+    '''
+    The message shown to the user if ReqAPI can't connect to the API.
+    '''
+    return "Can't connect to API server."
 
 
 @route("/static/css/<filename>")

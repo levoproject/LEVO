@@ -44,7 +44,10 @@ def generate_link(chosen_protein):
 
     #Makes a get request with our API-key and the randomized ingredient as parameters.
     parameters = {"key": "f47c7ea8d2666c3df9c93d563bd02d72", "q": ingredient}
-    response = requests.get("https://www.food2fork.com/api/search", parameters)
+    try:
+        response = requests.get("https://www.food2fork.com/api/search", parameters)
+    except:
+        return "error: connection"
     api_content = json.loads(response.content)
 
     #If the API-request limit is reached the result will be: {'error': 'limit'}.
