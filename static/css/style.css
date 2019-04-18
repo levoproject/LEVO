@@ -42,7 +42,7 @@ h2{
     text-shadow: 9px 2px 4px #000000;
     font-size: 20px;
     padding: 30px;
-    background-color:  #2d3436;
+    background-color: rgba(0, 0, 0, 0.5);
     margin-right: 350px;
     margin-left: 350px;
     border-radius: 10px;
@@ -74,11 +74,11 @@ form{
 }
 
 #question2{
-    margin-top: 50px;
+    margin-top: 500px;
 }
 
 #question3{
-    margin-top: 50px;
+    margin-top: 500px;
 }
 
 .button{
