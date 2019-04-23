@@ -3,7 +3,6 @@
 body{
     margin: 0;
     background-image: url('/static/img/tomatoes-and-basil-on-the-table-in-kitchen-189-medium.jpg');
-<<<<<<< HEAD
     min-height: 100%;
     font-family: Georgia, serif;
     font-size: 25px;
@@ -15,10 +14,8 @@ body{
     font-style: normal;
     font-variant: small-caps;
     text-transform: none;
-=======
     background-repeat: no-repeat;
     background-attachment: fixed;
->>>>>>> e61cf3604a92419c3a8e964a3e833a990fd5ddb3
     font-family: 'Open Sans', sans-serif;
     font-family: 'Comfortaa', cursive;
     background-size:cover;
