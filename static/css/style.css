@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 body{
     margin: 0;
     background-image: url('/static/img/tomatoes-and-basil-on-the-table-in-kitchen-189-medium.jpg');
@@ -12,50 +14,55 @@ body{
     font-style: normal;
     font-variant: small-caps;
     text-transform: none;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Comfortaa', cursive;
+    background-size:cover;
 }
 
 #container{
     background: rgba(0, 0, 0, 0.4);
-    min-width: 100%;
     padding-bottom: 200px;
 }
 
 header{
-    text-align: center;
     display: flex;
     justify-content: center;
     color: white;
     text-shadow: 4px 4px 6px #000000;
-    font-size: 75px;
+    font-size: 70px;
 }
 h1{
-    color: white;
     width: 50%;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.2);
     box-shadow: 10px 10px 5px rgb(48, 48, 48);
-    padding: 15px;
+    padding: 35px 10px;
     text-align: center;
-    margin: 25px 0px;
+    margin-top: 70px;
 }
 h2{
     text-align: center;
     color: white;
-    text-shadow: 2px 2px 4px #000000;
+    font-size: 35px;
+    text-shadow: 9px 0px 4px #000000;
 }
 .questions{
     display: flex;
     justify-content: center;
-    color: white;
-    text-shadow: 2px 2px 4px #000000;
-    border-radius: 20px;
-    padding: 15px;
+    color: ghostwhite;
+    text-shadow: 9px 2px 4px #000000;
+    font-size: 20px;
+    padding: 30px;
+    background-color:  #2d3436;
+    margin-right: 350px;
+    margin-left: 350px;
+    border-radius: 10px;
 }
 
 form{
-    display: block;
+    display: inline-block;
 }
-.get_recipe{
+#your_recipe{
     display: flex;
     justify-content: center;
     background-color: rgb(3, 63, 6);
@@ -71,6 +78,37 @@ form{
 
 .hidden{
     visibility: hidden;
+}
+
+#question1{
+    margin-top: 10px;
+}
+
+#question2{
+    margin-top: 50px;
+}
+
+#question3{
+    margin-top: 50px;
+}
+
+.button{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.extra{
+    font-size: 15px;
+    text-decoration: none;
 }
 
 a, a:visited{
