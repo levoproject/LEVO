@@ -2,8 +2,13 @@
 #   Imports
 from bottle import route, run, template, request, get, static_file, TEMPLATE_PATH
 from random import choice
-from ReqAPI import generate_link
 
+try:
+    from ReqAPI import generate_link
+    module_exists = True
+    
+except:
+    module_exists = False
 
 
 #   ====================================
@@ -45,7 +50,10 @@ def generate_recipe():
         used_ids_list = used_ids[1:].split(",")
 
     #Gets 3 recipes' links, titles, image urls and ID:s.
-    return_recipe = ReqAPI.generate_link(chosen_protein, used_ids_list)
+    if module_exists:
+        return_recipe = generate_link(chosen_protein, used_ids_list)
+    else:
+        return "Module ReqAPI missing."    
     
     if return_recipe == "error: connection":
         return connection_error()
