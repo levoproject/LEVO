@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/css/result.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/swiper.css">
+    <title>Result</title>
+    <link rel="shortcut icon" type="image/png" href="static/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+</head>
+
+<body>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="imgBox"><img class="{{placeholder_hidden}}" src="{{placeholder_img_0}}" width="300"></div>
+                <div class="details">
+                    <p class="links"><a class="{{placeholder_hidden}}" href="{{placeholder_link_0}}" target="_blank">{{placeholder_title_0}}</a></p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgBox"><img class="{{placeholder_hidden}}" src="{{placeholder_img_1}}" width="300"></div>
+                <div class="details">
+                    <p class="links"><a class="{{placeholder_hidden}}" href="{{placeholder_link_1}}" target="_blank">{{placeholder_title_1}}</a></p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgBox"><img class="{{placeholder_hidden}}" src="{{placeholder_img_1}}" width="300"></div>
+                <div class="details">
+                    <p class="links"><a class="{{placeholder_hidden}}" href="{{placeholder_link_1}}" target="_blank">{{placeholder_title_2}}</a></p>
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <script type="text/javascript" src="/static/swiper.js"></script>
+
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+
+    </script>
+</body>
+
+</html>

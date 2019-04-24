@@ -21,8 +21,14 @@ def index_page():
     '''
     Returns index.html with empty placeholders.
     '''
-    return template("index", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_used_ids="", placeholder_hidden="hidden", p_m_checked="", p_b_checked="", p_s_checked="", p_v_checked="", p_d_checked="")
+    return template("index", placeholder_used_ids="", placeholder_hidden="hidden", p_m_checked="", p_b_checked="", p_s_checked="", p_v_checked="", p_d_checked="")
 
+@route('/result/')
+def result_page():
+    '''
+    Returns result.html with placeholders with empty results placeholders.
+    '''
+    return template("result",  placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="",)
 
 @route('/generate/',method='POST')
 def generate_recipe():

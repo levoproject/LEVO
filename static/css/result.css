@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+body{
+    margin: 0;
+    background-image: url('/static/img/tomatoes-and-basil-on-the-table-in-kitchen-189-medium.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Comfortaa', cursive;
+    background-size:cover;
+}
+
+
+.swiper-container {
+      width: 100%;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      color: white;
+    }
+.swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 300px;
+      height: 300px;
+    }
+
+links{
+    display: block;
+}
