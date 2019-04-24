@@ -38,6 +38,9 @@ def get_rnd_ingredient(chosen_protein):
 
 
 def get_response(parameters):
+    '''
+    Makes the API request and returns either the result or error: connection.
+    '''
     try:
         return requests.get("https://www.food2fork.com/api/search", parameters)
     except:
@@ -45,6 +48,9 @@ def get_response(parameters):
 
 
 def get_rnd_index(api_content, used_ids):
+    '''
+    Returns 3 indexes to be used on api_content while making sure there's no duplicates and the recipe of the randomized index has not been used before.
+    '''
     api_index = []
     for i in range(0,3):
         while True:
