@@ -51,7 +51,7 @@ def generate_recipe():
         used_ids_list = used_ids[1:].split(",")
 
     #Gets 3 recipes' links, titles, image urls and ID:s.
-    return_recipe = ReqAPI.generate_link(chosen_protein, used_ids_list)
+    return_recipe = generate_link(chosen_protein, used_ids_list)
     
     if return_recipe == "error: connection":
         return connection_error()
