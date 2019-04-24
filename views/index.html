@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
+
     <head>
-        <meta charser="utf-8">
+        <meta charset="utf-8">
         <link href="/static/css/style.css" type="text/css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Comfortaa|Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa%7cOpen+Sans" rel="stylesheet">
         <link rel="shortcut icon" type="image/png" href="static/img/favicon.png">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <title>LEVO</title>
     </head>
+
     <body>
         <div id="container">
             <header>
                 <h1>LEVO</h1>
             </header>
+
             <main>
                 <div id="question1">
                     <h2>What do you crave?</h2>
@@ -33,8 +36,7 @@
                                 <button type="submit" class="button button5" class="button">Give me a recipe, please!</button>
                                 </div> 
                                 
-                                <button class="button"><a href="#question2" class="extra">Next question!</a></button>
-                                
+                                <button class="button"><a href="#question2" class="extra">Next question!</a></button>      
                         </form>
                     </div>
                 </div>                        
@@ -55,11 +57,10 @@
                         <label for="dont_care">I don't have any preferences!</label>
                         <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
                         <div id="get_recipe">
-                        <button type="submit" class="button button5" class="button">Give me a recipe, please!</button>
+                            <button type="submit" class="button button5" class="button">Give me a recipe, please!</button>
                         </div> 
                         
                         <button class="button" ><a href="#question3" class="extra">I'm ready for the last question!</a></button>
-                        
                     </form>
                 </div>
                 </div>
@@ -94,32 +95,33 @@
                     <img class="{{placeholder_hidden}}" src="{{placeholder_img_2}}" width="300">
                 </div>
             </main>
+
          <script>
         $(document).ready(function(){
-          // Add smooth scrolling to all links
-          $("a").on('click', function(event) {
-        
+            // Add smooth scrolling to all links
+            $("a").on('click', function(event) {
             
-            if (this.hash !== "") {
-             
-              event.preventDefault();
-        
-              // Store hash
-              var hash = this.hash;
-        
-              // Using jQuery's animate() method to add smooth page scroll
-              // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-              $('html, body').animate({
-                scrollTop: $(hash).offset().top
-              }, 800, function(){
-           
-                // Add hash (#) to URL when done scrolling (default click behavior)
-                window.location.hash = hash;
-              });
-            } // End if
-          });
-        });
-    </script>
+                
+                if (this.hash !== "") {
+                
+                event.preventDefault();
+            
+                // Store hash
+                var hash = this.hash;
+            
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800, function(){
+            
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+                } // End if
+            });
+            });
+        </script>
         </div>
     </body>
 </html>
