@@ -65,26 +65,17 @@
                 </div>
                 </div>-->
 
-                <div id="question3">
-                <h2>Allergies?</h2>
-                <div class="questions">
-                    <form action="/generate/" method="POST">
-                        <input type="checkbox" id="gluten" name="allergies" value="gluten" {{p_m_checked}}>
-                        <label for="gluten">Gluten Intolerance</label><br>
-                        <input type="checkbox" id="lactos" name="allergies" value="lactos" {{p_b_checked}}>
-                        <label for="lactos">Lactos Intolerance</label><br>
-                        <input type="checkbox" id="nuts_seeds" name="allergies" value="nuts_seeds" {{p_s_checked}}>
-                        <label for="nuts_seeds">Nuts and Seeds</label><br>
-                        <input type="checkbox" id="no_allergies" name="allergies" value="no_allergies" {{p_d_checked}}>
-                        <label for="no_allergies">I can eat everything!</label>
-                        <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
-                        <div id="get_recipe">
-                            <button type="submit" class="button button5" class="button">Give me a recipe, please!</button>
-                        </div>
-                    </form>
-                </div>
                 </div>  
-
+                        
+                <div id="your_recipe">
+                    <h2>Here's your recipes, enjoy!</h2>
+                    <p><a class="{{placeholder_hidden}}" href="{{placeholder_link_0}}" target="_blank">{{placeholder_title_0}}</a></p>
+                    <img class="{{placeholder_hidden}}" src="{{placeholder_img_0}}" width="300">
+                    <p><a class="{{placeholder_hidden}}" href="{{placeholder_link_1}}" target="_blank">{{placeholder_title_1}}</a></p>
+                    <img class="{{placeholder_hidden}}" src="{{placeholder_img_1}}" width="300">
+                    <p><a class="{{placeholder_hidden}}" href="{{placeholder_link_2}}" target="_blank">{{placeholder_title_2}}</a></p>
+                    <img class="{{placeholder_hidden}}" src="{{placeholder_img_2}}" width="300">
+                </div>
             </main>
 
          <script>
