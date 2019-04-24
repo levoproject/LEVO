@@ -36,6 +36,32 @@ def get_rnd_ingredient(chosen_protein):
     else:
         return choice(veg)
 
+
+def get_response(parameters):
+    '''
+    Makes the API request and returns either the result or error: connection.
+    '''
+    try:
+        return requests.get("https://www.food2fork.com/api/search", parameters)
+    except:
+        return "error: connection"
+
+
+def get_rnd_index(api_content, used_ids):
+    '''
+    Returns 3 indexes to be used on api_content while making sure there's no duplicates and the recipe of the randomized index has not been used before.
+    '''
+    api_index = []
+    for i in range(0,3):
+        while True:
+            temp_index = randint(0, (api_content['count'] - 1))
+            if temp_index not in api_index:
+                if api_content["recipes"][temp_index]['recipe_id'] not in used_ids:
+                    api_index.append(temp_index)
+                    break
+    return api_index
+
+
 def generate_link(chosen_protein):
     '''
     Makes an API request based on the users preferences. Of the result, 3 recipes are chosen att random and specific values of these recipes are returned.
@@ -44,10 +70,12 @@ def generate_link(chosen_protein):
 
     #Makes a get request with our API-key and the randomized ingredient as parameters.
     parameters = {"key": "f47c7ea8d2666c3df9c93d563bd02d72", "q": ingredient}
-    try:
-        response = requests.get("https://www.food2fork.com/api/search", parameters)
-    except:
+    response = get_response(parameters)
+
+    #If the API-server can't be reached, error: connection is returned.
+    if response == "error: connection":
         return "error: connection"
+
     api_content = json.loads(response.content)
 
     #If the API-request limit is reached the result will be: {'error': 'limit'}.
@@ -60,5 +88,5 @@ def generate_link(chosen_protein):
         print(parameters)
 
     #Chooses a random recipe of the amount returned from the request. Then returns 3 of them.
-    api_index = randint(0, (api_content['count']-2))
-    return [{'source_url': api_content["recipes"][api_index]['source_url'], 'title': api_content["recipes"][api_index]['title'], 'image_url': api_content["recipes"][api_index]['image_url'], 'recipe_id': api_content["recipes"][api_index]['recipe_id']}, {'source_url': api_content["recipes"][api_index - 1]['source_url'], 'title': api_content["recipes"][api_index - 1]['title'], 'image_url': api_content["recipes"][api_index - 1]['image_url'], 'recipe_id': api_content["recipes"][api_index - 1]['recipe_id']}, {'source_url': api_content["recipes"][api_index + 1]['source_url'], 'title': api_content["recipes"][api_index + 1]['title'], 'image_url': api_content["recipes"][api_index + 1]['image_url'], 'recipe_id': api_content["recipes"][api_index + 1]['recipe_id']}]
+    api_index = get_rnd_index(api_content, used_ids)
+    return [{'source_url': api_content["recipes"][api_index[0]]['source_url'], 'title': api_content["recipes"][api_index[0]]['title'], 'image_url': api_content["recipes"][api_index[0]]['image_url'], 'recipe_id': api_content["recipes"][api_index[0]]['recipe_id']}, {'source_url': api_content["recipes"][api_index[1]]['source_url'], 'title': api_content["recipes"][api_index[1]]['title'], 'image_url': api_content["recipes"][api_index[1]]['image_url'], 'recipe_id': api_content["recipes"][api_index[1]]['recipe_id']}, {'source_url': api_content["recipes"][api_index[2]]['source_url'], 'title': api_content["recipes"][api_index[2]]['title'], 'image_url': api_content["recipes"][api_index[2]]['image_url'], 'recipe_id': api_content["recipes"][api_index[2]]['recipe_id']}]

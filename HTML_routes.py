@@ -1,9 +1,8 @@
 #   ====================================
 #   Imports
-import bottle
-from bottle import route, run, template, request, get, static_file
+from bottle import route, run, template, request, get, static_file, TEMPLATE_PATH
 from random import choice
-import ReqAPI
+from ReqAPI import generate_link
 
 
 
@@ -12,7 +11,7 @@ import ReqAPI
 
 
 
-bottle.TEMPLATE_PATH.insert(0, 'views')
+TEMPLATE_PATH.insert(0, 'views')
 
 
 @route('/')
@@ -51,20 +50,19 @@ def generate_recipe():
     if used_ids != "":
         used_ids_list = used_ids[1:].split(",")
 
-    while True:
-        #Gets 3 recipes' links, titles, image urls and ID:s.
-        return_recipe = ReqAPI.generate_link(chosen_protein)
-        
-        if return_recipe == "error: connection":
-            return connection_error()
+    #Gets 3 recipes' links, titles, image urls and ID:s.
+    return_recipe = ReqAPI.generate_link(chosen_protein, used_ids_list)
+    
+    if return_recipe == "error: connection":
+        return connection_error()
 
-        if return_recipe == "error: limit reached":
-            return limit_reached()
-        
-        #Controls if recipe nr 1 has already been returned to the user. If not, it's added to the used_ids, else, it loops back.
-        if return_recipe[0]['recipe_id'] not in used_ids_list:
-            used_ids += "," + return_recipe[0]['recipe_id']
-            break
+    if return_recipe == "error: limit reached":
+        return limit_reached()
+
+    #Controls if recipe nr 1 has already been returned to the user. If not, it's added to the used_ids, else, it loops back.
+    for recipe in return_recipe:
+        used_ids += "," + recipe['recipe_id']
+    
     
     return return_template(chosen_protein, return_recipe, used_ids)
 
