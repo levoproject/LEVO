@@ -7,6 +7,7 @@
         <link href="https://fonts.googleapis.com/css?family=Comfortaa%7cOpen+Sans" rel="stylesheet">
         <link rel="shortcut icon" type="image/png" href="static/img/favicon.png" alt="Image is not available.">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="/static/js/script.js"></script>
         <title>LEVO</title>
     </head>
 
@@ -43,6 +44,7 @@
                     <h2>What do you crave?</h2>
                     <div class="questions">
                         <form action="/generate/" method="POST">
+                            <div id="questions_1">
                                 <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
                                 <label for="meat">Meat</label><br>
                                 <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
@@ -53,13 +55,38 @@
                                 <label for="veg">Veg</label><br>
                                 <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
                                  <label for="dont_know">I'm not sure!</label>
-                                <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
-                                <div id="get_recipe">
-                                <button type="submit" class="button" onclick="update()">Give me a recipe, please!</button>
-                                </div> 
-                                
-                                <button class="button"><a href="#question2" class="extra">Next question!</a></button>      
+                            </div>
+                            <div id="questions_2">
+                                <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
+                                <label for="meat">test</label><br>
+                                <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
+                                <label for="bird">text</label><br>
+                                 <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
+                                <label for="sea">text</label><br>
+                                <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
+                                <label for="veg">text</label><br>
+                                <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
+                                 <label for="dont_know">I'm not sure!</label>
+                            </div>
+                            <div id="questions_3">
+                                <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
+                                <label for="meat">HEJ</label><br>
+                                <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
+                                <label for="bird">HEJ</label><br>
+                                 <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
+                                <label for="sea">HEJ</label><br>
+                                <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
+                                <label for="veg">HEJ</label><br>
+                                <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
+                                 <label for="dont_know">I'm not sure!</label>
+                            </div>
+                            <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
+                            <div id="get_recipe">
+                                <button type="submit" class="button">Give me a recipe, please!</button>
+                            </div> 
+                            <button type="button" class="button" id="next" onclick="update()">Next question!</button>      
                         </form>
+                        
                     </div>
                 </div>                        
    
@@ -87,7 +114,7 @@
                 </div>
                 </div>-->
 
-                </div>  
+                  
                         
                 <div id="your_recipe">
                     <h2>Here's your recipes, enjoy!</h2>
@@ -99,49 +126,6 @@
                     <img class="{{placeholder_hidden}}" src="{{placeholder_img_2}}" width="300">
                 </div>
             </main>
-
-         <script>
-        function update() { 
-            var element = document.getElementById("myprogressBar");    
-            var width = 1; 
-            var identity = setInterval(scene, 10); 
-            function scene() { 
-                if (width >= 100) { 
-                    clearInterval(identity); 
-                } else { 
-                    width++;  
-                    element.style.width = width + '%';  
-                    element.innerHTML = width * 1  + '%'; 
-                } 
-            } 
-        } 
-
-        /*
-        $(document).ready(function(){
-            // Add smooth scrolling to all links
-            $("a").on('click', function(event) {
-            
-                
-                if (this.hash !== "") {
-                
-                event.preventDefault();
-            
-                // Store hash
-                var hash = this.hash;
-            
-                // Using jQuery's animate() method to add smooth page scroll
-                // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-                $('html, body').animate({
-                    scrollTop: $(hash).offset().top
-                }, 800, function(){
-            
-                    // Add hash (#) to URL when done scrolling (default click behavior)
-                    window.location.hash = hash;
-                });
-                } // End if
-            });
-            });
-        */
-        </script>
+        </div>
     </body>
 </html>
