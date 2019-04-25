@@ -1,13 +1,18 @@
 $(document).ready(function() {
     $('#questions_2').hide();
     $('#questions_3').hide();
+    $('#h2_q2').hide();
+    $('#h2_q3').hide();
+    $('#your_recipe').hide();
     var i = 1
     $('#next').click(function(){
 
         if (i == 1) {
             i = 2
-            $('#questions_1').hide(300);
-            $('#questions_2').show(300);
+            $('#h2_q1').hide(200);
+            $('#h2_q2').show(200);
+            $('#questions_1').hide(200);
+            $('#questions_2').show(200);
             var element = document.getElementById("progress_bar");
             var width = 0;
             var identity = setInterval(scene_1, 10);
@@ -23,9 +28,11 @@ $(document).ready(function() {
 
         } else if (i == 2) {
             i = 3
-            $('#questions_2').hide(300);
-            $('#questions_3').show(300);
-            $('#next').hide(300);
+            $('#h2_q2').hide(200);
+            $('#h2_q3').show(200);
+            $('#questions_2').hide(200);
+            $('#questions_3').show(200);
+            $('#next').hide(200);
             var element = document.getElementById("progress_bar");
             var width = 33;
             var identity = setInterval(scene_2, 10);
@@ -40,7 +47,8 @@ $(document).ready(function() {
 
 
         } else {
-            $('#questions_3').hide(300);
+            $('#h2_q3"').hide(200);
+            $('#questions_3').hide(200);
         }
     });
 });

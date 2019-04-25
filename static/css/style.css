@@ -8,7 +8,7 @@ body{
     font-size: 25px;
     letter-spacing: 2px;
     word-spacing: 2px;
-    color: #000000;    
+    color: #000000;
     font-weight: normal;
     text-decoration: none;
     font-style: normal;
@@ -16,12 +16,16 @@ body{
     text-transform: none;
     font-family: 'Open Sans', sans-serif;
     font-family: 'Comfortaa', cursive;
-    background-size:cover;
+    background-size: cover;
 }
 
 header{
     display: flex;
     justify-content: center;
+}
+
+header > img {
+    margin: 50px 0;
 }
 
 h2{
@@ -30,7 +34,7 @@ h2{
     font-size: 35px;
     text-shadow: 9px 0px 4px #000000;
 }
-.questions{
+#questions{
     display: flex;
     justify-content: center;
     color: ghostwhite;
@@ -44,7 +48,10 @@ h2{
 }
 
 form{
-    display: inline-block;
+    display: block;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
 }
 
 #your_recipe{
@@ -65,16 +72,11 @@ form{
     visibility: hidden;
 }
 
-#question1{
+#questions_1, #questions_2, #questions_3{
     margin-top: 10px;
-}
-
-#question2{
-    margin-top: 500px;
-}
-
-#question3{
-    margin-top: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 .button {
@@ -87,12 +89,13 @@ form{
     -webkit-border-radius: 28;
     -moz-border-radius: 28;
     border-radius: 28px;
-    margin: 8px 4px;
+    margin: 8px auto 8px auto;
     color: #ffffff;
     font-size: 20px;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
     cursor: pointer;
+    text-align: center;
   }
   
   .button:hover {
@@ -104,6 +107,12 @@ form{
     background-image: linear-gradient(to bottom, #54bf57, #358f38);
     text-decoration: none;
   }
+
+#buttons {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
 
 .extra{
     font-size: 16px;

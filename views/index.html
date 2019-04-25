@@ -13,7 +13,7 @@
 
     <body>
             <header>
-                <img src="/static/img/levo_image.png">
+                <img src="/static/img/LEVO_Logo.jpg" width="40%" height="40%">
             </header>
 
             <div id="progress_status">
@@ -21,57 +21,55 @@
             </div>
 
             <main>
-                <div id="question1">
-                    <div class="questions">
-                        <form action="/generate/" method="POST">
-                            <div id="questions_1">
-                                <h2>What do you crave?</h2>
-                                <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
-                                <label for="meat">Meat</label><br>
-                                <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
-                                <label for="bird">Bird</label><br>
-                                 <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
-                                <label for="sea">Sea</label><br>
-                                <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
-                                <label for="veg">Veg</label><br>
-                                <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
-                                 <label for="dont_know">I'm not sure!</label>
-                            </div>
-                            <div id="questions_2">
-                                <h2>This is another question?</h2>
-                                <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
-                                <label for="meat">test</label><br>
-                                <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
-                                <label for="bird">text</label><br>
-                                 <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
-                                <label for="sea">text</label><br>
-                                <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
-                                <label for="veg">text</label><br>
-                                <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
-                                 <label for="dont_know">I'm not sure!</label>
-                            </div>
-                            <div id="questions_3">
-                                <h2>This is yet another question?</h2>
-                                <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
-                                <label for="meat">HEJ</label><br>
-                                <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
-                                <label for="bird">HEJ</label><br>
-                                 <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
-                                <label for="sea">HEJ</label><br>
-                                <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
-                                <label for="veg">HEJ</label><br>
-                                <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
-                                 <label for="dont_know">I'm not sure!</label>
-                            </div>
-                            <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
-                            <div id="get_recipe">
-                                <button type="submit" class="button">Give me a recipe, please!</button>
-                            </div> 
-                            <button type="button" class="button" id="next">Next question!</button>      
-                        </form>
-                        
-                    </div>
-                </div>                        
+                <div id="questions">
+                    <form action="/generate/" method="POST">
+                        <h2 id="h2_q1">What do you crave?</h2>
+                        <div id="questions_1">
+                            <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
+                            <label for="meat">Meat</label><br>
+                            <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
+                            <label for="bird">Bird</label><br>
+                                <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
+                            <label for="sea">Sea</label><br>
+                            <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
+                            <label for="veg">Veg</label><br>
+                            <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
+                                <label for="dont_know">I'm not sure!</label>
+                        </div>
+                        <h2 id="h2_q2">This is another question?</h2>
+                        <div id="questions_2">
+                            <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
+                            <label for="meat">test</label><br>
+                            <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
+                            <label for="bird">text</label><br>
+                                <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
+                            <label for="sea">text</label><br>
+                            <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
+                            <label for="veg">text</label><br>
+                            <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
+                                <label for="dont_know">I'm not sure!</label>
+                        </div>
+                        <h2 id="h2_q3">This is yet another question?</h2>
+                        <div id="questions_3">
+                            <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
+                            <label for="meat">HEJ</label><br>
+                            <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
+                            <label for="bird">HEJ</label><br>
+                                <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
+                            <label for="sea">HEJ</label><br>
+                            <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
+                            <label for="veg">HEJ</label><br>
+                            <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
+                                <label for="dont_know">I'm not sure!</label>
+                        </div>
+                        <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
+                        <div id="buttons">
+                            <button type="submit" class="button">Give me a recipe, please!</button>
+                            <button type="button" class="button" id="next">Next question!</button>        
+                        </div>
+                    </form>
+                    
+                </div>                     
    
                 <!--<div id="question2">
                 <h2>Any preferences?</h2>
