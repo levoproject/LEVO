@@ -64,7 +64,7 @@
                         </div>
                         <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
                         <div id="buttons">
-                            <button type="submit" class="button">Give me a recipe, please!</button>
+                            <button type="submit" class="button" id="submit">Give me a recipe, please!</button>
                             <button type="button" class="button" id="next">Next question!</button>        
                         </div>
                     </form>
@@ -74,7 +74,7 @@
                 <label for="your_recipe" id="label">Here's your recipes, enjoy!</label>
                 <div id="your_recipe">
                     <div class="recipe">
-                        <p><a class="{{placeholder_hidden}}" href="{{placeholder_link_0}}" target="_blank">{{placeholder_title_0}}</a></p>
+                        <p><a id="result_check" class="{{placeholder_hidden}}" href="{{placeholder_link_0}}" target="_blank">{{placeholder_title_0}}</a></p>
                         <img class="{{placeholder_hidden}}" src="{{placeholder_img_0}}" width="200">
                     </div>
                     <div class="recipe">

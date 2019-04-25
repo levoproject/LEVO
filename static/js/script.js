@@ -3,8 +3,10 @@ $(document).ready(function() {
     $('#questions_3').hide();
     $('#h2_q2').hide();
     $('#h2_q3').hide();
-    $('#your_recipe').hide();
-    $('#label').hide();
+    if ( $('#result_check').text().length == 0 ) {
+        $('#your_recipe').hide();
+        $('#label').hide();
+    }
     var i = 1
     $('#next').click(function(){
 
@@ -53,7 +55,8 @@ $(document).ready(function() {
         }
     });
 
-    $('.button').click(function(){
+    $('#submit').click(function(){
+        $('#your_recipe').show();
         $('#label').show();
     });
 });
