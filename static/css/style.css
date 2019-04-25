@@ -48,17 +48,16 @@ form{
 }
 
 #your_recipe{
+    margin:auto;
     display: flex;
-    justify-content: center;
-    background-color: rgb(3, 63, 6);
-    color: white;
-    padding: 20px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 50%;
-    margin: 20px 0;
+    align-content: space-around;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+.recipe {
+    background-color: #318033;
+    max-width: 250px;
 }
 
 .hidden{
