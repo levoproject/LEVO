@@ -60,6 +60,10 @@ form{
     max-width: 250px;
 }
 
+#label {
+    text-align: center;
+}
+
 .hidden{
     visibility: hidden;
 }
