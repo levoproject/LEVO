@@ -114,3 +114,18 @@ a, a:visited{
     color: white;
     font-size: 1.5em;
 }
+
+#progress_status {
+    width: 30%;
+    background-color: white;
+    margin: auto;
+}
+
+#progress_bar { 
+    width: 0;
+    height: 5px; 
+    background-color: #4CAF50; 
+    text-align: center; 
+    line-height: 32px; 
+    color: white;
+} 
