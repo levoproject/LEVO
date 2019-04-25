@@ -1,9 +1,13 @@
 $(document).ready(function() {
     $('#questions_2').hide();
     $('#questions_3').hide();
+<<<<<<< HEAD
     $('#h2_q2').hide();
     $('#h2_q3').hide();
     $('#your_recipe').hide();
+=======
+    $('#label').hide();
+>>>>>>> 415315c57d1bc88b0c0487b9a1589ca52ea291e6
     var i = 1
     $('#next').click(function(){
 
@@ -51,7 +55,14 @@ $(document).ready(function() {
             $('#questions_3').hide(200);
         }
     });
+
+    $('.button').click(function(){
+        $('#label').show();
+    });
 });
+
+    
+    
 
 /*
 $(document).ready(function(){
