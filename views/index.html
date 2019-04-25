@@ -16,6 +16,29 @@
                 <h1>LEVO</h1>
             </header>
 
+            <style>
+
+            #Progress_Status { 
+                width: 30%; 
+                background-color: white;
+                margin: auto; 
+            } 
+    
+            #myprogressBar { 
+                width: 1%; 
+                height: 35px; 
+                background-color: #4CAF50; 
+                text-align: center; 
+                line-height: 32px; 
+                color: black; 
+            } 
+
+            </style>
+
+            <div id="Progress_Status"> 
+                <div id="myprogressBar">1%</div> 
+            </div> 
+
             <main>
                 <div id="question1">
                     <h2>What do you crave?</h2>
@@ -33,7 +56,7 @@
                                  <label for="dont_know">I'm not sure!</label>
                                 <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
                                 <div id="get_recipe">
-                                <button type="submit" class="button button5" class="button">Give me a recipe, please!</button>
+                                <button type="submit" class="button" onclick="update()">Give me a recipe, please!</button>
                                 </div> 
                                 
                                 <button class="button"><a href="#question2" class="extra">Next question!</a></button>      
@@ -79,6 +102,22 @@
             </main>
 
          <script>
+        function update() { 
+            var element = document.getElementById("myprogressBar");    
+            var width = 1; 
+            var identity = setInterval(scene, 10); 
+            function scene() { 
+                if (width >= 100) { 
+                    clearInterval(identity); 
+                } else { 
+                    width++;  
+                    element.style.width = width + '%';  
+                    element.innerHTML = width * 1  + '%'; 
+                } 
+            } 
+        } 
+
+        /*
         $(document).ready(function(){
             // Add smooth scrolling to all links
             $("a").on('click', function(event) {
@@ -103,6 +142,7 @@
                 } // End if
             });
             });
+        */
         </script>
         </div>
     </body>

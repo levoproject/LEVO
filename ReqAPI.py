@@ -62,7 +62,7 @@ def get_rnd_index(api_content, used_ids):
     return api_index
 
 
-def generate_link(chosen_protein):
+def generate_link(chosen_protein, used_ids):
     '''
     Makes an API request based on the users preferences. Of the result, 3 recipes are chosen att random and specific values of these recipes are returned.
     '''
