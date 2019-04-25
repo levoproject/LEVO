@@ -61,7 +61,9 @@ form{
 }
 
 #label {
+    display: block;
     text-align: center;
+    color: white;
 }
 
 .hidden{
