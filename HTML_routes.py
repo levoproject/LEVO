@@ -64,7 +64,7 @@ def generate_recipe():
         return "Module ReqAPI missing."    
     
     if return_recipe == "error: connection":
-        return connection_error()
+        return connection_error_api()
 
     if return_recipe == "error: limit reached":
         return limit_reached()
@@ -106,11 +106,18 @@ def limit_reached():
     return 'API request limit reached. This web application is still under development. We are using an API(application programming interface) to generate results. The API we are utilizing is free and intended for developing purposes. Therefore there is a daily limit to the number of results we are able to request.'
 
 
-def connection_error():
+def connection_error_api():
     '''
     The message shown to the user if ReqAPI can't connect to the API.
     '''
     return "Can't connect to API server."
+
+
+def connection_error_db():
+    '''
+    The message shown to the user if DBM can't connect to the database server.
+    '''
+    return "Can't connect to database server."
 
 
 @route("/static/css/<filename>")
