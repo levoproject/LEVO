@@ -8,3 +8,7 @@ p{
     margin: auto;
     max-width: 50%;
 }
+
+main{
+    font-family: 'PT Serif', serif;
+}
