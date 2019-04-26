@@ -33,7 +33,25 @@ def login_page():
     '''
     Returns login.html with empty placeholders.
     '''
-    return template("login")
+    return template("login", placeholder_error_msg="", placeholder_username="", placeholder_pass="")
+
+
+@route('/login_form/',method='POST')
+def login_form():
+    user = {}
+    user["username"] = request.forms.get('username')
+    user["pass"] = request.forms.get('password')
+
+    result = DBM.login(user)
+
+    if result == "not connected":
+        return connection_error_db()
+    elif result == "user does not exist":
+        return template("login", placeholder_error_msg="There is no user with this username!", placeholder_username=user["username"], placeholder_pass="")
+    elif result == "password incorrect"
+        return template("login", placeholder_error_msg="The password is incorrect!", placeholder_username=user["username"], placeholder_pass="")
+    elif result == "password correct":
+        return template("index", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_used_ids="", placeholder_hidden="hidden", p_m_checked="", p_b_checked="", p_s_checked="", p_v_checked="", p_d_checked="")
 
     
 @route('/about/')
