@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+        <link href="/static/css/style.css" type="text/css" rel="stylesheet">
+        <link href="/static/css/style_login.css" type="text/css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="static/img/favicon.png" alt="Image is not available.">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="/static/js/script_login.js"></script>
+    </head>
+
+    <body>
+
+        <header>
+                <img src="/static/img/LEVO_Logo.jpg" width="40%" height="40%" alt="Image is not available.">
+        </header>
+
+        <div id="progress_status">
+            <div id="progress_bar"></div>
+        </div>
+
+        <main>
+            <form id="login_form" class="forms" action="/login_form/" method="POST">
+                <h2>Sign in</h2>
+                <div class="form_group">
+                    <input type="text" name="username" id="username" placeholder="Username..." required autofocus><br>
+                </div>
+                <div class="form_group">
+                    <input type="password" name="password" id="password" placeholder="Password..." required><br>
+                </div class="form_group">
+                <div>
+                    <button type="submit" class="buttons" id="login_btn">Login</button><br>
+                </div>
+                <div class="form_group">
+                    <button type="button" id="switch_forms_btn">Don't have an account? Register here!</button>
+                </div>
+            </form>
+
+            <form id="register_form" class="forms" action="#" method="POST">
+                <h2>Register</h2>
+                <input type="text" name="username" id="reg_username" placeholder="Username..."><br>
+                <input type="password" name="password" id="reg_password" placeholder="Password..."><br>
+                <button type="submit" class="buttons" id="create_account_btn">Create account</button>
+            </form>
+        </main>
+    
+    </body>
+        
+
+</html>
