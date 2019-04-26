@@ -28,6 +28,14 @@ def index_page():
     return template("index", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_used_ids="", placeholder_hidden="hidden", p_m_checked="", p_b_checked="", p_s_checked="", p_v_checked="", p_d_checked="")
 
 
+@route('/login/')
+def login_page():
+    '''
+    Returns login.html with empty placeholders.
+    '''
+    return template("login")
+
+
 @route('/generate/',method='POST')
 def generate_recipe():
     '''
