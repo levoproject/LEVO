@@ -28,11 +28,12 @@
         <main>
             <form id="login_form" class="forms" action="/login_form/" method="POST">
                 <h2>Sign in</h2>
+                <p id="error_msg">{{placeholder_error_msg}}</p>
                 <div class="form_group">
-                    <input type="text" name="username" id="username" placeholder="Username..." required autofocus><br>
+                    <input type="text" name="username" id="username" placeholder="Username..." required autofocus value="{{placeholder_username}}"><br>
                 </div>
                 <div class="form_group">
-                    <input type="password" name="password" id="password" placeholder="Password..." required><br>
+                    <input type="password" name="password" id="password" placeholder="Password..." required value="{{placeholder_pass}}"><br>
                 </div class="form_group">
                 <div>
                     <button type="submit" class="buttons" id="login_btn">Login</button><br>
