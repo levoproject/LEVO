@@ -49,7 +49,7 @@ def login_form():
     user["username"] = request.forms.get('username')
     user["pass"] = request.forms.get('password')
 
-    result = DBM.login(user)
+    result = login(user)
 
     if result == "not connected":
         return connection_error_db()
