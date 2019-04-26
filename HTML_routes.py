@@ -5,10 +5,17 @@ from random import choice
 
 try:
     from ReqAPI import generate_link
-    module_exists = True
+    api_module_exists = True
     
 except:
-    module_exists = False
+    api_module_exists = False
+
+try:
+    from DBM import login
+    db_module_exists = True
+    
+except:
+    db_module_exists = False
 
 
 #   ====================================
@@ -48,7 +55,7 @@ def login_form():
         return connection_error_db()
     elif result == "user does not exist":
         return template("login", placeholder_error_msg="There is no user with this username!", placeholder_username=user["username"], placeholder_pass="")
-    elif result == "password incorrect"
+    elif result == "password incorrect":
         return template("login", placeholder_error_msg="The password is incorrect!", placeholder_username=user["username"], placeholder_pass="")
     elif result == "password correct":
         return template("index", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_used_ids="", placeholder_hidden="hidden", p_m_checked="", p_b_checked="", p_s_checked="", p_v_checked="", p_d_checked="")
@@ -84,7 +91,7 @@ def generate_recipe():
         used_ids_list = used_ids[1:].split(",")
 
     #Gets 3 recipes' links, titles, image urls and ID:s.
-    if module_exists:
+    if api_module_exists:
         return_recipe = generate_link(chosen_protein, used_ids_list)
     else:
         return "Module ReqAPI missing."    
