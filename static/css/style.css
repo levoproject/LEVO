@@ -44,6 +44,7 @@ nav{
 
 nav a{
     margin: 0px 15px 0px 15px;
+    text-decoration: none;
 }
 
 nav a:hover{
