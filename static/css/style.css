@@ -62,8 +62,8 @@ h2{
     font-size: 20px;
     padding: 30px;
     background-color: rgba(0, 0, 0, 0.5);
-    margin-right: 350px;
-    margin-left: 350px;
+    margin-left: 20%;
+    margin-right: 20%;
     border-radius: 10px;
 }
 
@@ -126,12 +126,13 @@ a, a:visited{
     width: 30%;
     background-color: white;
     margin: auto;
+    margin-bottom: 30px;
 }
 
 #progress_bar { 
     width: 0;
     height: 5px; 
-    background-color: #4CAF50; 
+    background-color: rgb(51, 223, 35); 
     text-align: center; 
     line-height: 32px; 
     color: white;
