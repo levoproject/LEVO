@@ -54,7 +54,7 @@ main {
     cursor: pointer;
 }
 
-#switch_forms_btn {
+#switch_forms_btn, #switch_forms_btn_back {
     background: none;
 	color: inherit;
 	border: none;
