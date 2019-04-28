@@ -10,10 +10,15 @@ h1{
 
 p{
     color: white;
-    margin: auto;
-    max-width: 50%;
 }
 
 main{
-    font-family: 'PT Serif', serif;
+    color: ghostwhite;
+    font-size: 20px;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 10px;
+    margin-bottom: 20%;
 }
