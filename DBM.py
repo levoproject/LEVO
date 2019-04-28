@@ -8,6 +8,9 @@ key = b'CLmBCvpMueiHp0Q9MYhIMObmG6MwhLJ8SisL8iSTTCg='
 f = Fernet(key)
 
 def db_connect():
+    '''
+    Tries connecting to the database.
+    '''
     global cursor
     global conn
     try:
@@ -18,11 +21,17 @@ def db_connect():
         return False
 
 def db_update_changes():
+    '''
+    Updates changes made to the database and closes the connection with the database.
+    '''
     conn.commit()
     cursor.close()
     conn.close()
 
 def user_exists(username):
+    '''
+    Returns True if the user exists in the table "users".
+    '''
     cursor.execute("SELECT username FROM users WHERE username=%s", (username,))
     if cursor.rowcount != 0:
         return True
@@ -30,6 +39,9 @@ def user_exists(username):
         return False
 
 def insert_new(user):
+    '''
+    Encrypts new user's inputed password and inserts the new user's username and encrypted password into the "users" table.
+    '''
     if db_connect():
         if user_exists(user["username"]):
             return "user exists"
@@ -42,6 +54,9 @@ def insert_new(user):
         return "not connected"
 
 def login(user):
+    '''
+    Finds the user in the "users" table. Decrypts the password stored in the table. Compares it to the password inputed by the user and returns the result.
+    '''
     if db_connect():
         if not user_exists(user["username"]):
             return "user does not exist"
@@ -58,6 +73,9 @@ def login(user):
         return "not connected"
 
 def save_recipe(username, recipe):
+    '''
+    Stores a recipe for the user in the database.
+    '''
     if db_connect():
         cursor.execute("SELECT * FROM saved_recipes WHERE username=%s AND recipe_id=%s", (username, recipe["recipe_id"]))
         
@@ -77,6 +95,9 @@ def save_recipe(username, recipe):
         return "not connected"
 
 def get_saved_recipes(username):
+    '''
+    Retrieves all recipes saved by the user.
+    '''
     if db_connect():
         cursor.execute("""
         SELECT recipe_id, title, image_url, source_url
