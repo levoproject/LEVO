@@ -74,19 +74,6 @@ form{
     width: 80%;
 }
 
-#your_recipe{
-    margin:auto;
-    display: flex;
-    align-content: space-around;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-}
-
-.recipe {
-    background-color: #318033;
-    max-width: 250px;
-}
-
 #label {
     display: block;
     text-align: center;
@@ -115,7 +102,7 @@ form{
     text-align: center;
   }
   
-  .button:hover {
+.button:hover {
     text-decoration: underline;
   }
 
@@ -149,3 +136,37 @@ a, a:visited{
     line-height: 32px; 
     color: white;
 } 
+
+.swiper-slide .imgBox{
+    width: 100%;
+    height: 65%;
+    overflow: hidden;
+}
+
+.swiper-slide .imgBox img{
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.swiper-slide -imgBox details{
+    box-sizing: border-box;
+    padding: 20px;
+ 
+}
+
+.swiper-slide -imgBox details p{
+    font-size: 10px;
+    color: black;
+    margin-left: 50px;
+}
+
+.swiper-pagination-bullet {
+    opacity: 1;
+    border: 3px solid white;
+    background-color: transparent;
+}
+.swiper-pagination-bullet-active {
+    background-color: white;
+}

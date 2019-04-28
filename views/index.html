@@ -5,10 +5,28 @@
         <meta charset="utf-8">
         <link href="/static/css/style.css" type="text/css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Comfortaa%7cOpen+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="../static/css/swiper.min.css">
         <link rel="shortcut icon" type="image/png" href="static/img/favicon.png" alt="Image is not available.">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="/static/js/script.js"></script>
         <title>LEVO</title>
+         <!-- måste innehålla intern swiper kod -->
+    <style>
+        .swiper-container {
+            width: 100%;
+            padding-top: 10px;
+            padding-bottom: 50px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px;
+            height: 350px;
+            background: #fff;
+            border-radius: 20px;
+        }
+    </style>
     </head>
 
     <body>
@@ -77,20 +95,35 @@
                 </div>                   
                 
                 <label for="your_recipe" id="label">Here's your recipes, enjoy!</label>
-                <div id="your_recipe">
-                    <div class="recipe">
-                        <p><a id="result_check" class="{{placeholder_hidden}}" href="{{placeholder_link_0}}" target="_blank">{{placeholder_title_0}}</a></p>
-                        <img class="{{placeholder_hidden}}" src="{{placeholder_img_0}}" width="200">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="imgBox"><img class="{{placeholder_hidden}}" src="{{placeholder_img_0}}"></div>
+                            <div class="details">
+                                {{placeholder_title_0}}<a id="result_check" class="{{placeholder_hidden}}" href="{{placeholder_link_0}}" target="_blank"></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="imgBox"><img class="{{placeholder_hidden}}" src="{{placeholder_img_1}}"></div>
+                            <div class="details">
+                                {{placeholder_title_1}}<a class="{{placeholder_hidden}}" href="{{placeholder_link_0}}" target="_blank"></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="imgBox"><img class="{{placeholder_hidden}}" src="{{placeholder_img_2}}"></div>
+                            <div class="details">
+                                {{placeholder_title_2}}<a  class="{{placeholder_hidden}}" href="{{placeholder_link_0}}" target="_blank"></a>
+                            </div>
+                        </div>
+        
                     </div>
-                    <div class="recipe">
-                        <p><a class="{{placeholder_hidden}}" href="{{placeholder_link_1}}" target="_blank">{{placeholder_title_1}}</a></p>
-                        <img class="{{placeholder_hidden}}" src="{{placeholder_img_1}}" width="200">
-                    </div>
-                    <div class="recipe">
-                        <p><a class="{{placeholder_hidden}}" href="{{placeholder_link_2}}" target="_blank">{{placeholder_title_2}}</a></p>
-                        <img class="{{placeholder_hidden}}" src="{{placeholder_img_2}}" width="200">
-                    </div> 
-                </div>
+
+                           <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
 
                 <!--<div id="question2">
                 <h2>Any preferences?</h2>
@@ -115,6 +148,32 @@
                     </form>
                 </div>
                 </div>-->
-            </main>
+    </main>
+    <!-- Swiper JS -->
+    <script src="../static/js/swiper.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            }, // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+    </script>
     </body>
 </html>

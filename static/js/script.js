@@ -4,7 +4,7 @@ $(document).ready(function() {
     $('#h2_q2').hide();
     $('#h2_q3').hide();
     if ( $('#result_check').text().length == 0 ) {
-        $('#your_recipe').hide();
+        $('#swiper-container').hide();
         $('#label').hide();
     }
     var i = 1
@@ -56,12 +56,11 @@ $(document).ready(function() {
     });
 
     $('#submit').click(function(){
-        $('#your_recipe').show();
+        $('#swiper-container').show();
         $('#label').show();
     });
 });
 
-    
     
 
 /*
