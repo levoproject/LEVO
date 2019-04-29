@@ -4,7 +4,7 @@ $(document).ready(function() {
     $('#h2_q2').hide();
     $('#h2_q3').hide();
     if ( $('#result_check').text().length == 0 ) {
-        $('#swiper-container').hide();
+        $('.swiper-container').hide();
         $('#label').hide();
     }
     var i = 1
