@@ -70,7 +70,7 @@ def generate_link(chosen_protein, used_ids):
     ingredient = get_rnd_ingredient(chosen_protein)
 
     #Makes a get request with our API-key and the randomized ingredient as parameters.
-    parameters = {"key": foodApiKey, "q": ingredient}
+    parameters = {"key": f2f_api_key, "q": ingredient}
     response = get_response(parameters)
 
     #If the API-server can't be reached, error: connection is returned.

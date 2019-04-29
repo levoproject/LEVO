@@ -1,11 +1,16 @@
-#imports
+#   ====================================
+#   Imports
 import psycopg2
 from cryptography.fernet import Fernet
+from conf import cryptography_key, db_username, db_password
 
 
-key = b'CLmBCvpMueiHp0Q9MYhIMObmG6MwhLJ8SisL8iSTTCg='
 
-f = Fernet(key)
+#   ====================================
+#   globals
+f = Fernet(cryptography_key)
+
+
 
 def db_connect():
     '''
@@ -14,11 +19,12 @@ def db_connect():
     global cursor
     global conn
     try:
-        conn = psycopg2.connect(dbname='db_test_users_ot', user='ai5749', host='pgserver.mah.se', password='amzk822h')
+        conn = psycopg2.connect(dbname='db_test_users_ot', user=db_username, host='pgserver.mah.se', password=db_username)
         cursor = conn.cursor()
         return True
     except:
         return False
+
 
 def db_update_changes():
     '''
@@ -27,6 +33,7 @@ def db_update_changes():
     conn.commit()
     cursor.close()
     conn.close()
+
 
 def user_exists(username):
     '''
@@ -37,6 +44,7 @@ def user_exists(username):
         return True
     else:
         return False
+
 
 def insert_new(user):
     '''
@@ -52,6 +60,7 @@ def insert_new(user):
         return "done"
     else:
         return "not connected"
+
 
 def login(user):
     '''
@@ -71,6 +80,7 @@ def login(user):
                 return "password incorrect"
     else:
         return "not connected"
+
 
 def save_recipe(username, recipe):
     '''
@@ -93,6 +103,7 @@ def save_recipe(username, recipe):
         return "done"
     else:
         return "not connected"
+
 
 def get_saved_recipes(username):
     '''
