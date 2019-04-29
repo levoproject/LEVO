@@ -80,10 +80,6 @@ form{
     color: white;
 }
 
-.hidden{
-    visibility: hidden;
-}
-
 #questions_1, #questions_2, #questions_3{
     margin-top: 10px;
     margin-left: auto;
