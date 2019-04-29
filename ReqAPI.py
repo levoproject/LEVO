@@ -2,6 +2,7 @@
 #   Imports
 import requests
 import json
+from conf import *
 from random import randint, choice
 
 
@@ -69,7 +70,7 @@ def generate_link(chosen_protein, used_ids):
     ingredient = get_rnd_ingredient(chosen_protein)
 
     #Makes a get request with our API-key and the randomized ingredient as parameters.
-    parameters = {"key": "f47c7ea8d2666c3df9c93d563bd02d72", "q": ingredient}
+    parameters = {"key": foodApiKey, "q": ingredient}
     response = get_response(parameters)
 
     #If the API-server can't be reached, error: connection is returned.
