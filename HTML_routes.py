@@ -45,6 +45,9 @@ def login_page():
 
 @route('/login_form/',method='POST')
 def login_form():
+    '''
+    
+    '''
     user = {}
     user["username"] = request.forms.get('username')
     user["pass"] = request.forms.get('password')
