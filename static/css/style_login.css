@@ -41,6 +41,12 @@ main {
     margin-bottom: 7px;
     margin-top: 7px;
     background-color: rgba(0, 0, 0, 0);
+    border:1px solid rgba(0, 0, 0, 0.5);
+}
+
+.forms input:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px black;
 }
 
 .forms .buttons {
