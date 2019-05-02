@@ -19,7 +19,7 @@ def db_connect():
     global cursor
     global conn
     try:
-        conn = psycopg2.connect(dbname='db_test_users_ot', user=db_username, host='pgserver.mah.se', password=db_password)
+        conn = psycopg2.connect(dbname='db_LEVO', user=db_username, host='pgserver.mah.se', password=db_password)
         cursor = conn.cursor()
         return True
     except:
