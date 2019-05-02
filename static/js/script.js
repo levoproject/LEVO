@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $('#current_user').hide();
     $('#questions_2').hide();
     $('#questions_3').hide();
     $('#h2_q2').hide();
@@ -6,6 +7,9 @@ $(document).ready(function() {
     if ( $('#result_check').text().length == 0 ) {
         $('.swiper-container').hide();
         $('#label').hide();
+    }
+    if ( $('#current_user').text().length != 0 ) {
+        $('#login').hide();
     }
     var i = 1
     $('#next').click(function(){

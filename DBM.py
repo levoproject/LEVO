@@ -19,7 +19,7 @@ def db_connect():
     global cursor
     global conn
     try:
-        conn = psycopg2.connect(dbname='db_test_users_ot', user=db_username, host='pgserver.mah.se', password=db_password)
+        conn = psycopg2.connect(dbname='db_levo', user=db_username, host='pgserver.mah.se', password=db_password)
         cursor = conn.cursor()
         return True
     except:
@@ -46,14 +46,22 @@ def user_exists(username):
         return False
 
 
-def insert_new(user):
+def register(user):
     '''
     Encrypts new user's inputed password and inserts the new user's username and encrypted password into the "users" table.
     '''
     if db_connect():
         if user_exists(user["username"]):
             return "user exists"
-
+        elif len(user["username"]) < 4:
+            return "username too short" 
+        elif len(user["username"]) > 25:
+            return "username too long"
+        elif len(user["pass"]) < 7:
+            return "password too short" 
+        elif len(user["pass"]) > 25:
+            return "password too long"
+        
         cyphered_pass = f.encrypt(bytes(user["pass"],encoding='utf8'))
         cursor.execute("INSERT INTO users (username, pass) VALUES (%s,%s)", (user["username"],cyphered_pass))
         db_update_changes()

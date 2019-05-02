@@ -2,7 +2,7 @@
 #   Imports
 import requests
 import json
-from conf import *
+from conf import f2f_api_key
 from random import randint, choice
 
 
