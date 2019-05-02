@@ -39,7 +39,7 @@ def my_profile():
     '''
     Returns my_profile.html with empty placeholders.
     '''
-    return template("my_profile")
+    return template("my_profile", placeholder_current_user=current_user)
 
 
 @route('/my_recipes/')
@@ -50,8 +50,8 @@ def my_recipes():
     saved_recipes = get_saved_recipes(current_user)
     return_html = ""
     for recipe in saved_recipes:
-        return_html += '<li><a href="' + recipe["source_url"] + '"><label for="' + recipe["recipe_id"] + '">' + recipe["title"] + '</label><br>' + '<img src="' + recipe["image_url"] + '" class="saved_recipes" alt="Image is not available."></a></li>'
-    return template("my_recipes", placeholder_saved_recipes=return_html)
+        return_html += '<li><a href="' + recipe["source_url"] + '" target="_blank"><label for="' + recipe["recipe_id"] + '">' + recipe["title"] + '</label><br>' + '<img src="' + recipe["image_url"] + '" class="saved_recipes" alt="Image is not available."></a></li>'
+    return template("my_recipes", placeholder_current_user=current_user, placeholder_saved_recipes=return_html)
 
 
 @route('/login/')

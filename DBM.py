@@ -119,7 +119,7 @@ def get_saved_recipes(username):
     '''
     if db_connect():
         cursor.execute("""
-        SELECT recipe_id, title, image_url, source_url
+        SELECT recipes.recipe_id, title, image_url, source_url
             FROM recipes
                 JOIN saved_recipes  ON saved_recipes.recipe_id  = recipes.recipe_id
             WHERE saved_recipes.username = %s
