@@ -26,27 +26,21 @@
         </div>
 
         <main>
+            <p id="current_form">{{placeholder_form}}</p>
             <form id="login_form" class="forms" action="/login_form/" method="POST">
                 <h2>Sign in</h2>
-                <p id="error_msg">{{placeholder_error_msg}}</p>
-                <div class="form_group">
-                    <input type="text" name="username" id="username" placeholder="Username..." required autofocus value="{{placeholder_username}}"><br>
-                </div>
-                <div class="form_group">
-                    <input type="password" name="password" id="password" placeholder="Password..." required value="{{placeholder_pass}}"><br>
-                </div class="form_group">
-                <div>
-                    <button type="submit" class="buttons" id="login_btn">Login</button><br>
-                </div>
-                <div class="form_group">
-                    <button type="button" id="switch_forms_btn">Don't have an account? Register here!</button>
-                </div>
+                <p id="error_msg_login">{{placeholder_error_msg_login}}</p>
+                <input type="text" name="log_username" id="log_username" placeholder="Username..." required autofocus value="{{placeholder_username_login}}"><br>
+                <input type="password" name="log_password" id="log_password" placeholder="Password..." required value="{{placeholder_pass_login}}"><br>
+                <button type="submit" class="buttons" id="login_btn">Login</button><br>
+                <button type="button" id="switch_forms_btn">Don't have an account? Register here!</button>
             </form>
 
-            <form id="register_form" class="forms" action="#" method="POST">
+            <form id="register_form" class="forms" action="/register_form/" method="POST">
                 <h2>Register</h2>
-                <input type="text" name="username" id="reg_username" placeholder="Username..."><br>
-                <input type="password" name="password" id="reg_password" placeholder="Password..."><br>
+                <p id="error_msg_reg">{{placeholder_error_msg_reg}}</p>
+                <input type="text" name="reg_username" id="reg_username" placeholder="Username..." value="{{placeholder_username_reg}}"><br>
+                <input type="password" name="reg_password" id="reg_password" placeholder="Password..." value="{{placeholder_pass_reg}}"><br>
                 <button type="submit" class="buttons" id="create_account_btn">Create account</button>
                 <button type="button" id="switch_forms_btn_back">Go back to Log in!</button>
             </form>
