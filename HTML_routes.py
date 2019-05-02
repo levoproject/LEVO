@@ -1,25 +1,24 @@
 #   ====================================
 #   Imports
-from bottle import route, run, template, request, get, static_file, TEMPLATE_PATH
+from bottle import route, run, template, request, get, static_file, redirect, TEMPLATE_PATH
 from random import choice
 
 try:
     from ReqAPI import generate_link
     api_module_exists = True
-    
 except:
     api_module_exists = False
 
 try:
     from DBM import login, register
     db_module_exists = True
-    
 except:
     db_module_exists = False
 
 
 #   ====================================
 #   globals
+current_user = ""
 
 
 
@@ -32,7 +31,7 @@ def index_page():
     '''
     Returns index.html with empty placeholders.
     '''
-    return template("index", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_used_ids="", p_m_checked="", p_b_checked="", p_s_checked="", p_v_checked="", p_d_checked="")
+    return template("index", placeholder_current_user=current_user, placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_used_ids="", p_m_checked="", p_b_checked="", p_s_checked="", p_v_checked="", p_d_checked="")
 
 
 @route('/login/')
@@ -43,11 +42,12 @@ def login_page():
     return template("login", placeholder_form="1", placeholder_error_msg_login="", placeholder_error_msg_reg="", placeholder_username_login="", placeholder_pass_login="", placeholder_username_reg="", placeholder_pass_reg="")
 
 
-@route('/login_form/',method='POST')
+@route('/login_form/', method='POST')
 def login_form():
     '''
 
     '''
+    global current_user
     user = {}
     user["username"] = request.forms.get('log_username')
     user["pass"] = request.forms.get('log_password')
@@ -64,14 +64,16 @@ def login_form():
     elif result == "password incorrect":
         return template("login", placeholder_form="1", placeholder_error_msg_login="The password is incorrect!", placeholder_error_msg_reg="", placeholder_username_login=user["username"], placeholder_pass_login="", placeholder_username_reg="", placeholder_pass_reg="")
     elif result == "password correct":
-        return template("index", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_used_ids="", p_m_checked="", p_b_checked="", p_s_checked="", p_v_checked="", p_d_checked="")
+        current_user = user["username"]
+        return redirect('/')
 
 
-@route('/register_form/',method='POST')
+@route('/register_form/', method='POST')
 def register_form():
     '''
 
     '''
+    global current_user
     user = {}
     user["username"] = request.forms.get('reg_username')
     user["pass"] = request.forms.get('reg_password')
@@ -94,7 +96,8 @@ def register_form():
     elif result == "password too long":
         return template("login", placeholder_form="2", placeholder_error_msg_login="", placeholder_error_msg_reg="Your password can have a maximum of 25 characters!", placeholder_username_login="", placeholder_pass_login="", placeholder_username_reg=user["username"], placeholder_pass_reg="")
     elif result == "done":
-        return template("index", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_used_ids="", p_m_checked="", p_b_checked="", p_s_checked="", p_v_checked="", p_d_checked="")
+        current_user = user["username"]
+        return redirect('/')
 
 
 @route('/about/')
@@ -102,10 +105,10 @@ def about_page():
     '''
     Returns about.html with empty placeholders.
     '''
-    return template("about")
+    return template("about", placeholder_current_user=current_user)
 
 
-@route('/generate/',method='POST')
+@route('/generate/', method='POST')
 def generate_recipe():
     '''
     Generates a random result based on the chosen protein.
@@ -165,7 +168,7 @@ def return_template(chosen_protein, return_recipe, used_ids):
         p_v_checked = "checked"
     if "dont_know" in chosen_protein:
         p_d_checked = "checked"
-    return template("index", placeholder_used_ids=used_ids, placeholder_link_0=return_recipe[0]["source_url"], placeholder_title_0=return_recipe[0]["title"], placeholder_img_0=return_recipe[0]["image_url"], placeholder_link_1=return_recipe[1]["source_url"], placeholder_title_1=return_recipe[1]["title"], placeholder_img_1=return_recipe[1]["image_url"], placeholder_link_2=return_recipe[2]["source_url"], placeholder_title_2=return_recipe[2]["title"], placeholder_img_2=return_recipe[2]["image_url"], p_m_checked=p_m_checked, p_b_checked=p_b_checked, p_s_checked=p_s_checked, p_v_checked=p_v_checked, p_d_checked=p_d_checked)
+    return template("index", placegolder_current_user=current_user, placeholder_used_ids=used_ids, placeholder_link_0=return_recipe[0]["source_url"], placeholder_title_0=return_recipe[0]["title"], placeholder_img_0=return_recipe[0]["image_url"], placeholder_link_1=return_recipe[1]["source_url"], placeholder_title_1=return_recipe[1]["title"], placeholder_img_1=return_recipe[1]["image_url"], placeholder_link_2=return_recipe[2]["source_url"], placeholder_title_2=return_recipe[2]["title"], placeholder_img_2=return_recipe[2]["image_url"], p_m_checked=p_m_checked, p_b_checked=p_b_checked, p_s_checked=p_s_checked, p_v_checked=p_v_checked, p_d_checked=p_d_checked)
 
 
 def limit_reached():
