@@ -13,6 +13,7 @@
          <!-- måste innehålla intern swiper kod -->
     <style>
         .swiper-container {
+            padding-top: 50px;
             width: 100%;
             padding-top: 10px;
             padding-bottom: 50px;
@@ -87,13 +88,13 @@
                         </div>
                         <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
                         <div id="buttons">
-                            <button type="submit" class="button" id="submit">Give me a recipe, please!</button>
+                            <button type="submit" class="button" id="submit"><a href="#section1"></a>Give me a recipe, please!</a></button>
                             <button type="button" class="button" id="next">Next question!</button>        
                         </div>
                     </form>
                     
                 </div>                   
-                
+    <div class="main" id="section1">
                 <label for="your_recipe" id="label">Here's your recipes, enjoy!</label>
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
@@ -109,7 +110,7 @@
                             <a href="{{placeholder_link_1}}" target="_blank">
                                 <div class="imgBox"><img src="{{placeholder_img_1}}"></div>
                                 <div class="details">
-                                    {{placeholder_title_1}}<a href="{{placeholder_link_0}}" target="_blank"></a>
+                                    {{placeholder_title_1}}
                                 </div>
                             </a>
                         </div>
@@ -117,7 +118,7 @@
                             <a href="{{placeholder_link_1}}" target="_blank">
                                 <div class="imgBox"><img src="{{placeholder_img_2}}"></div>
                                 <div class="details">
-                                    {{placeholder_title_2}}<a href="{{placeholder_link_0}}" target="_blank"></a>
+                                    {{placeholder_title_2}}
                                 </div>
                             </a>
                         </div>
@@ -130,7 +131,7 @@
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
         </div>
-
+    </div>
                 <!--<div id="question2">
                 <h2>Any preferences?</h2>
                 <div class="questions">
