@@ -10,6 +10,7 @@ $(document).ready(function() {
         var name_input = $('#username').val();
         $('#reg_username').val(name_input);
         $('#password').val("");
+        $('#reg_username').focus();
     });
     $('#switch_forms_btn_back').click(function(){
         $('#register_form').hide();
@@ -17,5 +18,6 @@ $(document).ready(function() {
         var name_input = $('#reg_username').val();
         $('#username').val(name_input);
         $('#reg_password').val("");
+        $('#username').focus();
     });
 });
