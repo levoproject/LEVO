@@ -18,7 +18,9 @@
         </nav>
         
         <header>
-            <img src="/static/img/Levo_image_avenir.png" width="35%" height="35%" alt="Image is not available.">
+                <a href="/" id="front_page_link">
+                    <img src="/static/img/Levo_image_avenir.png" width=350 height=260 alt="Image is not available.">
+                </a>
         </header>
 
         <div id="progress_status">
@@ -45,8 +47,8 @@
 
             <form id="register_form" class="forms" action="#" method="POST">
                 <h2>Register</h2>
-                <input type="text" name="username" id="reg_username" placeholder="Username..."><br>
-                <input type="password" name="password" id="reg_password" placeholder="Password..."><br>
+                <input type="text" name="username" id="reg_username" placeholder="Username..." required><br>
+                <input type="password" name="password" id="reg_password" placeholder="Password..." required><br>
                 <button type="submit" class="buttons" id="create_account_btn">Create account</button>
                 <button type="button" id="switch_forms_btn_back">Go back to Log in!</button>
             </form>
