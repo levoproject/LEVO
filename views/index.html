@@ -31,14 +31,21 @@
     </head>
 
     <body>
-            <nav>
-                <a href="/about/">About us</a>
-                <a href="/login/">Log in</a>
-            </nav>
+        <p id="current_user">{{placeholder_current_user}}</p>
+        <nav>
+            <a href="/about/">About us</a>
+            <a id="login" href="/login/">Log in</a>
+        </nav>
 
             <header>
-                <img src="/static/img/Levo_image_avenir.png" width="35%" height="35%">
+                <a href="/" id="front_page_link">
+                    <img src="/static/img/Levo_image_avenir.png" width=350 height=260 alt="Image is not available.">
+                </a>
             </header>
+        
+        <div id="progress_status">
+            <div id="progress_bar"></div>
+        </div>
 
             <div id="progress_status">
                 <div id="progress_bar"></div>
@@ -123,15 +130,94 @@
                             </a>
                         </div>
         
+        <main>
+            <div id="questions">
+                <form action="/generate/" method="POST">
+                    <h2 id="h2_q1">What do you crave?</h2>
+                    <div id="questions_1">
+                        <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
+                        <label for="meat">Meat</label><br>
+                        <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
+                        <label for="bird">Bird</label><br>
+                            <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
+                        <label for="sea">Sea</label><br>
+                        <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
+                        <label for="veg">Veg</label><br>
+                        <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
+                            <label for="dont_know">I'm not sure!</label>
                     </div>
+                    <h2 id="h2_q2">This is another question?</h2>
+                    <div id="questions_2">
+                        <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
+                        <label for="meat">test</label><br>
+                        <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
+                        <label for="bird">text</label><br>
+                            <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
+                        <label for="sea">text</label><br>
+                        <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
+                        <label for="veg">text</label><br>
+                        <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
+                            <label for="dont_know">I'm not sure!</label>
+                    </div>
+                    <h2 id="h2_q3">This is yet another question?</h2>
+                    <div id="questions_3">
+                        <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
+                        <label for="meat">HEJ</label><br>
+                        <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
+                        <label for="bird">HEJ</label><br>
+                            <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
+                        <label for="sea">HEJ</label><br>
+                        <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
+                        <label for="veg">HEJ</label><br>
+                        <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
+                            <label for="dont_know">I'm not sure!</label>
+                    </div>
+                    <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
+                    <div id="buttons">
+                        <button type="submit" class="button" id="submit">Give me a recipe, please!</button>
+                        <button type="button" class="button" id="next">Next question!</button>        
+                    </div>
+                </form>
+                    
+            </div>                   
+                
+            <label for="your_recipe" id="label">Here's your recipes, enjoy!</label>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="{{placeholder_link_0}}" target="_blank">
+                            <div class="imgBox"><img src="{{placeholder_img_0}}"></div>
+                            <div class="details">
+                                <p id="result_check">{{placeholder_title_0}}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="{{placeholder_link_1}}" target="_blank">
+                            <div class="imgBox"><img src="{{placeholder_img_1}}"></div>
+                            <div class="details">
+                                <p>{{placeholder_title_1}}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="{{placeholder_link_1}}" target="_blank">
+                            <div class="imgBox"><img src="{{placeholder_img_2}}"></div>
+                            <div class="details">
+                                <p>{{placeholder_title_2}}</p>
+                            </div>
+                        </a>
+                    </div>
+    
+                </div>
 
-                           <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
-            <!-- If we need navigation buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-        </div>
-    </div>
+                            <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
                 <!--<div id="question2">
                 <h2>Any preferences?</h2>
                 <div class="questions">
@@ -155,32 +241,32 @@
                     </form>
                 </div>
                 </div>-->
-    </main>
-    <!-- Swiper JS -->
-    <script src="../static/js/swiper.min.js"></script>
-    <!-- Initialize Swiper -->
-    <script>
-        var swiper = new Swiper('.swiper-container', {
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            coverflowEffect: {
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-            }, // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
+        </main>
+        <!-- Swiper JS -->
+        <script src="../static/js/swiper.min.js"></script>
+        <!-- Initialize Swiper -->
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                coverflowEffect: {
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                }, // Navigation arrows
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
 
-            pagination: {
-                el: '.swiper-pagination',
-            },
-        });
-    </script>
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+            });
+        </script>
     </body>
 </html>

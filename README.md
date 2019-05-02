@@ -23,4 +23,4 @@
 - requests: https://pypi.org/project/requests/
 - bottle: https://bottlepy.org/docs/dev/
 - cryptography: https://cryptography.io/en/latest/installation/
-- Run "html_routes.py" and browse the address http://localhost:8080/
+- Run "HTML_routes.py" and browse the address http://localhost:8080/
