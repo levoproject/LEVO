@@ -13,12 +13,10 @@
          <!-- måste innehålla intern swiper kod -->
     <style>
         .swiper-container {
-            padding-top: 50px;
             width: 100%;
             padding-top: 10px;
             padding-bottom: 50px;
         }
-
         .swiper-slide {
             background-position: center;
             background-size: cover;
@@ -37,99 +35,14 @@
             <a id="login" href="/login/">Log in</a>
         </nav>
 
-            <header>
-                <a href="/" id="front_page_link">
-                    <img src="/static/img/Levo_image_avenir.png" width=350 height=260 alt="Image is not available.">
-                </a>
-            </header>
-        
+        <header>
+            <img src="/static/img/Levo_image_avenir.png" width="35%" height="35%">
+        </header>
+
         <div id="progress_status">
             <div id="progress_bar"></div>
         </div>
 
-            <div id="progress_status">
-                <div id="progress_bar"></div>
-            </div>
-
-            <main>
-                <div id="questions">
-                    <form action="/generate/" method="POST">
-                        <h2 id="h2_q1">What do you crave?</h2>
-                        <div id="questions_1">
-                            <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
-                            <label for="meat">Meat</label><br>
-                            <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
-                            <label for="bird">Bird</label><br>
-                                <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
-                            <label for="sea">Sea</label><br>
-                            <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
-                            <label for="veg">Veg</label><br>
-                            <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
-                                <label for="dont_know">I'm not sure!</label>
-                        </div>
-                        <h2 id="h2_q2">This is another question?</h2>
-                        <div id="questions_2">
-                            <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
-                            <label for="meat">test</label><br>
-                            <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
-                            <label for="bird">text</label><br>
-                                <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
-                            <label for="sea">text</label><br>
-                            <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
-                            <label for="veg">text</label><br>
-                            <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
-                                <label for="dont_know">I'm not sure!</label>
-                        </div>
-                        <h2 id="h2_q3">This is yet another question?</h2>
-                        <div id="questions_3">
-                            <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
-                            <label for="meat">HEJ</label><br>
-                            <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
-                            <label for="bird">HEJ</label><br>
-                                <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
-                            <label for="sea">HEJ</label><br>
-                            <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
-                            <label for="veg">HEJ</label><br>
-                            <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
-                                <label for="dont_know">I'm not sure!</label>
-                        </div>
-                        <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
-                        <div id="buttons">
-                            <button type="submit" class="button" id="submit"><a href="#section1"></a>Give me a recipe, please!</a></button>
-                            <button type="button" class="button" id="next">Next question!</button>        
-                        </div>
-                    </form>
-                    
-                </div>                   
-    <div class="main" id="section1">
-                <label for="your_recipe" id="label">Here's your recipes, enjoy!</label>
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <a id="result_check" href="{{placeholder_link_0}}" target="_blank">
-                                <div class="imgBox"><img src="{{placeholder_img_0}}"></div>
-                                <div class="details">
-                                    {{placeholder_title_0}}
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="{{placeholder_link_1}}" target="_blank">
-                                <div class="imgBox"><img src="{{placeholder_img_1}}"></div>
-                                <div class="details">
-                                    {{placeholder_title_1}}
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="{{placeholder_link_1}}" target="_blank">
-                                <div class="imgBox"><img src="{{placeholder_img_2}}"></div>
-                                <div class="details">
-                                    {{placeholder_title_2}}
-                                </div>
-                            </a>
-                        </div>
-        
         <main>
             <div id="questions">
                 <form action="/generate/" method="POST">
@@ -174,17 +87,15 @@
                     </div>
                     <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
                     <div id="buttons">
-                        <button type="submit" class="button" id="submit"><a href="#section1">Give me a recipe, please!</a></button>
+                        <button type="submit" class="button" id="submit">Give me a recipe, please!</button>
                         <button type="button" class="button" id="next">Next question!</button>        
                     </div>
                 </form>
                     
             </div>                   
-              
-        
+                
             <label for="your_recipe" id="label">Here's your recipes, enjoy!</label>
             <div class="swiper-container">
-                <div class="main" id="section1">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <a href="{{placeholder_link_0}}" target="_blank">
@@ -212,7 +123,6 @@
                     </div>
     
                 </div>
-                </div>
 
                             <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
@@ -220,7 +130,6 @@
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>
-        
 
                 <!--<div id="question2">
                 <h2>Any preferences?</h2>
@@ -266,7 +175,6 @@
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
-
                 pagination: {
                     el: '.swiper-pagination',
                 },
