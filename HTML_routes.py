@@ -52,7 +52,10 @@ def login_form():
     user["username"] = request.forms.get('username')
     user["pass"] = request.forms.get('password')
 
-    result = login(user)
+    if db_module_exists:
+        result = login(user)
+    else:
+        return "Module DBM is missing or corrupt."
 
     if result == "not connected":
         return connection_error_db()
@@ -97,7 +100,7 @@ def generate_recipe():
     if api_module_exists:
         return_recipe = generate_link(chosen_protein, used_ids_list)
     else:
-        return "Module ReqAPI missing."    
+        return "Module ReqAPI is missing or corrupt."
     
     if return_recipe == "error: connection":
         return connection_error_api()
