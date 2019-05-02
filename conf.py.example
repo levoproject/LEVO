@@ -1,4 +1,0 @@
-f2f_api_key = "" # Put your API-key to food2fork here
-cryptography_key = b'' # Put generated cryptography key here
-db_username = '' # Put your username to pgserver.mah.se 
-db_password = '' # Put your password to pgserver.mah.se
