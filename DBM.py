@@ -100,13 +100,13 @@ def save_recipe(username, recipe):
         if cursor.rowcount != 0:
             return "recipe already saved"
 
-        cursor.execute("INSERT INTO saved_recipes (username, recipe_id) VALUES (%s,%s)", (username, recipe["recipe_id"]))
-
         cursor.execute("SELECT recipe_id FROM recipes WHERE recipe_id=%s", (recipe["recipe_id"],))
         
         if cursor.rowcount == 0:
             cursor.execute("INSERT INTO recipes (recipe_id, title, image_url, source_url) VALUES (%s,%s,%s,%s)", (recipe["recipe_id"], recipe["title"], recipe["image_url"], recipe["source_url"]))
 
+        cursor.execute("INSERT INTO saved_recipes (username, recipe_id) VALUES (%s,%s)", (username, recipe["recipe_id"]))
+        
         db_update_changes()
         return "done"
     else:

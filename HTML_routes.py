@@ -10,7 +10,7 @@ except:
     api_module_exists = False
 
 try:
-    from DBM import login, register
+    from DBM import login, register, get_saved_recipes
     db_module_exists = True
 except:
     db_module_exists = False
@@ -32,6 +32,26 @@ def index_page():
     Returns index.html with empty placeholders.
     '''
     return template("index", placeholder_current_user=current_user, placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_used_ids="", p_m_checked="", p_b_checked="", p_s_checked="", p_v_checked="", p_d_checked="")
+
+
+@route('/my_profile/')
+def my_profile():
+    '''
+    Returns my_profile.html with empty placeholders.
+    '''
+    return template("my_profile")
+
+
+@route('/my_recipes/')
+def my_recipes():
+    '''
+    Returns my_recipes.html with empty placeholders.
+    '''
+    saved_recipes = get_saved_recipes(current_user)
+    return_html = ""
+    for recipe in saved_recipes:
+        return_html += '<li><a href="' + recipe["source_url"] + '"><label for="' + recipe["recipe_id"] + '">' + recipe["title"] + '</label><br>' + '<img src="' + recipe["image_url"] + '" class="saved_recipes" alt="Image is not available."></a></li>'
+    return template("my_recipes", placeholder_saved_recipes=return_html)
 
 
 @route('/login/')
