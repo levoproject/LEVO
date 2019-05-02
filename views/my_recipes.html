@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <link href="/static/css/style.css" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa%7cOpen+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="../static/css/swiper.min.css">
+        <link rel="shortcut icon" type="image/png" href="static/img/favicon.png" alt="Image is not available.">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="/static/js/script.js"></script>
+        <title>My profile</title>
+    </head>
+
+    <body>
+        <p id="current_user">{{placeholder_current_user}}</p>
+        <nav>
+            <a href="/about/">About us</a>
+            <a id="login" href="/login/">Log in</a>
+        </nav>
+
+            <header>
+                <a href="/" id="front_page_link">
+                    <img src="/static/img/Levo_image_avenir.png" width=350 height=260 alt="Image is not available.">
+                </a>
+            </header>
+        
+        <div id="progress_status">
+            <div id="progress_bar"></div>
+        </div>
+
+        <main>
+            <ul>
+                <li>
+                    <label for="saved_recipes">Label</label><br>
+                    <a><img src="" class="saved_recipes" alt="Här kommer bilden"></a>
+                </li>
+            </ul>
+        </main>
+    </body>
+
+</html>
