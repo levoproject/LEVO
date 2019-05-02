@@ -1,9 +1,9 @@
 \SET ON_ERROR_STOP ON
 \c ai5749
-DROP DATABASE IF EXISTS db_test_users_ot;
-CREATE DATABASE db_test_users_ot;
+DROP DATABASE IF EXISTS db_LEVO;
+CREATE DATABASE db_LEVO;
 REVOKE ALL PRIVILEGES ON DATABASE olta_mdb FROM PUBLIC;
-\c db_test_users_ot;
+\c db_LEVO;
 
 CREATE TABLE users (
     username    VARCHAR(25) PRIMARY KEY,
