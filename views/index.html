@@ -174,15 +174,17 @@
                     </div>
                     <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
                     <div id="buttons">
-                        <button type="submit" class="button" id="submit">Give me a recipe, please!</button>
+                        <button type="submit" class="button" id="submit"><a href="#section1">Give me a recipe, please!</a></button>
                         <button type="button" class="button" id="next">Next question!</button>        
                     </div>
                 </form>
                     
             </div>                   
-                
+              
+        
             <label for="your_recipe" id="label">Here's your recipes, enjoy!</label>
             <div class="swiper-container">
+                <div class="main" id="section1">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <a href="{{placeholder_link_0}}" target="_blank">
@@ -210,6 +212,7 @@
                     </div>
     
                 </div>
+                </div>
 
                             <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
@@ -217,6 +220,7 @@
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>
+        
 
                 <!--<div id="question2">
                 <h2>Any preferences?</h2>
