@@ -1,8 +1,13 @@
 #   ====================================
 #   Imports
+
+#   Module that makes requests to the API.
 import requests
+#   Module that stores data, used when requesting recipes from API.
 import json
+#   Imports the API key from gitignore file.
 from conf import f2f_api_key
+#   Imports the random function used for getting random recipes.
 from random import randint, choice
 
 

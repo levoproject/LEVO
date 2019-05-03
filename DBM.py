@@ -3,9 +3,9 @@
 
 #   Module that connects python with PostgreSQL database.
 import psycopg2
-#   Module that enables encryption for passwords.
+#   Module that enables encryption for passwords.   
 from cryptography.fernet import Fernet
-#   Module used for gitignore.
+#   Module that stores 
 from conf import cryptography_key, db_username, db_password
 
 
@@ -123,7 +123,7 @@ def get_saved_recipes(username):
     '''
     if db_connect():
         cursor.execute("""
-        SELECT recipes.recipe_id, title, image_url, source_url
+        SELECT recipe_id, title, image_url, source_url
             FROM recipes
                 JOIN saved_recipes  ON saved_recipes.recipe_id  = recipes.recipe_id
             WHERE saved_recipes.username = %s
