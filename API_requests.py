@@ -23,7 +23,11 @@ fish = ['fish', 'salmon', 'tuna', 'mackerel', 'cod', 'sardines', 'herring', 'per
 seafood = ['lobster', 'crawfish', 'crayfish', 'prawns', 'shrimps', 'crab', 'squid', 'scallops', 'clams', 'oysters', 'mussels']
 game = ['venison', 'boar', 'rabbit']
 veg = ['vegetarian', 'vegan']
-
+pasta = ['pasta', 'noodles', 'noodle', 'spaghetti', 'tortellini', 'fettucine', 'rigatoni', 'penne', 'tagliatelle', 'linguine', 'lasagna', 'lasagne', 'pappardelle', 'macaroni', 'farfalle', 'fusilli', 'gnocchi', '	maccheroni', 'cannelloni', 'ravioli', 'tortelloni', 'tortelli', 'lasagnette', 'bucatini']
+rice = ['rice']
+potato = ['potato']
+bread = ['bread', 'pita', 'sourdough', 'tortilla', 'pizza']
+vegetables = ['broccoli', 'cauliflower', 'salad', 'asparagus', 'tomato', 'cucumber', 'carrots', 'tomatoes', 'avocado', 'onion', 'onions', 'leek', 'beans', 'chickpeas', 'peas', 'cabbage', 'kale', 'pepper', 'peppers', 'aubergine', 'lettuce', 'beets', 'parsnips', 'eggplants', 'eggplant', 'mushrooms', 'shitaake', 'portabello', 'button mushrooms', 'brussel', 'sprouts' 'lentals']
 
 
 def get_rnd_protein(chosen_protein):
