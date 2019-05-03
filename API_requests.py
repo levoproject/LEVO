@@ -27,7 +27,7 @@ pasta = ['pasta', 'noodles', 'noodle', 'spaghetti', 'tortellini', 'fettucine', '
 rice = ['rice']
 potato = ['potato']
 bread = ['bread', 'pita', 'sourdough', 'tortilla', 'pizza']
-vegetables = ['broccoli', 'cauliflower', 'salad', 'asparagus', 'tomato', 'cucumber', 'carrots', 'tomatoes', 'avocado', 'onion', 'onions', 'leek', 'beans', 'chickpeas', 'peas', 'cabbage', 'kale', 'pepper', 'peppers', 'aubergine', 'lettuce', 'beets', 'parsnips', 'eggplants', 'eggplant', 'mushrooms', 'shitaake', 'portabello', 'button mushrooms', 'brussel', 'sprouts']
+vegetables = ['broccoli', 'cauliflower', 'salad', 'asparagus', 'tomato', 'cucumber', 'carrots', 'tomatoes', 'avocado', 'onion', 'onions', 'leek', 'beans', 'chickpeas', 'peas', 'cabbage', 'kale', 'pepper', 'peppers', 'aubergine', 'lettuce', 'beets', 'parsnips', 'eggplants', 'eggplant', 'mushrooms', 'shitaake', 'portabello', 'button mushrooms', 'brussel', 'sprouts' 'lentals']
 
 
 def get_rnd_ingredient(chosen_protein):
