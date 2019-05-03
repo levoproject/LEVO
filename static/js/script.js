@@ -11,6 +11,7 @@ $(document).ready(function() {
         $('#label').hide();
     } else {
         $('#questions').hide();
+        swiper.slideTo($('#center_slide').index(),0,false);
         var element = document.getElementById("progress_bar");
         var width = 0;
         var identity = setInterval(scene_2, 10);
