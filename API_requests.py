@@ -14,6 +14,8 @@ from random import randint, choice
 
 #   ====================================
 #   globals
+
+#   Lists containing ingredients for every available protein.
 meat = ['beef', 'pork', 'lamb', 'mutton', 'bison']
 chicken = ['chicken']
 bird = ['duck', 'turkey', 'goose', 'pheasant', 'pigeon']
