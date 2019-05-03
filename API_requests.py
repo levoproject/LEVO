@@ -9,9 +9,12 @@ from random import randint, choice
 
 #   ====================================
 #   globals
-meat = ['beef', 'pork', 'lamb', 'mutton', 'venison', 'bison', 'boar', 'rabbit']
-bird = ['chicken', 'duck', 'turkey', 'goose', 'pheasant', 'pigeon']
-sea = ['fish', 'salmon', 'tuna', 'mackerel', 'cod', 'sardines', 'herring', 'perch', 'anchovy', 'lobster', 'crawfish', 'crayfish', 'prawns', 'shrimps', 'crab', 'squid', 'scallops', 'clams', 'oysters', 'mussels']
+meat = ['beef', 'pork', 'lamb', 'mutton', 'bison']
+chicken = ['chicken']
+bird = ['duck', 'turkey', 'goose', 'pheasant', 'pigeon']
+fish = ['fish', 'salmon', 'tuna', 'mackerel', 'cod', 'sardines', 'herring', 'perch', 'anchovy']
+seafood = ['lobster', 'crawfish', 'crayfish', 'prawns', 'shrimps', 'crab', 'squid', 'scallops', 'clams', 'oysters', 'mussels']
+game = ['venison', 'boar', 'rabbit']
 veg = ['vegetarian', 'vegan']
 
 
@@ -23,17 +26,23 @@ def get_rnd_ingredient(chosen_protein):
 
     #If the user has checked the box "I'm not sure!", a random protein is chosen. Else a random protein of every box checked is chosen.
     if "dont_know" in chosen_protein or chosen_protein == []:
-        chosen_protein = choice(["meat", "bird", "sea", "veg"])
+        chosen_protein = choice(["meat", "chicken", "bird", "fish", "seafood", "game", "veg"])
     else:
         chosen_protein = choice(chosen_protein)
 
     #Returns a random ingredient based on the chosen_protein.
     if chosen_protein == "meat":
         return choice(meat)
+    elif chosen_protein == "chicken":
+        return choice(chicken)
     elif chosen_protein == "bird":
         return choice(bird)
-    elif chosen_protein == "sea":
-        return choice(sea)
+    elif chosen_protein == "fish":
+        return choice(fish)
+    elif chosen_protein == "seafood":
+        return choice(seafood)
+    elif chosen_protein == "game":
+        return choice(game)
     else:
         return choice(veg)
 
@@ -53,13 +62,16 @@ def get_rnd_index(api_content, used_ids):
     Returns 3 indexes to be used on api_content while making sure there's no duplicates and the recipe of the randomized index has not been used before.
     '''
     api_index = []
+
     for i in range(0,3):
         while True:
             temp_index = randint(0, (api_content['count'] - 1))
+            
             if temp_index not in api_index:
                 if api_content["recipes"][temp_index]['recipe_id'] not in used_ids:
                     api_index.append(temp_index)
                     break
+    
     return api_index
 
 

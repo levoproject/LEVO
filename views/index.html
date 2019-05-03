@@ -51,16 +51,31 @@
                 <form action="/generate/" method="POST">
                     <h2 id="h2_q1">What do you crave?</h2>
                     <div id="questions_1">
-                        <input type="checkbox" id="meat" name="meat" value="meat" {{p_m_checked}}>
+                        
+                        <input type="checkbox" id="meat" name="meat" value="meat" {{meat_checked}}>
                         <label for="meat">Meat</label><br>
-                        <input type="checkbox" id="bird" name="bird" value="bird" {{p_b_checked}}>
+                        
+                        <input type="checkbox" id="chicken" name="chicken" value="chicken" {{chicken_checked}}>
+                        <label for="chicken">chicken</label><br>
+                        
+                        <input type="checkbox" id="bird" name="bird" value="bird" {{bird_checked}}>
                         <label for="bird">Bird</label><br>
-                            <input type="checkbox" id="sea" name="sea" value="sea" {{p_s_checked}}>
-                        <label for="sea">Sea</label><br>
-                        <input type="checkbox" id="veg" name="veg" value="veg" {{p_v_checked}}>
+                        
+                        <input type="checkbox" id="fish" name="fish" value="fish" {{fish_checked}}>
+                        <label for="fish">Fish</label><br>
+
+                        <input type="checkbox" id="seafood" name="seafood" value="seafood" {{seafood_checked}}>
+                        <label for="seafood">Seafood</label><br>
+                        
+                        <input type="checkbox" id="game" name="game" value="game" {{game_checked}}>
+                        <label for="game">Game</label><br>
+
+                        <input type="checkbox" id="veg" name="veg" value="veg" {{veg_checked}}>
                         <label for="veg">Veg</label><br>
-                        <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{p_d_checked}}>
-                            <label for="dont_know">I'm not sure!</label>
+                        
+                        <input type="checkbox" id="dont_know" name="dont_know" value="dont_know" {{dont_know_checked}}>
+                        <label for="dont_know">I'm not sure!</label>
+                    
                     </div>
                     <h2 id="h2_q2">This is another question?</h2>
                     <div id="questions_2">

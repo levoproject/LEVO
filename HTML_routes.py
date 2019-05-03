@@ -31,7 +31,7 @@ def index_page():
     '''
     Returns index.html with empty placeholders.
     '''
-    return template("index", placeholder_current_user=current_user, placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_used_ids="", p_m_checked="", p_b_checked="", p_s_checked="", p_v_checked="", p_d_checked="")
+    return template("index", placeholder_current_user=current_user, placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_used_ids="", meat_checked="", chicken_checked="", bird_checked="", fish_checked="", seafood_checked="", veg_checked="", dont_know_checked="")
 
 
 @route('/my_profile/')
@@ -123,7 +123,7 @@ def register_form():
 @route('/about/')
 def about_page():
     '''
-    Returns about.html with empty placeholders.
+    Returns about.html.
     '''
     return template("about", placeholder_current_user=current_user)
 
@@ -138,7 +138,7 @@ def generate_recipe():
     used_ids = request.forms.get('used_ids')
 
     #Fills the list chosen_protein with the value of every box checked by the user.
-    proteins = ['meat', 'bird', 'sea', 'veg', 'dont_know']
+    proteins = ['meat', 'chicken', 'bird', 'fish', 'seafood', 'game', 'veg', 'dont_know']
     chosen_protein = []
     for protein in proteins:
         if request.forms.get(protein) != None:
@@ -173,22 +173,40 @@ def return_template(chosen_protein, return_recipe, used_ids):
     '''
     Checks the boxes the user checked so that the page looks the same. Then returns index.html with generated links.
     '''
-    p_m_checked = ""
-    p_b_checked = ""
-    p_s_checked = ""
-    p_v_checked = ""
-    p_d_checked = ""
+    meat_checked = ""
+    chicken_checked = ""
+    bird_checked = ""
+    fish_checked = ""
+    seafood_checked = ""
+    game_checked = ""
+    veg_checked = ""
+    dont_know_checked = ""
+
     if "meat" in chosen_protein:
-        p_m_checked = "checked"
+        meat_checked = "checked"
+    
+    if "chicken" in chosen_protein:
+        chicken_checked = "checked"
+    
     if "bird" in chosen_protein:
-        p_b_checked = "checked"
-    if "sea" in chosen_protein:
-        p_s_checked = "checked"
+        bird_checked = "checked"
+    
+    if "fish" in chosen_protein:
+        fish_checked = "checked"
+    
+    if "seafood" in chosen_protein:
+        seafood_checked = "checked"
+    
+    if "game" in chosen_protein:
+        game_checked = "checked"
+    
     if "veg" in chosen_protein:
-        p_v_checked = "checked"
+        veg_checked = "checked"
+    
     if "dont_know" in chosen_protein:
-        p_d_checked = "checked"
-    return template("index", placeholder_current_user=current_user, placeholder_used_ids=used_ids, placeholder_link_0=return_recipe[0]["source_url"], placeholder_title_0=return_recipe[0]["title"], placeholder_img_0=return_recipe[0]["image_url"], placeholder_link_1=return_recipe[1]["source_url"], placeholder_title_1=return_recipe[1]["title"], placeholder_img_1=return_recipe[1]["image_url"], placeholder_link_2=return_recipe[2]["source_url"], placeholder_title_2=return_recipe[2]["title"], placeholder_img_2=return_recipe[2]["image_url"], p_m_checked=p_m_checked, p_b_checked=p_b_checked, p_s_checked=p_s_checked, p_v_checked=p_v_checked, p_d_checked=p_d_checked)
+        dont_know_checked = "checked"
+    
+    return template("index", placeholder_current_user=current_user, placeholder_used_ids=used_ids, placeholder_link_0=return_recipe[0]["source_url"], placeholder_title_0=return_recipe[0]["title"], placeholder_img_0=return_recipe[0]["image_url"], placeholder_link_1=return_recipe[1]["source_url"], placeholder_title_1=return_recipe[1]["title"], placeholder_img_1=return_recipe[1]["image_url"], placeholder_link_2=return_recipe[2]["source_url"], placeholder_title_2=return_recipe[2]["title"], placeholder_img_2=return_recipe[2]["image_url"], meat_checked=meat_checked, chicken_checked=chicken_checked, bird_checked=bird_checked, fish_checked=fish_checked, seafood_checked=seafood_checked, veg_checked=veg_checked, dont_know_checked=dont_know_checked)
 
 
 def limit_reached():
