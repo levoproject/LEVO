@@ -177,10 +177,10 @@ def generate_recipe():
         used_ids += "," + recipe['recipe_id']
     
     
-    return return_template(chosen_protein, return_recipe, used_ids)
+    return return_template(chosen_protein, chosen_carb, return_recipe, used_ids)
 
 
-def return_template(chosen_protein, return_recipe, used_ids):
+def return_template(chosen_protein, chosen_carb, return_recipe, used_ids):
     '''
     Checks the boxes the user checked so that the page looks the same. Then returns index.html with generated links.
     '''
@@ -226,25 +226,25 @@ def return_template(chosen_protein, return_recipe, used_ids):
         p_dont_know_checked = "checked"
 
 
-    if "pasta" in chosen_protein:
+    if "pasta" in chosen_carb:
         pasta_checked = "checked"
 
-    if "rice" in chosen_protein:
+    if "rice" in chosen_carb:
         rice_checked = "checked"
 
-    if "potato" in chosen_protein:
+    if "potato" in chosen_carb:
         potato_checked = "checked"
 
-    if "bread" in chosen_protein:
+    if "bread" in chosen_carb:
         bread_checked = "checked"
 
-    if "bread" in chosen_protein:
+    if "bread" in chosen_carb:
         bread_checked = "checked"
 
-    if "vegetables" in chosen_protein:
+    if "vegetables" in chosen_carb:
         vegetables_checked = "checked"
 
-    if "c_dont_know" in chosen_protein:
+    if "c_dont_know" in chosen_carb:
         c_dont_know_checked = "checked"
 
 
