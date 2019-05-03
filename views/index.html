@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <link href="/static/css/style.css" type="text/css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Comfortaa%7cOpen+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Sriracha" rel="stylesheet">
         <link rel="stylesheet" href="../static/css/swiper.min.css">
         <link rel="shortcut icon" type="image/png" href="static/img/favicon.png" alt="Image is not available.">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -15,14 +16,14 @@
         .swiper-container {
             width: 100%;
             padding-top: 10px;
-            padding-bottom: 50px;
+            padding-bottom: 40px;
         }
         .swiper-slide {
             background-position: center;
             background-size: cover;
             width: 300px;
             height: 350px;
-            background: #fff;
+            background:#1e272e;
             border-radius: 20px;
         }
     </style>
@@ -96,11 +97,11 @@
                     
             </div>                   
                 
-            <label for="your_recipe" id="label">Here's your recipes, enjoy!</label>
+            <div class="label-tag"><label for="your_recipe" id="label">Here's your recipes, enjoy!</label></div>
             <div class="swiper-container">
-                <div class="swiper-wrapper">
+                <div class="swiper-wrapper" id="section1">
                     <div class="swiper-slide">
-                        <a href="{{placeholder_link_0}}" target="_blank">
+                        <a href="{{placeholder_link_0}}" target="_blank" class="text-tag">
                             <div class="imgBox"><img src="{{placeholder_img_0}}"></div>
                             <div class="details">
                                 <p id="result_check">{{placeholder_title_0}}</p>
@@ -108,7 +109,7 @@
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="{{placeholder_link_1}}" target="_blank">
+                        <a href="{{placeholder_link_1}}" target="_blank" class="text-tag">
                             <div class="imgBox"><img src="{{placeholder_img_1}}"></div>
                             <div class="details">
                                 <p>{{placeholder_title_1}}</p>
@@ -116,7 +117,7 @@
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="{{placeholder_link_1}}" target="_blank">
+                        <a href="{{placeholder_link_2}}" target="_blank" class="text-tag">
                             <div class="imgBox"><img src="{{placeholder_img_2}}"></div>
                             <div class="details">
                                 <p>{{placeholder_title_2}}</p>
