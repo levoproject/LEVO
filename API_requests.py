@@ -32,7 +32,7 @@ def get_rnd_ingredient(chosen_protein):
     '''
 
     #If the user has checked the box "I'm not sure!", a random protein is chosen. Else a random protein of every box checked is chosen.
-    if "dont_know" in chosen_protein or chosen_protein == []:
+    if "p_dont_know" in chosen_protein or chosen_protein == []:
         chosen_protein = choice(["meat", "chicken", "bird", "fish", "seafood", "game", "veg"])
     else:
         chosen_protein = choice(chosen_protein)
