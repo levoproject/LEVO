@@ -1,9 +1,13 @@
 #   ====================================
 #   Imports
+
+#   Module that connects python with HTML.
 from bottle import route, run, template, request, get, static_file, redirect, TEMPLATE_PATH
+#   Imports the random function used for getting random recipes.
 from random import choice
 
 try:
+    #   Module that manages recipes from API.
     from API_requests import generate_link
     api_module_exists = True
 except:

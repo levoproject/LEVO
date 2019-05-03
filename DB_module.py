@@ -1,7 +1,11 @@
 #   ====================================
 #   Imports
+
+#   Module that connects python with PostgreSQL database.
 import psycopg2
+#   Module that enables encryption for passwords.
 from cryptography.fernet import Fernet
+#   Module used for gitignore.
 from conf import cryptography_key, db_username, db_password
 
 
