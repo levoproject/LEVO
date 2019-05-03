@@ -4,13 +4,13 @@ from bottle import route, run, template, request, get, static_file, redirect, TE
 from random import choice
 
 try:
-    from ReqAPI import generate_link
+    from API_requests import generate_link
     api_module_exists = True
 except:
     api_module_exists = False
 
 try:
-    from DBM import login, register, get_saved_recipes
+    from DB_module import login, register, get_saved_recipes
     db_module_exists = True
 except:
     db_module_exists = False
