@@ -79,7 +79,7 @@ def login_form():
     if db_module_exists:
         result = login(user)
     else:
-        return "Module DBM is missing or corrupt."
+        return "DB_module is missing or corrupt."
 
     if result == "not connected":
         return connection_error_db()
