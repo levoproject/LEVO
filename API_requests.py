@@ -120,7 +120,7 @@ def generate_link(chosen_protein, chosen_carb, used_ids):
     ingredients.append(get_rnd_protein(chosen_protein))
     ingredients.append(get_rnd_carb(chosen_carb))
 
-    ingredients_str = ingredient[0] + "," + ingredient[1]
+    ingredients_str = ingredients[0] + "," + ingredients[1]
 
     #Makes a get request with our API-key and the randomized ingredient as parameters.
     parameters = {"key": f2f_api_key, "q": ingredients_str}
