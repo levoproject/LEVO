@@ -116,30 +116,33 @@ def generate_link(chosen_protein, chosen_carb, used_ids):
     '''
     Makes an API request based on the users preferences. Of the result, 3 recipes are chosen att random and specific values of these recipes are returned.
     '''
-    ingredients = []
-    ingredients.append(get_rnd_protein(chosen_protein))
-    ingredients.append(get_rnd_carb(chosen_carb))
+    while True:
+        ingredients = []
+        ingredients.append(get_rnd_protein(chosen_protein))
+        ingredients.append(get_rnd_carb(chosen_carb))
 
-    ingredients_str = ingredients[0] + "," + ingredients[1]
+        ingredients_str = ingredients[0] + "," + ingredients[1]
 
-    #Makes a get request with our API-key and the randomized ingredient as parameters.
-    parameters = {"key": f2f_api_key, "q": ingredients_str}
-    response = get_response(parameters)
+        #Makes a get request with our API-key and the randomized ingredient as parameters.
+        parameters = {"key": f2f_api_key, "q": ingredients_str}
+        response = get_response(parameters)
 
-    #If the API-server can't be reached, error: connection is returned.
-    if response == "error: connection":
-        return "error: connection"
+        #If the API-server can't be reached, error: connection is returned.
+        if response == "error: connection":
+            return "error: connection"
 
-    api_content = json.loads(response.content)
+        api_content = json.loads(response.content)
 
-    #If the API-request limit is reached the result will be: {'error': 'limit'}.
-    if api_content == {'error': 'limit'}:
-        return "error: limit reached"
-    
-    #If the request generates 0 recipes, we can see why
-    if api_content['count'] == 0:
-        print(api_content)
-        print(parameters)
+        #If the API-request limit is reached the result will be: {'error': 'limit'}.
+        if api_content == {'error': 'limit'}:
+            return "error: limit reached"
+        
+        #If the request generates 0 recipes, we can see why
+        if api_content['count'] == 0:
+            print(parameters)
+        else:
+            print(parameters)
+            break
 
     #Chooses a random recipe of the amount returned from the request. Then returns 3 of them.
     api_index = get_rnd_index(api_content, used_ids)
