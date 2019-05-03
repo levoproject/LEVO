@@ -7,7 +7,7 @@ import requests
 import json
 #   Imports the API key from gitignore file.
 from conf import f2f_api_key
-#   Imports the random function used for getting random recipes.
+#   Imports the random function used for getting random recipes and ingredients.
 from random import randint, choice
 
 
