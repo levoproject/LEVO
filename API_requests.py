@@ -23,6 +23,8 @@ fish = ['fish', 'salmon', 'tuna', 'mackerel', 'cod', 'sardines', 'herring', 'per
 seafood = ['lobster', 'crawfish', 'crayfish', 'prawns', 'shrimps', 'crab', 'squid', 'scallops', 'clams', 'oysters', 'mussels']
 game = ['venison', 'boar', 'rabbit']
 veg = ['vegetarian', 'vegan']
+
+#   Lists containing ingredients for every available carb.
 pasta = ['pasta', 'noodles', 'noodle', 'spaghetti', 'tortellini', 'fettucine', 'rigatoni', 'penne', 'tagliatelle', 'linguine', 'lasagna', 'lasagne', 'pappardelle', 'macaroni', 'farfalle', 'fusilli', 'gnocchi', '	maccheroni', 'cannelloni', 'ravioli', 'tortelloni', 'tortelli', 'lasagnette', 'bucatini']
 rice = ['rice']
 potato = ['potato']
