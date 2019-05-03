@@ -9,7 +9,20 @@ $(document).ready(function() {
     if ( $('#result_check').text().length == 0 ) {
         $('.swiper-container').hide();
         $('#label').hide();
-    }
+    } else {
+        $('#questions').hide();
+        var element = document.getElementById("progress_bar");
+        var width = 0;
+        var identity = setInterval(scene_2, 10);
+        function scene_2() {
+            if (width >= 100) {
+                clearInterval(identity);
+            } else {
+                width++;
+                element.style.width = width + '%';
+            };
+        }
+    };
     if ( $('#current_user').text().length != 0 ) {
         $('#login').hide();
     }
