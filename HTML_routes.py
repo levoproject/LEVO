@@ -162,7 +162,7 @@ def generate_recipe():
 
     #Gets 3 recipes' links, titles, image urls and ID:s.
     if api_module_exists:
-        return_recipe = generate_link(chosen_protein, used_ids_list)
+        return_recipe = generate_link(chosen_protein, chosen_carb, used_ids_list)
     else:
         return "Module ReqAPI is missing or corrupt."
     

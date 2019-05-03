@@ -26,7 +26,7 @@ veg = ['vegetarian', 'vegan']
 
 
 
-def get_rnd_ingredient(chosen_protein):
+def get_rnd_protein(chosen_protein):
     '''
     Gets random ingredient based on the chosen protein.
     '''
@@ -52,6 +52,30 @@ def get_rnd_ingredient(chosen_protein):
         return choice(game)
     else:
         return choice(veg)
+
+
+def get_rnd_carb(chosen_carb):
+    '''
+    Gets random ingredient based on the chosen carb.
+    '''
+
+    #If the user has checked the box "I don't have any preferences!", a random carb is chosen. Else a random carb of every box checked is chosen.
+    if "c_dont_know" in chosen_carb or chosen_carb == []:
+        chosen_carb = choice(["pasta", "rice", "potato", "bread", "vegetables"])
+    else:
+        chosen_carb = choice(chosen_carb)
+
+    #Returns a random ingredient based on the chosen carb.
+    if chosen_carb == "pasta":
+        return choice(pasta)
+    elif chosen_carb == "rice":
+        return choice(rice)
+    elif chosen_carb == "potato":
+        return choice(potato)
+    elif chosen_carb == "bread":
+        return choice(bread)
+    else:
+        return choice(vegetables)
 
 
 def get_response(parameters):
@@ -82,14 +106,18 @@ def get_rnd_index(api_content, used_ids):
     return api_index
 
 
-def generate_link(chosen_protein, used_ids):
+def generate_link(chosen_protein, chosen_carb, used_ids):
     '''
     Makes an API request based on the users preferences. Of the result, 3 recipes are chosen att random and specific values of these recipes are returned.
     '''
-    ingredient = get_rnd_ingredient(chosen_protein)
+    ingredients = []
+    ingredients.append(get_rnd_protein(chosen_protein))
+    ingredients.append(get_rnd_carb(chosen_carb))
+
+    ingredients_str = ingredient[0] + "," + ingredient[1]
 
     #Makes a get request with our API-key and the randomized ingredient as parameters.
-    parameters = {"key": f2f_api_key, "q": ingredient}
+    parameters = {"key": f2f_api_key, "q": ingredients_str}
     response = get_response(parameters)
 
     #If the API-server can't be reached, error: connection is returned.
