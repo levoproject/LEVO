@@ -174,3 +174,10 @@ a, a:visited{
 .text-tag{
     text-decoration: none;
 }
+
+.disabled, .disabled:hover{
+    color: gray;
+    border-color: gray;
+    text-decoration: none;
+    cursor: initial;
+}

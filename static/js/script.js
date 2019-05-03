@@ -4,6 +4,8 @@ $(document).ready(function() {
     $('#questions_3').hide();
     $('#h2_q2').hide();
     $('#h2_q3').hide();
+    $('#previous').attr("disabled", true);
+    $('#previous').addClass("disabled");
     if ( $('#result_check').text().length == 0 ) {
         $('.swiper-container').hide();
         $('#label').hide();
@@ -20,6 +22,8 @@ $(document).ready(function() {
             $('#h2_q2').show(200);
             $('#questions_1').hide(200);
             $('#questions_2').show(200);
+            $('#previous').attr("disabled", false);
+            $('#previous').removeClass("disabled");
             var element = document.getElementById("progress_bar");
             var width = 0;
             var identity = setInterval(scene_1, 10);
