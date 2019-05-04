@@ -26,6 +26,8 @@ $(document).ready(function() {
     };
     if ( $('#current_user').text().length != 0 ) {
         $('#login').hide();
+    } else {
+        $('#logout').hide();
     }
     var i = 1
     $('#next').click(function(){
