@@ -132,8 +132,9 @@
                     <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
 
                     <div id="buttons">
+                        <button type="button" class="button" id="next">Next question!</button>
+                        <button type="button" class="button" id="previous">Previous question!</button>
                         <button type="submit" class="button" id="submit">Give me a recipe, please!</button>
-                        <button type="button" class="button" id="next">Next question!</button>        
                     </div>
                 </form>
                     
@@ -150,7 +151,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" id="center_slide">
                         <a href="{{placeholder_link_1}}" target="_blank" class="text-tag">
                             <div class="imgBox"><img src="{{placeholder_img_1}}"></div>
                             <div class="details">
