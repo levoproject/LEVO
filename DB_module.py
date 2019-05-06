@@ -117,6 +117,19 @@ def save_recipe(username, recipe):
         return "not connected"
 
 
+def remove_recipe(username, recipe):
+    '''
+    
+    '''
+    if db_connect():
+        cursor.execute("DELETE FROM saved_recipes WHERE username=%s AND recipe_id=%s", (username, recipe["recipe_id"]))
+        
+        db_update_changes()
+        return "done"
+    else:
+        return "not connected"
+
+
 def get_saved_recipes(username):
     '''
     Retrieves all recipes saved by the user.
@@ -141,5 +154,22 @@ def get_saved_recipes(username):
             recipe["source_url"] = row[3]
             saved_recipes.append(recipe)
         return saved_recipes
+    else:
+        return "not connected"
+
+def check_saved_recipes(username, recipes):
+    '''
+    
+    '''
+    if db_connect():
+        recipe_saved = []
+        for recipe in recipes:
+            cursor.execute("SELECT * FROM saved_recipes WHERE username=%s AND recipe_id=%s", (username, recipe["recipe_id"]))
+            if cursor.rowcount != 0:
+                recipe_saved.append("checked")
+            else:
+                recipe_saved.append("")
+
+        return recipe_saved
     else:
         return "not connected"

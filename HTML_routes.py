@@ -5,6 +5,7 @@
 from bottle import route, run, template, request, get, static_file, redirect, TEMPLATE_PATH
 #   Imports the random function used for getting random recipes.
 from random import choice
+import json
 
 try:
     #   Module that manages recipes from API.
@@ -14,7 +15,7 @@ except:
     api_module_exists = False
 
 try:
-    from DB_module import login, register, get_saved_recipes
+    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe
     db_module_exists = True
 except:
     db_module_exists = False
@@ -35,7 +36,7 @@ def index_page():
     '''
     Returns index.html with empty placeholders.
     '''
-    return template("index", placeholder_current_user=current_user, placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_used_ids="", meat_checked="", chicken_checked="", bird_checked="", fish_checked="", seafood_checked="", game_checked="", veg_checked="", p_dont_know_checked="", pasta_checked="", rice_checked="", potato_checked="", bread_checked="", vegetables_checked="", c_dont_know_checked="")
+    return template("index", placeholder_current_user=current_user, placeholder_rid_0="", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_rid_1="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_rid_2="", placeholder_used_ids="", meat_checked="", chicken_checked="", bird_checked="", fish_checked="", seafood_checked="", game_checked="", veg_checked="", p_dont_know_checked="", pasta_checked="", rice_checked="", potato_checked="", bread_checked="", vegetables_checked="", c_dont_know_checked="", request=request, recipe_saved_0="", recipe_saved_1="", recipe_saved_2="")
 
 
 @route('/my_profile/')
@@ -182,15 +183,18 @@ def generate_recipe():
     if return_recipe == "error: limit reached":
         return limit_reached()
 
-    #Controls if recipe nr 1 has already been returned to the user. If not, it's added to the used_ids, else, it loops back.
     for recipe in return_recipe:
         used_ids += "," + recipe['recipe_id']
     
+    if current_user != "":
+        recipes_saved = check_saved_recipes(current_user, return_recipe)
+    else:
+        recipes_saved = ["","",""]
     
-    return return_template(chosen_protein, chosen_carb, return_recipe, used_ids)
+    return return_template(chosen_protein, chosen_carb, return_recipe, used_ids, recipes_saved)
 
 
-def return_template(chosen_protein, chosen_carb, return_recipe, used_ids):
+def return_template(chosen_protein, chosen_carb, return_recipe, used_ids, recipes_saved):
     '''
     Checks the boxes the user checked so that the page looks the same. Then returns index.html with generated links.
     '''
@@ -258,7 +262,32 @@ def return_template(chosen_protein, chosen_carb, return_recipe, used_ids):
         c_dont_know_checked = "checked"
 
 
-    return template("index", placeholder_current_user=current_user, placeholder_used_ids=used_ids, placeholder_link_0=return_recipe[0]["source_url"], placeholder_title_0=return_recipe[0]["title"], placeholder_img_0=return_recipe[0]["image_url"], placeholder_link_1=return_recipe[1]["source_url"], placeholder_title_1=return_recipe[1]["title"], placeholder_img_1=return_recipe[1]["image_url"], placeholder_link_2=return_recipe[2]["source_url"], placeholder_title_2=return_recipe[2]["title"], placeholder_img_2=return_recipe[2]["image_url"], meat_checked=meat_checked, chicken_checked=chicken_checked, bird_checked=bird_checked, fish_checked=fish_checked, seafood_checked=seafood_checked, game_checked=game_checked, veg_checked=veg_checked, p_dont_know_checked=p_dont_know_checked, pasta_checked=pasta_checked, rice_checked=rice_checked, potato_checked=potato_checked, bread_checked=bread_checked, vegetables_checked=vegetables_checked, c_dont_know_checked=c_dont_know_checked)
+    return template("index", placeholder_current_user=current_user, placeholder_used_ids=used_ids, placeholder_rid_0=return_recipe[0]["recipe_id"], placeholder_link_0=return_recipe[0]["source_url"], placeholder_title_0=return_recipe[0]["title"], placeholder_img_0=return_recipe[0]["image_url"], placeholder_rid_1=return_recipe[1]["recipe_id"], placeholder_link_1=return_recipe[1]["source_url"], placeholder_title_1=return_recipe[1]["title"], placeholder_img_1=return_recipe[1]["image_url"], placeholder_rid_2=return_recipe[2]["recipe_id"], placeholder_link_2=return_recipe[2]["source_url"], placeholder_title_2=return_recipe[2]["title"], placeholder_img_2=return_recipe[2]["image_url"], meat_checked=meat_checked, chicken_checked=chicken_checked, bird_checked=bird_checked, fish_checked=fish_checked, seafood_checked=seafood_checked, game_checked=game_checked, veg_checked=veg_checked, p_dont_know_checked=p_dont_know_checked, pasta_checked=pasta_checked, rice_checked=rice_checked, potato_checked=potato_checked, bread_checked=bread_checked, vegetables_checked=vegetables_checked, c_dont_know_checked=c_dont_know_checked, request=request, recipe_saved_0=recipes_saved[0], recipe_saved_1=recipes_saved[1], recipe_saved_2=recipes_saved[2])
+
+
+@route('/star_recipe')
+def star_recipe():
+
+    recipe = {}
+    recipe["recipe_id"] = request.params.get('recipe_id', 0, type=str)
+    recipe["title"] = request.params.get('title', 0, type=str)
+    recipe["source_url"] = request.params.get('source_url', 0, type=str)
+    recipe["image_url"] = request.params.get('image_url', 0, type=str)
+
+    save_recipe(current_user, recipe)
+    
+    return json.dumps({'result': 'Recipe Saved'})
+
+
+@route('/remove_star_recipe')
+def remove_star_recipe():
+
+    recipe = {}
+    recipe["recipe_id"] = request.params.get('recipe_id', 0, type=str)
+
+    remove_recipe(current_user, recipe)
+    
+    return json.dumps({'result': 'Recipe Removed'})
 
 
 def limit_reached():

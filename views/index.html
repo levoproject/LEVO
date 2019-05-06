@@ -177,11 +177,17 @@
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>
+
+            <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_0}}" data-title="{{placeholder_title_0}}" data-source_url="{{placeholder_link_0}}" data-image_url="{{placeholder_img_0}}" {{recipe_saved_0}}>
+            <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_1}}" data-title="{{placeholder_title_1}}" data-source_url="{{placeholder_link_1}}" data-image_url="{{placeholder_img_1}}" {{recipe_saved_1}}>
+            <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_2}}" data-title="{{placeholder_title_2}}" data-source_url="{{placeholder_link_2}}" data-image_url="{{placeholder_img_2}}" {{recipe_saved_2}}>
+
         </main>
         <!-- Swiper JS -->
         <script src="../static/js/swiper.min.js"></script>
         <!-- Initialize Swiper -->
         <script>
+            var $SCRIPT_ROOT = "{{ request.script_name }}";
             var swiper = new Swiper('.swiper-container', {
                 effect: 'coverflow',
                 grabCursor: true,
