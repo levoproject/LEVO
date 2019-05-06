@@ -107,7 +107,7 @@ def save_recipe(username, recipe):
         cursor.execute("SELECT recipe_id FROM recipes WHERE recipe_id=%s", (recipe["recipe_id"],))
         
         if cursor.rowcount == 0:
-            cursor.execute("INSERT INTO recipes (recipe_id, title, image_url, source_url) VALUES (%s,%s,%s,%s)", (recipe["recipe_id"], recipe["title"], recipe["image_url"], recipe["source_url"]))
+            cursor.execute("INSERT INTO recipes (recipe_id, title, image_url, source_url, category) VALUES (%s,%s,%s,%s,%s)", (recipe["recipe_id"], recipe["title"], recipe["image_url"], recipe["source_url"], recipe["category"]))
 
         cursor.execute("INSERT INTO saved_recipes (username, recipe_id) VALUES (%s,%s)", (username, recipe["recipe_id"]))
         
@@ -136,7 +136,7 @@ def get_saved_recipes(username):
     '''
     if db_connect():
         cursor.execute("""
-        SELECT recipes.recipe_id, title, image_url, source_url
+        SELECT recipes.recipe_id, title, image_url, source_url, category
             FROM recipes
                 JOIN saved_recipes  ON saved_recipes.recipe_id  = recipes.recipe_id
             WHERE saved_recipes.username = %s
@@ -152,6 +152,7 @@ def get_saved_recipes(username):
             recipe["title"] = row[1]
             recipe["image_url"] = row[2]
             recipe["source_url"] = row[3]
+            recipe["category"] = row[4]
             saved_recipes.append(recipe)
         return saved_recipes
     else:

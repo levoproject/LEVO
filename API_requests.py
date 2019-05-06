@@ -45,19 +45,19 @@ def get_rnd_protein(chosen_protein):
 
     #Returns a random ingredient based on the chosen_protein.
     if chosen_protein == "meat":
-        return choice(meat)
+        return {"protein": "meat", "ingredient": choice(meat)}
     elif chosen_protein == "chicken":
-        return choice(chicken)
+        return {"protein": "chicken", "ingredient": choice(chicken)}
     elif chosen_protein == "bird":
-        return choice(bird)
+        return {"protein": "bird", "ingredient": choice(bird)}
     elif chosen_protein == "fish":
-        return choice(fish)
+        return {"protein": "fish", "ingredient": choice(fish)}
     elif chosen_protein == "seafood":
-        return choice(seafood)
+        return {"protein": "seafood", "ingredient": choice(seafood)}
     elif chosen_protein == "game":
-        return choice(game)
+        return {"protein": "game", "ingredient": choice(game)}
     else:
-        return choice(veg)
+        return {"protein": "veg", "ingredient": choice(veg)}
 
 
 def get_rnd_carb(chosen_carb):
@@ -118,7 +118,8 @@ def generate_link(chosen_protein, chosen_carb, used_ids):
     '''
     while True:
         ingredients = []
-        ingredients.append(get_rnd_protein(chosen_protein))
+        rnd_protein = get_rnd_protein(chosen_protein)
+        ingredients.append(rnd_protein["ingredient"])
         ingredients.append(get_rnd_carb(chosen_carb))
 
         ingredients_str = ingredients[0] + "," + ingredients[1]
@@ -146,4 +147,4 @@ def generate_link(chosen_protein, chosen_carb, used_ids):
 
     #Chooses a random recipe of the amount returned from the request. Then returns 3 of them.
     api_index = get_rnd_index(api_content, used_ids)
-    return [{'source_url': api_content["recipes"][api_index[0]]['source_url'], 'title': api_content["recipes"][api_index[0]]['title'], 'image_url': api_content["recipes"][api_index[0]]['image_url'], 'recipe_id': api_content["recipes"][api_index[0]]['recipe_id']}, {'source_url': api_content["recipes"][api_index[1]]['source_url'], 'title': api_content["recipes"][api_index[1]]['title'], 'image_url': api_content["recipes"][api_index[1]]['image_url'], 'recipe_id': api_content["recipes"][api_index[1]]['recipe_id']}, {'source_url': api_content["recipes"][api_index[2]]['source_url'], 'title': api_content["recipes"][api_index[2]]['title'], 'image_url': api_content["recipes"][api_index[2]]['image_url'], 'recipe_id': api_content["recipes"][api_index[2]]['recipe_id']}]
+    return [{'source_url': api_content["recipes"][api_index[0]]['source_url'], 'title': api_content["recipes"][api_index[0]]['title'], 'image_url': api_content["recipes"][api_index[0]]['image_url'], 'recipe_id': api_content["recipes"][api_index[0]]['recipe_id'], 'category': rnd_protein["protein"]}, {'source_url': api_content["recipes"][api_index[1]]['source_url'], 'title': api_content["recipes"][api_index[1]]['title'], 'image_url': api_content["recipes"][api_index[1]]['image_url'], 'recipe_id': api_content["recipes"][api_index[1]]['recipe_id'], 'category': rnd_protein["protein"]}, {'source_url': api_content["recipes"][api_index[2]]['source_url'], 'title': api_content["recipes"][api_index[2]]['title'], 'image_url': api_content["recipes"][api_index[2]]['image_url'], 'recipe_id': api_content["recipes"][api_index[2]]['recipe_id'], 'category': rnd_protein["protein"]}]

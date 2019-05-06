@@ -36,7 +36,7 @@ def index_page():
     '''
     Returns index.html with empty placeholders.
     '''
-    return template("index", placeholder_current_user=current_user, placeholder_rid_0="", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_rid_1="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_rid_2="", placeholder_used_ids="", meat_checked="", chicken_checked="", bird_checked="", fish_checked="", seafood_checked="", game_checked="", veg_checked="", p_dont_know_checked="", pasta_checked="", rice_checked="", potato_checked="", bread_checked="", vegetables_checked="", c_dont_know_checked="", request=request, recipe_saved_0="", recipe_saved_1="", recipe_saved_2="")
+    return template("index", placeholder_current_user=current_user, placeholder_rid_0="", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_rid_1="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_rid_2="", placeholder_used_ids="", meat_checked="", chicken_checked="", bird_checked="", fish_checked="", seafood_checked="", game_checked="", veg_checked="", p_dont_know_checked="", pasta_checked="", rice_checked="", potato_checked="", bread_checked="", vegetables_checked="", c_dont_know_checked="", request=request, recipe_saved_0="", recipe_saved_1="", recipe_saved_2="", placeholder_category="")
 
 
 @route('/my_profile/')
@@ -262,7 +262,7 @@ def return_template(chosen_protein, chosen_carb, return_recipe, used_ids, recipe
         c_dont_know_checked = "checked"
 
 
-    return template("index", placeholder_current_user=current_user, placeholder_used_ids=used_ids, placeholder_rid_0=return_recipe[0]["recipe_id"], placeholder_link_0=return_recipe[0]["source_url"], placeholder_title_0=return_recipe[0]["title"], placeholder_img_0=return_recipe[0]["image_url"], placeholder_rid_1=return_recipe[1]["recipe_id"], placeholder_link_1=return_recipe[1]["source_url"], placeholder_title_1=return_recipe[1]["title"], placeholder_img_1=return_recipe[1]["image_url"], placeholder_rid_2=return_recipe[2]["recipe_id"], placeholder_link_2=return_recipe[2]["source_url"], placeholder_title_2=return_recipe[2]["title"], placeholder_img_2=return_recipe[2]["image_url"], meat_checked=meat_checked, chicken_checked=chicken_checked, bird_checked=bird_checked, fish_checked=fish_checked, seafood_checked=seafood_checked, game_checked=game_checked, veg_checked=veg_checked, p_dont_know_checked=p_dont_know_checked, pasta_checked=pasta_checked, rice_checked=rice_checked, potato_checked=potato_checked, bread_checked=bread_checked, vegetables_checked=vegetables_checked, c_dont_know_checked=c_dont_know_checked, request=request, recipe_saved_0=recipes_saved[0], recipe_saved_1=recipes_saved[1], recipe_saved_2=recipes_saved[2])
+    return template("index", placeholder_current_user=current_user, placeholder_used_ids=used_ids, placeholder_category=return_recipe[0]["category"], placeholder_rid_0=return_recipe[0]["recipe_id"], placeholder_link_0=return_recipe[0]["source_url"], placeholder_title_0=return_recipe[0]["title"], placeholder_img_0=return_recipe[0]["image_url"], placeholder_rid_1=return_recipe[1]["recipe_id"], placeholder_link_1=return_recipe[1]["source_url"], placeholder_title_1=return_recipe[1]["title"], placeholder_img_1=return_recipe[1]["image_url"], placeholder_rid_2=return_recipe[2]["recipe_id"], placeholder_link_2=return_recipe[2]["source_url"], placeholder_title_2=return_recipe[2]["title"], placeholder_img_2=return_recipe[2]["image_url"], meat_checked=meat_checked, chicken_checked=chicken_checked, bird_checked=bird_checked, fish_checked=fish_checked, seafood_checked=seafood_checked, game_checked=game_checked, veg_checked=veg_checked, p_dont_know_checked=p_dont_know_checked, pasta_checked=pasta_checked, rice_checked=rice_checked, potato_checked=potato_checked, bread_checked=bread_checked, vegetables_checked=vegetables_checked, c_dont_know_checked=c_dont_know_checked, request=request, recipe_saved_0=recipes_saved[0], recipe_saved_1=recipes_saved[1], recipe_saved_2=recipes_saved[2])
 
 
 @route('/star_recipe')
@@ -273,6 +273,7 @@ def star_recipe():
     recipe["title"] = request.params.get('title', 0, type=str)
     recipe["source_url"] = request.params.get('source_url', 0, type=str)
     recipe["image_url"] = request.params.get('image_url', 0, type=str)
+    recipe["category"] = request.params.get('category', 0, type=str)
 
     save_recipe(current_user, recipe)
     
