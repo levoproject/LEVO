@@ -15,7 +15,7 @@ except:
     api_module_exists = False
 
 try:
-    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe
+    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category
     db_module_exists = True
 except:
     db_module_exists = False
@@ -53,8 +53,9 @@ def my_recipes():
     Returns my_recipes.html with empty placeholders.
     '''
     saved_recipes = get_saved_recipes(current_user)
+    category_count = count_category(current_user)
 
-    return template("my_recipes", placeholder_current_user=current_user, saved_recipes=saved_recipes, request=request)
+    return template("my_recipes", placeholder_current_user=current_user, saved_recipes=saved_recipes, count=category_count, request=request)
 
 
 @route('/login/')

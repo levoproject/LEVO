@@ -138,7 +138,7 @@ def get_saved_recipes(username):
         cursor.execute("""
         SELECT recipes.recipe_id, title, image_url, source_url, category
             FROM recipes
-                JOIN saved_recipes  ON saved_recipes.recipe_id  = recipes.recipe_id
+                JOIN saved_recipes ON saved_recipes.recipe_id = recipes.recipe_id
             WHERE saved_recipes.username = %s
         """, (username,))
         
@@ -157,6 +157,53 @@ def get_saved_recipes(username):
         return saved_recipes
     else:
         return "not connected"
+
+
+def count_category(username):
+    '''
+    
+    '''
+    if db_connect():
+        cursor.execute("""
+        SELECT recipes.category, COUNT(saved_recipes.recipe_id)
+            FROM recipes
+                JOIN saved_recipes ON saved_recipes.recipe_id = recipes.recipe_id
+            WHERE saved_recipes.username=%s
+        GROUP BY recipes.category
+        """, (username,))
+        
+        if cursor.rowcount == 0:
+            return "no saved recipes"
+
+        count = {}
+        count['meat'] = 0
+        count['chicken'] = 0
+        count['bird'] = 0
+        count['fish'] = 0
+        count['seafood'] = 0
+        count['game'] = 0
+        count['veg'] = 0
+
+        for row in cursor:
+            if row[0] == "meat":
+                count['meat'] = row[1]
+            if row[0] == "chicken":
+                count['chicken'] = row[1]
+            if row[0] == "bird":
+                count['bird'] = row[1]
+            if row[0] == "fish":
+                count['fish'] = row[1]
+            if row[0] == "seafood":
+                count['seafood'] = row[1]
+            if row[0] == "game":
+                count['game'] = row[1]
+            if row[0] == "veg":
+                count['veg'] = row[1]
+        
+        return count
+    else:
+        return "not connected"
+
 
 def check_saved_recipes(username, recipes):
     '''

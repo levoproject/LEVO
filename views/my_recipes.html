@@ -35,7 +35,7 @@
         <main>
 
             <div id="meat_recipes">
-                <h1>Meat</h1>
+                <h1>Meat ({{count['meat']}})</h1>
                 % for recipe in saved_recipes:
                     % if recipe['category'] == "meat":
                         <div data-recipe_id="{{recipe['recipe_id']}}">
@@ -48,7 +48,7 @@
             </div>
         
             <div id="chicken_recipes">
-                <h1>Chicken</h1>
+                <h1>Chicken ({{count['chicken']}})</h1>
                 % for recipe in saved_recipes:
                     % if recipe['category'] == "chicken":
                         <div data-recipe_id="{{recipe['recipe_id']}}">
@@ -61,7 +61,7 @@
             </div>
         
             <div id="bird_recipes">
-                <h1>Bird</h1>
+                <h1>Bird ({{count['bird']}})</h1>
                 % for recipe in saved_recipes:
                     % if recipe['category'] == "bird":
                         <div data-recipe_id="{{recipe['recipe_id']}}">
@@ -74,7 +74,7 @@
             </div>
             
             <div id="fish_recipes">
-                <h1>Fish</h1>
+                <h1>Fish ({{count['fish']}})</h1>
                 % for recipe in saved_recipes:
                     % if recipe['category'] == "fish":
                         <div data-recipe_id="{{recipe['recipe_id']}}">
@@ -87,7 +87,7 @@
             </div>
         
             <div id="seafood_recipes">
-                <h1>Seafood</h1>
+                <h1>Seafood ({{count['seafood']}})</h1>
                 % for recipe in saved_recipes:
                     % if recipe['category'] == "seafood":
                         <div data-recipe_id="{{recipe['recipe_id']}}">
@@ -100,7 +100,7 @@
             </div>
         
             <div id="game_recipes">
-                <h1>Game</h1>
+                <h1>Game ({{count['game']}})</h1>
                 % for recipe in saved_recipes:
                     % if recipe['category'] == "game":
                         <div data-recipe_id="{{recipe['recipe_id']}}">
@@ -113,7 +113,7 @@
             </div>
             
             <div id="veg_recipes">
-                <h1>Veg</h1>
+                <h1>Veg ({{count['veg']}})</h1>
                 % for recipe in saved_recipes:
                     % if recipe['category'] == "veg":
                         <div data-recipe_id="{{recipe['recipe_id']}}">
