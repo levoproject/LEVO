@@ -301,6 +301,9 @@ def remove_star_recipe():
 
 @error(404)
 def error404(error):
+    '''
+    If the page is not found error.html is returned to the user.
+    '''
     return template('error')
 
 
