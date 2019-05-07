@@ -10,6 +10,9 @@
         <link rel="shortcut icon" type="image/png" href="static/img/favicon.png" alt="Image is not available.">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="/static/js/script.js"></script>
+        <script>
+            var $SCRIPT_ROOT = "{{ request.script_name }}";
+        </script>
         <title>LEVO</title>
          <!-- måste innehålla intern swiper kod -->
     <style>
@@ -187,7 +190,6 @@
         <script src="../static/js/swiper.min.js"></script>
         <!-- Initialize Swiper -->
         <script>
-            var $SCRIPT_ROOT = "{{ request.script_name }}";
             var swiper = new Swiper('.swiper-container', {
                 effect: 'coverflow',
                 grabCursor: true,

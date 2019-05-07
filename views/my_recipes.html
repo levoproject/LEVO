@@ -9,6 +9,9 @@
         <link rel="shortcut icon" type="image/png" href="static/img/favicon.png" alt="Image is not available.">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="/static/js/script.js"></script>
+        <script>
+            var $SCRIPT_ROOT = "{{ request.script_name }}";
+        </script>
         <title>My profile</title>
     </head>
 
@@ -38,6 +41,7 @@
                         <div data-recipe_id="{{recipe['recipe_id']}}">
                             <h2><a href="{{recipe['source_url']}}">{{recipe['title']}}</a></h2>
                             <img src="{{recipe['image_url']}}" alt="Picture can't be found.">
+                            <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
                         </div>
                     % end
                 % end
