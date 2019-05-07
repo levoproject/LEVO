@@ -15,6 +15,7 @@ except:
     api_module_exists = False
 
 try:
+    #   Module that manages the database.
     from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category
     db_module_exists = True
 except:
@@ -23,10 +24,11 @@ except:
 
 #   ====================================
 #   globals
+# The user currently logged in. Initially the current_user is set to an empty string which changes when the user logs in.
 current_user = ""
 
 
-
+# Declares relative path to templates.
 TEMPLATE_PATH.insert(0, 'views')
 
 
@@ -34,7 +36,7 @@ TEMPLATE_PATH.insert(0, 'views')
 @route('/index/')
 def index_page():
     '''
-    Returns index.html with empty placeholders.
+    Returns index.html with most placeholders empty.
     '''
     return template("index", placeholder_current_user=current_user, placeholder_rid_0="", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_rid_1="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_rid_2="", placeholder_used_ids="", meat_checked="", chicken_checked="", bird_checked="", fish_checked="", seafood_checked="", game_checked="", veg_checked="", p_dont_know_checked="", pasta_checked="", rice_checked="", potato_checked="", bread_checked="", vegetables_checked="", c_dont_know_checked="", request=request, recipe_saved_0="", recipe_saved_1="", recipe_saved_2="", placeholder_category="")
 
@@ -42,7 +44,7 @@ def index_page():
 @route('/my_profile/')
 def my_profile():
     '''
-    Returns my_profile.html with empty placeholders.
+    Returns my_profile.html with the current user.
     '''
     return template("my_profile", placeholder_current_user=current_user)
 
@@ -50,9 +52,11 @@ def my_profile():
 @route('/my_recipes/')
 def my_recipes():
     '''
-    Returns my_recipes.html with empty placeholders.
+    Returns my_recipes.html with the user's saved recipes.
     '''
     saved_recipes = get_saved_recipes(current_user)
+    
+    # Counts the number of recipes stored by the user and groups them by category (protein).
     category_count = count_category(current_user)
 
     return template("my_recipes", placeholder_current_user=current_user, saved_recipes=saved_recipes, count=category_count, request=request)
@@ -61,7 +65,7 @@ def my_recipes():
 @route('/login/')
 def login_page():
     '''
-    Returns login.html with empty placeholders.
+    Returns login.html with mostly empty placeholders. placeholder_form 1 represents the login form while placeholder_form 2 represents the register_form.
     '''
     return template("login", placeholder_form="1", placeholder_error_msg_login="", placeholder_error_msg_reg="", placeholder_username_login="", placeholder_pass_login="", placeholder_username_reg="", placeholder_pass_reg="")
 
@@ -69,24 +73,25 @@ def login_page():
 @route('/logout/')
 def logout():
     '''
-    Returns login.html with empty placeholders. Sets current_user to none.
+    Sets current_user to none and redirects to the route '/login/'.
     '''
     current_user = ""
-    return template("login", placeholder_form="1", placeholder_error_msg_login="", placeholder_error_msg_reg="", placeholder_username_login="", placeholder_pass_login="", placeholder_username_reg="", placeholder_pass_reg="")
-
+    return redirect('/login/')
 
 
 @route('/login_form/', method='POST')
 def login_form():
     '''
-
+    Authenticates the username and password and returns either error messages or redirects to /index/.
     '''
     global current_user
+    # Requests the username and password inputs from the login form.
     user = {}
     user["username"] = request.forms.get('log_username')
     user["pass"] = request.forms.get('log_password')
 
     if db_module_exists:
+        # Calls login function in DB_module to authenticate the username and password.
         result = login(user)
     else:
         return "DB_module is missing or corrupt."
@@ -105,14 +110,16 @@ def login_form():
 @route('/register_form/', method='POST')
 def register_form():
     '''
-
+    Validates the username and password and returns either error messages or redirects to /index/.
     '''
     global current_user
     user = {}
+    # Requests the username and password inputs from the login form.
     user["username"] = request.forms.get('reg_username')
     user["pass"] = request.forms.get('reg_password')
 
     if db_module_exists:
+        # Calls register function in DB_module to validate the username and password.
         result = register(user)
     else:
         return "DB_module is missing or corrupt."
@@ -148,43 +155,46 @@ def generate_recipe():
     Generates a random result based on the chosen protein.
     '''
 
-    #Gets the ID:s of all already generated results.
+    # Gets the ID:s of all already generated results.
     used_ids = request.forms.get('used_ids')
 
-    #Fills the list chosen_protein with the value of every box checked by the user.
+    # Fills the list chosen_protein with the value of every box checked by the user.
     proteins = ['meat', 'chicken', 'bird', 'fish', 'seafood', 'game', 'veg', 'p_dont_know']
     chosen_protein = []
     for protein in proteins:
         if request.forms.get(protein) != None:
             chosen_protein.append(request.forms.get(protein))
 
-    #Fills the list chosen_carb with the value of every box checked by the user.
+    # Fills the list chosen_carb with the value of every box checked by the user.
     carbs = ['pasta', 'rice', 'potato', 'bread', 'vegetables', 'c_dont_know']
     chosen_carb = []
     for carb in carbs:
         if request.forms.get(carb) != None:
             chosen_carb.append(request.forms.get(carb))
 
-    #Turns the string used_ids into a list.
+    # Turns the string used_ids into a list.
     used_ids_list = []
     if used_ids != "":
         used_ids_list = used_ids[1:].split(",")
 
-    #Gets 3 recipes' links, titles, image urls and ID:s.
+    # Gets 3 recipes' links, titles, image urls and ID:s.
     if api_module_exists:
         return_recipe = generate_link(chosen_protein, chosen_carb, used_ids_list)
     else:
         return "Module ReqAPI is missing or corrupt."
-    
+
+    # Checks if different errors has been returned
     if return_recipe == "error: connection":
         return connection_error_api()
-
-    if return_recipe == "error: limit reached":
+    elif return_recipe == "error: limit reached":
         return limit_reached()
 
+    # Adds the ID:s of the recipes returned to used_ids.
     for recipe in return_recipe:
         used_ids += "," + recipe['recipe_id']
     
+    # If a user is logged in check_saved_recipes is called in DB_module. If the returned recipes are already saved by the user they will be 
+    # automatically stared. If the user is not logged in the recipes won't be stared.
     if current_user != "":
         recipes_saved = check_saved_recipes(current_user, return_recipe)
     else:
@@ -195,8 +205,9 @@ def generate_recipe():
 
 def return_template(chosen_protein, chosen_carb, return_recipe, used_ids, recipes_saved):
     '''
-    Checks the boxes the user checked so that the page looks the same. Then returns index.html with generated links.
+    Checks the boxes the user checked so that the page looks the same when going back. Then returns index.html with generated links.
     '''
+    # Protein boxes initally not checked.
     meat_checked = ""
     chicken_checked = ""
     bird_checked = ""
@@ -206,6 +217,7 @@ def return_template(chosen_protein, chosen_carb, return_recipe, used_ids, recipe
     veg_checked = ""
     p_dont_know_checked = ""
 
+    # Carb boxes initally not checked.
     pasta_checked= ""
     rice_checked= ""
     potato_checked= ""
@@ -213,60 +225,48 @@ def return_template(chosen_protein, chosen_carb, return_recipe, used_ids, recipe
     vegetables_checked= ""
     c_dont_know_checked = ""
 
-
+    # Test protein boxes and checks them.
     if "meat" in chosen_protein:
         meat_checked = "checked"
-    
     if "chicken" in chosen_protein:
         chicken_checked = "checked"
-    
     if "bird" in chosen_protein:
         bird_checked = "checked"
-    
     if "fish" in chosen_protein:
         fish_checked = "checked"
-    
     if "seafood" in chosen_protein:
         seafood_checked = "checked"
-    
     if "game" in chosen_protein:
         game_checked = "checked"
-    
     if "veg" in chosen_protein:
         veg_checked = "checked"
-    
     if "p_dont_know" in chosen_protein:
         p_dont_know_checked = "checked"
 
-
+    # Test carb boxes and checks them.
     if "pasta" in chosen_carb:
         pasta_checked = "checked"
-
     if "rice" in chosen_carb:
         rice_checked = "checked"
-
     if "potato" in chosen_carb:
         potato_checked = "checked"
-
     if "bread" in chosen_carb:
         bread_checked = "checked"
-
     if "bread" in chosen_carb:
         bread_checked = "checked"
-
     if "vegetables" in chosen_carb:
         vegetables_checked = "checked"
-
     if "c_dont_know" in chosen_carb:
         c_dont_know_checked = "checked"
-
 
     return template("index", placeholder_current_user=current_user, placeholder_used_ids=used_ids, placeholder_category=return_recipe[0]["category"], placeholder_rid_0=return_recipe[0]["recipe_id"], placeholder_link_0=return_recipe[0]["source_url"], placeholder_title_0=return_recipe[0]["title"], placeholder_img_0=return_recipe[0]["image_url"], placeholder_rid_1=return_recipe[1]["recipe_id"], placeholder_link_1=return_recipe[1]["source_url"], placeholder_title_1=return_recipe[1]["title"], placeholder_img_1=return_recipe[1]["image_url"], placeholder_rid_2=return_recipe[2]["recipe_id"], placeholder_link_2=return_recipe[2]["source_url"], placeholder_title_2=return_recipe[2]["title"], placeholder_img_2=return_recipe[2]["image_url"], meat_checked=meat_checked, chicken_checked=chicken_checked, bird_checked=bird_checked, fish_checked=fish_checked, seafood_checked=seafood_checked, game_checked=game_checked, veg_checked=veg_checked, p_dont_know_checked=p_dont_know_checked, pasta_checked=pasta_checked, rice_checked=rice_checked, potato_checked=potato_checked, bread_checked=bread_checked, vegetables_checked=vegetables_checked, c_dont_know_checked=c_dont_know_checked, request=request, recipe_saved_0=recipes_saved[0], recipe_saved_1=recipes_saved[1], recipe_saved_2=recipes_saved[2])
 
 
 @route('/star_recipe')
 def star_recipe():
-
+    '''
+    When the user stars a recipe the recipe-data is gathered to be put in database.
+    '''
     recipe = {}
     recipe["recipe_id"] = request.params.get('recipe_id', 0, type=str)
     recipe["title"] = request.params.get('title', 0, type=str)
@@ -274,20 +274,26 @@ def star_recipe():
     recipe["image_url"] = request.params.get('image_url', 0, type=str)
     recipe["category"] = request.params.get('category', 0, type=str)
 
+    # Calls the save_recipe function in DB_module.
     save_recipe(current_user, recipe)
     
-    return json.dumps({'result': 'Recipe Saved'})
+    return json.dumps({'result': 'Recipe Saved'}) # Should be removed or changed to a message to the user.
 
 
 @route('/remove_star_recipe')
 def remove_star_recipe():
-
+    '''
+    When the star is removed from a recipe the row containing the current user's username and the recipe's ID is removed from the table
+    saved_recipes in the database.
+    '''
     recipe = {}
+    # The recipe's ID is requested.
     recipe["recipe_id"] = request.params.get('recipe_id', 0, type=str)
 
+    # Calls the remove_recipe function in DB_module.    
     remove_recipe(current_user, recipe)
     
-    return json.dumps({'result': 'Recipe Removed'})
+    return json.dumps({'result': 'Recipe Removed'}) # Should be removed or changed to a message to the user.
 
 
 def limit_reached():
@@ -335,5 +341,5 @@ def static_files_js(filename):
 	return static_file(filename, root="static/js")
 
 
-#Runs the web server with the address http://localhost:8080/.
+# Runs the web server with the address http://localhost:8080/.
 run(host='localhost', port=8080, debug=True)
