@@ -54,7 +54,7 @@ def my_recipes():
     '''
     saved_recipes = get_saved_recipes(current_user)
 
-    return template("my_recipes", placeholder_current_user=current_user, saved_recipes=saved_recipes)
+    return template("my_recipes", placeholder_current_user=current_user, saved_recipes=saved_recipes, request=request)
 
 
 @route('/login/')
