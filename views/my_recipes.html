@@ -30,9 +30,91 @@
         </div>
 
         <main>
-            <ul>
-                {{!placeholder_saved_recipes}}
-            </ul>
+
+            <div id="meat_recipes">
+                <h1>Meat</h1>
+                % for recipe in saved_recipes:
+                    % if recipe['category'] == "meat":
+                        <div data-recipe_id="{{recipe['recipe_id']}}">
+                            <h2><a href="{{recipe['source_url']}}">{{recipe['title']}}</a></h2>
+                            <img src="{{recipe['image_url']}}" alt="Picture can't be found.">
+                        </div>
+                    % end
+                % end
+            </div>
+        
+            <div id="chicken_recipes">
+                <h1>Chicken</h1>
+                % for recipe in saved_recipes:
+                    % if recipe['category'] == "chicken":
+                        <div data-recipe_id="{{recipe['recipe_id']}}">
+                            <h2><a href="{{recipe['source_url']}}">{{recipe['title']}}</a></h2>
+                            <img src="{{recipe['image_url']}}" alt="Picture can't be found.">
+                        </div>
+                    % end
+                % end
+            </div>
+        
+            <div id="bird_recipes">
+                <h1>Bird</h1>
+                % for recipe in saved_recipes:
+                    % if recipe['category'] == "bird":
+                        <div data-recipe_id="{{recipe['recipe_id']}}">
+                            <h2><a href="{{recipe['source_url']}}">{{recipe['title']}}</a></h2>
+                            <img src="{{recipe['image_url']}}" alt="Picture can't be found.">
+                        </div>
+                    % end
+                % end
+            </div>
+            
+            <div id="fish_recipes">
+                <h1>Fish</h1>
+                % for recipe in saved_recipes:
+                    % if recipe['category'] == "fish":
+                        <div data-recipe_id="{{recipe['recipe_id']}}">
+                            <h2><a href="{{recipe['source_url']}}">{{recipe['title']}}</a></h2>
+                            <img src="{{recipe['image_url']}}" alt="Picture can't be found.">
+                        </div>
+                    % end
+                % end
+            </div>
+        
+            <div id="seafood_recipes">
+                <h1>Seafood</h1>
+                % for recipe in saved_recipes:
+                    % if recipe['category'] == "seafood":
+                        <div data-recipe_id="{{recipe['recipe_id']}}">
+                            <h2><a href="{{recipe['source_url']}}">{{recipe['title']}}</a></h2>
+                            <img src="{{recipe['image_url']}}" alt="Picture can't be found.">
+                        </div>
+                    % end
+                % end
+            </div>
+        
+            <div id="game_recipes">
+                <h1>Game</h1>
+                % for recipe in saved_recipes:
+                    % if recipe['category'] == "game":
+                        <div data-recipe_id="{{recipe['recipe_id']}}">
+                            <h2><a href="{{recipe['source_url']}}">{{recipe['title']}}</a></h2>
+                            <img src="{{recipe['image_url']}}" alt="Picture can't be found.">
+                        </div>
+                    % end
+                % end
+            </div>
+            
+            <div id="veg_recipes">
+                <h1>Veg</h1>
+                % for recipe in saved_recipes:
+                    % if recipe['category'] == "veg":
+                        <div data-recipe_id="{{recipe['recipe_id']}}">
+                            <h2><a href="{{recipe['source_url']}}">{{recipe['title']}}</a></h2>
+                            <img src="{{recipe['image_url']}}" alt="Picture can't be found.">
+                        </div>
+                    % end
+                % end
+            </div>
+        
         </main>
     </body>
 

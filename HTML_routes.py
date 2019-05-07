@@ -53,10 +53,8 @@ def my_recipes():
     Returns my_recipes.html with empty placeholders.
     '''
     saved_recipes = get_saved_recipes(current_user)
-    return_html = ""
-    for recipe in saved_recipes:
-        return_html += '<li><a href="' + recipe["source_url"] + '" target="_blank"><label for="' + recipe["recipe_id"] + '">' + recipe["title"] + '</label><br>' + '<img src="' + recipe["image_url"] + '" class="saved_recipes" alt="Image is not available."></a></li>'
-    return template("my_recipes", placeholder_current_user=current_user, placeholder_saved_recipes=return_html)
+
+    return template("my_recipes", placeholder_current_user=current_user, saved_recipes=saved_recipes)
 
 
 @route('/login/')
