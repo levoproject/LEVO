@@ -1,0 +1,7 @@
+.inner{
+    display: none;
+}
+
+.outer > h1{
+    cursor: pointer;
+}

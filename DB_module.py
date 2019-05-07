@@ -107,9 +107,22 @@ def save_recipe(username, recipe):
         cursor.execute("SELECT recipe_id FROM recipes WHERE recipe_id=%s", (recipe["recipe_id"],))
         
         if cursor.rowcount == 0:
-            cursor.execute("INSERT INTO recipes (recipe_id, title, image_url, source_url) VALUES (%s,%s,%s,%s)", (recipe["recipe_id"], recipe["title"], recipe["image_url"], recipe["source_url"]))
+            cursor.execute("INSERT INTO recipes (recipe_id, title, image_url, source_url, category) VALUES (%s,%s,%s,%s,%s)", (recipe["recipe_id"], recipe["title"], recipe["image_url"], recipe["source_url"], recipe["category"]))
 
         cursor.execute("INSERT INTO saved_recipes (username, recipe_id) VALUES (%s,%s)", (username, recipe["recipe_id"]))
+        
+        db_update_changes()
+        return "done"
+    else:
+        return "not connected"
+
+
+def remove_recipe(username, recipe):
+    '''
+    
+    '''
+    if db_connect():
+        cursor.execute("DELETE FROM saved_recipes WHERE username=%s AND recipe_id=%s", (username, recipe["recipe_id"]))
         
         db_update_changes()
         return "done"
@@ -123,9 +136,9 @@ def get_saved_recipes(username):
     '''
     if db_connect():
         cursor.execute("""
-        SELECT recipes.recipe_id, title, image_url, source_url
+        SELECT recipes.recipe_id, title, image_url, source_url, category
             FROM recipes
-                JOIN saved_recipes  ON saved_recipes.recipe_id  = recipes.recipe_id
+                JOIN saved_recipes ON saved_recipes.recipe_id = recipes.recipe_id
             WHERE saved_recipes.username = %s
         """, (username,))
         
@@ -139,7 +152,72 @@ def get_saved_recipes(username):
             recipe["title"] = row[1]
             recipe["image_url"] = row[2]
             recipe["source_url"] = row[3]
+            recipe["category"] = row[4]
             saved_recipes.append(recipe)
         return saved_recipes
+    else:
+        return "not connected"
+
+
+def count_category(username):
+    '''
+    
+    '''
+    if db_connect():
+        cursor.execute("""
+        SELECT recipes.category, COUNT(saved_recipes.recipe_id)
+            FROM recipes
+                JOIN saved_recipes ON saved_recipes.recipe_id = recipes.recipe_id
+            WHERE saved_recipes.username=%s
+        GROUP BY recipes.category
+        """, (username,))
+        
+        if cursor.rowcount == 0:
+            return "no saved recipes"
+
+        count = {}
+        count['meat'] = 0
+        count['chicken'] = 0
+        count['bird'] = 0
+        count['fish'] = 0
+        count['seafood'] = 0
+        count['game'] = 0
+        count['veg'] = 0
+
+        for row in cursor:
+            if row[0] == "meat":
+                count['meat'] = row[1]
+            if row[0] == "chicken":
+                count['chicken'] = row[1]
+            if row[0] == "bird":
+                count['bird'] = row[1]
+            if row[0] == "fish":
+                count['fish'] = row[1]
+            if row[0] == "seafood":
+                count['seafood'] = row[1]
+            if row[0] == "game":
+                count['game'] = row[1]
+            if row[0] == "veg":
+                count['veg'] = row[1]
+        
+        return count
+    else:
+        return "not connected"
+
+
+def check_saved_recipes(username, recipes):
+    '''
+    
+    '''
+    if db_connect():
+        recipe_saved = []
+        for recipe in recipes:
+            cursor.execute("SELECT * FROM saved_recipes WHERE username=%s AND recipe_id=%s", (username, recipe["recipe_id"]))
+            if cursor.rowcount != 0:
+                recipe_saved.append("checked")
+            else:
+                recipe_saved.append("")
+
+        return recipe_saved
     else:
         return "not connected"
