@@ -18,7 +18,7 @@ f = Fernet(cryptography_key)
 
 def db_connect():
     '''
-    Tries connecting to the database.
+    Tries connecting to the database. Returns True if successful.
     '''
     global cursor
     global conn
@@ -55,9 +55,12 @@ def register(user):
     Encrypts new user's inputed password and inserts the new user's username and encrypted password into the "users" table.
     '''
     if db_connect():
+        # Tests if the user already exists.
         if user_exists(user["username"]):
             return "user exists"
-        elif len(user["username"]) < 4:
+        
+        # Self explanatory validations for username and password.
+        if len(user["username"]) < 4:
             return "username too short" 
         elif len(user["username"]) > 25:
             return "username too long"
@@ -66,7 +69,10 @@ def register(user):
         elif len(user["pass"]) > 25:
             return "password too long"
         
+        # Cyphers the password.
         cyphered_pass = f.encrypt(bytes(user["pass"],encoding='utf8'))
+        
+        # Inserts the username and cyphered password into the database and commits the changes.
         cursor.execute("INSERT INTO users (username, pass) VALUES (%s,%s)", (user["username"],cyphered_pass))
         db_update_changes()
         return "done"
@@ -79,13 +85,17 @@ def login(user):
     Finds the user in the "users" table. Decrypts the password stored in the table. Compares it to the password inputed by the user and returns the result.
     '''
     if db_connect():
+        # Tests if the user exists.
         if not user_exists(user["username"]):
             return "user does not exist"
 
+        # Fetches the user's username and password.
         cursor.execute("SELECT * FROM users WHERE username=%s", (user["username"],))
 
         for row in cursor:
+            # Decrypts password stored in database.
             pass_from_db = f.decrypt(bytes(row[1]))
+            # Validates password
             if bytes(user["pass"],encoding='utf8') == pass_from_db:
                 return "password correct"
             else:
@@ -99,18 +109,18 @@ def save_recipe(username, recipe):
     Stores a recipe for the user in the database.
     '''
     if db_connect():
+        # Tests if recipe is already saved.
         cursor.execute("SELECT * FROM saved_recipes WHERE username=%s AND recipe_id=%s", (username, recipe["recipe_id"]))
-        
         if cursor.rowcount != 0:
             return "recipe already saved"
 
+        # Tests if recipe is already stored in database. If not, every attribute of the recipe is stored in the table recipes.
         cursor.execute("SELECT recipe_id FROM recipes WHERE recipe_id=%s", (recipe["recipe_id"],))
-        
         if cursor.rowcount == 0:
             cursor.execute("INSERT INTO recipes (recipe_id, title, image_url, source_url, category) VALUES (%s,%s,%s,%s,%s)", (recipe["recipe_id"], recipe["title"], recipe["image_url"], recipe["source_url"], recipe["category"]))
 
+        # Inserts username and the recipe ID into saved_recipes and commits the changes to the database.
         cursor.execute("INSERT INTO saved_recipes (username, recipe_id) VALUES (%s,%s)", (username, recipe["recipe_id"]))
-        
         db_update_changes()
         return "done"
     else:
@@ -119,7 +129,7 @@ def save_recipe(username, recipe):
 
 def remove_recipe(username, recipe):
     '''
-    
+    Deletes the row in saved_recipes where the parameters correspond. Commits changes to database.
     '''
     if db_connect():
         cursor.execute("DELETE FROM saved_recipes WHERE username=%s AND recipe_id=%s", (username, recipe["recipe_id"]))
@@ -135,16 +145,19 @@ def get_saved_recipes(username):
     Retrieves all recipes saved by the user.
     '''
     if db_connect():
+
+        # Retrieves all columns and rows from the recipes table joined with saved_recipes to get only the recipes stored by the current user.
         cursor.execute("""
         SELECT recipes.recipe_id, title, image_url, source_url, category
             FROM recipes
-                JOIN saved_recipes  ON saved_recipes.recipe_id  = recipes.recipe_id
+                JOIN saved_recipes ON saved_recipes.recipe_id = recipes.recipe_id
             WHERE saved_recipes.username = %s
         """, (username,))
         
         if cursor.rowcount == 0:
             return "no saved recipes"
 
+        # Turns the result into a list stored with dictionaries where the keys match the data from the database. Then returns the list.
         saved_recipes = []
         for row in cursor:
             recipe = {}
@@ -158,12 +171,64 @@ def get_saved_recipes(username):
     else:
         return "not connected"
 
+
+def count_category(username):
+    '''
+    Counts the amount of recipes stored by the current user, grouped by categories (protein).
+    '''
+    if db_connect():
+        cursor.execute("""
+        SELECT recipes.category, COUNT(saved_recipes.recipe_id)
+            FROM recipes
+                JOIN saved_recipes ON saved_recipes.recipe_id = recipes.recipe_id
+            WHERE saved_recipes.username=%s
+        GROUP BY recipes.category
+        """, (username,))
+        
+        if cursor.rowcount == 0:
+            return "no saved recipes"
+
+        # Declares the initial values of every category to be 0.
+        count = {}
+        count['meat'] = 0
+        count['chicken'] = 0
+        count['bird'] = 0
+        count['fish'] = 0
+        count['seafood'] = 0
+        count['game'] = 0
+        count['veg'] = 0
+
+        # Feeds the dictonary with the matching data from the database and returns it.
+        for row in cursor:
+            if row[0] == "meat":
+                count['meat'] = row[1]
+            if row[0] == "chicken":
+                count['chicken'] = row[1]
+            if row[0] == "bird":
+                count['bird'] = row[1]
+            if row[0] == "fish":
+                count['fish'] = row[1]
+            if row[0] == "seafood":
+                count['seafood'] = row[1]
+            if row[0] == "game":
+                count['game'] = row[1]
+            if row[0] == "veg":
+                count['veg'] = row[1]
+        
+        return count
+    else:
+        return "not connected"
+
+
 def check_saved_recipes(username, recipes):
     '''
-    
+    Tests if the recipes are already stored by the current user. If a recipe is already stored it gets the attribute "checked",
+    if not it gets an empty string. The attribute "checked" represents stared, the empty string represents not stared. Returns
+    the recipes in the order they came.
     '''
     if db_connect():
         recipe_saved = []
+
         for recipe in recipes:
             cursor.execute("SELECT * FROM saved_recipes WHERE username=%s AND recipe_id=%s", (username, recipe["recipe_id"]))
             if cursor.rowcount != 0:

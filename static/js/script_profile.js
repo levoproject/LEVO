@@ -1,5 +1,19 @@
 $(document).ready(function() {
 
+    $(".outer > h1").each(function() {
+        if (parseInt($(this).attr("data-count")) == 0) {
+            $(this).css("cursor", "initial");
+        }
+    });
+
+    $('.outer > h1').click(function() {
+        if ($(this).next().is(":hidden") && parseInt($(this).attr("data-count")) != 0) {
+            $(this).next().show(150);
+        } else {
+            $(this).next().hide(150);
+        }
+    });
+
     $(".star").change(function() {
         if(this.checked) {
             $.getJSON($SCRIPT_ROOT + 'star_recipe', {

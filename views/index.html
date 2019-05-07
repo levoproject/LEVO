@@ -34,11 +34,18 @@
 
     <body>
         <p id="current_user">{{placeholder_current_user}}</p>
-        <nav>
-            <a href="/about/">About us</a>
+
+        <nav id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" id="close_nav" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="/index/">Home</a>
+            <a href="/about/">About</a>
             <a id="login" href="/login/">Log in</a>
             <a id="logout" href="/logout/">Log out</a>
         </nav>
+
+        <div id="nav_pointer">
+            <span id="open_nav" style="font-size:45px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        </div>
 
         <header>
             <a href="/" id="front_page_link">
@@ -210,6 +217,20 @@
                     el: '.swiper-pagination',
                 },
             });
+
+            function openNav() {
+                // Funktion for open navigation
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("nav_pointer").style.marginLeft = "250px";
+                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+            }
+      
+            function closeNav() {
+                // Funktion for close navigation
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("nav_pointer").style.marginLeft= "0";
+                document.body.style.backgroundColor = "rgba(0,0,0,0)";
+            }
         </script>
     </body>
 </html>
