@@ -2,7 +2,7 @@
 #   Imports
 
 #   Module that connects python with HTML.
-from bottle import route, run, template, request, get, static_file, redirect, TEMPLATE_PATH
+from bottle import route, run, template, request, get, static_file, redirect, TEMPLATE_PATH, error
 #   Imports the random function used for getting random recipes.
 from random import choice
 import json
@@ -288,6 +288,11 @@ def remove_star_recipe():
     remove_recipe(current_user, recipe)
     
     return json.dumps({'result': 'Recipe Removed'})
+
+
+@error(404)
+def error404(error):
+    return template('error')
 
 
 def limit_reached():

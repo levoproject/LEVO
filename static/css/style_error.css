@@ -1,0 +1,11 @@
+main {
+    display: flex;
+    justify-content: center;
+}
+
+#error_msg {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    align-content: center;
+}
