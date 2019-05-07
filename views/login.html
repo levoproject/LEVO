@@ -12,11 +12,17 @@
     </head>
 
     <body>
-        <nav>
-            <a href="/about/">About us</a>
-            <a href="/login/">Log in</a>
+        <nav id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" id="close_nav" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="/about/">About</a>
+            <a id="login" href="/login/">Log in</a>
         </nav>
-        
+    
+        <div id="nav_pointer">
+            <span id="open_nav" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        </div>
+    
+
         <header>
                 <a href="/" id="front_page_link">
                     <img src="/static/img/Levo_image_avenir.png" width=350 height=260 alt="Image is not available.">
@@ -47,8 +53,22 @@
                 <button type="button" id="switch_forms_btn_back">Go back to Log in!</button>
             </form>
         </main>
+        <script>
+                function openNav() {
+                // Funktion for open navigation
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("nav_pointer").style.marginLeft = "250px";
+                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+            }
+      
+            function closeNav() {
+                // Funktion for close navigation
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("nav_pointer").style.marginLeft= "0";
+                document.body.style.backgroundColor = "rgba(0,0,0,0)";
+            }
+        </script>
     
     </body>
         
-
 </html>

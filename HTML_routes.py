@@ -63,6 +63,8 @@ def login_page():
     '''
     Returns login.html with empty placeholders.
     '''
+    global current_user
+    current_user = ""
     return template("login", placeholder_form="1", placeholder_error_msg_login="", placeholder_error_msg_reg="", placeholder_username_login="", placeholder_pass_login="", placeholder_username_reg="", placeholder_pass_reg="")
 
 
@@ -71,6 +73,7 @@ def logout():
     '''
     Returns login.html with empty placeholders. Sets current_user to none.
     '''
+    global current_user
     current_user = ""
     return template("login", placeholder_form="1", placeholder_error_msg_login="", placeholder_error_msg_reg="", placeholder_username_login="", placeholder_pass_login="", placeholder_username_reg="", placeholder_pass_reg="")
 
