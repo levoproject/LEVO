@@ -155,7 +155,7 @@ def get_saved_recipes(username):
         """, (username,))
         
         if cursor.rowcount == 0:
-            return "no saved recipes"
+            return []
 
         # Turns the result into a list stored with dictionaries where the keys match the data from the database. Then returns the list.
         saved_recipes = []
@@ -177,17 +177,6 @@ def count_category(username):
     Counts the amount of recipes stored by the current user, grouped by categories (protein).
     '''
     if db_connect():
-        cursor.execute("""
-        SELECT recipes.category, COUNT(saved_recipes.recipe_id)
-            FROM recipes
-                JOIN saved_recipes ON saved_recipes.recipe_id = recipes.recipe_id
-            WHERE saved_recipes.username=%s
-        GROUP BY recipes.category
-        """, (username,))
-        
-        if cursor.rowcount == 0:
-            return "no saved recipes"
-
         # Declares the initial values of every category to be 0.
         count = {}
         count['meat'] = 0
@@ -197,6 +186,17 @@ def count_category(username):
         count['seafood'] = 0
         count['game'] = 0
         count['veg'] = 0
+        
+        cursor.execute("""
+        SELECT recipes.category, COUNT(saved_recipes.recipe_id)
+            FROM recipes
+                JOIN saved_recipes ON saved_recipes.recipe_id = recipes.recipe_id
+            WHERE saved_recipes.username=%s
+        GROUP BY recipes.category
+        """, (username,))
+        
+        if cursor.rowcount == 0:
+            return count
 
         # Feeds the dictonary with the matching data from the database and returns it.
         for row in cursor:
