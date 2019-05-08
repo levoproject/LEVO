@@ -215,3 +215,17 @@ a, a:visited{
     text-decoration: none;
     cursor: initial;
 }
+
+.star {
+    visibility: hidden;
+    font-size: 60px;
+    cursor: pointer;
+    color: rgb(254,252,234);
+}
+.star:before {
+    content: "\2606";
+    visibility: visible;
+}
+.star:checked:before {
+    content: "\2605";
+}

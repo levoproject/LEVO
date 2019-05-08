@@ -39,7 +39,8 @@
             <a href="javascript:void(0)" id="close_nav" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="/index/">Home</a>
             <a href="/about/">About</a>
-            <a id="login" href="/login/">Log in</a>
+            <a id="profile" href="/my_recipes/">Profile</a>
+            <a id="login" href="/login/">Sign in</a>
             <a id="logout" href="/logout/">Log out</a>
         </nav>
 
@@ -64,28 +65,28 @@
 
                     <div id="questions_1">
                         
-                        <input type="checkbox" id="meat" name="meat" value="meat" {{meat_checked}}>
+                        <input type="checkbox" id="meat" name="meat" value="meat" {{checked_protein["meat"]}}>
                         <label for="meat">Meat</label><br>
                         
-                        <input type="checkbox" id="chicken" name="chicken" value="chicken" {{chicken_checked}}>
+                        <input type="checkbox" id="chicken" name="chicken" value="chicken" {{checked_protein["chicken"]}}>
                         <label for="chicken">Chicken</label><br>
                         
-                        <input type="checkbox" id="bird" name="bird" value="bird" {{bird_checked}}>
+                        <input type="checkbox" id="bird" name="bird" value="bird" {{checked_protein["bird"]}}>
                         <label for="bird">Bird</label><br>
                         
-                        <input type="checkbox" id="fish" name="fish" value="fish" {{fish_checked}}>
+                        <input type="checkbox" id="fish" name="fish" value="fish" {{checked_protein["fish"]}}>
                         <label for="fish">Fish</label><br>
 
-                        <input type="checkbox" id="seafood" name="seafood" value="seafood" {{seafood_checked}}>
+                        <input type="checkbox" id="seafood" name="seafood" value="seafood" {{checked_protein["seafood"]}}>
                         <label for="seafood">Seafood</label><br>
                         
-                        <input type="checkbox" id="game" name="game" value="game" {{game_checked}}>
+                        <input type="checkbox" id="game" name="game" value="game" {{checked_protein["game"]}}>
                         <label for="game">Game</label><br>
 
-                        <input type="checkbox" id="veg" name="veg" value="veg" {{veg_checked}}>
+                        <input type="checkbox" id="veg" name="veg" value="veg" {{checked_protein["veg"]}}>
                         <label for="veg">Veg</label><br>
                         
-                        <input type="checkbox" id="p_dont_know" name="p_dont_know" value="p_dont_know" {{p_dont_know_checked}}>
+                        <input type="checkbox" id="p_dont_know" name="p_dont_know" value="p_dont_know" {{checked_protein["p_dont_know"]}}>
                         <label for="p_dont_know">I'm not sure!</label>
                     
                     </div>
@@ -95,22 +96,22 @@
                     
                     <div id="questions_2">
 
-                        <input type="checkbox" id="pasta" name="pasta" value="pasta" {{pasta_checked}}>
+                        <input type="checkbox" id="pasta" name="pasta" value="pasta" {{checked_carb["pasta"]}}>
                         <label for="pasta">Pasta</label><br>
                         
-                        <input type="checkbox" id="rice" name="rice" value="rice" {{rice_checked}}>
+                        <input type="checkbox" id="rice" name="rice" value="rice" {{checked_carb["rice"]}}>
                         <label for="rice">Rice</label><br>
                         
-                        <input type="checkbox" id="potato" name="potato" value="potato" {{potato_checked}}>
+                        <input type="checkbox" id="potato" name="potato" value="potato" {{checked_carb["potato"]}}>
                         <label for="potato">Potato</label><br>
                         
-                        <input type="checkbox" id="bread" name="bread" value="bread" {{bread_checked}}>
+                        <input type="checkbox" id="bread" name="bread" value="bread" {{checked_carb["bread"]}}>
                         <label for="bread">Bread</label><br>
 
-                        <input type="checkbox" id="vegetables" name="vegetables" value="vegetables" {{vegetables_checked}}>
+                        <input type="checkbox" id="vegetables" name="vegetables" value="vegetables" {{checked_carb["vegetables"]}}>
                         <label for="vegetables">Vegetables</label><br>
                         
-                        <input type="checkbox" id="c_dont_know" name="c_dont_know" value="c_dont_know" {{c_dont_know_checked}}>
+                        <input type="checkbox" id="c_dont_know" name="c_dont_know" value="c_dont_know" {{checked_carb["c_dont_know"]}}>
                         <label for="c_dont_know">I don't have any preferences!</label>
 
                     </div>
@@ -120,22 +121,22 @@
 
                     <div id="questions_3">
 
-                        <input type="checkbox" id="pasta" name="pasta" value="pasta" {{pasta_checked}}>
+                        <input type="checkbox" id="pasta" name="pasta" value="pasta">
                         <label for="pasta">Pasta</label><br>
                         
-                        <input type="checkbox" id="rice" name="rice" value="rice" {{rice_checked}}>
+                        <input type="checkbox" id="rice" name="rice" value="rice">
                         <label for="rice">Rice</label><br>
                         
-                        <input type="checkbox" id="potato" name="potato" value="potato" {{potato_checked}}>
+                        <input type="checkbox" id="potato" name="potato" value="potato">
                         <label for="potato">Potato</label><br>
                         
-                        <input type="checkbox" id="bread" name="bread" value="bread" {{bread_checked}}>
+                        <input type="checkbox" id="bread" name="bread" value="bread">
                         <label for="bread">Bread</label><br>
 
-                        <input type="checkbox" id="vegetables" name="vegetables" value="vegetables" {{vegetables_checked}}>
+                        <input type="checkbox" id="vegetables" name="vegetables" value="vegetables">
                         <label for="vegetables">Vegetables</label><br>
                         
-                        <input type="checkbox" id="c_dont_know" name="c_dont_know" value="c_dont_know" {{c_dont_know_checked}}>
+                        <input type="checkbox" id="c_dont_know" name="c_dont_know" value="c_dont_know">
                         <label for="c_dont_know">I don't have any preferences!</label>
 
                     </div>
@@ -155,28 +156,31 @@
             <div class="swiper-container">
                 <div class="swiper-wrapper" id="section1">
                     <div class="swiper-slide">
-                        <a href="{{placeholder_link_0}}" target="_blank" class="text-tag">
-                            <div class="imgBox"><img src="{{placeholder_img_0}}"></div>
-                            <div class="details">
-                                <p id="result_check">{{placeholder_title_0}}</p>
-                            </div>
-                        </a>
+                        <div class="imgBox">
+                            <a href="{{placeholder_link_0}}" target="_blank" class="text-tag"><img src="{{placeholder_img_0}}"></a>
+                        </div>
+                        <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_0}}" data-title="{{placeholder_title_0}}" data-source_url="{{placeholder_link_0}}" data-image_url="{{placeholder_img_0}}" data-category="{{placeholder_category}}" {{recipe_saved_0}}>
+                        <div class="details">
+                            <a href="{{placeholder_link_0}}" target="_blank" class="text-tag"><p id="result_check">{{placeholder_title_0}}</p></a>
+                        </div>
                     </div>
                     <div class="swiper-slide" id="center_slide">
-                        <a href="{{placeholder_link_1}}" target="_blank" class="text-tag">
-                            <div class="imgBox"><img src="{{placeholder_img_1}}"></div>
-                            <div class="details">
-                                <p>{{placeholder_title_1}}</p>
-                            </div>
-                        </a>
+                        <div class="imgBox">
+                            <a href="{{placeholder_link_1}}" target="_blank" class="text-tag"><img src="{{placeholder_img_1}}"></a>
+                        </div>
+                        <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_1}}" data-title="{{placeholder_title_1}}" data-source_url="{{placeholder_link_1}}" data-image_url="{{placeholder_img_1}}" data-category="{{placeholder_category}}" {{recipe_saved_1}}>
+                        <div class="details">
+                            <a href="{{placeholder_link_1}}" target="_blank" class="text-tag"><p>{{placeholder_title_1}}</p></a>
+                        </div>
                     </div>
                     <div class="swiper-slide">
-                        <a href="{{placeholder_link_2}}" target="_blank" class="text-tag">
-                            <div class="imgBox"><img src="{{placeholder_img_2}}"></div>
-                            <div class="details">
-                                <p>{{placeholder_title_2}}</p>
-                            </div>
-                        </a>
+                        <div class="imgBox">
+                            <a href="{{placeholder_link_2}}" target="_blank" class="text-tag"><img src="{{placeholder_img_2}}"></a>
+                        </div>
+                        <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_2}}" data-title="{{placeholder_title_2}}" data-source_url="{{placeholder_link_2}}" data-image_url="{{placeholder_img_2}}" data-category="{{placeholder_category}}" {{recipe_saved_2}}>
+                        <div class="details">
+                            <a href="{{placeholder_link_2}}" target="_blank" class="text-tag"><p>{{placeholder_title_2}}</p></a>
+                        </div>
                     </div>
     
                 </div>
@@ -187,10 +191,6 @@
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>
-
-            <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_0}}" data-title="{{placeholder_title_0}}" data-source_url="{{placeholder_link_0}}" data-image_url="{{placeholder_img_0}}" data-category="{{placeholder_category}}" {{recipe_saved_0}}>
-            <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_1}}" data-title="{{placeholder_title_1}}" data-source_url="{{placeholder_link_1}}" data-image_url="{{placeholder_img_1}}" data-category="{{placeholder_category}}" {{recipe_saved_1}}>
-            <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_2}}" data-title="{{placeholder_title_2}}" data-source_url="{{placeholder_link_2}}" data-image_url="{{placeholder_img_2}}" data-category="{{placeholder_category}}" {{recipe_saved_2}}>
 
         </main>
         <!-- Swiper JS -->

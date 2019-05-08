@@ -15,7 +15,7 @@ from random import randint, choice
 #   ====================================
 #   globals
 
-#   Lists containing ingredients for every available protein.
+# Lists containing ingredients for every available protein.
 meat = ['beef', 'pork', 'lamb', 'mutton', 'bison']
 chicken = ['chicken']
 bird = ['duck', 'turkey', 'goose', 'pheasant', 'pigeon']
@@ -24,7 +24,7 @@ seafood = ['lobster', 'crawfish', 'crayfish', 'prawns', 'shrimps', 'crab', 'squi
 game = ['venison', 'boar', 'rabbit']
 veg = ['vegetarian', 'vegan']
 
-#   Lists containing ingredients for every available carb.
+# Lists containing ingredients for every available carb.
 pasta = ['pasta', 'noodles', 'noodle', 'spaghetti', 'tortellini', 'fettucine', 'rigatoni', 'penne', 'tagliatelle', 'linguine', 'lasagna', 'lasagne', 'pappardelle', 'macaroni', 'farfalle', 'fusilli', 'gnocchi', '	maccheroni', 'cannelloni', 'ravioli', 'tortelloni', 'tortelli', 'lasagnette', 'bucatini']
 rice = ['rice']
 potato = ['potato']
@@ -37,13 +37,13 @@ def get_rnd_protein(chosen_protein):
     Gets random ingredient based on the chosen protein.
     '''
 
-    #If the user has checked the box "I'm not sure!", a random protein is chosen. Else a random protein of every box checked is chosen.
+    # If the user has checked the box "I'm not sure!", a random protein is chosen. Else a random protein of every box checked is chosen.
     if "p_dont_know" in chosen_protein or chosen_protein == []:
         chosen_protein = choice(["meat", "chicken", "bird", "fish", "seafood", "game", "veg"])
     else:
         chosen_protein = choice(chosen_protein)
 
-    #Returns a random ingredient based on the chosen_protein.
+    # Returns a random ingredient based on the chosen_protein.
     if chosen_protein == "meat":
         return {"protein": "meat", "ingredient": choice(meat)}
     elif chosen_protein == "chicken":
@@ -65,13 +65,13 @@ def get_rnd_carb(chosen_carb):
     Gets random ingredient based on the chosen carb.
     '''
 
-    #If the user has checked the box "I don't have any preferences!", a random carb is chosen. Else a random carb of every box checked is chosen.
+    # If the user has checked the box "I don't have any preferences!", a random carb is chosen. Else a random carb of every box checked is chosen.
     if "c_dont_know" in chosen_carb or chosen_carb == []:
         chosen_carb = choice(["pasta", "rice", "potato", "bread", "vegetables"])
     else:
         chosen_carb = choice(chosen_carb)
 
-    #Returns a random ingredient based on the chosen carb.
+    # Returns a random ingredient based on the chosen carb.
     if chosen_carb == "pasta":
         return choice(pasta)
     elif chosen_carb == "rice":
@@ -117,34 +117,38 @@ def generate_link(chosen_protein, chosen_carb, used_ids):
     Makes an API request based on the users preferences. Of the result, 3 recipes are chosen att random and specific values of these recipes are returned.
     '''
     while True:
+        # Calls functions to randomize ingredients and adds them to a list.
         ingredients = []
         rnd_protein = get_rnd_protein(chosen_protein)
         ingredients.append(rnd_protein["ingredient"])
         ingredients.append(get_rnd_carb(chosen_carb))
 
+        # Converts the list into string because the API parameters need to be string not list.
         ingredients_str = ingredients[0] + "," + ingredients[1]
 
-        #Makes a get request with our API-key and the randomized ingredient as parameters.
+        # Makes a get request with our API-key and the randomized ingredient as parameters.
         parameters = {"key": f2f_api_key, "q": ingredients_str}
         response = get_response(parameters)
 
-        #If the API-server can't be reached, error: connection is returned.
+        # If the API-server can't be reached, error: connection is returned.
         if response == "error: connection":
             return "error: connection"
 
+        # The API respone comes in json format.
         api_content = json.loads(response.content)
 
-        #If the API-request limit is reached the result will be: {'error': 'limit'}.
+        # If the API-request limit is reached the result will be: {'error': 'limit'}.
         if api_content == {'error': 'limit'}:
             return "error: limit reached"
         
-        #If the request generates 0 recipes, we can see why
+        # If the request generates 0 recipes it loops back and prints the parameters that generated nothing. These prints can potentially
+        # be used to test which parameters generates nothing and what can be done to prevent this problem. Too many API-requests slows down
+        # the application and is unnecessarily costly.
         if api_content['count'] == 0:
             print(parameters)
         else:
-            print(parameters)
             break
 
-    #Chooses a random recipe of the amount returned from the request. Then returns 3 of them.
+    # Chooses a random recipe of the amount returned from the request. Then returns 3 of them.
     api_index = get_rnd_index(api_content, used_ids)
     return [{'source_url': api_content["recipes"][api_index[0]]['source_url'], 'title': api_content["recipes"][api_index[0]]['title'], 'image_url': api_content["recipes"][api_index[0]]['image_url'], 'recipe_id': api_content["recipes"][api_index[0]]['recipe_id'], 'category': rnd_protein["protein"]}, {'source_url': api_content["recipes"][api_index[1]]['source_url'], 'title': api_content["recipes"][api_index[1]]['title'], 'image_url': api_content["recipes"][api_index[1]]['image_url'], 'recipe_id': api_content["recipes"][api_index[1]]['recipe_id'], 'category': rnd_protein["protein"]}, {'source_url': api_content["recipes"][api_index[2]]['source_url'], 'title': api_content["recipes"][api_index[2]]['title'], 'image_url': api_content["recipes"][api_index[2]]['image_url'], 'recipe_id': api_content["recipes"][api_index[2]]['recipe_id'], 'category': rnd_protein["protein"]}]
