@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    $("h2").each(function() {
+        if ( $(this).text().length >= 40 ) {
+            $(this).text($(this).text().slice(0,40) + "...");
+        };
+    });
+
     $(".outer > h1").each(function() {
         if (parseInt($(this).attr("data-count")) == 0) {
             $(this).css("cursor", "initial");
