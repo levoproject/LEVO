@@ -229,3 +229,7 @@ a, a:visited{
 .star:checked:before {
     content: "\2605";
 }
+
+#submit_again {
+    text-align: center;
+}

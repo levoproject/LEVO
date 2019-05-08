@@ -61,9 +61,9 @@
         <main>
             <div id="questions">
                 <form action="/generate/" method="POST">
-                    <h2 id="h2_q1">What do you crave?</h2>
+                    <h2 id="h2_q1" class="form_1">What do you crave?</h2>
 
-                    <div id="questions_1">
+                    <div id="questions_1" class="form_1">
                         
                         <input type="checkbox" id="meat" name="meat" value="meat" {{checked_protein["meat"]}}>
                         <label for="meat">Meat</label><br>
@@ -92,9 +92,9 @@
                     </div>
 
 
-                    <h2 id="h2_q2">Any preferences?</h2>
+                    <h2 id="h2_q2" class="form_1">Any preferences?</h2>
                     
-                    <div id="questions_2">
+                    <div id="questions_2" class="form_1">
 
                         <input type="checkbox" id="pasta" name="pasta" value="pasta" {{checked_carb["pasta"]}}>
                         <label for="pasta">Pasta</label><br>
@@ -117,9 +117,9 @@
                     </div>
                     
                     
-                    <h2 id="h2_q3">?</h2>
+                    <h2 id="h2_q3" class="form_1">?</h2>
 
-                    <div id="questions_3">
+                    <div id="questions_3" class="form_1">
 
                         <input type="checkbox" id="pasta" name="pasta" value="pasta">
                         <label for="pasta">Pasta</label><br>
@@ -144,14 +144,14 @@
                     <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
 
                     <div id="buttons">
-                        <button type="button" class="button" id="next">Next question!</button>
-                        <button type="button" class="button" id="previous">Previous question!</button>
-                        <button type="submit" class="button" id="submit">Give me a recipe, please!</button>
+                        <button type="button" class="button form_1" id="next">Next question!</button>
+                        <button type="button" class="button form_1" id="previous">Previous question!</button>
+                        <button type="submit" class="button form_1" id="submit">Give me recipes, please!</button>
+                        <button type="submit" class="button" id="submit_again">Give me new recipes, please!</button>
                     </div>
                 </form>
-                    
-            </div>                   
-                
+            </div>
+            
             <div class="label-tag"><label for="your_recipe" id="label">Here's your recipes, enjoy!</label></div>
             <div class="swiper-container">
                 <div class="swiper-wrapper" id="section1">
