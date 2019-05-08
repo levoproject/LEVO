@@ -27,6 +27,7 @@ $(document).ready(function() {
     if ( $('#current_user').text().length != 0 ) {
         $('#login').hide();
     } else {
+        $('#profile').hide();
         $('#logout').hide();
         $('.star').hide();
     }

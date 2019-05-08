@@ -78,3 +78,14 @@ main {
     color: red;
     margin-top: -30px;
 }
+
+#pass_info {
+    font-size: 10px;
+    display: none;
+    position:absolute;
+    padding:10px;
+    background:#fefefe;
+    border-radius:5px;
+    box-shadow:0 1px 3px #ccc;
+    border:1px solid #ddd;
+} 

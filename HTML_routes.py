@@ -27,6 +27,9 @@ except:
 # The user currently logged in. Initially the current_user is set to an empty string which changes when the user logs in.
 current_user = ""
 
+# All alternatives for the three questions asked to the user.
+proteins = ['meat', 'chicken', 'bird', 'fish', 'seafood', 'game', 'veg', 'p_dont_know']
+carbs = ['pasta', 'rice', 'potato', 'bread', 'vegetables', 'c_dont_know']
 
 # Declares relative path to templates.
 TEMPLATE_PATH.insert(0, 'views')
@@ -38,7 +41,16 @@ def index_page():
     '''
     Returns index.html with most placeholders empty.
     '''
-    return template("index", placeholder_current_user=current_user, placeholder_rid_0="", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_rid_1="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_rid_2="", placeholder_used_ids="", meat_checked="", chicken_checked="", bird_checked="", fish_checked="", seafood_checked="", game_checked="", veg_checked="", p_dont_know_checked="", pasta_checked="", rice_checked="", potato_checked="", bread_checked="", vegetables_checked="", c_dont_know_checked="", request=request, recipe_saved_0="", recipe_saved_1="", recipe_saved_2="", placeholder_category="")
+
+    checked_protein = {}
+    for protein in proteins:
+        checked_protein[protein] = ""
+
+    checked_carb = {}
+    for carb in carbs:
+        checked_carb[carb] = ""
+
+    return template("index", placeholder_current_user=current_user, placeholder_rid_0="", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_rid_1="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_rid_2="", placeholder_used_ids="", request=request, recipe_saved_0="", recipe_saved_1="", recipe_saved_2="", placeholder_category="", checked_protein=checked_protein, checked_carb=checked_carb)
 
 
 @route('/my_profile/')
@@ -162,14 +174,12 @@ def generate_recipe():
     used_ids = request.forms.get('used_ids')
 
     # Fills the list chosen_protein with the value of every box checked by the user.
-    proteins = ['meat', 'chicken', 'bird', 'fish', 'seafood', 'game', 'veg', 'p_dont_know']
     chosen_protein = []
     for protein in proteins:
         if request.forms.get(protein) != None:
             chosen_protein.append(request.forms.get(protein))
 
     # Fills the list chosen_carb with the value of every box checked by the user.
-    carbs = ['pasta', 'rice', 'potato', 'bread', 'vegetables', 'c_dont_know']
     chosen_carb = []
     for carb in carbs:
         if request.forms.get(carb) != None:
@@ -210,59 +220,24 @@ def return_template(chosen_protein, chosen_carb, return_recipe, used_ids, recipe
     '''
     Checks the boxes the user checked so that the page looks the same when going back. Then returns index.html with generated links.
     '''
-    # Protein boxes initally not checked.
-    meat_checked = ""
-    chicken_checked = ""
-    bird_checked = ""
-    fish_checked = ""
-    seafood_checked = ""
-    game_checked = ""
-    veg_checked = ""
-    p_dont_know_checked = ""
 
-    # Carb boxes initally not checked.
-    pasta_checked= ""
-    rice_checked= ""
-    potato_checked= ""
-    bread_checked= ""
-    vegetables_checked= ""
-    c_dont_know_checked = ""
+    checked_protein = {}
+    for protein in proteins:
+        checked_protein[protein] = ""
 
-    # Test protein boxes and checks them.
-    if "meat" in chosen_protein:
-        meat_checked = "checked"
-    if "chicken" in chosen_protein:
-        chicken_checked = "checked"
-    if "bird" in chosen_protein:
-        bird_checked = "checked"
-    if "fish" in chosen_protein:
-        fish_checked = "checked"
-    if "seafood" in chosen_protein:
-        seafood_checked = "checked"
-    if "game" in chosen_protein:
-        game_checked = "checked"
-    if "veg" in chosen_protein:
-        veg_checked = "checked"
-    if "p_dont_know" in chosen_protein:
-        p_dont_know_checked = "checked"
+    for protein in chosen_protein:
+        checked_protein[protein] = "checked"
 
-    # Test carb boxes and checks them.
-    if "pasta" in chosen_carb:
-        pasta_checked = "checked"
-    if "rice" in chosen_carb:
-        rice_checked = "checked"
-    if "potato" in chosen_carb:
-        potato_checked = "checked"
-    if "bread" in chosen_carb:
-        bread_checked = "checked"
-    if "bread" in chosen_carb:
-        bread_checked = "checked"
-    if "vegetables" in chosen_carb:
-        vegetables_checked = "checked"
-    if "c_dont_know" in chosen_carb:
-        c_dont_know_checked = "checked"
 
-    return template("index", placeholder_current_user=current_user, placeholder_used_ids=used_ids, placeholder_category=return_recipe[0]["category"], placeholder_rid_0=return_recipe[0]["recipe_id"], placeholder_link_0=return_recipe[0]["source_url"], placeholder_title_0=return_recipe[0]["title"], placeholder_img_0=return_recipe[0]["image_url"], placeholder_rid_1=return_recipe[1]["recipe_id"], placeholder_link_1=return_recipe[1]["source_url"], placeholder_title_1=return_recipe[1]["title"], placeholder_img_1=return_recipe[1]["image_url"], placeholder_rid_2=return_recipe[2]["recipe_id"], placeholder_link_2=return_recipe[2]["source_url"], placeholder_title_2=return_recipe[2]["title"], placeholder_img_2=return_recipe[2]["image_url"], meat_checked=meat_checked, chicken_checked=chicken_checked, bird_checked=bird_checked, fish_checked=fish_checked, seafood_checked=seafood_checked, game_checked=game_checked, veg_checked=veg_checked, p_dont_know_checked=p_dont_know_checked, pasta_checked=pasta_checked, rice_checked=rice_checked, potato_checked=potato_checked, bread_checked=bread_checked, vegetables_checked=vegetables_checked, c_dont_know_checked=c_dont_know_checked, request=request, recipe_saved_0=recipes_saved[0], recipe_saved_1=recipes_saved[1], recipe_saved_2=recipes_saved[2])
+    checked_carb = {}
+    for carb in carbs:
+        checked_carb[carb] = ""
+
+    for carb in chosen_carb:
+        checked_carb[carb] = "checked"
+
+
+    return template("index", placeholder_current_user=current_user, placeholder_used_ids=used_ids, placeholder_category=return_recipe[0]["category"], placeholder_rid_0=return_recipe[0]["recipe_id"], placeholder_link_0=return_recipe[0]["source_url"], placeholder_title_0=return_recipe[0]["title"], placeholder_img_0=return_recipe[0]["image_url"], placeholder_rid_1=return_recipe[1]["recipe_id"], placeholder_link_1=return_recipe[1]["source_url"], placeholder_title_1=return_recipe[1]["title"], placeholder_img_1=return_recipe[1]["image_url"], placeholder_rid_2=return_recipe[2]["recipe_id"], placeholder_link_2=return_recipe[2]["source_url"], placeholder_title_2=return_recipe[2]["title"], placeholder_img_2=return_recipe[2]["image_url"], request=request, recipe_saved_0=recipes_saved[0], recipe_saved_1=recipes_saved[1], recipe_saved_2=recipes_saved[2], checked_protein=checked_protein, checked_carb=checked_carb)
 
 
 @route('/star_recipe')
