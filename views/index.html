@@ -2,235 +2,260 @@
 <html lang="en">
 
     <head>
-        <meta charset="utf-8">
-        <link href="/static/css/style.css" type="text/css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Comfortaa%7cOpen+Sans" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Sriracha" rel="stylesheet">
-        <link rel="stylesheet" href="../static/css/swiper.min.css">
-        <link rel="shortcut icon" type="image/png" href="static/img/favicon.png" alt="Image is not available.">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="/static/js/script.js"></script>
-        <script>
-            var $SCRIPT_ROOT = "{{ request.script_name }}";
-        </script>
-        <title>LEVO</title>
-         <!-- måste innehålla intern swiper kod -->
+    <meta charset="utf-8">
+    <link href="../static/css/style.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa%7cOpen+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sriracha" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/swiper.min.css">
+    <link rel="shortcut icon" type="image/png" href="static/img/favicon.png" alt="Image is not available.">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../static/js/script.js"></script>
+    <script>
+        var $SCRIPT_ROOT = "{{ request.script_name }}";
+    </script>
+    <title>LEVO</title>
+    <!-- måste innehålla intern swiper kod -->
     <style>
         .swiper-container {
             width: 100%;
             padding-top: 10px;
             padding-bottom: 40px;
         }
+
         .swiper-slide {
             background-position: center;
             background-size: cover;
             width: 300px;
             height: 350px;
-            background:#1e272e;
+            background: #1e272e;
             border-radius: 20px;
         }
     </style>
-    </head>
+</head>
 
-    <body>
-        <p id="current_user">{{placeholder_current_user}}</p>
+<body>
+    <p id="current_user">{{placeholder_current_user}}</p>
 
-        <nav id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" id="close_nav" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="/index/">Home</a>
-            <a href="/about/">About</a>
-            <a id="profile" href="/my_recipes/">Profile</a>
-            <a id="login" href="/login/">Sign in</a>
-            <a id="logout" href="/logout/">Log out</a>
-        </nav>
+    <nav id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" id="close_nav" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/index/">Home</a>
+        <a href="/about/">About</a>
+        <a id="profile" href="/my_recipes/">Profile</a>
+        <a id="login" href="/login/">Sign in</a>
+        <a id="logout" href="/logout/">Log out</a>
+    </nav>
 
-        <div id="nav_pointer">
-            <span id="open_nav" style="font-size:45px;cursor:pointer" onclick="openNav()">&#9776;</span>
-        </div>
+    <div id="nav_pointer">
+        <span id="open_nav" style="font-size:45px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </div>
 
-        <header>
-            <a href="/" id="front_page_link">
-                <img src="/static/img/Levo_image_avenir.png" width=350 height=260 alt="Image is not available.">
-            </a>
-        </header>
+    <div class="content">
+    <header>
+        <a href="/" id="front_page_link">
+            <img src="../static/img/Levo_image_avenir.png" width=350 height=260 alt="Image is not available.">
+        </a>
+    </header>
 
-        <div id="progress_status">
-            <div id="progress_bar"></div>
-        </div>
+    <div id="progress_status">
+        <div id="progress_bar"></div>
+    </div>
 
-        <main>
-            <div id="questions">
-                <form action="/generate/" method="POST">
-                    <h2 id="h2_q1" class="form_1">What do you crave?</h2>
+    <main>
+        <div id="questions">
+            <form action="/generate/" method="POST">
+                <h2 id="h2_q1" class="form_1">What do you crave?</h2>
 
-                    <div id="questions_1" class="form_1">
-                        
-                        <input type="checkbox" id="meat" name="meat" value="meat" {{checked_protein["meat"]}}>
-                        <label for="meat">Meat</label><br>
-                        
-                        <input type="checkbox" id="chicken" name="chicken" value="chicken" {{checked_protein["chicken"]}}>
-                        <label for="chicken">Chicken</label><br>
-                        
-                        <input type="checkbox" id="bird" name="bird" value="bird" {{checked_protein["bird"]}}>
-                        <label for="bird">Bird</label><br>
-                        
-                        <input type="checkbox" id="fish" name="fish" value="fish" {{checked_protein["fish"]}}>
-                        <label for="fish">Fish</label><br>
+                <div id="questions_1" class="form_1">
 
-                        <input type="checkbox" id="seafood" name="seafood" value="seafood" {{checked_protein["seafood"]}}>
-                        <label for="seafood">Seafood</label><br>
-                        
-                        <input type="checkbox" id="game" name="game" value="game" {{checked_protein["game"]}}>
-                        <label for="game">Game</label><br>
+                    <input type="checkbox" id="meat" name="meat" value="meat" {{checked_protein["meat"]}}>
+                    <label for="meat">Meat</label><br>
 
-                        <input type="checkbox" id="veg" name="veg" value="veg" {{checked_protein["veg"]}}>
-                        <label for="veg">Veg</label><br>
-                        
-                        <input type="checkbox" id="p_dont_know" name="p_dont_know" value="p_dont_know" {{checked_protein["p_dont_know"]}}>
-                        <label for="p_dont_know">I'm not sure!</label>
-                    
-                    </div>
+                    <input type="checkbox" id="chicken" name="chicken" value="chicken" {{checked_protein["chicken"]}}>
+                    <label for="chicken">Chicken</label><br>
 
+                    <input type="checkbox" id="bird" name="bird" value="bird" {{checked_protein["bird"]}}>
+                    <label for="bird">Bird</label><br>
 
-                    <h2 id="h2_q2" class="form_1">Any preferences?</h2>
-                    
-                    <div id="questions_2" class="form_1">
+                    <input type="checkbox" id="fish" name="fish" value="fish" {{checked_protein["fish"]}}>
+                    <label for="fish">Fish</label><br>
 
-                        <input type="checkbox" id="pasta" name="pasta" value="pasta" {{checked_carb["pasta"]}}>
-                        <label for="pasta">Pasta</label><br>
-                        
-                        <input type="checkbox" id="rice" name="rice" value="rice" {{checked_carb["rice"]}}>
-                        <label for="rice">Rice</label><br>
-                        
-                        <input type="checkbox" id="potato" name="potato" value="potato" {{checked_carb["potato"]}}>
-                        <label for="potato">Potato</label><br>
-                        
-                        <input type="checkbox" id="bread" name="bread" value="bread" {{checked_carb["bread"]}}>
-                        <label for="bread">Bread</label><br>
+                    <input type="checkbox" id="seafood" name="seafood" value="seafood" {{checked_protein["seafood"]}}>
+                    <label for="seafood">Seafood</label><br>
 
-                        <input type="checkbox" id="vegetables" name="vegetables" value="vegetables" {{checked_carb["vegetables"]}}>
-                        <label for="vegetables">Vegetables</label><br>
-                        
-                        <input type="checkbox" id="c_dont_know" name="c_dont_know" value="c_dont_know" {{checked_carb["c_dont_know"]}}>
-                        <label for="c_dont_know">I don't have any preferences!</label>
+                    <input type="checkbox" id="game" name="game" value="game" {{checked_protein["game"]}}>
+                    <label for="game">Game</label><br>
 
-                    </div>
-                    
-                    
-                    <h2 id="h2_q3" class="form_1">Sorry, but this question is not redy for you yet! // LEVO TEAM</h2>
+                    <input type="checkbox" id="veg" name="veg" value="veg" {{checked_protein["veg"]}}>
+                    <label for="veg">Veg</label><br>
 
-                    <div id="questions_3" class="form_1">
+                    <input type="checkbox" id="p_dont_know" name="p_dont_know" value="p_dont_know" {{checked_protein["p_dont_know"]}}>
+                    <label for="p_dont_know">I'm not sure!</label>
 
-                        <input type="checkbox" id="pasta" name="pasta" value="pasta">
-                        <label for="pasta">Pasta</label><br>
-                        
-                        <input type="checkbox" id="rice" name="rice" value="rice">
-                        <label for="rice">Rice</label><br>
-                        
-                        <input type="checkbox" id="potato" name="potato" value="potato">
-                        <label for="potato">Potato</label><br>
-                        
-                        <input type="checkbox" id="bread" name="bread" value="bread">
-                        <label for="bread">Bread</label><br>
-
-                        <input type="checkbox" id="vegetables" name="vegetables" value="vegetables">
-                        <label for="vegetables">Vegetables</label><br>
-                        
-                        <input type="checkbox" id="c_dont_know" name="c_dont_know" value="c_dont_know">
-                        <label for="c_dont_know">I don't have any preferences!</label>
-
-                    </div>
-
-                    <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
-
-                    <div id="buttons">
-                        <button type="button" class="button form_1" id="next">Next question!</button>
-                        <button type="button" class="button form_1" id="previous">Previous question!</button>
-                        <button type="submit" class="button form_1" id="submit">Give me recipes, please!</button>
-                        <button type="submit" class="button" id="submit_again">Give me new recipes, please!</button>
-                    </div>
-                </form>
-            </div>
-            
-            <div class="label-tag"><label for="your_recipe" id="label">Here's your recipes, enjoy!</label></div>
-            <div class="swiper-container">
-                <div class="swiper-wrapper" id="section1">
-                    <div class="swiper-slide">
-                        <div class="imgBox">
-                            <a href="{{placeholder_link_0}}" target="_blank" class="text-tag"><img src="{{placeholder_img_0}}"></a>
-                        </div>
-                        <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_0}}" data-title="{{placeholder_title_0}}" data-source_url="{{placeholder_link_0}}" data-image_url="{{placeholder_img_0}}" data-category="{{placeholder_category}}" {{recipe_saved_0}}>
-                        <div class="details">
-                            <a href="{{placeholder_link_0}}" target="_blank" class="text-tag"><p id="result_check">{{placeholder_title_0}}</p></a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide" id="center_slide">
-                        <div class="imgBox">
-                            <a href="{{placeholder_link_1}}" target="_blank" class="text-tag"><img src="{{placeholder_img_1}}"></a>
-                        </div>
-                        <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_1}}" data-title="{{placeholder_title_1}}" data-source_url="{{placeholder_link_1}}" data-image_url="{{placeholder_img_1}}" data-category="{{placeholder_category}}" {{recipe_saved_1}}>
-                        <div class="details">
-                            <a href="{{placeholder_link_1}}" target="_blank" class="text-tag"><p>{{placeholder_title_1}}</p></a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="imgBox">
-                            <a href="{{placeholder_link_2}}" target="_blank" class="text-tag"><img src="{{placeholder_img_2}}"></a>
-                        </div>
-                        <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_2}}" data-title="{{placeholder_title_2}}" data-source_url="{{placeholder_link_2}}" data-image_url="{{placeholder_img_2}}" data-category="{{placeholder_category}}" {{recipe_saved_2}}>
-                        <div class="details">
-                            <a href="{{placeholder_link_2}}" target="_blank" class="text-tag"><p>{{placeholder_title_2}}</p></a>
-                        </div>
-                    </div>
-    
                 </div>
 
-                            <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-                <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+
+                <h2 id="h2_q2" class="form_1">Any preferences?</h2>
+
+                <div id="questions_2" class="form_1">
+
+                    <input type="checkbox" id="pasta" name="pasta" value="pasta" {{checked_carb["pasta"]}}>
+                    <label for="pasta">Pasta</label><br>
+
+                    <input type="checkbox" id="rice" name="rice" value="rice" {{checked_carb["rice"]}}>
+                    <label for="rice">Rice</label><br>
+
+                    <input type="checkbox" id="potato" name="potato" value="potato" {{checked_carb["potato"]}}>
+                    <label for="potato">Potato</label><br>
+
+                    <input type="checkbox" id="bread" name="bread" value="bread" {{checked_carb["bread"]}}>
+                    <label for="bread">Bread</label><br>
+
+                    <input type="checkbox" id="vegetables" name="vegetables" value="vegetables" {{checked_carb["vegetables"]}}>
+                    <label for="vegetables">Vegetables</label><br>
+
+                    <input type="checkbox" id="c_dont_know" name="c_dont_know" value="c_dont_know" {{checked_carb["c_dont_know"]}}>
+                    <label for="c_dont_know">I don't have any preferences!</label>
+
+                </div>
+
+
+                <h2 id="h2_q3" class="form_1">Sorry, but this question is not redy for you yet! // LEVO TEAM</h2>
+
+                <div id="questions_3" class="form_1">
+
+                    <input type="checkbox" id="pasta" name="pasta" value="pasta">
+                    <label for="pasta">Pasta</label><br>
+
+                    <input type="checkbox" id="rice" name="rice" value="rice">
+                    <label for="rice">Rice</label><br>
+
+                    <input type="checkbox" id="potato" name="potato" value="potato">
+                    <label for="potato">Potato</label><br>
+
+                    <input type="checkbox" id="bread" name="bread" value="bread">
+                    <label for="bread">Bread</label><br>
+
+                    <input type="checkbox" id="vegetables" name="vegetables" value="vegetables">
+                    <label for="vegetables">Vegetables</label><br>
+
+                    <input type="checkbox" id="c_dont_know" name="c_dont_know" value="c_dont_know">
+                    <label for="c_dont_know">I don't have any preferences!</label>
+
+                </div>
+
+                <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}" />
+
+                <div id="buttons">
+                    <button type="button" class="button form_1" id="next">Next question!</button>
+                    <button type="button" class="button form_1" id="previous">Previous question!</button>
+                    <button type="submit" class="button form_1" id="submit">Give me recipes, please!</button>
+                    <button type="submit" class="button" id="submit_again">Give me new recipes, please!</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="label-tag"><label for="your_recipe" id="label">Here's your recipes, enjoy!</label></div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper" id="section1">
+                <div class="swiper-slide">
+                    <div class="imgBox">
+                        <a href="{{placeholder_link_0}}" target="_blank" class="text-tag"><img src="{{placeholder_img_0}}"></a>
+                    </div>
+                    <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_0}}" data-title="{{placeholder_title_0}}" data-source_url="{{placeholder_link_0}}" data-image_url="{{placeholder_img_0}}" data-category="{{placeholder_category}}" {{recipe_saved_0}}>
+                    <div class="details">
+                        <a href="{{placeholder_link_0}}" target="_blank" class="text-tag">
+                            <p id="result_check">{{placeholder_title_0}}</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide" id="center_slide">
+                    <div class="imgBox">
+                        <a href="{{placeholder_link_1}}" target="_blank" class="text-tag"><img src="{{placeholder_img_1}}"></a>
+                    </div>
+                    <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_1}}" data-title="{{placeholder_title_1}}" data-source_url="{{placeholder_link_1}}" data-image_url="{{placeholder_img_1}}" data-category="{{placeholder_category}}" {{recipe_saved_1}}>
+                    <div class="details">
+                        <a href="{{placeholder_link_1}}" target="_blank" class="text-tag">
+                            <p>{{placeholder_title_1}}</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="imgBox">
+                        <a href="{{placeholder_link_2}}" target="_blank" class="text-tag"><img src="{{placeholder_img_2}}"></a>
+                    </div>
+                    <input type="checkbox" class="star" data-recipe_id="{{placeholder_rid_2}}" data-title="{{placeholder_title_2}}" data-source_url="{{placeholder_link_2}}" data-image_url="{{placeholder_img_2}}" data-category="{{placeholder_category}}" {{recipe_saved_2}}>
+                    <div class="details">
+                        <a href="{{placeholder_link_2}}" target="_blank" class="text-tag">
+                            <p>{{placeholder_title_2}}</p>
+                        </a>
+                    </div>
+                </div>
+
             </div>
 
-        </main>
-        <!-- Swiper JS -->
-        <script src="../static/js/swiper.min.js"></script>
-        <!-- Initialize Swiper -->
-        <script>
-            var swiper = new Swiper('.swiper-container', {
-                effect: 'coverflow',
-                grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: 'auto',
-                coverflowEffect: {
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: true,
-                }, // Navigation arrows
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                },
-            });
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev swiper-button-white"></div>
+            <div class="swiper-button-next swiper-button-white"></div>
+        </div>
+    </main>
+</div>
+    <!-- Swiper JS -->
+    <script src="../static/js/swiper.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            }, // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
 
-            function openNav() {
-                // Funktion for open navigation
-                document.getElementById("mySidenav").style.width = "250px";
-                document.getElementById("nav_pointer").style.marginLeft = "250px";
-                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        function openNav() {
+            // Funktion for open navigation
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("nav_pointer").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+
+        function closeNav() {
+            // Funktion for close navigation
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("nav_pointer").style.marginLeft = "0";
+            document.body.style.backgroundColor = "rgba(0,0,0,0)";
+        }
+
+        //när användaren skrollar sidan så körs detta
+        window.onscroll = function() {
+            myFunction()
+        };
+        //få navbaren
+        var navbar = document.getElementById("nav_pointer");
+        //få offset positionen av navbaren
+        var sticky = navbar.offsetTop;
+        
+        //lägga till en sticky class till navbaren när den har uppnått sin sticky position. ta bort sticky när man lämnar scroll positionen
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
             }
-      
-            function closeNav() {
-                // Funktion for close navigation
-                document.getElementById("mySidenav").style.width = "0";
-                document.getElementById("nav_pointer").style.marginLeft= "0";
-                document.body.style.backgroundColor = "rgba(0,0,0,0)";
-            }
-        </script>
-    </body>
-</html>
+        }
+    </script>
+</body></html>
