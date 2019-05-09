@@ -7,10 +7,11 @@ $(document).ready(function() {
     $('#previous').attr("disabled", true);
     $('#previous').addClass("disabled");
     if ( $('#result_check').text().length == 0 ) {
-        $('.swiper-container').hide();
+        $('#submit_again').hide();
         $('#label').hide();
+        $('.swiper-container').hide();
     } else {
-        $('#questions').hide();
+        $('.form_1').hide();
         swiper.slideTo($('#center_slide').index(),0,false);
         var element = document.getElementById("progress_bar");
         var width = 0;
