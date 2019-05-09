@@ -15,3 +15,44 @@
 .sticky + content{
     padding-top: 40px;
 }
+
+#profile{
+    float: right;
+    margin-right: 200px;
+    font-family: 'Sriracha', cursive;
+}
+
+#categories{
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
+    clear: both;
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.left-side{
+    margin-left: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-family: 'Sriracha', cursive;
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-content{
+    width: 500px;
+    margin: 20px;
+    background-color: burlywood;
+    border-radius: 20px;
+    padding-bottom: 20px;
+    
+}
+
+.flex-content > img {
+    border-radius: 20px;
+    margin-left: 50px;
+}
