@@ -199,8 +199,13 @@ a:visited {
     border-top-left-radius: 20px;
 }
 
+<<<<<<< HEAD
+.details{
+    font-size: 15px;
+=======
 .details {
     font-size: 20px;
+>>>>>>> 1977b7e5962d26ceb1df5080e4b32a53ed4ad0f1
     color: whitesmoke;
     margin-left: 50px;
     margin-right: 10px;
