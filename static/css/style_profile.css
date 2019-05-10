@@ -16,12 +16,6 @@
     padding-top: 40px;
 }
 
-#profile{
-    float: right;
-    margin-right: 200px;
-    font-family: 'Sriracha', cursive;
-}
-
 #categories{
     background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0.5);
