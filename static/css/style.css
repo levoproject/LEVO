@@ -212,7 +212,7 @@ a:visited {
     text-align: center;
 }
 
-.swiper-side:hover .imgBox{
+.swiper-side:hover .imgBox img{
     opacity: 0.3;
   }
   
@@ -222,8 +222,9 @@ a:visited {
 
   .details p{
     background-color: black;
-    width: 75%;
+    color: white;
     opacity: 0.7;
+    border-radius: 10px;
   }
 
 .swiper-pagination-bullet {
