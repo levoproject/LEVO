@@ -57,6 +57,13 @@
                 <button type="button" id="switch_forms_btn_back">Go back to Log in!</button>
             </form>
 
+            <form id="forgot_pass_form" class="forms" action="/forgot_pass_form/" method="POST">
+                <h2>Forgot Password</h2>
+                <p id="error_msg_forgot">{{placeholder_error_msg_forgot}}</p>
+                <input type="text" name="forgot_email" id="forgot_email" placeholder="Email..." value="{{placeholder_email_forgot}}"><br>
+                <button type="submit" class="buttons" id="create_account_btn">Get new password</button>
+            </form>
+
         </main>
         <script>
                 function openNav() {

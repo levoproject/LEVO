@@ -3,9 +3,15 @@
 
 #   Module that connects python with HTML.
 from bottle import route, run, template, request, get, static_file, redirect, TEMPLATE_PATH, error
-#   Imports the random function used for getting random recipes.
+#   Imports the choice function used for getting random recipes and generating new passwords.
 from random import choice
-import json
+#   ssl and smtplib are used for sending emails to users. MIMEText and MIMEMultipart are used for email format.
+import ssl, smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+#Imports password for levoproject4@gmail.com from gitignore file.
+from conf import levo_password
+
 
 try:
     #   Module that manages recipes from API.
@@ -30,6 +36,11 @@ current_user = ""
 # All alternatives for the three questions asked to the user.
 proteins = ['meat', 'chicken', 'bird', 'fish', 'seafood', 'game', 'veg', 'p_dont_know']
 carbs = ['pasta', 'rice', 'potato', 'bread', 'vegetables', 'c_dont_know']
+
+# SSL port, smtp server and LEVO project mail for new_password_email function.
+port = 465  # For SSL
+smtp_server = "smtp.gmail.com"
+levo_email = "projectlevo4@gmail.com"
 
 # Declares relative path to templates.
 TEMPLATE_PATH.insert(0, 'views')
@@ -81,7 +92,21 @@ def login_page():
     '''
     global current_user
     current_user = ""
-    return template("login", placeholder_form="1", placeholder_error_msg_login="", placeholder_error_msg_reg="", placeholder_username_login="", placeholder_pass_login="", placeholder_username_reg="", placeholder_pass_reg="")
+    login = reset_login_placeholders()
+    return template("login", login=login)
+
+
+def reset_login_placeholders():
+    login = {}
+    login["form"] = "1"
+    login["error_msg_login"] = ""
+    login["error_msg_reg"] = ""
+    login["error_msg_forgot"] = ""
+    login["username_login"] = ""
+    login["pass_login"] = ""
+    login["username_reg"] = ""
+    login["pass_reg"] = ""
+    login["email_forgot"] = ""
 
 
 @route('/logout/')
@@ -114,9 +139,9 @@ def login_form():
     if result == "not connected":
         return connection_error_db()
     elif result == "user does not exist":
-        return template("login", placeholder_form="1", placeholder_error_msg_login="There is no user with this username!", placeholder_error_msg_reg="", placeholder_username_login=user["username"], placeholder_pass_login="", placeholder_username_reg="", placeholder_pass_reg="")
+        return template("login", placeholder_form="1", placeholder_error_msg_login="There is no user with this username!", placeholder_error_msg_reg="", placeholder_username_login=user["username"], placeholder_pass_login="", placeholder_username_reg="", placeholder_pass_reg="", placeholder_email_forgot="")
     elif result == "password incorrect":
-        return template("login", placeholder_form="1", placeholder_error_msg_login="The password is incorrect!", placeholder_error_msg_reg="", placeholder_username_login=user["username"], placeholder_pass_login="", placeholder_username_reg="", placeholder_pass_reg="")
+        return template("login", placeholder_form="1", placeholder_error_msg_login="The password is incorrect!", placeholder_error_msg_reg="", placeholder_username_login=user["username"], placeholder_pass_login="", placeholder_username_reg="", placeholder_pass_reg="", placeholder_email_forgot="")
     elif result == "password correct":
         current_user = user["username"]
         return redirect('/')
@@ -129,7 +154,7 @@ def register_form():
     '''
     global current_user
     user = {}
-    # Requests the username and password inputs from the login form.
+    # Requests the username and password inputs from the register form.
     user["username"] = request.forms.get('reg_username')
     user["pass"] = request.forms.get('reg_password')
 
@@ -154,6 +179,72 @@ def register_form():
     elif result == "done":
         current_user = user["username"]
         return redirect('/')
+
+
+@route('/forgot_pass_form/', method='POST')
+def forgot_pass_form():
+    '''
+    
+    '''
+    # Requests the email input from the forgot password form.
+    user_email = request.forms.get('forgot_email')
+
+    if db_module_exists:
+        # Calls register function in DB_module to validate the username and password.
+        result = email_exists(user_email)
+    else:
+        return "DB_module is missing or corrupt."
+
+    if result == "email does not exist":
+        print("email does not exist")
+    else:
+        new_password_email(user_email)
+    new_password_email(user_email)
+
+
+def new_password_email(user_email):
+    new_password = generate_password()
+
+    message = MIMEMultipart("alternative")
+    message["Subject"] = "New Password"
+    message["From"] = levo_email
+    message["To"] = user_email
+
+    html = """\
+    <p id="new_pass_p">Your new password is: %s</p>
+    """ % (new_password)
+
+    css = """
+    <style>
+        #new_pass_p {
+            padding: 30px;
+            border: solid #555 2px;
+            background-color: lightcyan;
+            color: darkgreen;
+            display: inline-block;
+            font-size: 24px;
+        }
+    </style>
+    """
+
+    content = html + css
+    html_part = MIMEText(content, "html")
+    message.attach(html_part)
+
+    # Create a secure SSL context
+    context = ssl.create_default_context()
+
+    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+        server.login(levo_email, levo_password)
+        
+        server.sendmail(levo_email, user_email, message.as_string())
+
+
+def generate_password():
+    password = ""
+    for i in range(0,12):
+        password += choice(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'])
+    return password
 
 
 @route('/about/')
@@ -254,8 +345,6 @@ def star_recipe():
 
     # Calls the save_recipe function in DB_module.
     save_recipe(current_user, recipe)
-    
-    return json.dumps({'result': 'Recipe Saved'}) # Should be removed or changed to a message to the user.
 
 
 @route('/remove_star_recipe')
@@ -270,8 +359,6 @@ def remove_star_recipe():
 
     # Calls the remove_recipe function in DB_module.    
     remove_recipe(current_user, recipe)
-    
-    return json.dumps({'result': 'Recipe Removed'}) # Should be removed or changed to a message to the user.
 
 
 @error(404)
