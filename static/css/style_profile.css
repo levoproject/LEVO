@@ -23,6 +23,7 @@
     border-radius: 10px;
     margin-left: 100px;
     margin-right: 100px;
+    font-family: 'Sriracha', cursive;
 }
 
 .left-side{
@@ -34,18 +35,46 @@
 .flex-container{
     display: flex;
     flex-direction: row;
+    overflow: hidden;
 }
 
 .flex-content{
-    width: 500px;
-    margin: 20px;
-    background-color: burlywood;
     border-radius: 20px;
-    padding-bottom: 20px;
-    
+    margin: 30px;
+    overflow: hidden;
+}
+
+.middle{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.flex-content:hover .img{
+    opacity: 0.3;
+}
+
+.flex-content:hover .middle{
+    opacity: 1;
+}
+
+h1{
+    color: white;
+    box-shadow: 5px 10px #353b48;
+}
+
+h2{
+  background-color: black;
+  color: white;
+  font-size: 16px;
 }
 
 .flex-content > img {
-    border-radius: 20px;
-    margin-left: 50px;
+    width: 100%;
+    height:100%;
 }

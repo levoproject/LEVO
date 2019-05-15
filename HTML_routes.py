@@ -22,7 +22,7 @@ except:
 
 try:
     #   Module that manages the database.
-    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category
+    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category, email_exists, update_password
     db_module_exists = True
 except:
     db_module_exists = False
@@ -140,10 +140,10 @@ def login_form():
         return connection_error_db()
     
     elif result == "user does not exist":
-        return_error_login("There is no user with this username!", user)
+        return return_error_login("There is no user with this username!", user)
 
     elif result == "password incorrect":
-        return_error_login("The password is incorrect!", user)
+        return return_error_login("The password is incorrect!", user)
 
     elif result == "password correct":
         current_user = user["username"]
@@ -170,6 +170,7 @@ def register_form():
     # Requests the username and password inputs from the register form.
     user["username"] = request.forms.get('reg_username')
     user["pass"] = request.forms.get('reg_password')
+    user["email"] = request.forms.get('reg_email')
 
     if db_module_exists:
         # Calls register function in DB_module to validate the username and password.
@@ -182,19 +183,19 @@ def register_form():
         return connection_error_db()
 
     elif result == "user exists":
-        return_error_reg("This username is already taken!", user)
+        return return_error_reg("This username is already taken!", user)
 
     elif result == "username too short":
-        return_error_reg("Your username must have at least 4 characters!", user)
+        return return_error_reg("Your username must have at least 4 characters!", user)
 
     elif result == "username too long":
-        return_error_reg("Your username can have a maximum of 25 characters!", user)
+        return return_error_reg("Your username can have a maximum of 25 characters!", user)
 
     elif result == "password too short":
-        return_error_reg("Your password must have at least 7 characters!", user)
+        return return_error_reg("Your password must have at least 7 characters!", user)
 
     elif result == "password too long":
-        return_error_reg("Your password can have a maximum of 25 characters!", user)
+        return return_error_reg("Your password can have a maximum of 25 characters!", user)
 
     elif result == "done":
         current_user = user["username"]
@@ -225,49 +226,68 @@ def forgot_pass_form():
     else:
         return "DB_module is missing or corrupt."
 
-    if result == "email does not exist":
-        print("email does not exist")
+    if result == "not connected":
+        return connection_error_db()
+    elif result == True:
+        return new_password_email(user_email)
     else:
-        new_password_email(user_email)
-    new_password_email(user_email)
+        return return_error_forgot("Email does not exist", user_email)
+
+
+def return_error_forgot(msg, user_email):
+    login = reset_login_placeholders()
+    
+    login['form'] = "3"
+    login['error_msg_forgot'] = msg
+    login['email_forgot'] = user_email
+
+    return template("login", login=login)
 
 
 def new_password_email(user_email):
     new_password = generate_password()
 
-    message = MIMEMultipart("alternative")
-    message["Subject"] = "New Password"
-    message["From"] = levo_email
-    message["To"] = user_email
+    result = update_password(user_email, new_password)
 
-    html = """\
-    <p id="new_pass_p">Your new password is: %s</p>
-    """ % (new_password)
+    if result == "not connected":
+        return connection_error_db()
+    
+    elif result == "done":
+        message = MIMEMultipart("alternative")
+        message["Subject"] = "New Password"
+        message["From"] = levo_email
+        message["To"] = user_email
 
-    css = """
-    <style>
-        #new_pass_p {
-            padding: 30px;
-            border: solid #555 2px;
-            background-color: lightcyan;
-            color: darkgreen;
-            display: inline-block;
-            font-size: 24px;
-        }
-    </style>
-    """
+        html = """\
+        <p id="new_pass_p">Your new password is: %s</p>
+        """ % (new_password)
 
-    content = html + css
-    html_part = MIMEText(content, "html")
-    message.attach(html_part)
+        css = """
+        <style>
+            #new_pass_p {
+                padding: 30px;
+                border: solid #555 2px;
+                background-color: lightcyan;
+                color: darkgreen;
+                display: inline-block;
+                font-size: 24px;
+            }
+        </style>
+        """
 
-    # Create a secure SSL context
-    context = ssl.create_default_context()
+        content = html + css
+        html_part = MIMEText(content, "html")
+        message.attach(html_part)
 
-    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-        server.login(levo_email, levo_password)
+        # Create a secure SSL context
+        context = ssl.create_default_context()
+
+        with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+            server.login(levo_email, levo_password)
+            
+            server.sendmail(levo_email, user_email, message.as_string())
         
-        server.sendmail(levo_email, user_email, message.as_string())
+        return redirect('/login/')
 
 
 def generate_password():
