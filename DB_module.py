@@ -112,7 +112,7 @@ def login(user):
 
         for row in cursor:
             # Decrypts password stored in database.
-            pass_from_db = f.decrypt(bytes(row[1]))
+            pass_from_db = f.decrypt(bytes(row[2]))
             # Validates password
             if bytes(user["pass"],encoding='utf8') == pass_from_db:
                 return "password correct"
