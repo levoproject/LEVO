@@ -35,31 +35,38 @@
         </div>
 
         <main>
-            <p id="current_form">{{placeholder_form}}</p>
+            <p id="current_form">{{login['form']}}</p>
             <form id="login_form" class="forms" action="/login_form/" method="POST">
                 <h2>Sign in</h2>
-                <p id="error_msg_login">{{placeholder_error_msg_login}}</p>
-                <input type="text" name="log_username" id="log_username" placeholder="Username..." required autofocus value="{{placeholder_username_login}}"><br>
-                <input type="password" name="log_password" id="log_password" placeholder="Password..." required value="{{placeholder_pass_login}}"><br>
+                <p id="error_msg_login">{{login['error_msg_login']}}</p>
+                <input type="text" name="log_username" id="log_username" placeholder="Username..." required autofocus value="{{login['username_login']}}"><br>
+                <input type="password" name="log_password" id="log_password" placeholder="Password..." required><br>
                 <button type="submit" class="buttons" id="login_btn">Login</button><br>
                 <button type="button" id="switch_forms_btn">Don't have an account? Register here!</button>
             </form>
 
             <form id="register_form" class="forms" action="/register_form/" method="POST">
                 <h2>Register</h2>
-                <p id="error_msg_reg">{{placeholder_error_msg_reg}}</p>
-                <input type="text" name="reg_email" id="reg_email" placeholder="Enter email here..." required autofocus value=""><br>
-                <input type="text" name="reg_username" id="reg_username" placeholder="Atleast 4 characters..." required value="{{placeholder_username_reg}}"><br>
+                <p id="error_msg_reg">{{login['error_msg_reg']}}</p>
+                <input type="text" name="reg_email" id="reg_email" placeholder="Enter email here..." required autofocus value="{{login['email_reg']}}"><br>
+                <input type="text" name="reg_username" id="reg_username" placeholder="Atleast 4 characters..." required value="{{login['username_reg']}}"><br>
                 <div id="username_info" class="reg_info">
-                        <p>Username must be less than 25 characters...</p>
+                    <p>Username must be less than 25 characters...</p>
                 </div>
-                <input type="password" name="reg_password" id="reg_password" placeholder="Atleast 7 characters..." required value="{{placeholder_pass_reg}}"><br>
+                <input type="password" name="reg_password" id="reg_password" placeholder="Atleast 7 characters..." required><br>
                 <div id="pass_info" class="reg_info">
                     <p>Password must be less than 25 characters...</p>
                 </div>
-                <input type="password" name="verify_password" id="verify_password" placeholder="Verify password..." required value="{{placeholder_pass_reg}}"><br>
+                <input type="password" name="verify_password" id="verify_password" placeholder="Verify password..." required><br>
                 <button type="submit" class="buttons" id="create_account_btn">Create account</button>
                 <button type="button" id="switch_forms_btn_back">Go back to Log in!</button>
+            </form>
+
+            <form id="forgot_pass_form" class="forms" action="/forgot_pass_form/" method="POST">
+                <h2>Forgot Password</h2>
+                <p id="error_msg_forgot">{{login['error_msg_forgot']}}</p>
+                <input type="text" name="forgot_email" id="forgot_email" placeholder="Email..." value="{{login['email_forgot']}}"><br>
+                <button type="submit" class="buttons" id="create_account_btn">Get new password</button>
             </form>
 
         </main>
