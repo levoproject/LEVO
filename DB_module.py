@@ -127,7 +127,9 @@ def update_password(user_email, new_password):
         # Encrypts the password.
         cyphered_pass = f.encrypt(bytes(new_password,encoding='utf8'))
         
-        cursor.execute("UPDATE users SET password=%s WHERE email=%s", (cyphered_pass, user_email))
+        cursor.execute("UPDATE users SET pass=%s WHERE email=%s", (cyphered_pass, user_email))
+        db_update_changes()
+        return "done"
     else:
         return "not connected"
 

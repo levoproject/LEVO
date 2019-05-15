@@ -140,10 +140,10 @@ def login_form():
         return connection_error_db()
     
     elif result == "user does not exist":
-        return_error_login("There is no user with this username!", user)
+        return return_error_login("There is no user with this username!", user)
 
     elif result == "password incorrect":
-        return_error_login("The password is incorrect!", user)
+        return return_error_login("The password is incorrect!", user)
 
     elif result == "password correct":
         current_user = user["username"]
@@ -183,19 +183,19 @@ def register_form():
         return connection_error_db()
 
     elif result == "user exists":
-        return_error_reg("This username is already taken!", user)
+        return return_error_reg("This username is already taken!", user)
 
     elif result == "username too short":
-        return_error_reg("Your username must have at least 4 characters!", user)
+        return return_error_reg("Your username must have at least 4 characters!", user)
 
     elif result == "username too long":
-        return_error_reg("Your username can have a maximum of 25 characters!", user)
+        return return_error_reg("Your username can have a maximum of 25 characters!", user)
 
     elif result == "password too short":
-        return_error_reg("Your password must have at least 7 characters!", user)
+        return return_error_reg("Your password must have at least 7 characters!", user)
 
     elif result == "password too long":
-        return_error_reg("Your password can have a maximum of 25 characters!", user)
+        return return_error_reg("Your password can have a maximum of 25 characters!", user)
 
     elif result == "done":
         current_user = user["username"]
@@ -229,9 +229,9 @@ def forgot_pass_form():
     if result == "not connected":
         return connection_error_db()
     elif result == True:
-        new_password_email(user_email)
+        return new_password_email(user_email)
     else:
-        return_error_forgot("Email does not exist", user_email)
+        return return_error_forgot("Email does not exist", user_email)
 
 
 def return_error_forgot(msg, user_email):
@@ -251,40 +251,43 @@ def new_password_email(user_email):
 
     if result == "not connected":
         return connection_error_db()
+    
+    elif result == "done":
+        message = MIMEMultipart("alternative")
+        message["Subject"] = "New Password"
+        message["From"] = levo_email
+        message["To"] = user_email
 
-    message = MIMEMultipart("alternative")
-    message["Subject"] = "New Password"
-    message["From"] = levo_email
-    message["To"] = user_email
+        html = """\
+        <p id="new_pass_p">Your new password is: %s</p>
+        """ % (new_password)
 
-    html = """\
-    <p id="new_pass_p">Your new password is: %s</p>
-    """ % (new_password)
+        css = """
+        <style>
+            #new_pass_p {
+                padding: 30px;
+                border: solid #555 2px;
+                background-color: lightcyan;
+                color: darkgreen;
+                display: inline-block;
+                font-size: 24px;
+            }
+        </style>
+        """
 
-    css = """
-    <style>
-        #new_pass_p {
-            padding: 30px;
-            border: solid #555 2px;
-            background-color: lightcyan;
-            color: darkgreen;
-            display: inline-block;
-            font-size: 24px;
-        }
-    </style>
-    """
+        content = html + css
+        html_part = MIMEText(content, "html")
+        message.attach(html_part)
 
-    content = html + css
-    html_part = MIMEText(content, "html")
-    message.attach(html_part)
+        # Create a secure SSL context
+        context = ssl.create_default_context()
 
-    # Create a secure SSL context
-    context = ssl.create_default_context()
-
-    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-        server.login(levo_email, levo_password)
+        with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+            server.login(levo_email, levo_password)
+            
+            server.sendmail(levo_email, user_email, message.as_string())
         
-        server.sendmail(levo_email, user_email, message.as_string())
+        return redirect('/login/')
 
 
 def generate_password():
