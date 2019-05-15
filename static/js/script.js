@@ -149,6 +149,23 @@ $(document).ready(function() {
             });
         }
     });
+
+    $(":checkbox").on("change", function() {
+        var that = this;
+        $(this).parent().css("background-color", function() {
+            return that.checked ? "#9ECCA4" : "";
+        });
+    });
+
+    /*$("input(type='checkbox')").change(function() {
+        if($(this).is(":checked")){
+            $(this).parent().removeClass(".checkbox_item");
+            $(this).parent().addClass("green_background"); 
+        }else{
+            $(this).parent().removeClass("green_background");  
+        }
+    });*/
+
 });
 
 /*
