@@ -22,7 +22,7 @@ except:
 
 try:
     #   Module that manages the database.
-    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category
+    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category, email_exists, update_password
     db_module_exists = True
 except:
     db_module_exists = False
@@ -170,6 +170,7 @@ def register_form():
     # Requests the username and password inputs from the register form.
     user["username"] = request.forms.get('reg_username')
     user["pass"] = request.forms.get('reg_password')
+    user["email"] = request.forms.get('reg_email')
 
     if db_module_exists:
         # Calls register function in DB_module to validate the username and password.
@@ -225,15 +226,31 @@ def forgot_pass_form():
     else:
         return "DB_module is missing or corrupt."
 
-    if result == "email does not exist":
-        print("email does not exist")
-    else:
+    if result == "not connected":
+        return connection_error_db()
+    elif result == True:
         new_password_email(user_email)
-    new_password_email(user_email)
+    else:
+        return_error_forgot("Email does not exist", user_email)
+
+
+def return_error_forgot(msg, user_email):
+    login = reset_login_placeholders()
+    
+    login['form'] = "3"
+    login['error_msg_forgot'] = msg
+    login['email_forgot'] = user_email
+
+    return template("login", login=login)
 
 
 def new_password_email(user_email):
     new_password = generate_password()
+
+    result = update_password(user_email, new_password)
+
+    if result == "not connected":
+        return connection_error_db()
 
     message = MIMEMultipart("alternative")
     message["Subject"] = "New Password"

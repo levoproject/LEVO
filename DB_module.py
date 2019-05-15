@@ -50,30 +50,48 @@ def user_exists(username):
         return False
 
 
+def email_exists(email):
+    '''
+    Returns True if the email exists in the table "users".
+    '''
+    if db_connect():
+        cursor.execute("SELECT email FROM users WHERE email=%s", (email,))
+        if cursor.rowcount != 0:
+            return True
+        else:
+            return False
+    else:
+        return "not connected"
+
+
 def register(user):
     '''
-    Encrypts new user's inputed password and inserts the new user's username and encrypted password into the "users" table.
+    Encrypts new user's inputed password and inserts the new user's email, username and encrypted password into the "users" table.
     '''
     if db_connect():
         # Tests if the user already exists.
         if user_exists(user["username"]):
             return "user exists"
         
+        # Tests if the user's email already exists.
+        if email_exists(user["email"]):
+            return "email exists"
+
         # Self explanatory validations for username and password.
         if len(user["username"]) < 4:
             return "username too short" 
         elif len(user["username"]) > 25:
             return "username too long"
         elif len(user["pass"]) < 7:
-            return "password too short" 
+            return "password too short"
         elif len(user["pass"]) > 25:
             return "password too long"
         
-        # Cyphers the password.
+        # Encrypts the password.
         cyphered_pass = f.encrypt(bytes(user["pass"],encoding='utf8'))
         
         # Inserts the username and cyphered password into the database and commits the changes.
-        cursor.execute("INSERT INTO users (username, pass) VALUES (%s,%s)", (user["username"],cyphered_pass))
+        cursor.execute("INSERT INTO users (email, username, pass) VALUES (%s,%s,%s)", (user["email"], user["username"],cyphered_pass))
         db_update_changes()
         return "done"
     else:
@@ -100,6 +118,16 @@ def login(user):
                 return "password correct"
             else:
                 return "password incorrect"
+    else:
+        return "not connected"
+
+
+def update_password(user_email, new_password):
+    if db_connect():
+        # Encrypts the password.
+        cyphered_pass = f.encrypt(bytes(new_password,encoding='utf8'))
+        
+        cursor.execute("UPDATE users SET password=%s WHERE email=%s", (cyphered_pass, user_email))
     else:
         return "not connected"
 
