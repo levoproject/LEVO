@@ -152,7 +152,7 @@ $(document).ready(function() {
 
     $(":checkbox").on("change", function() {
         var that = this;
-        $(this).parent().css("background-color", function() {
+        $(this).parent().parent().css("background-color", function() {
             return that.checked ? "#9ECCA4" : "";
         });
     });
