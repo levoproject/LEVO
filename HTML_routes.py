@@ -103,19 +103,15 @@ def reset_login_placeholders():
     login["error_msg_reg"] = ""
     login["error_msg_forgot"] = ""
     login["username_login"] = ""
-    login["pass_login"] = ""
     login["username_reg"] = ""
-    login["pass_reg"] = ""
     login["email_forgot"] = ""
 
 
 @route('/logout/')
 def logout():
     '''
-    Sets current_user to none and redirects to the route '/login/'.
+    Redirects to the route '/login/'. In the login_page function the current user is set to none.
     '''
-    global current_user
-    current_user = ""
     return redirect('/login/')
 
 
@@ -136,15 +132,29 @@ def login_form():
     else:
         return "DB_module is missing or corrupt."
 
+
     if result == "not connected":
         return connection_error_db()
+    
     elif result == "user does not exist":
-        return template("login", placeholder_form="1", placeholder_error_msg_login="There is no user with this username!", placeholder_error_msg_reg="", placeholder_username_login=user["username"], placeholder_pass_login="", placeholder_username_reg="", placeholder_pass_reg="", placeholder_email_forgot="")
+        return_error_login("There is no user with this username!", user)
+
     elif result == "password incorrect":
-        return template("login", placeholder_form="1", placeholder_error_msg_login="The password is incorrect!", placeholder_error_msg_reg="", placeholder_username_login=user["username"], placeholder_pass_login="", placeholder_username_reg="", placeholder_pass_reg="", placeholder_email_forgot="")
+        return_error_login("The password is incorrect!", user)
+
     elif result == "password correct":
         current_user = user["username"]
+
         return redirect('/')
+
+
+def return_error_login(msg, user):
+    login = reset_login_placeholders()
+        
+    login['error_msg_login'] = msg
+    login['username_login'] = user["username"]
+
+    return template("login", login=login)
 
 
 @route('/register_form/', method='POST')
@@ -164,21 +174,38 @@ def register_form():
     else:
         return "DB_module is missing or corrupt."
 
+
     if result == "not connected":
         return connection_error_db()
+
     elif result == "user exists":
-        return template("login", placeholder_form="2", placeholder_error_msg_login="", placeholder_error_msg_reg="This username is already taken!", placeholder_username_login="", placeholder_pass_login="", placeholder_username_reg=user["username"], placeholder_pass_reg="")
+        return_error_reg("This username is already taken!", user)
+
     elif result == "username too short":
-        return template("login", placeholder_form="2", placeholder_error_msg_login="", placeholder_error_msg_reg="Your username must have at least 4 characters!", placeholder_username_login="", placeholder_pass_login="", placeholder_username_reg=user["username"], placeholder_pass_reg="")
+        return_error_reg("Your username must have at least 4 characters!", user)
+
     elif result == "username too long":
-        return template("login", placeholder_form="2", placeholder_error_msg_login="", placeholder_error_msg_reg="Your username can have a maximum of 25 characters!", placeholder_username_login="", placeholder_pass_login="", placeholder_username_reg=user["username"], placeholder_pass_reg="")
+        return_error_reg("Your username can have a maximum of 25 characters!", user)
+
     elif result == "password too short":
-        return template("login", placeholder_form="2", placeholder_error_msg_login="", placeholder_error_msg_reg="Your password must have at least 7 characters!", placeholder_username_login="", placeholder_pass_login="", placeholder_username_reg=user["username"], placeholder_pass_reg="")
+        return_error_reg("Your password must have at least 7 characters!", user)
+
     elif result == "password too long":
-        return template("login", placeholder_form="2", placeholder_error_msg_login="", placeholder_error_msg_reg="Your password can have a maximum of 25 characters!", placeholder_username_login="", placeholder_pass_login="", placeholder_username_reg=user["username"], placeholder_pass_reg="")
+        return_error_reg("Your password can have a maximum of 25 characters!", user)
+
     elif result == "done":
         current_user = user["username"]
         return redirect('/')
+
+
+def return_error_reg(msg, user):
+    login = reset_login_placeholders()
+    
+    login['form'] = "2"
+    login['error_msg_reg'] = msg
+    login['username_reg'] = user["username"]
+
+    return template("login", login=login)
 
 
 @route('/forgot_pass_form/', method='POST')
