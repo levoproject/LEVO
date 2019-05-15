@@ -103,8 +103,11 @@ def reset_login_placeholders():
     login["error_msg_reg"] = ""
     login["error_msg_forgot"] = ""
     login["username_login"] = ""
+    login["email_reg"] = ""
     login["username_reg"] = ""
     login["email_forgot"] = ""
+
+    return login
 
 
 @route('/logout/')
