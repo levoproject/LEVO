@@ -4,8 +4,7 @@ $(document).ready(function() {
     $('#questions_3').hide();
     $('#h2_q2').hide();
     $('#h2_q3').hide();
-    $('#previous').attr("disabled", true);
-    $('#previous').addClass("disabled");
+    $('#previous').hide();
     if ( $('#result_check').text().length == 0 ) {
         $('#submit_again').hide();
         $('#label').hide();
@@ -41,8 +40,7 @@ $(document).ready(function() {
             $('#h2_q2').show(200);
             $('#questions_1').hide(200);
             $('#questions_2').show(200);
-            $('#previous').attr("disabled", false);
-            $('#previous').removeClass("disabled");
+            $('#previous').show(200);
             var element = document.getElementById("progress_bar");
             var width = 0;
             var identity = setInterval(scene_1, 10);
@@ -90,8 +88,7 @@ $(document).ready(function() {
             $('#h2_q2').hide(200);
             $('#questions_1').show(200);
             $('#questions_2').hide(200);
-            $('#previous').attr("disabled", true);
-            $('#previous').addClass("disabled");
+            $('#previous').hide(200);
             var element = document.getElementById("progress_bar");
             var width = 33;
             var identity = setInterval(scene_1, 10);

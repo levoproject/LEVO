@@ -1,23 +1,7 @@
 @charset "utf-8";
-
-html {
-    background: -moz-linear-gradient(204deg, rgba(255, 0, 0, 1) 0%, rgba(0, 255, 255, 1) 100%);
-    /* ff3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(0, 255, 255, 1)), color-stop(100%, rgba(255, 0, 0, 1)));
-    /* safari4+,chrome */
-    background: -webkit-linear-gradient(204deg, rgba(255, 0, 0, 1) 0%, rgba(0, 255, 255, 1) 100%);
-    /* safari5.1+,chrome10+ */
-    background: -o-linear-gradient(204deg, rgba(255, 0, 0, 1) 0%, rgba(0, 255, 255, 1) 100%);
-    /* opera 11.10+ */
-    background: -ms-linear-gradient(204deg, rgba(255, 0, 0, 1) 0%, rgba(0, 255, 255, 1) 100%);
-    /* ie10+ */
-    background: linear-gradient(246deg, rgba(255, 0, 0, 1) 0%, rgba(0, 255, 255, 1) 100%);
-    /* w3c */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffff', endColorstr='#ff0000', GradientType=1);
-    /* ie6-9 */
-    min-height: 100%;
+html{
+    background-color: white;
 }
-
 body {
     margin: 0;
     padding: 0;
@@ -31,6 +15,7 @@ body {
     text-transform: none;
     font-family: Helvetica, Arial, sans-serif;
     transition: background-color .5s;
+    
 }
 
 .sidenav {
@@ -44,6 +29,10 @@ body {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+}
+
+#front_page_link{
+    margin-left: 20px;
 }
 
 .sidenav a {
@@ -70,6 +59,20 @@ body {
 #nav_pointer {
     transition: margin-left .5s;
     padding: 10px;
+    background-color: rgb(95, 207, 95);
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid black;
+}
+
+#nav_pointer a{
+    font-family: 'Maven Pro', sans-serif;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+#nav_pointer a:hover{
+    opacity: 0.5;
 }
 
 #open_nav {
@@ -105,14 +108,12 @@ h2 {
 #questions {
     display: flex;
     justify-content: center;
-    color: ghostwhite;
-    text-shadow: 9px 2px 4px #000000;
+    background-color: black;
+    color: white;
     font-size: 20px;
     padding: 30px;
-    background-color: rgba(0, 0, 0, 0.5);
     margin-left: 20%;
     margin-right: 20%;
-    border-radius: 10px;
 }
 
 form {
@@ -140,7 +141,7 @@ form {
 
 .button {
     background: transparent;
-    margin: 8px auto 8px auto;
+    margin: 8px;
     color: #ffffff;
     font-size: 20px;
     padding: 10px 20px 10px 20px;
@@ -156,7 +157,12 @@ form {
 #buttons {
     margin-top: 15px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+}
+
+#recipe_generator{
+    display: flex;
+    justify-content: center;
 }
 
 .extra {
@@ -175,6 +181,7 @@ a:visited {
     background-color: white;
     margin: auto;
     margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 #progress_bar {
@@ -289,8 +296,4 @@ a:visited {
 
 .sticky + content{
     padding-top: 40px;
-}
-
-#front_page_link:hover{
-    opacity: 0.5;
 }
