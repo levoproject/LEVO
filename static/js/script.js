@@ -152,8 +152,13 @@ $(document).ready(function() {
 
     $(":checkbox").on("change", function() {
         var that = this;
+<<<<<<< HEAD
         $(this).parent().css("background-color", function() {
             return that.checked ? "#427148" : "";
+=======
+        $(this).parent().parent().css("background-color", function() {
+            return that.checked ? "#9ECCA4" : "";
+>>>>>>> fb649b905b8dfcc566674802f8217759e738d28d
         });
     });
 
