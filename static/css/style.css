@@ -1,23 +1,7 @@
 @charset "utf-8";
-
-html {
-    background: -moz-linear-gradient(204deg, rgba(255, 0, 0, 1) 0%, rgba(0, 255, 255, 1) 100%);
-    /* ff3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(0, 255, 255, 1)), color-stop(100%, rgba(255, 0, 0, 1)));
-    /* safari4+,chrome */
-    background: -webkit-linear-gradient(204deg, rgba(255, 0, 0, 1) 0%, rgba(0, 255, 255, 1) 100%);
-    /* safari5.1+,chrome10+ */
-    background: -o-linear-gradient(204deg, rgba(255, 0, 0, 1) 0%, rgba(0, 255, 255, 1) 100%);
-    /* opera 11.10+ */
-    background: -ms-linear-gradient(204deg, rgba(255, 0, 0, 1) 0%, rgba(0, 255, 255, 1) 100%);
-    /* ie10+ */
-    background: linear-gradient(246deg, rgba(255, 0, 0, 1) 0%, rgba(0, 255, 255, 1) 100%);
-    /* w3c */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffff', endColorstr='#ff0000', GradientType=1);
-    /* ie6-9 */
-    min-height: 100%;
+html{
+    background-color: #9ECCA4;
 }
-
 body {
     margin: 0;
     padding: 0;
@@ -46,6 +30,10 @@ body {
     padding-top: 60px;
 }
 
+#front_page_link{
+    margin-left: 20px;
+}
+
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -70,10 +58,25 @@ body {
 #nav_pointer {
     transition: margin-left .5s;
     padding: 10px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid black;
+}
+
+#nav_pointer a{
+    font-family: 'Maven Pro', sans-serif;
+    margin-left: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+#nav_pointer a:hover{
+    opacity: 0.5;
 }
 
 #open_nav {
-    color: white;
+    color: black;
 }
 
 @media screen and (max-height: 450px) {
@@ -97,22 +100,22 @@ header > img {
 
 h2 {
     text-align: center;
-    color: white;
+    color: black;
     font-size: 35px;
-    text-shadow: 9px 0px 4px #000000;
+    font-family: 'Maven Pro', sans-serif;
 }
 
 #questions {
     display: flex;
     justify-content: center;
-    color: ghostwhite;
-    text-shadow: 9px 2px 4px #000000;
+    background-color: rgba(255, 255, 255, 0.295);
+    color: black;
     font-size: 20px;
-    padding: 30px;
-    background-color: rgba(0, 0, 0, 0.5);
-    margin-left: 20%;
-    margin-right: 20%;
-    border-radius: 10px;
+    padding: 2%;
+    margin-left: 30%;
+    margin-right: 30%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
 }
 
 form {
@@ -128,6 +131,74 @@ form {
     text-align: center;
     color: white;
 }
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    border-radius: 5px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 2px;
+    height: 25px;
+    width: 25px;
+    border-radius: 5px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a green background */
+  .container input:checked ~ .checkmark {
+    background-color: green;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
 
 #questions_1,
 #questions_2,
@@ -139,14 +210,16 @@ form {
 }
 
 .button {
-    background: transparent;
-    margin: 8px auto 8px auto;
-    color: #ffffff;
-    font-size: 20px;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
+    font-weight: 600;
+    color: #fff;
+    background-color: rgb(85, 177, 85);
+    width: 40%;
+    border-radius: 1rem;
+    padding: 3%;
+    border: none;
     cursor: pointer;
-    text-align: center;
+    margin: 5px;
+    font-family: 'Maven Pro', sans-serif;
 }
 
 .button:hover {
@@ -156,7 +229,12 @@ form {
 #buttons {
     margin-top: 15px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+}
+
+#recipe_generator{
+    display: flex;
+    justify-content: center;
 }
 
 .extra {
@@ -175,6 +253,7 @@ a:visited {
     background-color: white;
     margin: auto;
     margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 #progress_bar {
@@ -293,6 +372,13 @@ a:visited {
     padding-top: 40px;
 }
 
-#front_page_link:hover{
-    opacity: 0.5;
+label { 
+    font-size: 12px;
+}
+
+.checkbox_item {
+    margin: 8px;
+    background-color: #9ECCA4;
+    border-radius: 10px;
+    padding: 5px;
 }

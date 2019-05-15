@@ -34,12 +34,21 @@ $(document).ready(function() {
         $('#log_username').focus();
     });
     
-    $('input[type=password]').keyup(function() {
+    $('#reg_password').keyup(function() {
         var pswd = $(this).val();
         if ( pswd.length > 25 ) {
             $('#pass_info').show(); 
         } else {    
             $('#pass_info').hide();
+        }
+    });
+
+    $('#reg_username').keyup(function() {
+        var username = $(this).val();
+        if ( username.length > 25 ) {
+            $('#username_info').show(); 
+        } else {    
+            $('#username_info').hide();
         }
     });
 });

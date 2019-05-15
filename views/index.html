@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link href="../static/css/style.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa%7cOpen+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Sriracha" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/swiper.min.css">
     <link rel="shortcut icon" type="image/png" href="static/img/favicon.png" alt="Image is not available.">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -48,14 +48,8 @@
 
     <div id="nav_pointer">
         <span id="open_nav" style="font-size:45px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        <a href="/index/">LEVO</a>
     </div>
-
-    <div class="content">
-    <header>
-        <a href="/" id="front_page_link">
-            <img src="../static/img/Levo_image_avenir.png" width=350 height=260 alt="Image is not available.">
-        </a>
-    </header>
 
     <div id="progress_status">
         <div id="progress_bar"></div>
@@ -68,30 +62,48 @@
 
                 <div id="questions_1" class="form_1">
 
-                    <input type="checkbox" id="meat" name="meat" value="meat" {{checked_protein["meat"]}}>
-                    <label for="meat">Meat</label><br>
-
-                    <input type="checkbox" id="chicken" name="chicken" value="chicken" {{checked_protein["chicken"]}}>
-                    <label for="chicken">Chicken</label><br>
-
-                    <input type="checkbox" id="bird" name="bird" value="bird" {{checked_protein["bird"]}}>
-                    <label for="bird">Bird</label><br>
-
-                    <input type="checkbox" id="fish" name="fish" value="fish" {{checked_protein["fish"]}}>
-                    <label for="fish">Fish</label><br>
-
-                    <input type="checkbox" id="seafood" name="seafood" value="seafood" {{checked_protein["seafood"]}}>
-                    <label for="seafood">Seafood</label><br>
-
-                    <input type="checkbox" id="game" name="game" value="game" {{checked_protein["game"]}}>
-                    <label for="game">Game</label><br>
-
-                    <input type="checkbox" id="veg" name="veg" value="veg" {{checked_protein["veg"]}}>
-                    <label for="veg">Veg</label><br>
-
-                    <input type="checkbox" id="p_dont_know" name="p_dont_know" value="p_dont_know" {{checked_protein["p_dont_know"]}}>
-                    <label for="p_dont_know">I'm not sure!</label>
-
+                    <div class="checkbox_item">    
+                        <label for="meat" class="container">Meat
+                            <input type="checkbox" id="meat" name="meat" value="meat" {{checked_protein["meat"]}}>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="checkbox_item">
+                        <label for="chicken" class="container">Chicken
+                            <input type="checkbox" id="chicken" name="chicken" value="chicken" {{checked_protein["chicken"]}}>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="checkbox_item">
+                        <label for="bird" class="container">Bird
+                            <input type="checkbox" id="bird" name="bird" value="bird" {{checked_protein["bird"]}}>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="checkbox_item">
+                        <label for="fish" class="container">Fish
+                            <input type="checkbox" id="fish" name="fish" value="fish" {{checked_protein["fish"]}}>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="checkbox_item">
+                        <label for="seafood" class="container">Seafood
+                            <input type="checkbox" id="seafood" name="seafood" value="seafood" {{checked_protein["seafood"]}}>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="checkbox_item">
+                        <label for="veg" class="container">Veg
+                            <input type="checkbox" id="veg" name="veg" value="veg" {{checked_protein["veg"]}}>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="checkbox_item">
+                        <label for="p_dont_know" class="container">I'm not sure!
+                            <input type="checkbox" id="p_dont_know" name="p_dont_know" value="p_dont_know" {{checked_protein["p_dont_know"]}}>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
                 </div>
 
 
@@ -147,8 +159,10 @@
                 <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}" />
 
                 <div id="buttons">
-                    <button type="button" class="button form_1" id="next">Next question!</button>
                     <button type="button" class="button form_1" id="previous">Previous question!</button>
+                    <button type="button" class="button form_1" id="next">Next question!</button>
+                </div>
+                <div id="recipe_generator">
                     <button type="submit" class="button form_1" id="submit">Give me recipes, please!</button>
                     <button type="submit" class="button" id="submit_again">Give me new recipes, please!</button>
                 </div>
