@@ -56,9 +56,13 @@
                         % for recipe in saved_recipes:
                         % if recipe['category'] == "meat":
                         <div data-recipe_id="{{recipe['recipe_id']}}" class="flex-content" class="inner">
-                            <h2 class="middle"><a href="{{recipe['source_url']}}" target="_blank">{{recipe['title']}}</a></h2>
-                            <img src="{{recipe['image_url']}}" alt="Picture can't be found.">
-                            <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
+                            <a href="{{recipe['source_url']}}" target="_blank">
+                                <div class="saved_img_box">
+                                    <img src="{{recipe['image_url']}}" alt="Picture can't be found.">
+                                    <h2 class="middle">{{recipe['title']}}</h2>
+                                    <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
+                                </div>
+                            </a>
                         </div>
                         % end
                         % end
