@@ -62,23 +62,6 @@
             document.getElementById("nav_pointer").style.marginLeft = "0";
             document.body.style.backgroundColor = "rgba(0,0,0,0)";
         }
-       //när användaren skrollar sidan så körs detta
-        window.onscroll = function() {
-            myFunction()
-        };
-        //få navbaren
-        var navbar = document.getElementById("nav_pointer");
-        //få offset positionen av navbaren
-        var sticky = navbar.offsetTop;
-        
-        //lägga till en sticky class till navbaren när den har uppnått sin sticky position. ta bort sticky när man lämnar scroll positionen
-        function myFunction() {
-            if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-            } else {
-                navbar.classList.remove("sticky");
-            }
-        }
     </script>
 </body>
 
