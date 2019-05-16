@@ -1,0 +1,5 @@
+#container {
+    background-image: url("/static/img/background_food.jpg");
+    background-size: cover;
+    height: 100%;
+}
