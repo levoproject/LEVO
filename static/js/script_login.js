@@ -1,6 +1,7 @@
 $(document).ready(function() {
     $('#current_form').hide();
     $('#register_form').hide();
+    $('#forgot_form').hide();
     $('#login_form').show();
     if ( $('#error_msg_login').text().length == 0 ) {
         $('#error_msg_login').hide();
@@ -21,10 +22,11 @@ $(document).ready(function() {
         $('#log_username').val("");
         $('#log_password').val("");
         $('#current_form').text("2")
-        $('#reg_username').focus();
+        $('#reg_email').focus();
     });
-    $('#switch_forms_btn_back').click(function(){
+    $('.switch_forms_btn_back').click(function(){
         $('#register_form').hide();
+        $('#forgot_form').hide();
         $('#login_form').show();
         var name_input = $('#reg_username').val();
         $('#log_username').val(name_input);
@@ -32,6 +34,16 @@ $(document).ready(function() {
         $('#reg_password').val("");
         $('#current_form').text("1")
         $('#log_username').focus();
+    });
+    $('#switch_forms_btn_forgot').click(function(){
+        $('#login_form').hide();
+        $('#forgot_form').show();
+        var name_input = $('#log_username').val();
+        $('#forgot_email').val(name_input);
+        $('#log_username').val("");
+        $('#log_password').val("");
+        $('#current_form').text("3")
+        $('#forgot_email').focus();
     });
     
     $('#reg_password').keyup(function() {

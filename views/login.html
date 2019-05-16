@@ -37,6 +37,7 @@
                 <input type="password" name="log_password" id="log_password" placeholder="Password..." required><br>
                 <button type="submit" class="buttons" id="login_btn">Login</button><br>
                 <button type="button" id="switch_forms_btn">Don't have an account? Register here!</button>
+                <button type="button" id="switch_forms_btn_forgot">Forgot password?</button>
             </form>
 
             <form id="register_form" class="forms" action="/register_form/" method="POST">
@@ -53,14 +54,15 @@
                 </div>
                 <input type="password" name="verify_password" id="verify_password" placeholder="Verify password..." required><br>
                 <button type="submit" class="buttons" id="create_account_btn">Create account</button>
-                <button type="button" id="switch_forms_btn_back">Go back to Log in!</button>
+                <button type="button" class="switch_forms_btn_back">Go back to Log in!</button>
             </form>
 
-            <form id="forgot_pass_form" class="forms" action="/forgot_pass_form/" method="POST">
+            <form id="forgot_form" class="forms" action="/forgot_pass_form/" method="POST">
                 <h2>Forgot Password</h2>
                 <p id="error_msg_forgot">{{login['error_msg_forgot']}}</p>
                 <input type="text" name="forgot_email" id="forgot_email" placeholder="Email..." value="{{login['email_forgot']}}"><br>
                 <button type="submit" class="buttons" id="create_account_btn">Get new password</button>
+                <button type="button" class="switch_forms_btn_back">Go back to Log in!</button>
             </form>
 
         </main>
