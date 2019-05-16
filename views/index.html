@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
+<head>
     <meta charset="utf-8">
     <link href="../static/css/style.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa%7cOpen+Sans" rel="stylesheet">
@@ -12,6 +12,7 @@
     <script src="../static/js/script.js"></script>
     <script>
         var $SCRIPT_ROOT = "{{ request.script_name }}";
+
     </script>
     <title>LEVO</title>
     <!-- måste innehålla intern swiper kod -->
@@ -31,6 +32,7 @@
             border-radius: 20px;
             overflow: hidden;
         }
+
     </style>
 </head>
 
@@ -62,7 +64,7 @@
 
                 <div id="questions_1" class="form_1">
 
-                    <div class="checkbox_item">    
+                    <div class="checkbox_item">
                         <label for="meat" class="container">Meat
                             <input type="checkbox" id="meat" name="meat" value="meat" {{checked_protein["meat"]}}>
                             <span class="checkmark"></span>
@@ -110,42 +112,42 @@
                 <h2 id="h2_q2" class="form_1">Any preferences?</h2>
 
                 <div id="questions_2" class="form_1">
-                    <div class="checkbox_item">    
+                    <div class="checkbox_item">
                         <label for="pasta" class="container">Pasta
                             <input type="checkbox" id="pasta" name="pasta" value="pasta" {{checked_carb["pasta"]}}>
                             <span class="checkmark"></span>
                         </label>
                     </div>
 
-                    <div class="checkbox_item">    
+                    <div class="checkbox_item">
                         <label for="rice" class="container">Rice
                             <input type="checkbox" id="rice" name="rice" value="rice" {{checked_carb["rice"]}}>
                             <span class="checkmark"></span>
                         </label>
                     </div>
 
-                    <div class="checkbox_item">    
+                    <div class="checkbox_item">
                         <label for="potato" class="container">Potato
                             <input type="checkbox" id="potato" name="potato" value="potato" {{checked_carb["potato"]}}>
                             <span class="checkmark"></span>
                         </label>
                     </div>
 
-                    <div class="checkbox_item">    
+                    <div class="checkbox_item">
                         <label for="bread" class="container">Bread
                             <input type="checkbox" id="bread" name="bread" value="bread" {{checked_carb["bread"]}}>
                             <span class="checkmark"></span>
                         </label>
                     </div>
 
-                    <div class="checkbox_item">    
+                    <div class="checkbox_item">
                         <label for="vegetables" class="container">Vegetables
                             <input type="checkbox" id="vegetables" name="vegetables" value="vegetables" {{checked_carb["vegetables"]}}>
                             <span class="checkmark"></span>
                         </label>
                     </div>
 
-                    <div class="checkbox_item">    
+                    <div class="checkbox_item">
                         <label for="c_dont_know" class="container">I don't have any preferences!
                             <input type="checkbox" id="c_dont_know" name="c_dont_know" value="c_dont_know" {{checked_carb["c_dont_know"]}}>
                             <span class="checkmark"></span>
@@ -280,4 +282,5 @@
 
     </script>
 </body>
+
 </html>
