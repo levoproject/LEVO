@@ -73,6 +73,10 @@ body {
     color: black;
 }
 
+#profile_icon{
+    float: right;
+}
+
 #nav_pointer a:hover{
     opacity: 0.5;
 }
