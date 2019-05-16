@@ -27,13 +27,9 @@
 
     <div id="nav_pointer">
         <span id="open_nav" style="font-size:45px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        <a href="/index/">LEVO</a>
     </div>
 
-    <div class="content">
-        <header>
-            <a href="/" id="front_page_link">
-                <img src="/static/img/Levo_image_avenir.png" width=350 height=260 alt="Image is not available.">
-            </a>
         </header>
 
         <div id="progress_status">
@@ -61,23 +57,6 @@
             document.getElementById("mySidenav").style.width = "0";
             document.getElementById("nav_pointer").style.marginLeft = "0";
             document.body.style.backgroundColor = "rgba(0,0,0,0)";
-        }
-       //när användaren skrollar sidan så körs detta
-        window.onscroll = function() {
-            myFunction()
-        };
-        //få navbaren
-        var navbar = document.getElementById("nav_pointer");
-        //få offset positionen av navbaren
-        var sticky = navbar.offsetTop;
-        
-        //lägga till en sticky class till navbaren när den har uppnått sin sticky position. ta bort sticky när man lämnar scroll positionen
-        function myFunction() {
-            if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-            } else {
-                navbar.classList.remove("sticky");
-            }
         }
     </script>
 </body>
