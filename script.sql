@@ -6,8 +6,8 @@ REVOKE ALL PRIVILEGES ON DATABASE db_levo FROM PUBLIC;
 \c db_levo;
 
 CREATE TABLE users (
-    email       TEXT PRIMARY KEY,
-    username    VARCHAR(25),
+    email       TEXT,
+    username    VARCHAR(25) PRIMARY KEY,
     pass        BYTEA
 );
 
