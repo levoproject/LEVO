@@ -119,7 +119,7 @@ h2 {
     border-radius: 20px;
 }
 
-form {
+.form {
     display: block;
     margin-left: 10%;
     margin-right: 10%;
@@ -285,6 +285,8 @@ a:visited {
 .details {
     font-size: 15px;
     color: whitesmoke;
+    border-radius: 10px;
+    background-color: black;
     transition: .5s ease;
     opacity: 0;
     position: absolute;
@@ -295,9 +297,9 @@ a:visited {
     text-align: center;
 }
 
-.swiper-side:hover .imgBox img{
+.swiper-side:hover .imgBox{
     opacity: 0.3;
-    background-color: white;
+    color: white;
   }
   
   .swiper-slide:hover .details {
@@ -305,10 +307,8 @@ a:visited {
   }
 
   .details p{
-    background-color: black;
     color: white;
-    opacity: 0.7;
-    border-radius: 10px;
+    margin: 20px;
   }
 
 .swiper-pagination-bullet {
