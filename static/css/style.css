@@ -338,6 +338,9 @@ a:visited {
 }
 
 .star {
+    position: absolute;
+    top: 0;
+    left: 0;
     visibility: hidden;
     font-size: 60px;
     cursor: pointer;
@@ -365,7 +368,17 @@ a:visited {
     margin-right: 250px;
 }
 
-label { 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.sticky + content{
+    padding-top: 40px;
+}
+
+label {
     font-size: 12px;
 }
 
@@ -374,4 +387,8 @@ label {
     background-color: #9ECCA4;
     border-radius: 10px;
     padding: 5px;
+}
+
+.imgBox {
+    position: relative;
 }
