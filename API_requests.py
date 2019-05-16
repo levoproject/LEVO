@@ -21,7 +21,6 @@ chicken = ['chicken']
 bird = ['duck', 'turkey', 'goose', 'pheasant', 'pigeon']
 fish = ['fish', 'salmon', 'tuna', 'mackerel', 'cod', 'sardines', 'herring', 'perch', 'anchovy']
 seafood = ['lobster', 'crawfish', 'crayfish', 'prawns', 'shrimps', 'crab', 'squid', 'scallops', 'clams', 'oysters', 'mussels']
-game = ['venison', 'boar', 'rabbit']
 veg = ['vegetarian', 'vegan']
 
 # Lists containing ingredients for every available carb.
@@ -39,7 +38,7 @@ def get_rnd_protein(chosen_protein):
 
     # If the user has checked the box "I'm not sure!", a random protein is chosen. Else a random protein of every box checked is chosen.
     if "p_dont_know" in chosen_protein or chosen_protein == []:
-        chosen_protein = choice(["meat", "chicken", "bird", "fish", "seafood", "game", "veg"])
+        chosen_protein = choice(["meat", "chicken", "bird", "fish", "seafood", "veg"])
     else:
         chosen_protein = choice(chosen_protein)
 
@@ -54,8 +53,6 @@ def get_rnd_protein(chosen_protein):
         return {"protein": "fish", "ingredient": choice(fish)}
     elif chosen_protein == "seafood":
         return {"protein": "seafood", "ingredient": choice(seafood)}
-    elif chosen_protein == "game":
-        return {"protein": "game", "ingredient": choice(game)}
     else:
         return {"protein": "veg", "ingredient": choice(veg)}
 

@@ -34,7 +34,7 @@ except:
 current_user = ""
 
 # All alternatives for the three questions asked to the user.
-proteins = ['meat', 'chicken', 'bird', 'fish', 'seafood', 'game', 'veg', 'p_dont_know']
+proteins = ['meat', 'chicken', 'bird', 'fish', 'seafood', 'veg', 'p_dont_know']
 carbs = ['pasta', 'rice', 'potato', 'bread', 'vegetables', 'c_dont_know']
 
 # SSL port, smtp server and LEVO project mail for new_password_email function.
