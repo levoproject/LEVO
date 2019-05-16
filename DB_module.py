@@ -222,7 +222,6 @@ def count_category(username):
         count['bird'] = 0
         count['fish'] = 0
         count['seafood'] = 0
-        count['game'] = 0
         count['veg'] = 0
         
         cursor.execute("""
@@ -248,8 +247,6 @@ def count_category(username):
                 count['fish'] = row[1]
             if row[0] == "seafood":
                 count['seafood'] = row[1]
-            if row[0] == "game":
-                count['game'] = row[1]
             if row[0] == "veg":
                 count['veg'] = row[1]
         
