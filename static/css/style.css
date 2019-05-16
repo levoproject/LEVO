@@ -225,6 +225,11 @@ h2 {
     font-family: 'Maven Pro', sans-serif;
 }
 
+#submit_again{
+    position: absolute;
+    margin-top: 450px;
+}
+
 .button:hover {
     text-decoration: underline;
 }
@@ -252,7 +257,7 @@ a:visited {
 }
 
 #progress_status {
-    width: 30%;
+    max-width: 300px;
     background-color: white;
     margin: auto;
     margin-bottom: 30px;
