@@ -2,6 +2,7 @@
 html{
     background-color: #9ECCA4;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -61,7 +62,7 @@ body {
     background-color: #ffffff;
     display: flex;
     align-items: center;
-    border-bottom: 3px solid black;
+    box-shadow: 0px 1px 3px 0px #000000;
 }
 
 #nav_pointer a{
@@ -216,6 +217,7 @@ form {
     width: 40%;
     border-radius: 1rem;
     padding: 3%;
+    font-size: 20px;
     border: none;
     cursor: pointer;
     margin: 5px;
@@ -295,6 +297,7 @@ a:visited {
 
 .swiper-side:hover .imgBox img{
     opacity: 0.3;
+    background-color: white;
   }
   
   .swiper-slide:hover .details {
@@ -335,6 +338,9 @@ a:visited {
 }
 
 .star {
+    position: absolute;
+    top: 0;
+    left: 0;
     visibility: hidden;
     font-size: 60px;
     cursor: pointer;
@@ -372,7 +378,7 @@ a:visited {
     padding-top: 40px;
 }
 
-label { 
+label {
     font-size: 12px;
 }
 
@@ -381,4 +387,8 @@ label {
     background-color: #9ECCA4;
     border-radius: 10px;
     padding: 5px;
+}
+
+.imgBox, .saved_img_box {
+    position: relative;
 }
