@@ -72,24 +72,28 @@ def register(user):
         # Tests if the user already exists.
         if user_exists(user["username"]):
             return "user exists"
-        
+        elif email_exists(user["username"]):
+            return "username exists as email"
+
         # Tests if the user's email already exists.
         if email_exists(user["email"]):
             return "email exists"
+        if user_exists(user["email"]):
+            return "email exists as username"
 
         # Self explanatory validations for username and password.
         if len(user["username"]) < 4:
-            return "username too short" 
+            return "username too short"
         elif len(user["username"]) > 25:
             return "username too long"
         elif len(user["pass"]) < 7:
             return "password too short"
         elif len(user["pass"]) > 25:
             return "password too long"
-        
+
         # Encrypts the password.
         cyphered_pass = f.encrypt(bytes(user["pass"],encoding='utf8'))
-        
+
         # Inserts the username and cyphered password into the database and commits the changes.
         cursor.execute("INSERT INTO users (email, username, pass) VALUES (%s,%s,%s)", (user["email"], user["username"],cyphered_pass))
         db_update_changes()

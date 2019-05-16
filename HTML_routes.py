@@ -88,15 +88,18 @@ def my_recipes():
 @route('/login/')
 def login_page():
     '''
-    Returns login.html with mostly empty placeholders. placeholder_form 1 represents the login form while placeholder_form 2 represents the register_form.
+    Returns login.html with placeholders set to default.
     '''
     global current_user
     current_user = ""
-    login = reset_login_placeholders()
-    return template("login", login=login)
+    return template("login", login=reset_login_placeholders())
 
 
 def reset_login_placeholders():
+    '''
+    Sets all login placeholder to its default. Returns dict.
+    form 1 represents the login form, form 2 represents the register form and form 3 represents the forgot password form.
+    '''
     login = {}
     login["form"] = "1"
     login["error_msg_login"] = ""
@@ -182,8 +185,11 @@ def register_form():
     if result == "not connected":
         return connection_error_db()
 
-    elif result == "user exists":
+    elif result == "user exists" or result == "username exists as email":
         return return_error_reg("This username is already taken!", user)
+
+    elif result == "email exists" or result == "email exists as username":
+        return return_error_reg("This email is already taken!", user)
 
     elif result == "username too short":
         return return_error_reg("Your username must have at least 4 characters!", user)
