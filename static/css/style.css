@@ -389,6 +389,6 @@ label {
     padding: 5px;
 }
 
-.imgBox {
+.imgBox, .saved_img_box {
     position: relative;
 }
