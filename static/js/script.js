@@ -11,6 +11,8 @@ $(document).ready(function() {
         $('.swiper-container').hide();
     } else {
         $('.form_1').hide();
+        $('form').removeClass("form");
+        $('#questions').removeAttr('id');
         swiper.slideTo($('#center_slide').index(),0,false);
         var element = document.getElementById("progress_bar");
         var width = 0;
