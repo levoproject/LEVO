@@ -49,6 +49,9 @@
     <div id="nav_pointer">
         <span id="open_nav" style="font-size:45px;cursor:pointer" onclick="openNav()">&#9776;</span>
         <a href="/index/">LEVO</a>
+        <a href="/login/">
+            <img alt="profile_icon" id="profile_icon" src="../static/img/profile_icon.png" width="60" height="60">
+        </a>
     </div>
 
     <div id="progress_status">
@@ -57,7 +60,7 @@
 
     <main>
         <div id="questions">
-            <form action="/generate/" method="POST">
+            <form action="/generate/" method="POST" class="form">
                 <h2 id="h2_q1" class="form_1">What do you crave?</h2>
 
                 <div id="questions_1" class="form_1">
@@ -184,10 +187,12 @@
                     <button type="button" class="button form_1" id="previous">Previous question!</button>
                     <button type="button" class="button form_1" id="next">Next question!</button>
                 </div>
+
                 <div id="recipe_generator">
                     <button type="submit" class="button form_1" id="submit">Give me recipes, please!</button>
                     <button type="submit" class="button" id="submit_again">Give me new recipes, please!</button>
                 </div>
+
             </form>
         </div>
 
@@ -227,7 +232,6 @@
                         </a>
                     </div>
                 </div>
-
             </div>
 
             <!-- Add Pagination -->
@@ -237,7 +241,7 @@
             <div class="swiper-button-next swiper-button-white"></div>
         </div>
     </main>
-</div>
+
     <!-- Swiper JS -->
     <script src="../static/js/swiper.min.js"></script>
     <!-- Initialize Swiper -->
