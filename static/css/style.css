@@ -362,16 +362,6 @@ a:visited {
     margin-right: 250px;
 }
 
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-
-.sticky + content{
-    padding-top: 40px;
-}
-
 label { 
     font-size: 12px;
 }
