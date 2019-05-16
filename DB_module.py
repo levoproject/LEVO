@@ -105,10 +105,14 @@ def login(user):
     if db_connect():
         # Tests if the user exists.
         if not user_exists(user["username"]):
-            return "user does not exist"
+            if not email_exists(user["username"]):
+                return "user does not exist"
 
         # Fetches the user's username and password.
         cursor.execute("SELECT * FROM users WHERE username=%s", (user["username"],))
+
+        if cursor.rowcount == 0:
+            cursor.execute("SELECT * FROM users WHERE email=%s", (user["username"],))
 
         for row in cursor:
             # Decrypts password stored in database.
