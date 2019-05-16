@@ -263,24 +263,6 @@
             },
         });
 
-        $(document).keydown(function(e){
-        switch(e.which) {
-            case $.ui.keyCode.LEFT:
-                $(".swiper-button-prev").trigger("click");
-            break;
-
-            case $.ui.keyCode.RIGHT:
-                $(".swiper-button-next").trigger('click');
-            break;
-    
-            default: return; // allow other keys to be handled
-        }
-    
-        // prevent default action (eg. page moving up/down)
-        // but consider accessibility (eg. user may want to use keys to choose a radio button)
-        e.preventDefault();
-        });
-
         function openNav() {
             // Function for open navigation
             document.getElementById("mySidenav").style.width = "250px";

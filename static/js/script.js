@@ -166,5 +166,9 @@ $(document).ready(function() {
             swiper.slideNext();
             //Right arrow pressed
         }   
+        if(e.keyCode == 13) {
+            
+            //Right arrow pressed
+        }   
     });
 });
