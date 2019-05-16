@@ -87,7 +87,6 @@ $(document).ready(function() {
     });
 
     $('#previous').click(function(){
-
         if (i == 2) {
             i = 1
             $('#h2_q1').show(200);
@@ -157,46 +156,25 @@ $(document).ready(function() {
     });
 
     $(":checkbox").on("change", function() {
+        /* Changes the color of the label and checkbox field when checked  */
         var that = this;
         $(this).parent().parent().css("background-color", function() {
             return that.checked ? "#4B8153" : "";
         });
     });
 
-    /*$("input(type='checkbox')").change(function() {
-        if($(this).is(":checked")){
-            $(this).parent().removeClass(".checkbox_item");
-            $(this).parent().addClass("green_background"); 
-        }else{
-            $(this).parent().removeClass("green_background");  
+    document.addEventListener("keydown", function(e){
+        if(e.keyCode == 37) {
+            swiper.slidePrev(); 
+            //Left arrow pressed
         }
-    });*/
-
+        if(e.keyCode == 39) {
+            swiper.slideNext();
+            //Right arrow pressed
+        }   
+        if(e.keyCode == 13) {
+            
+            //Right arrow pressed
+        }   
+    });
 });
-
-/*
-$(document).ready(function(){
-    // Add smooth scrolling to all links
-    $("a").on('click', function(event) {
-    
-        
-        if (this.hash !== "") {
-        
-        event.preventDefault();
-    
-        // Store hash
-        var hash = this.hash;
-    
-        // Using jQuery's animate() method to add smooth page scroll
-        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-        $('html, body').animate({
-            scrollTop: $(hash).offset().top
-        }, 800, function(){
-    
-            // Add hash (#) to URL when done scrolling (default click behavior)
-            window.location.hash = hash;
-        });
-        } // End if
-    });
-    });
-*/

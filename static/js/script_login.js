@@ -47,6 +47,7 @@ $(document).ready(function() {
     });
     
     $('#reg_password').keyup(function() {
+    /* Shows a message if password is more than 25 characters. */
         var pswd = $(this).val();
         if ( pswd.length > 25 ) {
             $('#pass_info').show(); 
@@ -56,6 +57,7 @@ $(document).ready(function() {
     });
 
     $('#reg_username').keyup(function() {
+    /* Shows a message if username is more than 25 characters. */
         var username = $(this).val();
         if ( username.length > 25 ) {
             $('#username_info').show(); 
