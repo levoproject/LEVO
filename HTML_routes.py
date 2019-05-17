@@ -247,7 +247,7 @@ def forgot_pass_form():
     elif result == True:
         return new_password_email(user_email)
     else:
-        return return_error_forgot("Email does not exist", user_email)
+        return return_error_forgot("Email does not exist!", user_email)
 
 
 def return_error_forgot(msg, user_email):
