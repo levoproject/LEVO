@@ -46,7 +46,7 @@ levo_email = "projectlevo4@gmail.com"
 TEMPLATE_PATH.insert(0, 'views')
 
 
-@route('/')
+
 @route('/index/')
 def index_page():
     '''
@@ -63,7 +63,7 @@ def index_page():
 
     return template("index", placeholder_current_user=current_user, placeholder_rid_0="", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_rid_1="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_rid_2="", placeholder_used_ids="", request=request, recipe_saved_0="", recipe_saved_1="", recipe_saved_2="", placeholder_category="", checked_protein=checked_protein, checked_carb=checked_carb)
 
-
+@route('/')
 @route('/home/')
 def home_page():
     return template("home")
