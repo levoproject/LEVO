@@ -13,7 +13,12 @@ $(document).ready(function() {
         $('#register_form').show();
         $('#login_form').hide();
         $('#reg_username').focus();
+    } else if ( $('#current_form').text() == "3" ) {
+    $('#forgot_form').show();
+    $('#login_form').hide();
+    $('#forgot_email').focus();
     }
+
     $('#switch_forms_btn').click(function(){
         $('#register_form').show();
         $('#login_form').hide();
@@ -46,6 +51,24 @@ $(document).ready(function() {
         $('#forgot_email').focus();
     });
     
+    if ($('#error_msg_login').text() == "There is no user with this username!") {
+        $('#log_username').addClass("error_border")
+    } else if ($('#error_msg_login').text() == "The password is incorrect!") {
+        $('#log_password').addClass("error_border")
+    }
+
+    if ($('#error_msg_reg').text() == "This username is already taken!") {
+        $('#reg_username').addClass("error_border")
+    } else if ($('#error_msg_reg').text() == "This email is already taken!") {
+        $('#reg_email').addClass("error_border")
+    } else if ($('#error_msg_reg').text() == "The password is not verified!") {
+        $('#verify_password').addClass("error_border")
+    }
+
+    if ($('#error_msg_forgot').text() == "Email does not exist!") {
+        $('#forgot_email').addClass("error_border")
+    }
+
     $('#reg_password').keyup(function() {
     /* Shows a message if password is more than 25 characters. */
         var pswd = $(this).val();
