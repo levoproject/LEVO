@@ -1,14 +1,18 @@
 $(document).ready(function() {
+    // Initially hides forms and buttons from index page.
     $('#current_user').hide();
     $('#questions_2').hide();
     $('#questions_3').hide();
     $('#h2_q2').hide();
     $('#h2_q3').hide();
     $('#previous').hide();
+
+    // Tests if page loaded has results from clicking "Give me recipes, please". If there are no results to show the result-elements are hidden.
     if ( $('#result_check').text().length == 0 ) {
         $('#submit_again').hide();
         $('#label').hide();
         $('.swiper-container').hide();
+    // If there are generated results the question forms are hidden instead.
     } else {
         $('.form_1').hide();
         $('form').removeClass("form");
