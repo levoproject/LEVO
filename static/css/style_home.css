@@ -6,7 +6,6 @@ body {
 }
 
 #container {
-    margin-top: 0;
     background-image: url("../static/img/background_food.jpg");
     background-size: cover;
     height: 800px;
