@@ -169,8 +169,16 @@ $(document).ready(function() {
             //Right arrow pressed
         }   
         if(e.keyCode == 13) {
-            
-            //Right arrow pressed
+            $(".text-tag").trigger('click');
+            //
         }   
     });
+
+    $(document).keypress(function(e) {
+        if (e.which == 13) {
+            alert('Enter key pressed');
+            $('.text-tag').trigger('click');
+        }
+    });
+
 });
