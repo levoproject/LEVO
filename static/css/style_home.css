@@ -1,23 +1,16 @@
 body {
     margin: 0;
-    min-height: 100%;
-    background-image: url("../static/img/background_food.jpg");   
+    min-height: 100%;   
 }
 
 #container {
     background-image: url("../static/img/background_food.jpg");
     background-size: cover;
-    height: 50%;
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
     background-attachment:fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background: url({{ url_for ('static', filename = '/static/img.png') }});
-}
-
-#container {
-    background: url("/static/img/background_food.jpg");
 }
