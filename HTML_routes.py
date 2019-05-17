@@ -304,7 +304,11 @@ def new_password_email(user_email):
 def generate_password():
     password = ""
     for i in range(0,12):
-        password += choice(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'])
+        symbol = choice(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'])
+        if symbol.isalpha():
+            if choice([True, False]):
+                symbol = symbol.upper()
+        password += symbol
     return password
 
 

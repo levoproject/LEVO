@@ -70,15 +70,17 @@ def register(user):
     '''
     if db_connect():
         # Tests if the user already exists.
-        if user_exists(user["username"]):
+        username = user["username"].lower()
+        if user_exists(username):
             return "user exists"
-        elif email_exists(user["username"]):
+        elif email_exists(username):
             return "username exists as email"
 
         # Tests if the user's email already exists.
-        if email_exists(user["email"]):
+        user_email = user["email"].lower()
+        if email_exists(user_email):
             return "email exists"
-        if user_exists(user["email"]):
+        if user_exists(user_email):
             return "email exists as username"
 
         # Self explanatory validations for username and password.
@@ -95,7 +97,7 @@ def register(user):
         cyphered_pass = f.encrypt(bytes(user["pass"],encoding='utf8'))
 
         # Inserts the username and cyphered password into the database and commits the changes.
-        cursor.execute("INSERT INTO users (email, username, pass) VALUES (%s,%s,%s)", (user["email"], user["username"],cyphered_pass))
+        cursor.execute("INSERT INTO users (email, username, pass) VALUES (%s,%s,%s)", (user_email, user["username"],cyphered_pass))
         db_update_changes()
         return "done"
     else:
