@@ -34,13 +34,14 @@
 
 .flex-container{
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     overflow: hidden;
 }
 
 .flex-content{
-    border-radius: 20px;
-    margin: 30px;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 20px;
     overflow: hidden;
 }
 
@@ -53,6 +54,8 @@
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   text-align: center;
+  border-radius: 10px;
+  font-size: 30px;
 }
 
 .flex-content:hover .img{
@@ -73,7 +76,8 @@ h2{
   font-size: 16px;
 }
 
-.flex-content > img {
-    width: 100%;
-    height:100%;
+img {
+    width: 90%;
+    border-radius: 20px;
+    z-index: -1;
 }
