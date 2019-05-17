@@ -24,6 +24,10 @@ body {
 
 
 #background_overlay {
+<<<<<<< HEAD
     background-color: rgba(0,0,0,0.4);
+=======
+    background-color: rgba(0,0,0,0.3);
+>>>>>>> 240f1a2568fc8d8513e7c7ab2f4eb2d1668628b7
     height: 754px;
 }
