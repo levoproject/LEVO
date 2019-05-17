@@ -8,7 +8,7 @@ body {
 #container {
     background-image: url("../static/img/background_food.jpg");
     background-size: 100% 100%;
-    height: 800px;
+    height: 754px;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment:fixed;
@@ -21,7 +21,9 @@ body {
     margin-top: 0;
 }
 
+
+
 #background_overlay {
     background-color: rgba(0,0,0,0.3);
-    height: 800px;
+    height: 754px;
 }
