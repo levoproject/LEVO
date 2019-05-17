@@ -176,9 +176,13 @@ def register_form():
     global current_user
     user = {}
     # Requests the username and password inputs from the register form.
+    user["email"] = request.forms.get('reg_email')
     user["username"] = request.forms.get('reg_username')
     user["pass"] = request.forms.get('reg_password')
-    user["email"] = request.forms.get('reg_email')
+    user["verify_pass"] = request.forms.get('verify_password')
+
+    if user["pass"] != user["verify_pass"]:
+        return return_error_reg("The password is not verified!", user)
 
     if db_module_exists:
         # Calls register function in DB_module to validate the username and password.
@@ -219,6 +223,7 @@ def return_error_reg(msg, user):
     login['form'] = "2"
     login['error_msg_reg'] = msg
     login['username_reg'] = user["username"]
+    login['email_reg'] = user["email"]
 
     return template("login", login=login)
 
@@ -304,7 +309,11 @@ def new_password_email(user_email):
 def generate_password():
     password = ""
     for i in range(0,12):
-        password += choice(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'])
+        symbol = choice(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'])
+        if symbol.isalpha():
+            if choice([True, False]):
+                symbol = symbol.upper()
+        password += symbol
     return password
 
 

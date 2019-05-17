@@ -46,6 +46,12 @@ $(document).ready(function() {
         $('#forgot_email').focus();
     });
     
+    if ($('#error_msg_login').text() == "There is no user with this username!") {
+        $('#log_username').addClass("error_border")
+    } else if ($('#error_msg_login').text() == "The password is incorrect!") {
+        $('#log_password').addClass("error_border")
+    }
+
     $('#reg_password').keyup(function() {
     /* Shows a message if password is more than 25 characters. */
         var pswd = $(this).val();
