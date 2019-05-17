@@ -89,3 +89,7 @@ main {
     box-shadow:0 1px 3px #ccc;
     border:1px solid #ddd;
 } 
+
+.error_border {
+    border: 1px solid red !important;
+}
