@@ -156,7 +156,7 @@ def login_form():
     elif result == "password correct":
         current_user = user["username"]
 
-        return redirect('/')
+        return redirect('/index/')
 
 
 def return_error_login(msg, user):
@@ -176,13 +176,9 @@ def register_form():
     global current_user
     user = {}
     # Requests the username and password inputs from the register form.
-    user["email"] = request.forms.get('reg_email')
     user["username"] = request.forms.get('reg_username')
     user["pass"] = request.forms.get('reg_password')
-    user["verify_pass"] = request.forms.get('verify_password')
-
-    if user["pass"] != user["verify_pass"]:
-        return return_error_reg("The password is not verified!", user)
+    user["email"] = request.forms.get('reg_email')
 
     if db_module_exists:
         # Calls register function in DB_module to validate the username and password.
@@ -223,7 +219,6 @@ def return_error_reg(msg, user):
     login['form'] = "2"
     login['error_msg_reg'] = msg
     login['username_reg'] = user["username"]
-    login['email_reg'] = user["email"]
 
     return template("login", login=login)
 
@@ -247,7 +242,7 @@ def forgot_pass_form():
     elif result == True:
         return new_password_email(user_email)
     else:
-        return return_error_forgot("Email does not exist!", user_email)
+        return return_error_forgot("Email does not exist", user_email)
 
 
 def return_error_forgot(msg, user_email):
