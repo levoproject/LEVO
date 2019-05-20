@@ -404,15 +404,14 @@ label {
     position: relative;
 }
 
-<<<<<<< HEAD
+#username{
+    color: black;
+    font-size: 28px;
+}
+
 @media screen and (max-width: 1024px) {
     #questions {
         margin-left: 1%;
         margin-right: 1%;
     }
-=======
-#username{
-    color: black;
-    font-size: 28px;
->>>>>>> f8e2cd57a8c0e0a5e6200a774bb6cd203354b2d3
 }
