@@ -1,6 +1,7 @@
 @charset "utf-8";
 html{
     background-color: #9ECCA4;
+    height: 100%;
 }
 
 body {
@@ -16,6 +17,7 @@ body {
     text-transform: none;
     font-family: Helvetica, Arial, sans-serif;
     transition: background-color .5s;
+    min-height: 100%;
 }
 
 .sidenav {
