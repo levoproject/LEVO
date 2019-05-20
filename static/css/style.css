@@ -402,3 +402,10 @@ label {
 .imgBox, .saved_img_box {
     position: relative;
 }
+
+@media screen and (max-width: 1024px) {
+    #questions {
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+}

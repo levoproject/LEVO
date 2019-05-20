@@ -30,6 +30,7 @@ main {
     margin-top: 0;
     color: black;
     text-shadow: none;
+    margin-bottom: 5px;
 
 }
 
@@ -92,4 +93,35 @@ main {
 
 .error_border {
     border: 1px solid red !important;
+}
+
+@media screen and (max-width: 950px) {
+    #login_form {
+        width: 50%;
+    }
+    #forgot_form {
+        width: 60%; 
+    }
+    #forgot_email {
+        font-size: 20px;
+        width: 70%;
+    }
+    #create_account_btn {
+        margin-top: 10px; 
+        font-size: 20px;
+    }
+    .switch_forms_btn_back {
+        margin-top:5%;
+        margin-bottom: 10px;
+    }
+    .forms > h2 {
+        margin-top: 20px;
+    }
+
+    #register_form {
+        width: 50%; 
+    }
+    label {
+        font-size: 20px;
+    }
 }
