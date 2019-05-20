@@ -25,6 +25,9 @@ $(document).ready(function() {
 
     if ( $('#error_msg').text().length == 0 ) {
         $('#error_msg').hide();
+    } else { /* DOES NOT WORK, FIX THIS */
+        $('#inner_profile').show();
+        $('#email').focus();
     }
 
     $(".star").change(function() {

@@ -442,6 +442,7 @@ def save_settings():
     '''
 
     '''
+    user = {}
     user["email"] = request.forms.get('email')
     user["username"] = current_user
     user["pass"] = request.forms.get('pass')
