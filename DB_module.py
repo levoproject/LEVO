@@ -148,10 +148,32 @@ def update_password(user_email, new_password):
 
 def change_email(user):
     '''
-    # Updates database with new email and commits changes.
+    Updates database with new email and commits changes.
     '''
     if db_connect():    
         cursor.execute("UPDATE users SET email=%s WHERE username=%s", (user["email"], user["username"]))
+        db_update_changes()
+        return "done"
+    else:
+        return "not connected"
+
+
+def change_pass(user):
+    '''
+
+    '''
+    if db_connect():
+
+        if len(user["new_pass"]) < 7:
+            return "password too short"
+        elif len(user["new_pass"]) > 25:
+            return "password too long"
+    
+        # Encrypts the password.
+        cyphered_pass = f.encrypt(bytes(user["new_pass"],encoding='utf8'))
+
+        # Updates the cyphered password into the database and commits the changes.
+        cursor.execute("UPDATE users SET pass=%s WHERE username=%s", (cyphered_pass, user["username"]))
         db_update_changes()
         return "done"
     else:
@@ -288,5 +310,17 @@ def check_saved_recipes(username, recipes):
                 recipe_saved.append("")
 
         return recipe_saved
+    else:
+        return "not connected"
+
+
+def get_email(username):
+    '''
+    Returns email from "users" table based on username.
+    '''
+    if db_connect():
+        cursor.execute("SELECT email FROM users WHERE username=%s", (username,))
+        for row in cursor:
+            return row[0]
     else:
         return "not connected"
