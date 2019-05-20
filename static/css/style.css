@@ -75,6 +75,7 @@ body {
 
 #profile_icon{
     float: right;
+    margin-left: 950px;
 }
 
 #nav_pointer a:hover{
@@ -401,4 +402,9 @@ label {
 
 .imgBox, .saved_img_box {
     position: relative;
+}
+
+#username{
+    color: black;
+    font-size: 28px;
 }

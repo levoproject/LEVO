@@ -32,3 +32,8 @@ main{
 .sticky + content{
     padding-top: 40px;
 }
+
+#username{
+    color: black;
+    font-size: 28px;
+}
