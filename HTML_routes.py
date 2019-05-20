@@ -22,7 +22,7 @@ except:
 
 try:
     #   Module that manages the database.
-    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category, email_exists, update_password, change_email
+    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category, email_exists, update_password, change_email, change_pass, get_email
     db_module_exists = True
 except:
     db_module_exists = False
@@ -90,7 +90,7 @@ def my_recipes():
     # Counts the number of recipes stored by the user and groups them by category (protein).
     category_count = count_category(current_user)
 
-    return template("my_recipes", placeholder_current_user=current_user, saved_recipes=saved_recipes, count=category_count, request=request)
+    return template("my_recipes", placeholder_current_user=current_user, placeholder_email=get_email(current_user), placeholder_error_msg="", saved_recipes=saved_recipes, count=category_count, request=request)
 
 
 @route('/login/')
@@ -179,10 +179,14 @@ def register_form():
     global current_user
     user = {}
     # Requests the username and password inputs from the register form.
+    user["email"] = request.forms.get('reg_email')
     user["username"] = request.forms.get('reg_username')
     user["pass"] = request.forms.get('reg_password')
-    user["email"] = request.forms.get('reg_email')
+    user["verify_pass"] = request.forms.get('verify_password')
 
+    if user["pass"] != user["verify_pass"]:
+        return return_error_reg("The password is not verified!", user)
+    
     if db_module_exists:
         # Calls register function in DB_module to validate the username and password.
         result = register(user)
@@ -222,6 +226,7 @@ def return_error_reg(msg, user):
     login['form'] = "2"
     login['error_msg_reg'] = msg
     login['username_reg'] = user["username"]
+    login['email_reg'] = user["email"]
 
     return template("login", login=login)
 
@@ -245,7 +250,7 @@ def forgot_pass_form():
     elif result == True:
         return new_password_email(user_email)
     else:
-        return return_error_forgot("Email does not exist", user_email)
+        return return_error_forgot("Email does not exist!", user_email)
 
 
 def return_error_forgot(msg, user_email):
@@ -260,7 +265,7 @@ def return_error_forgot(msg, user_email):
 
 def new_password_email(user_email):
     '''
-    
+
     '''
     new_password = generate_password()
 
@@ -439,10 +444,38 @@ def save_settings():
     '''
     user["email"] = request.forms.get('email')
     user["username"] = current_user
+    user["pass"] = request.forms.get('pass')
+    user["new_pass"] = request.forms.get('new_pass')
+    user["verify_pass"] = request.forms.get('verify_pass')
 
     change_email(user)
+
+    if user["pass"] == "" and user["new_pass"] == "" and user["verify_pass"] == "":
+        return redirect('/my_recipes/')
+    else:
+        if user["new_pass"] != user["verify_pass"]:
+            return return_error_settings("The password is not verified!", user)
+        if login(user) == "password incorrect":
+            return return_error_settings("The password is not correct!", user)
+        result = change_pass(user)
+        if result == "password too short":
+            return return_error_settings("The new password is too short!", user)
+        elif result == "password too long":
+            return return_error_settings("The new password is too long!", user)
+        elif result == "done":
+            return redirect('/my_recipes/')
+
+
+def return_error_settings(msg, user):
+    '''
+
+    '''
+    saved_recipes = get_saved_recipes(current_user)
     
-    return redirect('/login/')
+    # Counts the number of recipes stored by the user and groups them by category (protein).
+    category_count = count_category(current_user)
+
+    return template("my_recipes", placeholder_current_user=current_user, placeholder_email=user["email"], placeholder_error_msg=msg, saved_recipes=saved_recipes, count=category_count, request=request)
 
 
 @error(404)

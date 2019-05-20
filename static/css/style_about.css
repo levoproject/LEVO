@@ -1,6 +1,11 @@
+html{
+    height: 100%;
+}
+
 body {
     color: white;
     font-family: Helvetica, Arial, sans-serif;
+    min-height: 100%;
 }
 
 h1{
