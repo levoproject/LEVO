@@ -25,6 +25,7 @@
     margin-right: 100px;
     font-family: 'Sriracha', cursive;
     box-sizing: border-box;
+   
 }
 
 .left-side{
@@ -87,7 +88,6 @@
 #username{
     margin-left: 750px;
     font-size: 30px;
-    padding-bottom: 50px;
 }
 /*h2{
   background-color: black;
