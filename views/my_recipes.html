@@ -39,16 +39,10 @@
 
         <main>
 
-            <div id="profile">
-                <div class="outer">
-                    <h1 data-count="1">{{placeholder_current_user}}</h1>
-                    <div class="inner">
-
-                    </div>
-                </div>
-            </div>
+            <h1 id="user_header">{{placeholder_current_user}}</h1>
 
             <div id="categories">
+                <h2 id="recipe_header">My recipes</h2>
                 <div class="outer">
                     <h1 data-count="{{count['meat']}}" class="left-side">Meat ({{count['meat']}})</h1>
                     <div class="flex-container">
@@ -163,6 +157,26 @@
                     </div>
                 </div>
             </div>
+
+            <div id="profile">
+                    <div class="outer">
+                        <h1 data-count="1" id="profile_settings">Settings</h1>
+                        <div class="inner">
+                            <form action="/save_settings/" method="POST" class="forms">
+                                <h2>Settings</h2>
+                                <label for="email">Email</label><br>
+                                <input type="text" name="email" id="email"><br>
+                                <label for="pass">Current password</label><br>
+                                <input type="text" name="pass" id="pass"><br>
+                                <label for="new_pass">New password</label><br>
+                                <input type="text" name="new_pass" id="new_pass"><br>
+                                <label for="verify_pass">Verify password</label><br>
+                                <input type="text" name="verify_pass" id="verify_pass"><br>
+                                <button type="submit" id="update_settings"></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
         </main>
     <script>
         function openNav() {
