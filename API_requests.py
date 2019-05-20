@@ -62,12 +62,6 @@ def get_rnd_carb(chosen_carb):
     Gets random ingredient based on the chosen carb.
     '''
 
-    # If the user has checked the box "I don't have any preferences!", a random carb is chosen. Else a random carb of every box checked is chosen.
-    if "c_dont_know" in chosen_carb or chosen_carb == []:
-        chosen_carb = choice(["pasta", "rice", "potato", "bread", "vegetables"])
-    else:
-        chosen_carb = choice(chosen_carb)
-
     # Returns a random ingredient based on the chosen carb.
     if chosen_carb == "pasta":
         return choice(pasta)
@@ -118,10 +112,14 @@ def generate_link(chosen_protein, chosen_carb, used_ids):
         ingredients = []
         rnd_protein = get_rnd_protein(chosen_protein)
         ingredients.append(rnd_protein["ingredient"])
-        ingredients.append(get_rnd_carb(chosen_carb))
-
-        # Converts the list into string because the API parameters need to be string not list.
-        ingredients_str = ingredients[0] + "," + ingredients[1]
+        # If the user has checked the box "I don't have any preferences!", no carb is chosen. Else a random carb of every box checked is chosen.
+        if "c_dont_know" in chosen_carb or chosen_carb == []:
+            # API parameters need to be string not list.
+            ingredients_str = ingredients[0]
+        else:
+            ingredients.append(get_rnd_carb(chosen_carb))
+            # API parameters need to be string not list.
+            ingredients_str = ingredients[0] + "," + ingredients[1]
 
         # Makes a get request with our API-key and the randomized ingredient as parameters.
         parameters = {"key": f2f_api_key, "q": ingredients_str}
