@@ -22,7 +22,7 @@ except:
 
 try:
     #   Module that manages the database.
-    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category, email_exists, update_password
+    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category, email_exists, update_password, change_email
     db_module_exists = True
 except:
     db_module_exists = False
@@ -259,6 +259,9 @@ def return_error_forgot(msg, user_email):
 
 
 def new_password_email(user_email):
+    '''
+    
+    '''
     new_password = generate_password()
 
     result = update_password(user_email, new_password)
@@ -434,8 +437,12 @@ def save_settings():
     '''
 
     '''
-    request.forms.get('email')
+    user["email"] = request.forms.get('email')
+    user["username"] = current_user
 
+    change_email(user)
+    
+    return redirect('/login/')
 
 
 @error(404)
