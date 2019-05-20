@@ -82,6 +82,9 @@ def my_recipes():
     '''
     Returns my_recipes.html with the user's saved recipes.
     '''
+    if current_user == "":
+        return redirect('/login/')
+
     saved_recipes = get_saved_recipes(current_user)
     
     # Counts the number of recipes stored by the user and groups them by category (protein).
@@ -424,6 +427,15 @@ def remove_star_recipe():
 
     # Calls the remove_recipe function in DB_module.    
     remove_recipe(current_user, recipe)
+
+
+@route('/save_settings/', method="POST")
+def save_settings():
+    '''
+
+    '''
+    request.forms.get('email')
+
 
 
 @error(404)
