@@ -74,7 +74,7 @@ main {
     text-decoration-line: underline;
 }
 
-#error_msg_login, #error_msg_reg {
+#error_msg_login, #error_msg_reg, #error_msg_forgot {
     font-size: 14px;
     color: red;
     margin-top: -30px;

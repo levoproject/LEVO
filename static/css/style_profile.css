@@ -52,6 +52,7 @@ main {
     border-radius: 10px;
     font-family: 'Sriracha', cursive;
     box-sizing: border-box;
+   
 }
 
 .left-side{
@@ -114,7 +115,6 @@ main {
 #username{
     margin-left: 750px;
     font-size: 30px;
-    padding-bottom: 50px;
 }
 /*h2{
   background-color: black;
@@ -127,3 +127,9 @@ img {
     border-radius: 20px;
     z-index: -1;
 }*/
+
+#error_msg {
+    font-size: 14px;
+    color: red;
+    margin-top: -30px;
+}
