@@ -132,11 +132,26 @@ def login(user):
 
 
 def update_password(user_email, new_password):
+    '''
+
+    '''
     if db_connect():
         # Encrypts the password.
         cyphered_pass = f.encrypt(bytes(new_password,encoding='utf8'))
         
         cursor.execute("UPDATE users SET pass=%s WHERE email=%s", (cyphered_pass, user_email))
+        db_update_changes()
+        return "done"
+    else:
+        return "not connected"
+
+
+def change_email(user):
+    '''
+    # Updates database with new email and commits changes.
+    '''
+    if db_connect():    
+        cursor.execute("UPDATE users SET email=%s WHERE username=%s", (user["email"], user["username"]))
         db_update_changes()
         return "done"
     else:
