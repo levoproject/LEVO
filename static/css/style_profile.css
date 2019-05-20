@@ -77,8 +77,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     width: 20%;
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-left: 22px;
+    margin-right: 22px;
     box-sizing: border-box;
 }
 
