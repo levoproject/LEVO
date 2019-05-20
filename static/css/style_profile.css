@@ -111,6 +111,11 @@ main {
     opacity: 1;
 }
 
+#username{
+    margin-left: 750px;
+    font-size: 30px;
+    padding-bottom: 50px;
+}
 /*h2{
   background-color: black;
   color: white;
