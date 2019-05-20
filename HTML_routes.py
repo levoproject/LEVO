@@ -46,7 +46,7 @@ levo_email = "projectlevo4@gmail.com"
 TEMPLATE_PATH.insert(0, 'views')
 
 
-@route('/')
+
 @route('/index/')
 def index_page():
     '''
@@ -63,7 +63,7 @@ def index_page():
 
     return template("index", placeholder_current_user=current_user, placeholder_rid_0="", placeholder_link_0="", placeholder_title_0="", placeholder_img_0="", placeholder_rid_1="", placeholder_link_1="", placeholder_title_1="", placeholder_img_1="", placeholder_link_2="", placeholder_title_2="", placeholder_img_2="", placeholder_rid_2="", placeholder_used_ids="", request=request, recipe_saved_0="", recipe_saved_1="", recipe_saved_2="", placeholder_category="", checked_protein=checked_protein, checked_carb=checked_carb)
 
-
+@route('/')
 @route('/home/')
 def home_page():
     return template("home")
@@ -156,7 +156,7 @@ def login_form():
     elif result == "password correct":
         current_user = user["username"]
 
-        return redirect('/')
+        return redirect('/index/')
 
 
 def return_error_login(msg, user):
@@ -176,13 +176,9 @@ def register_form():
     global current_user
     user = {}
     # Requests the username and password inputs from the register form.
-    user["email"] = request.forms.get('reg_email')
     user["username"] = request.forms.get('reg_username')
     user["pass"] = request.forms.get('reg_password')
-    user["verify_pass"] = request.forms.get('verify_password')
-
-    if user["pass"] != user["verify_pass"]:
-        return return_error_reg("The password is not verified!", user)
+    user["email"] = request.forms.get('reg_email')
 
     if db_module_exists:
         # Calls register function in DB_module to validate the username and password.
@@ -223,7 +219,6 @@ def return_error_reg(msg, user):
     login['form'] = "2"
     login['error_msg_reg'] = msg
     login['username_reg'] = user["username"]
-    login['email_reg'] = user["email"]
 
     return template("login", login=login)
 
