@@ -75,7 +75,7 @@ body {
 
 #profile_icon{
     float: right;
-    margin-left: 1020px;
+    position: relative;
 }
 
 #nav_pointer a:hover{
