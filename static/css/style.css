@@ -65,11 +65,7 @@ body {
     align-items: center;
     box-shadow: 0px 1px 3px 0px #000000;
     z-index: 1;
-<<<<<<< HEAD
-    height: 10%;
-=======
     height: 70px;
->>>>>>> 76ac415330c8cc96106de9f1a1bbe0d1d39b5d79
 }
 
 #nav_pointer a{
