@@ -23,6 +23,10 @@ $(document).ready(function() {
         }
     });
 
+    if ( $('#error_msg').text().length == 0 ) {
+        $('#error_msg').hide();
+    }
+
     $(".star").change(function() {
         if(this.checked) {
             $.getJSON($SCRIPT_ROOT + 'star_recipe', {
