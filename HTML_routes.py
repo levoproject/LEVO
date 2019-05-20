@@ -22,7 +22,7 @@ except:
 
 try:
     #   Module that manages the database.
-    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category, email_exists, update_password
+    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category, email_exists, update_password, change_email
     db_module_exists = True
 except:
     db_module_exists = False
@@ -82,6 +82,9 @@ def my_recipes():
     '''
     Returns my_recipes.html with the user's saved recipes.
     '''
+    if current_user == "":
+        return redirect('/login/')
+
     saved_recipes = get_saved_recipes(current_user)
     
     # Counts the number of recipes stored by the user and groups them by category (protein).
@@ -256,6 +259,9 @@ def return_error_forgot(msg, user_email):
 
 
 def new_password_email(user_email):
+    '''
+    
+    '''
     new_password = generate_password()
 
     result = update_password(user_email, new_password)
@@ -424,6 +430,19 @@ def remove_star_recipe():
 
     # Calls the remove_recipe function in DB_module.    
     remove_recipe(current_user, recipe)
+
+
+@route('/save_settings/', method="POST")
+def save_settings():
+    '''
+
+    '''
+    user["email"] = request.forms.get('email')
+    user["username"] = current_user
+
+    change_email(user)
+    
+    return redirect('/login/')
 
 
 @error(404)

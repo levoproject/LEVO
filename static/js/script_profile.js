@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     $("h2").each(function() {
         if ( $(this).text().length >= 40 ) {
             $(this).text($(this).text().slice(0,40) + "...");

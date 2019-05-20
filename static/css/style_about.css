@@ -33,6 +33,11 @@ main{
     padding-top: 40px;
 }
 
+#username{
+    color: black;
+    font-size: 28px;
+}
+
 @media screen and (max-width: 900px) {
     main {
         margin-left: 1%;
