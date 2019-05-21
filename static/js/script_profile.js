@@ -15,7 +15,7 @@ $(document).ready(function() {
         }
     });
 
-    $('#profile > .outer > h1').click(function() {
+    $('#settings > .outer > h1').click(function() {
         $('html, body').animate({scrollTop:$(document).height()}, 'slow');
     });
 
@@ -32,6 +32,7 @@ $(document).ready(function() {
     } else {
         $('#inner_profile').show();
         $('#email').focus();
+        $('html, body').animate({scrollTop:$(document).height()}, 'slow');
     }
 
     $(".star").change(function() {
