@@ -228,5 +228,6 @@ img {
     margin-left: 350px;
 }
 
-.profile-buttons{
+.profile-buttons > button, .profile-buttons > input {
+    cursor: pointer;
 }
