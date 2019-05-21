@@ -328,13 +328,13 @@ def get_email(username):
         return "not connected"
 
 
-def save_profile_img(new_profile_img, username):
+def save_profile_img(username, filepath):
     '''
     
     '''
     if db_connect():
+        new_profile_img = open('./static/img/new_profile_img.jpg','rb').read()
         cursor.execute("UPDATE users SET profile_img=%s WHERE username=%s", (psycopg2.Binary(new_profile_img), username))
-
         db_update_changes()
         return "done"
     else:
