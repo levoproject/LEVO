@@ -96,7 +96,7 @@ def register(user):
         # Encrypts the password.
         cyphered_pass = f.encrypt(bytes(user["pass"],encoding='utf8'))
 
-        initial_profile_img = open('/static/img/profile_icon.png','rb').read()
+        initial_profile_img = open('./static/img/profile_icon.png','rb').read()
 
         # Inserts the username and cyphered password into the database and commits the changes.
         cursor.execute("INSERT INTO users (email, username, pass, profile_img) VALUES (%s,%s,%s,%s)", (user_email, user["username"], cyphered_pass, psycopg2.Binary(initial_profile_img)))
