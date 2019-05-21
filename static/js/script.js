@@ -32,10 +32,14 @@ $(document).ready(function() {
     };
     if ( $('#current_user').text().length != 0 ) {
         $('#login').hide();
+        $('#profile_icon_online').show();
+        $('#profile_icon').hide();
     } else {
         $('#profile').hide();
         $('#logout').hide();
         $('.star').hide();
+        $('#profile_icon_online').hide();
+        $('#profile_icon').show();
     }
     var i = 1
     $('#next').click(function(){
