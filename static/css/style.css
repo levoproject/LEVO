@@ -4,6 +4,7 @@ html{
     height: 100%;
 }
 
+
 body {
     margin: 0;
     padding: 0;
@@ -15,7 +16,7 @@ body {
     text-decoration: none;
     font-style: normal;
     text-transform: none;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Yantramanav', sans-serif;
     transition: background-color .5s;
     min-height: 100%;
 }
@@ -112,7 +113,8 @@ h2 {
     text-align: center;
     color: black;
     font-size: 35px;
-    font-family: 'Maven Pro', sans-serif;
+    font-family: 'Yantramanav', sans-serif;
+    font-weight: bold; 
 }
 
 #questions {
@@ -216,21 +218,21 @@ h2 {
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 60%;
 }
 
 .button {
     font-weight: 600;
     color: #fff;
     background-color: rgb(85, 177, 85);
-    width: 40%;
+    width: 50%;
     border-radius: 1rem;
     padding: 3%;
     font-size: 20px;
     border: none;
     cursor: pointer;
     margin: 5px;
-    font-family: 'Maven Pro', sans-serif;
+    font-family: 'Yantramanav', sans-serif;
 }
 
 #submit_again{
@@ -410,6 +412,10 @@ label {
 #username{
     color: black;
     font-size: 28px;
+}
+
+.form_1 {
+    font-weight: bold;
 }
 
 @media screen and (max-width: 1024px) {
