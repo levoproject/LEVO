@@ -37,8 +37,9 @@ body {
     margin-left: 30px;
     margin-right: 40px;
     margin-top: 30px;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    font-family: 'Yantramanav', sans-serif;
     box-sizing: border-box;
 }
 
