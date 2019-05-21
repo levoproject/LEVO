@@ -22,7 +22,7 @@ except:
 
 try:
     #   Module that manages the database.
-    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category, email_exists, update_password, change_email, change_pass, get_email, save_profile_img
+    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category, email_exists, update_password, change_email, change_pass, get_email, save_profile_img, get_profile_img
     db_module_exists = True
 except:
     db_module_exists = False
@@ -89,6 +89,8 @@ def my_recipes():
     
     # Counts the number of recipes stored by the user and groups them by category (protein).
     category_count = count_category(current_user)
+
+    get_profile_img(current_user)
 
     return template("my_recipes", placeholder_current_user=current_user, placeholder_email=get_email(current_user), placeholder_error_msg="", saved_recipes=saved_recipes, count=category_count, request=request)
 
@@ -482,7 +484,7 @@ def return_error_settings(msg, user):
 @route('/update_profile_img/', method="POST")
 def update_profile_img():
     '''
-    
+
     '''
     new_profile_img = request.forms.get('profile_img')
     result = save_profile_img(new_profile_img, current_user)
