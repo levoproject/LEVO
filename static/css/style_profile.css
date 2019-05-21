@@ -65,9 +65,6 @@ main {
     padding-left: 20px;
 }
 
-#user_header {
-    text-align: center;
-}
 
 #recipe_header {
     text-align: left;
@@ -185,19 +182,51 @@ img {
 }
 
 .upload-button {
-    padding: 4px;
-    border: 1px solid black;
+    padding: 10px;
+    border: 2px solid white;
     border-radius: 5px;
-    display: block;
     float: left;
+    display:block;
+    background-color: #20bf6b;
+    color: white;
+    font-size: 20px;
+
 }
 
 .profile-pic {
     max-width: 200px;
     max-height: 200px;
-    display: block;
+    
+    border-radius: 5px;
+    
 }
 
 .file-upload {
     display: none;
+}
+
+.submit{
+    padding:10px;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-left: 120px;
+    display: block;
+    background-color: #20bf6b;
+    color: white;
+    font-size: 20px;
+}
+
+.title{
+    justify-content: center;
+    font-family: 'Yantramanav', sans-serif;
+    font-size: 50px;
+    display: flex;
+    
+}
+
+.profile-form{
+    margin-left: 350px;
+}
+
+.profile-buttons{
 }
