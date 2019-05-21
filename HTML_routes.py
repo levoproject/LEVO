@@ -22,7 +22,7 @@ except:
 
 try:
     #   Module that manages the database.
-    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category, email_exists, update_password, change_email, change_pass, get_email
+    from DB_module import login, register, get_saved_recipes, save_recipe, check_saved_recipes, remove_recipe, count_category, email_exists, update_password, change_email, change_pass, get_email, save_profile_img
     db_module_exists = True
 except:
     db_module_exists = False
@@ -442,6 +442,7 @@ def save_settings():
     '''
 
     '''
+    user = {}
     user["email"] = request.forms.get('email')
     user["username"] = current_user
     user["pass"] = request.forms.get('pass')
@@ -476,6 +477,20 @@ def return_error_settings(msg, user):
     category_count = count_category(current_user)
 
     return template("my_recipes", placeholder_current_user=current_user, placeholder_email=user["email"], placeholder_error_msg=msg, saved_recipes=saved_recipes, count=category_count, request=request)
+
+
+@route('/update_profile_img/', method="POST")
+def update_profile_img():
+    '''
+    
+    '''
+    new_profile_img = request.forms.get('profile_img')
+    result = save_profile_img(new_profile_img, current_user)
+    
+    if result == "not connected":
+        return connection_error_db()
+    
+    return redirect('/my_recipes/')
 
 
 @error(404)

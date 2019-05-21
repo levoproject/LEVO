@@ -96,8 +96,10 @@ def register(user):
         # Encrypts the password.
         cyphered_pass = f.encrypt(bytes(user["pass"],encoding='utf8'))
 
+        initial_profile_img = open('./static/img/profile_icon.png','rb').read()
+
         # Inserts the username and cyphered password into the database and commits the changes.
-        cursor.execute("INSERT INTO users (email, username, pass) VALUES (%s,%s,%s)", (user_email, user["username"],cyphered_pass))
+        cursor.execute("INSERT INTO users (email, username, pass, profile_img) VALUES (%s,%s,%s,%s)", (user_email, user["username"], cyphered_pass, psycopg2.Binary(initial_profile_img)))
         db_update_changes()
         return "done"
     else:
@@ -322,5 +324,18 @@ def get_email(username):
         cursor.execute("SELECT email FROM users WHERE username=%s", (username,))
         for row in cursor:
             return row[0]
+    else:
+        return "not connected"
+
+
+def save_profile_img(new_profile_img, username):
+    '''
+    
+    '''
+    if db_connect():
+        cursor.execute("UPDATE users SET profile_img=%s WHERE username=%s", (psycopg2.Binary(new_profile_img), username))
+
+        db_update_changes()
+        return "done"
     else:
         return "not connected"

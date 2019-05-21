@@ -23,6 +23,13 @@ $(document).ready(function() {
         }
     });
 
+    if ( $('#error_msg').text().length == 0 ) {
+        $('#error_msg').hide();
+    } else { /* DOES NOT WORK, FIX THIS */
+        $('#inner_profile').show();
+        $('#email').focus();
+    }
+
     $(".star").change(function() {
         if(this.checked) {
             $.getJSON($SCRIPT_ROOT + 'star_recipe', {
@@ -41,6 +48,24 @@ $(document).ready(function() {
             }, function(data) {
                 $('#result').text(data.result); /* Should be removed or changed to a message to the user. */
             });
+        }
+    });
+
+    $('#new_pass').keyup(function() {
+    /* Shows a message if password is more than 25 characters. */
+        var pswd = $(this).val();
+        if ( pswd.length > 25 ) {
+            $('#pass_info').show(); 
+        } else {    
+            $('#pass_info').hide();
+        }
+    });
+
+    $(document).click(function (event) {
+        var clickover = $(event.target);
+        var _opened = $(".navbar-collapse").hasClass("navbar-collapse in");
+        if (_opened === true && !clickover.hasClass("navbar-toggle")) {
+            $("button.navbar-toggle").click();
         }
     });
 

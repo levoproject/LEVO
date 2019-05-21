@@ -6,14 +6,59 @@ main {
 .forms {
     background-color: rgba(255, 255, 255, 0.295);
     color: black;
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 0;
-    width: 40%;
-    text-align: center;
+    width: 60%;
+    text-align: left;
     padding: 2%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
     border-radius: 20px;
+    
+}
+
+.forms input {
+    padding: 2%;
+    width: 80%;
+    border-radius: 2rem;
+    background-clip: content-box;
+    margin-bottom: 7px;
+    margin-top: 7px;
+    background-color: rgba(0, 0, 0, 0);
+    border:1px solid rgba(0, 0, 0, 0.5);
+}
+
+.forms > h2 {
+    margin: auto;
+    font-size: 20px;
+    display: inline-block;
+}
+
+#error_msg {
+    display: none;
+}
+
+#pass_info {
+    font-size: 10px;
+    display: none;
+    position:absolute;
+    padding:7px;
+    background:#fefefe;
+    border-radius:5px;
+    box-shadow:0 1px 3px #ccc;
+    border:1px solid #ddd;
+}
+
+#update_settings {
+    font-weight: 600;
+    color: #fff;
+    background-color: rgb(85, 177, 85);
+    width: 40%;
+    border-radius: 1rem;
+    padding: 3%;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    font-family: 'Maven Pro', sans-serif;
 }
 
 #profile {
@@ -56,12 +101,16 @@ main {
 }
 
 .left-side{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.6);
     margin: 10px;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 20px;
     border-radius: 15px;
+}
+
+.left-side:hover {
+    box-shadow: 0 0 10px;
 }
 
 .flex-container{
@@ -78,8 +127,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     width: 20%;
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-left: 22px;
+    margin-right: 22px;
     box-sizing: border-box;
 }
 
@@ -127,3 +176,10 @@ img {
     border-radius: 20px;
     z-index: -1;
 }*/
+
+#error_msg {
+    font-size: 14px;
+    color: red;
+    margin-top: -30px;
+    display: inline;
+}
