@@ -12,6 +12,8 @@ from email.mime.multipart import MIMEMultipart
 #Imports password for levoproject4@gmail.com from gitignore file.
 from conf import levo_password
 
+import os
+
 
 try:
     #   Module that manages recipes from API.
@@ -219,7 +221,7 @@ def register_form():
 
     elif result == "done":
         current_user = user["username"]
-        return redirect('/')
+        return redirect('/index/')
 
 
 def return_error_reg(msg, user):
@@ -486,8 +488,13 @@ def update_profile_img():
     '''
 
     '''
-    new_profile_img = request.forms.get('profile_img')
-    result = save_profile_img(new_profile_img, current_user)
+    upload = request.files.get('upload')
+    name, ext = os.path.splitext(upload.filename)
+    file_path = "./static/img/new_profile_img.jpg"
+    os.remove("./static/img/new_profile_img.jpg")
+    upload.save(file_path)
+
+    result = save_profile_img(current_user, file_path)
     
     if result == "not connected":
         return connection_error_db()
