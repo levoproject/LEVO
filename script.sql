@@ -6,10 +6,10 @@ REVOKE ALL PRIVILEGES ON DATABASE db_levo FROM PUBLIC;
 \c db_levo;
 
 CREATE TABLE users (
-    email       TEXT,
+    email       TEXT NOT NULL,
     username    VARCHAR(25) PRIMARY KEY,
-    pass        BYTEA,
-    profile_img IMAGE
+    pass        BYTEA NOT NULL,
+    profile_img BYTEA NOT NULL
 );
 
 CREATE TABLE recipes (

@@ -251,6 +251,7 @@
             document.getElementById("mySidenav").style.width = "250px";
             document.getElementById("nav_pointer").style.marginLeft = "250px";
             document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+            $('#mySidenav').addClass('active');
         }
 
         function closeNav() {
@@ -258,7 +259,31 @@
             document.getElementById("mySidenav").style.width = "0";
             document.getElementById("nav_pointer").style.marginLeft = "0";
             document.body.style.backgroundColor = "rgba(0,0,0,0)";
+            $('#mySidenav').removeClass('active');
         }
+
+        /*var $body = $('body');
+        $body.on('click', function(event) {
+            var clickedOutside = $(event.target).closest('.closebtn').length == 0;
+            if (openNav().active()) {
+                $body.closeNav();
+            }
+        })
+        
+        $(document).click(function (event) {
+            var clickover = $(event.target);
+            var _opened = $("#sidenav").openNav().active();
+            if (_opened === true && !clickover.hasClass("closebtn")) {
+                $("#close_nav").click();
+            }
+        });*/
+
+        var $body = $('body');
+        $body.on('click', function(event) {
+            if ($('#mySidenav').hasClass('.active') === True) {
+                closeNav();
+            }
+        });
 
     </script>
 </body>

@@ -51,4 +51,22 @@ $(document).ready(function() {
         }
     });
 
+    $('#new_pass').keyup(function() {
+    /* Shows a message if password is more than 25 characters. */
+        var pswd = $(this).val();
+        if ( pswd.length > 25 ) {
+            $('#pass_info').show(); 
+        } else {    
+            $('#pass_info').hide();
+        }
+    });
+
+    $(document).click(function (event) {
+        var clickover = $(event.target);
+        var _opened = $(".navbar-collapse").hasClass("navbar-collapse in");
+        if (_opened === true && !clickover.hasClass("navbar-toggle")) {
+            $("button.navbar-toggle").click();
+        }
+    });
+
 });
