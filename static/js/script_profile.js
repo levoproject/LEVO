@@ -15,6 +15,10 @@ $(document).ready(function() {
         }
     });
 
+    $('#profile > .outer > h1').click(function() {
+        $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+    });
+
     $('.outer > h1').click(function() {
         if ($(this).next().is(":hidden") && parseInt($(this).attr("data-count")) != 0) {
             $(this).next().show(150);

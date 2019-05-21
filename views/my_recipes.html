@@ -163,28 +163,28 @@
             </div>
 
             <div id="profile">
-                    <div class="outer">
-                        <h1 data-count="1" id="profile_settings">Settings</h1>
-                        <div class="inner" id="inner_profile">
-                            <form action="/save_settings/" method="POST" class="forms">
-                                <h2>Settings</h2><br>
-                                <p id="error_msg">{{placeholder_error_msg}}</p>
-                                <label for="email">Email</label><br>
-                                <input type="text" name="email" id="email" value="{{placeholder_email}}"><br>
-                                <label for="pass">Current password</label><br>
-                                <input type="password" type="password" name="pass" id="pass"><br>
-                                <label for="new_pass">New password</label><br>
-                                <input type="password" name="new_pass" type="password" id="new_pass"><br>
-                                <div id="pass_info" class="reg_info">
-                                    <p>Password must be less than 25 characters...</p>
-                                </div>
-                                <label for="verify_pass">Verify password</label><br>
-                                <input type="text" name="verify_pass" type="password" id="verify_pass"><br>
-                                <button type="submit" id="update_settings">Update settings</button>
-                            </form>
-                        </div>
+                <div class="outer">
+                    <h1 data-count="1" id="profile_settings">Settings</h1>
+                    <div class="inner" id="inner_profile">
+                        <form action="/save_settings/" method="POST" class="forms">
+                            <h2>Settings</h2><br>
+                            <p id="error_msg">{{placeholder_error_msg}}</p>
+                            <label for="email">Email</label><br>
+                            <input type="text" name="email" id="email" value="{{placeholder_email}}"><br>
+                            <label for="pass">Current password</label><br>
+                            <input type="password" type="password" name="pass" id="pass"><br>
+                            <label for="new_pass">New password</label><br>
+                            <input type="password" name="new_pass" type="password" id="new_pass"><br>
+                            <div id="pass_info" class="reg_info">
+                                <p>Password must be less than 25 characters...</p>
+                            </div>
+                            <label for="verify_pass">Verify password</label><br>
+                            <input type="text" name="verify_pass" type="password" id="verify_pass"><br>
+                            <button type="submit" id="update_settings">Update settings</button>
+                        </form>
                     </div>
                 </div>
+            </div>
         </main>
     <script>
         function openNav() {
