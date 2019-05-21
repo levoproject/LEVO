@@ -8,7 +8,8 @@ REVOKE ALL PRIVILEGES ON DATABASE db_levo FROM PUBLIC;
 CREATE TABLE users (
     email       TEXT,
     username    VARCHAR(25) PRIMARY KEY,
-    pass        BYTEA
+    pass        BYTEA,
+    profile_img IMAGE
 );
 
 CREATE TABLE recipes (
