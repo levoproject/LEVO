@@ -34,6 +34,12 @@
         <main>
 
             <h1 id="user_header">{{placeholder_current_user}}</h1>
+            <h1>User's Profile pic</h1>
+            <form action="/update_profile_img/" method="POST" class="profile-form">
+            <input type="file" name="file" class="file-upload"accept="image/*">
+            <button type="button" name="button" class="upload-button">Upload</button>
+            <input type="submit" value="submit">
+            </form>
 
             <div id="categories">
                 <h2 id="recipe_header">My recipes</h2>
@@ -208,6 +214,30 @@
             }
         }
 
+        $(document).ready(function() {
+
+    
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.profile-pic').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+
+    $(".file-upload").on('change', function(){
+        readURL(this);
+    });
+    
+    $(".upload-button").on('click', function() {
+       $(".file-upload").click();
+    });
+});
     </script>
 </body>
 
