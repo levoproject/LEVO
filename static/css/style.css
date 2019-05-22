@@ -155,6 +155,9 @@ h2 {
     width: 40%;
 }
 
+#dont_know {
+    width: 60%;
+}
 
 #label {
     display: block;

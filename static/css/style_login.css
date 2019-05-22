@@ -45,6 +45,12 @@ main {
     border:1px solid rgba(0, 0, 0, 0.5);
 }
 
+label {
+    float: left;
+    margin-left: 25px;
+    font-weight: bold;
+}
+
 .forms input:focus {
     outline: none;
     box-shadow: 0px 0px 10px black;
@@ -77,7 +83,7 @@ main {
 #error_msg_login, #error_msg_reg, #error_msg_forgot {
     font-size: 14px;
     color: red;
-    margin-top: -30px;
+    margin-top: 20px;
 }
 
 #pass_info, #username_info {
