@@ -4,7 +4,6 @@ html{
     height: 100%;
 }
 
-
 body {
     margin: 0;
     padding: 0;
@@ -437,9 +436,53 @@ label {
 }
 
 @media screen and (max-width: 1024px) {
-    #questions {
-        margin-left: 1%;
-        margin-right: 1%;
+    #questions{
+        width: auto;
+    }
+    body{
+        width: 100%;
+    }
+    h2{
+        font-size: 80px;
+    }
+    .container{
+        font-size: 70px;
+    }
+    .checkmark{
+        height: 50px;
+        width: 50px;
+        margin-top: 20px;
+        margin-left: 5px;
+    }
+    .checkbox_items{
+        text-align: center;
+    }
+    .checkbox_item{
+        margin: 30px;
+    }
+    #questions_1,
+    #questions_2,
+    #questions_3 {
+        width: 95%;
+    }
+    #index_main{
+        width: 98%;
+    }
+    .button{
+        font-size: 70px;
+        width: 80%;
+    }
+    #progress_status{
+        max-width: 500px;
+    }
+    #nav_pointer{
+        height: 150px;
+    }
+    #open_nav{
+        font-size: 100px;
+    }
+    #levo_logo{
+        
     }
 }
 
