@@ -13,10 +13,6 @@ body {
     max-height: 100%; 
 }
 
-#container > h1 {
-    margin-top: 0;
-}
-
 .home_links {
     text-decoration: none;
     padding: 4% 6%;
@@ -53,3 +49,34 @@ body {
     justify-content: center;
 }
 
+@media screen and (max-width: 420px) {
+    html {
+        background: url("/static/img/food_img_resp.jpg");
+        background-repeat: no-repeat; 
+        background-size: 100%; 
+        background-repeat: no-repeat;
+        box-sizing: border-box;
+    } 
+
+    #home_page {
+        margin-top: 5px;     
+    } 
+
+    #levo_logo {
+        float: right; 
+        height: 80px;
+        width: auto; 
+    }
+
+    .home_links {
+        margin-left: 30px;
+        margin-right: 40px;
+        margin-top: 100px;
+        padding: 10% 15%; 
+    }
+
+    #home_page > #two_options {
+        margin-left: 50px; 
+    }
+    
+}
