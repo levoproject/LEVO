@@ -47,7 +47,7 @@
 
     <div id="nav_pointer">
         <span id="open_nav" style="font-size:45px;cursor:pointer" onclick="openNav()">&#9776;</span>
-        <a href="/index/">LEVO</a>
+        <a href="/index/" id="levo_logo">LEVO</a>
         <div id="profile_icon_image">
         <a href="/my_recipes/">
             <img alt="profile_icon" id="profile_icon" src="../static/img/profile_icon.png" width="60" height="60">
@@ -146,13 +146,13 @@
                                 <span class="checkmark"></span>
                             </label>
                         </div>
-
+  
                         <div class="checkbox_item">
                             <label for="vegetables" class="container">Vegetables
                                 <input type="checkbox" id="vegetables" name="vegetables" value="vegetables" {{checked_carb["vegetables"]}}>
                                 <span class="checkmark"></span>
                             </label>
-                        </div>
+                        </div>     
 
                         <div class="checkbox_item">
                             <label for="c_dont_know" class="container">Don't care

@@ -491,7 +491,11 @@ def update_profile_img():
     upload = request.files.get('upload')
     name, ext = os.path.splitext(upload.filename)
     file_path = "./static/img/new_profile_img.jpg"
-    os.remove("./static/img/new_profile_img.jpg")
+    try:
+        os.remove("./static/img/new_profile_img.jpg")
+    except:
+        print("File does not exist")
+    
     upload.save(file_path)
 
     result = save_profile_img(current_user, file_path)
