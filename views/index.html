@@ -36,6 +36,18 @@
 </head>
 
 <body>
+    <header id="nav_pointer">
+        <span id="open_nav" style="font-size:45px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        <a href="/index/">LEVO</a>
+        <div id="profile_icon_image">
+            <a href="/my_recipes/">
+                <img alt="profile_icon" id="profile_icon" src="../static/img/profile_icon.png" width="60" height="60">
+                <img alt="profile_icon_online" id="profile_icon_online" src="../static/img/profile_icon_online.png" width="60" height="60">
+            </a>
+        </div>
+        <h1 id="current_user">{{placeholder_current_user}}</h1>
+    </header>
+
     <nav id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" id="close_nav" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="/index/">Home</a>
@@ -45,6 +57,7 @@
         <a id="logout" href="/logout/">Log out</a>
     </nav>
 
+<<<<<<< HEAD
     <div id="nav_pointer">
         <span id="open_nav" style="font-size:45px;cursor:pointer" onclick="openNav()">&#9776;</span>
         <a href="/index/" id="levo_logo">LEVO</a>
@@ -61,7 +74,13 @@
         <div id="progress_bar"></div>
     </div>
 
+=======
+>>>>>>> f0aba13d0ea6a2f565b65b39d35e9f42dd2571e9
     <main id="index_main">
+        <div id="progress_status">
+            <div id="progress_bar"></div>
+        </div>
+        
         <div id="questions">
             <form action="/generate/" method="POST" class="form">
                 <h2 id="h2_q1" class="form_1">What do you crave?</h2>
@@ -265,27 +284,8 @@
             $('#mySidenav').removeClass('active');
         }
 
-        /*var $body = $('body');
-        $body.on('click', function(event) {
-            var clickedOutside = $(event.target).closest('.closebtn').length == 0;
-            if (openNav().active()) {
-                $body.closeNav();
-            }
-        })
-        
-        $(document).click(function (event) {
-            var clickover = $(event.target);
-            var _opened = $("#sidenav").openNav().active();
-            if (_opened === true && !clickover.hasClass("closebtn")) {
-                $("#close_nav").click();
-            }
-        });*/
-
-        var $body = $('body');
-        $body.on('click', function(event) {
-            if ($('#mySidenav').hasClass('.active') === True) {
-                closeNav();
-            }
+        $('#index_main').click( function() {
+            closeNav();
         });
 
     </script>

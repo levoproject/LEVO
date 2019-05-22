@@ -167,17 +167,6 @@ main {
     margin-left: 750px;
     font-size: 30px;
 }
-/*h2{
-  background-color: black;
-  color: white;
-  font-size: 16px;
-}
-
-img {
-    width: 90%;
-    border-radius: 20px;
-    z-index: -1;
-}*/
 
 #error_msg {
     font-size: 14px;
@@ -200,8 +189,7 @@ img {
 
 .profile-pic {
     max-width: 200px;
-    max-height: 200px;
-    
+    max-height: 200px; 
     border-radius: 5px;
     
 }
@@ -224,9 +212,9 @@ img {
 .title{
     justify-content: center;
     font-family: 'Yantramanav', sans-serif;
-    font-size: 50px;
+    font-size: 30px;
     display: flex;
-    
+    margin-bottom: 0;
 }
 
 .profile-form{
