@@ -433,7 +433,25 @@ label {
     #questions {
         margin-left: 1%;
         margin-right: 1%;
+        width: 100%;
     }
+    body{
+        width: 100%;
+    }
+    h2{
+        font-size: 80px;
+    }
+    .container{
+        font-size: 70px;
+    }
+    .checkmark{
+        height: 50px;
+        width: 50px;
+    }
+    #questions_1,
+    #questions_2,
+    #questions_3 {
+        width: 100‰;
 }
 
 input:-webkit-autofill,
