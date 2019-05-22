@@ -88,4 +88,8 @@ $(document).ready(function() {
             $('#username_info').hide();
         }
     });
+
+    $('.main_class').click( function() {
+        closeNav();
+    });
 });

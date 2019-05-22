@@ -15,11 +15,11 @@ h1 {
     letter-spacing: inherit; 
 }
 
-p{
-    letter-spacing: 
+.main_class {
+    padding: 70px 10% 0 10%;
 }
 
-main{
+#about{
     color: black;
     font-size: 20px;
     padding: 30px;
@@ -28,8 +28,8 @@ main{
     border-radius: 20px;
     margin-left: 20%;
     margin-right: 20%;
-    margin-top: 70px;
 }
+
 
 .sticky {
     position: fixed;

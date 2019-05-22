@@ -57,7 +57,7 @@
         <a id="logout" href="/logout/">Log out</a>
     </nav>
 
-    <main id="index_main">
+    <main class="main_class">
         <div id="progress_status">
             <div id="progress_bar"></div>
         </div>
@@ -254,7 +254,7 @@
             document.getElementById("mySidenav").style.width = "250px";
             document.getElementById("nav_pointer").style.marginLeft = "250px";
             document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-            $('#mySidenav').addClass('active');
+            $('#nav_pointer').addClass('active');
         }
 
         function closeNav() {
@@ -262,11 +262,13 @@
             document.getElementById("mySidenav").style.width = "0";
             document.getElementById("nav_pointer").style.marginLeft = "0";
             document.body.style.backgroundColor = "rgba(0,0,0,0)";
-            $('#mySidenav').removeClass('active');
+            $('#nav_pointer').removeClass('active');
         }
 
-        $('#index_main').click( function() {
-            closeNav();
+        $('#nav_pointer').click( function() {
+            if ($('#nav_pointer').hasClass('active') === True) {    
+                closeNav();
+            }
         });
 
     </script>
