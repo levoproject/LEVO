@@ -12,7 +12,7 @@ main {
     padding: 2%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
     border-radius: 20px;
-    
+    margin-bottom: 30px;
 }
 
 .forms input {
@@ -24,6 +24,11 @@ main {
     margin-top: 7px;
     background-color: rgba(0, 0, 0, 0);
     border:1px solid rgba(0, 0, 0, 0.5);
+}
+
+.forms > label {
+    font-weight: bold;
+    margin-left: 10px;
 }
 
 .forms > h2 {
