@@ -20,7 +20,7 @@ body {
     min-height: 100%;
 }
 
-#index_main {
+.main_class {
     width: 80%;
     padding: 30px 10% 0 10%;
     margin-left: auto;
@@ -125,7 +125,7 @@ h2 {
     margin-right: auto;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
     border-radius: 20px;
-    width: 60%;
+    width: 50%;
 }
 
 .form {

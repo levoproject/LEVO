@@ -139,4 +139,8 @@ $(document).ready(function() {
         }
     });
 
+    $('.main_class').click( function() {
+        closeNav();
+    });
+
 });

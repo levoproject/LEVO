@@ -9,8 +9,7 @@ header{
 }
 
 main {
-    display: flex;
-    justify-content: center;
+    padding: 30px 10% 0 10%;
 }
 
 .forms {
@@ -19,7 +18,7 @@ main {
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
-    width: 20%;
+    width: 30%;
     text-align: center;
     padding: 2%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
