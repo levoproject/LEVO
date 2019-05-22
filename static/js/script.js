@@ -41,95 +41,45 @@ $(document).ready(function() {
         $('#profile_icon_online').hide();
         $('#profile_icon').show();
     }
-    var i = 1
+
     $('#next').click(function(){
-
-        if (i == 1) {
-            i = 2
-            $('#h2_q1').hide(200);
-            $('#h2_q2').show(200);
-            $('#questions_1').hide(200);
-            $('#questions_2').show(200);
-            $('#previous').show(200);
-            var element = document.getElementById("progress_bar");
-            var width = 0;
-            var identity = setInterval(scene_1, 10);
-            function scene_1() {
-                if (width >= 33) {
-                    clearInterval(identity);
-                } else {
-                    width++;
-                    element.style.width = width + '%';
-                };
-            }
-
-
-        } else if (i == 2) {
-            i = 3
-            $('#h2_q2').hide(200);
-            $('#h2_q3').show(200);
-            $('#questions_2').hide(200);
-            $('#questions_3').show(200);
-            $('#next').hide(200);
-            var element = document.getElementById("progress_bar");
-            var width = 33;
-            var identity = setInterval(scene_2, 10);
-            function scene_2() {
-                if (width >= 66) {
-                    clearInterval(identity);
-                } else {
-                    width++;
-                    element.style.width = width + '%';
-                };
-            }
-
-
-        } else {
-            $('#h2_q3"').hide(200);
-            $('#questions_3').hide(200);
+        $('#h2_q1').hide(200);
+        $('#h2_q2').show(200);
+        $('#questions_1').hide(200);
+        $('#questions_2').show(200);
+        $('#previous').show(200);
+        $('#next').hide(200);
+        var element = document.getElementById("progress_bar");
+        var width = 0;
+        var identity = setInterval(scene_1, 10);
+        function scene_1() {
+            if (width >= 50) {
+                clearInterval(identity);
+            } else {
+                width++;
+                element.style.width = width + '%';
+            };
         }
     });
 
     $('#previous').click(function(){
-        if (i == 2) {
-            i = 1
-            $('#h2_q1').show(200);
-            $('#h2_q2').hide(200);
-            $('#questions_1').show(200);
-            $('#questions_2').hide(200);
-            $('#previous').hide(200);
-            var element = document.getElementById("progress_bar");
-            var width = 33;
-            var identity = setInterval(scene_1, 10);
-            function scene_1() {
-                if (width <= 0) {
-                    clearInterval(identity);
-                } else {
-                    width--;
-                    element.style.width = width + '%';
-                };
-            }
-            
-        } else if (i == 3) {
-            i = 2
-            $('#h2_q2').show(200);
-            $('#h2_q3').hide(200);
-            $('#questions_2').show(200);
-            $('#questions_3').hide(200);
-            $('#next').show(200);
-            var element = document.getElementById("progress_bar");
-            var width = 66;
-            var identity = setInterval(scene_1, 10);
-            function scene_1() {
-                if (width <= 33) {
-                    clearInterval(identity);
-                } else {
-                    width--;
-                    element.style.width = width + '%';
-                };
-            }
-        }
-            
+        $('#h2_q1').show(200);
+        $('#h2_q2').hide(200);
+        $('#questions_1').show(200);
+        $('#questions_2').hide(200);
+        $('#previous').hide(200);
+        $('#next').show(200);
+        var element = document.getElementById("progress_bar");
+        var width = 50;
+        var identity = setInterval(scene_1, 10);
+        function scene_1() {
+            if (width <= 0) {
+                clearInterval(identity);
+            } else {
+                width--;
+                element.style.width = width + '%';
+            };
+        }  
     });
 
     $('#submit').click(function(){

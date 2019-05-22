@@ -15,6 +15,10 @@ $(document).ready(function() {
         }
     });
 
+    $('#settings > .outer > h1').click(function() {
+        $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+    });
+
     $('.outer > h1').click(function() {
         if ($(this).next().is(":hidden") && parseInt($(this).attr("data-count")) != 0) {
             $(this).next().show(150);
@@ -25,9 +29,10 @@ $(document).ready(function() {
 
     if ( $('#error_msg').text().length == 0 ) {
         $('#error_msg').hide();
-    } else { /* DOES NOT WORK, FIX THIS */
+    } else {
         $('#inner_profile').show();
         $('#email').focus();
+        $('html, body').animate({scrollTop:$(document).height()}, 'slow');
     }
 
     $(".star").change(function() {
