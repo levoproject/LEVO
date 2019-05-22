@@ -230,9 +230,13 @@ img {
 }
 
 .profile-form{
-    margin-left: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
 }
 
 .profile-buttons > button, .profile-buttons > input {
     cursor: pointer;
 }
+
+@media screen and max-width: 
