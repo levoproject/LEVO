@@ -61,7 +61,7 @@
         <div id="progress_bar"></div>
     </div>
 
-    <main>
+    <main id="index_main">
         <div id="questions">
             <form action="/generate/" method="POST" class="form">
                 <h2 id="h2_q1" class="form_1">What do you crave?</h2>
@@ -146,13 +146,13 @@
                                 <span class="checkmark"></span>
                             </label>
                         </div>
-
+  
                         <div class="checkbox_item">
                             <label for="vegetables" class="container">Vegetables
                                 <input type="checkbox" id="vegetables" name="vegetables" value="vegetables" {{checked_carb["vegetables"]}}>
                                 <span class="checkmark"></span>
                             </label>
-                        </div>
+                        </div>     
 
                         <div class="checkbox_item">
                             <label for="c_dont_know" class="container">Don't care

@@ -21,6 +21,12 @@ body {
     min-height: 100%;
 }
 
+#index_main {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .sidenav {
     height: 100%;
     width: 0;
@@ -128,7 +134,7 @@ h2 {
     margin-right: auto;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
     border-radius: 20px;
-    width: 50%;
+    width: 80%;
 }
 
 .form {
@@ -158,6 +164,7 @@ h2 {
 #dont_know {
     width: 60%;
 }
+
 
 #label {
     display: block;

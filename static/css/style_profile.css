@@ -238,3 +238,5 @@ img {
 .profile-buttons > button, .profile-buttons > input {
     cursor: pointer;
 }
+
+@media screen and max-width: 
