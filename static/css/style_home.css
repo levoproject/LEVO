@@ -7,6 +7,17 @@ html {
     box-sizing: border-box;
 }
 
+h1{
+    font-family: 'Yantramanav', sans-serif;
+    text-align: center;
+    color: white;
+    font-size: 260px;
+    letter-spacing: 1.5px;
+    font-weight: lighter;
+    margin-top: 80px;
+    margin-bottom: auto;
+}
+
 body {
     margin: 0;
     min-height: 100%;
@@ -15,7 +26,6 @@ body {
 
 .home_links {
     text-decoration: none;
-    padding: 4% 6%;
     /*background-color: rgba(216, 215, 215, 0.3);*/
     background-color: rgba(139, 201, 165, 0.4); /*denna är lite najs*/
     /*background-color: rgba(10, 10, 10, 0.6);*/
@@ -23,8 +33,7 @@ body {
     border-radius: 5px;
     margin-left: 30px;
     margin-right: 40px;
-    margin-top: 30px;
-    font-size: 20px;
+    font-size: 30px;
     letter-spacing: 1.5px;
     font-family: 'Yantramanav', sans-serif;
     box-sizing: border-box;
@@ -34,14 +43,14 @@ body {
     box-shadow: 0 0 10px;
 }
 
-#login_link {
-    padding: 4% 8%;
+#profile_icon_image {
+    margin-top: 5px;
+    margin-right: 5px;
 }
 
-#home_page {
-    width: 40%;
-    margin: auto;
-    padding-top: 200px;
+#start_link {
+    padding: 15px;
+    text-align: center;
 }
 
 #home_page > #two_options {
@@ -58,25 +67,14 @@ body {
         box-sizing: border-box;
     } 
 
-    #home_page {
-        margin-top: 5px;     
-    } 
-
-    #levo_logo {
-        float: right; 
-        height: 80px;
-        width: auto; 
+    h1{
+        font-size: 150px;
     }
 
     .home_links {
         margin-left: 30px;
         margin-right: 40px;
-        margin-top: 100px;
         padding: 10% 15%; 
-    }
-
-    #home_page > #two_options {
-        margin-left: 50px; 
     }
     
 }
