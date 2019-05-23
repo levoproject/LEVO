@@ -34,6 +34,7 @@ $(document).ready(function() {
         $('#login').hide();
         $('#profile_icon_online').show();
         $('#profile_icon').hide();
+        $('#current_user').show();
     } else {
         $('#profile').hide();
         $('#logout').hide();

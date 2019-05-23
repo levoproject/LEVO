@@ -258,7 +258,8 @@ h2 {
 #submit_again{
     position: absolute;
     margin-top: 470px;
-    width: 30%;
+    width: 20%;
+    padding: 15px;
 }
 
 .button:hover {
@@ -495,4 +496,16 @@ input:-webkit-autofill:active  {
 
 #h2_q1, #h2_q2 {
     width: 100% !important;
+}
+
+#current_user {
+    margin: 15px 0;
+    padding: 0 12px;
+    font-size: 24px;
+    float: left;
+    color: rgba(0,0,0,0.65);
+}
+
+#current_user:hover {
+    color: rgba(0,0,0,0.35);
 }
