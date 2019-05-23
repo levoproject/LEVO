@@ -79,16 +79,9 @@ main {
 
 #hide_all_inner {
     float: right;
-    background: none;
-    color: inherit;
-    border: none;
-    text-decoration-line: underline;
-    font-family: 'Maven Pro', sans-serif;
-    font-size: 16px;
-    margin-right: 20px;
+    padding: 14px;
     cursor: pointer;
 }
-
 
 #recipe_header {
     text-align: left;
