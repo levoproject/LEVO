@@ -235,10 +235,10 @@ h2 {
 #questions_1,
 #questions_2,
 #questions_3 {
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
+    margin-top: 10px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 75% !important;
 }
 
 .button {
@@ -258,17 +258,19 @@ h2 {
 #submit_again{
     position: absolute;
     margin-top: 470px;
-    
+    width: 30%;
 }
 
 .button:hover {
     text-decoration: underline;
+    background-color: rgb(64, 134, 64);
 }
 
 #buttons {
     margin-top: 15px;
     display: flex;
     justify-content: center;
+    width: 100% !important;
 }
 
 #recipe_generator{
@@ -478,9 +480,6 @@ label {
     #open_nav{
         font-size: 100px;
     }
-    #levo_logo{
-        
-    }
 }
 
 input:-webkit-autofill,
@@ -488,4 +487,12 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px rgb(187, 219, 191) inset !important;
+}
+
+#mySidenav > a {
+    white-space: nowrap;
+}
+
+#h2_q1, #h2_q2 {
+    width: 100% !important;
 }
