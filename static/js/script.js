@@ -20,7 +20,7 @@ $(document).ready(function() {
         swiper.slideTo($('#center_slide').index(),0,false);
         var element = document.getElementById("progress_bar");
         var width = 0;
-        var identity = setInterval(scene_2, 10);
+        var identity = setInterval(scene_2, 5);
         function scene_2() {
             if (width >= 100) {
                 clearInterval(identity);
@@ -51,7 +51,7 @@ $(document).ready(function() {
         $('#next').hide(200);
         var element = document.getElementById("progress_bar");
         var width = 0;
-        var identity = setInterval(scene_1, 10);
+        var identity = setInterval(scene_1, 5);
         function scene_1() {
             if (width >= 50) {
                 clearInterval(identity);
@@ -71,7 +71,7 @@ $(document).ready(function() {
         $('#next').show(200);
         var element = document.getElementById("progress_bar");
         var width = 50;
-        var identity = setInterval(scene_1, 10);
+        var identity = setInterval(scene_1, 5);
         function scene_1() {
             if (width <= 0) {
                 clearInterval(identity);
