@@ -36,21 +36,20 @@
             <h1 id="user_header"></h1>
             <div class="profile-header">
                 <h1 class="title">{{placeholder_current_user}}</h1>
-                <div id="settings_wheel">
-                    <i class="fa fa-gear" style="font-size:30px;color:black"></i>
-                </div>
                 <form action="/update_profile_img/" method="POST" class="profile-form" enctype="multipart/form-data">
                     <img class="profile-pic" src="/static/img/profile_img.jpg">
                     <input type="file" name="upload" class="file-upload"accept="image/*">
                     <div class="profile-buttons">
                         <button type="button" name="button" class="upload-button">Upload</button>
                         <input type="submit" value="Submit" class="submit">
+                        <i class="fa fa-gear" id="cog" style="font-size:30px;color:black"></i>
                     </div>
                 </form>
             </div>
 
             <div id="categories">
                 <h2 id="recipe_header">My recipes</h2>
+                <input type="button" id="hide_all_inner" value="Close all tabs">
                 <div class="outer">
                     <h1 data-count="{{count['meat']}}" class="left-side">Meat ({{count['meat']}})</h1>
                     <div class="flex-container">

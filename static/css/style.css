@@ -257,7 +257,8 @@ h2 {
 #submit_again{
     position: absolute;
     margin-top: 470px;
-    width: 30%;
+    width: 20%;
+    padding: 15px;
 }
 
 .button:hover {
