@@ -38,7 +38,7 @@ main {
 .forms input {
     padding: 5%;
     width: 80%;
-    border-radius: 2rem;
+    border-radius: 15px;
     background-clip: content-box;
     margin-bottom: 7px;
     margin-top: 7px;

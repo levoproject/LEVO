@@ -32,164 +32,168 @@
         <a href="/index/">LEVO</a>
     </div>
 
-        <main>
-            <h1 id="user_header"></h1>
-            <div class="profile-header">
-                <h1 class="title">{{placeholder_current_user}}</h1>
-                <form action="/update_profile_img/" method="POST" class="profile-form" enctype="multipart/form-data">
-                    <img class="profile-pic" src="/static/img/profile_img.jpg">
-                    <input type="file" name="upload" class="file-upload"accept="image/*">
-                    <div class="profile-buttons">
-                        <button type="button" name="button" class="upload-button">Upload</button>
-                        <input type="submit" value="Submit" class="submit">
-                    </div>
-                    <i class="fa fa-gear" id="cog" style="font-size:30px;color:black"></i>
-                </form>
-            </div>
+    <i class="fa fa-gear" id="cog" style="font-size:30px;color:black"></i>
+    
+    <main>
+        
+        <h1 id="user_header"></h1>
+        <div class="profile-header">
+            <h1 class="title">{{placeholder_current_user}}</h1>
+            <form action="/update_profile_img/" method="POST" class="profile-form" enctype="multipart/form-data">
+                <img class="profile-pic" src="/static/img/profile_img.jpg">
+                <input type="file" name="upload" class="file-upload"accept="image/*">
+                <div class="profile-buttons">
+                    <button type="button" name="button" class="upload-button">Upload</button>
+                    <input type="submit" value="Submit" class="submit">
+                </div>
+            </form>
+        </div>
 
-            <div id="settings">
-                <div class="outer">
-                    <h1 data-count="1" class="left-side" id="profile_settings" style="display:none;">Settings</h1>
-                    <div class="inner" id="inner_profile">
-                        <form action="/save_settings/" method="POST" class="forms">
-                            <h2>Settings</h2><br>
-                            <p id="error_msg">{{placeholder_error_msg}}</p>
-                            <label for="email">Email</label><br>
-                            <input type="text" name="email" id="email" value="{{placeholder_email}}"><br>
-                            <label for="pass">Current password</label><br>
-                            <input type="password" type="password" name="pass" id="pass"><br>
-                            <label for="new_pass">New password</label><br>
-                            <input type="password" name="new_pass" type="password" id="new_pass"><br>
-                            <div id="pass_info" class="reg_info">
-                                <p>Password must be less than 25 characters...</p>
-                            </div>
-                            <label for="verify_pass">Verify password</label><br>
-                            <input type="password" name="verify_pass" type="password" id="verify_pass"><br>
+        <div id="settings">
+            <div class="outer">
+                <h1 data-count="1" class="left-side" id="profile_settings" style="display:none;">Settings</h1>
+                <div class="inner" id="inner_profile">
+                    <form action="/save_settings/" method="POST" class="forms">
+                        <h2>Settings</h2><br>
+                        <p id="error_msg">{{placeholder_error_msg}}</p>
+                        <label for="email">Email</label><br>
+                        <input type="text" name="email" id="email" value="{{placeholder_email}}"><br>
+                        <label for="pass">Current password</label><br>
+                        <input type="password" type="password" name="pass" id="pass"><br>
+                        <label for="new_pass">New password</label><br>
+                        <input type="password" name="new_pass" type="password" id="new_pass"><br>
+                        <div id="pass_info" class="reg_info">
+                            <p>Password must be less than 25 characters...</p>
+                        </div>
+                        <label for="verify_pass">Verify password</label><br>
+                        <input type="password" name="verify_pass" type="password" id="verify_pass"><br>
+                        <div id="update_settings_container">
                             <button type="submit" id="update_settings">Update settings</button>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="categories">
+            <h2 id="recipe_header">My recipes</h2>
+            <i class="fa fa-close" id="hide_all_inner" style="font-size:36px;color:black"></i>
+            <div class="outer">
+                <h1 data-count="{{count['meat']}}" class="left-side">Meat ({{count['meat']}})</h1>
+                <div class="flex-container">
+                    % for recipe in saved_recipes:
+                        % if recipe['category'] == "meat":
+                            <div data-recipe_id="{{recipe['recipe_id']}}" class="flex-content" class="inner">
+                                <a href="{{recipe['source_url']}}" target="_blank">
+                                    <div class="saved_img_box">
+                                        <img src="{{recipe['image_url']}}" class="recipe_img" alt="Picture can't be found.">
+                                        <h2 class="middle">{{recipe['title']}}</h2>
+                                        <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
+                                    </div>
+                                </a>
+                            </div>
+                        % end
+                    % end
                 </div>
             </div>
 
-            <div id="categories">
-                <h2 id="recipe_header">My recipes</h2>
-                <i class="fa fa-close" id="hide_all_inner" style="font-size:36px;color:black"></i>
-                <div class="outer">
-                    <h1 data-count="{{count['meat']}}" class="left-side">Meat ({{count['meat']}})</h1>
-                    <div class="flex-container">
-                        % for recipe in saved_recipes:
-                            % if recipe['category'] == "meat":
-                                <div data-recipe_id="{{recipe['recipe_id']}}" class="flex-content" class="inner">
-                                    <a href="{{recipe['source_url']}}" target="_blank">
-                                        <div class="saved_img_box">
-                                            <img src="{{recipe['image_url']}}" class="recipe_img" alt="Picture can't be found.">
-                                            <h2 class="middle">{{recipe['title']}}</h2>
-                                            <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
-                                        </div>
-                                    </a>
-                                </div>
-                            % end
+            <div class="outer">
+                <h1 data-count="{{count['chicken']}}" class="left-side">Chicken ({{count['chicken']}})</h1>
+                <div class="flex-container">
+                    % for recipe in saved_recipes:
+                        % if recipe['category'] == "chicken":
+                            <div data-recipe_id="{{recipe['recipe_id']}}" class="flex-content" class="inner">
+                                <a href="{{recipe['source_url']}}" target="_blank">
+                                    <div class="saved_img_box">
+                                        <h2 class="middle">{{recipe['title']}}</h2>
+                                        <img src="{{recipe['image_url']}}" class="recipe_img" alt="Picture can't be found.">
+                                        <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
+                                    </div>
+                                </a>
+                            </div>
                         % end
-                    </div>
-                </div>
-
-                <div class="outer">
-                    <h1 data-count="{{count['chicken']}}" class="left-side">Chicken ({{count['chicken']}})</h1>
-                    <div class="flex-container">
-                        % for recipe in saved_recipes:
-                            % if recipe['category'] == "chicken":
-                                <div data-recipe_id="{{recipe['recipe_id']}}" class="flex-content" class="inner">
-                                    <a href="{{recipe['source_url']}}" target="_blank">
-                                        <div class="saved_img_box">
-                                            <h2 class="middle">{{recipe['title']}}</h2>
-                                            <img src="{{recipe['image_url']}}" class="recipe_img" alt="Picture can't be found.">
-                                            <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
-                                        </div>
-                                    </a>
-                                </div>
-                            % end
-                        % end
-                    </div>
-                </div>
-
-                <div class="outer">
-                    <h1 data-count="{{count['bird']}}" class="left-side">Bird ({{count['bird']}})</h1>
-                    <div class="flex-container">
-                        % for recipe in saved_recipes:
-                            % if recipe['category'] == "bird":
-                                <div data-recipe_id="{{recipe['recipe_id']}}" class="flex-content" class="inner">
-                                    <a href="{{recipe['source_url']}}" target="_blank">
-                                        <div class="saved_img_box">
-                                            <h2 class="middle">{{recipe['title']}}</h2>
-                                            <img src="{{recipe['image_url']}}" class="recipe_img" alt="Picture can't be found.">
-                                            <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
-                                        </div>
-                                    </a>
-                                </div>
-                            % end
-                        % end
-                    </div>
-                </div>
-
-                <div class="outer">
-                    <h1 data-count="{{count['fish']}}" class="left-side">Fish ({{count['fish']}})</h1>
-                    <div class="flex-container">
-                        % for recipe in saved_recipes:
-                            % if recipe['category'] == "fish":
-                                <div data-recipe_id="{{recipe['recipe_id']}}" class="flex-content" class="inner">
-                                    <a href="{{recipe['source_url']}}" target="_blank">
-                                        <div class="saved_img_box">
-                                            <h2 class="middle">{{recipe['title']}}</h2>
-                                            <img src="{{recipe['image_url']}}" class="recipe_img" alt="Picture can't be found.">
-                                            <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
-                                        </div>
-                                    </a>
-                                </div>
-                            % end
-                        % end
-                    </div>
-                </div>
-
-                <div class="outer">
-                    <h1 data-count="{{count['seafood']}}" class="left-side">Seafood ({{count['seafood']}})</h1>
-                    <div class="flex-container">
-                        % for recipe in saved_recipes:
-                            % if recipe['category'] == "seafood":
-                                <div data-recipe_id="{{recipe['recipe_id']}}" class="flex-content" class="inner">
-                                    <a href="{{recipe['source_url']}}" target="_blank">
-                                        <div class="saved_img_box">
-                                            <h2 class="middle">{{recipe['title']}}</h2>
-                                            <img src="{{recipe['image_url']}}" class="recipe_img" alt="Picture can't be found.">
-                                            <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
-                                        </div>
-                                    </a>
-                                </div>
-                            % end
-                        % end
-                    </div>
-                </div>
-
-                <div class="outer">
-                    <h1 data-count="{{count['veg']}}" class="left-side">Veg ({{count['veg']}})</h1>
-                    <div class="flex-container">
-                        % for recipe in saved_recipes:
-                            % if recipe['category'] == "veg":
-                                <div data-recipe_id="{{recipe['recipe_id']}}" class="flex-content" class="inner">
-                                    <a href="{{recipe['source_url']}}" target="_blank">
-                                        <div class="saved_img_box">
-                                            <h2 class="middle">{{recipe['title']}}</h2>
-                                            <img src="{{recipe['image_url']}}" class="recipe_img" alt="Picture can't be found.">
-                                            <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
-                                        </div>
-                                    </a>
-                                </div>
-                            % end
-                        % end
-                    </div>
+                    % end
                 </div>
             </div>
 
-        </main>
+            <div class="outer">
+                <h1 data-count="{{count['bird']}}" class="left-side">Bird ({{count['bird']}})</h1>
+                <div class="flex-container">
+                    % for recipe in saved_recipes:
+                        % if recipe['category'] == "bird":
+                            <div data-recipe_id="{{recipe['recipe_id']}}" class="flex-content" class="inner">
+                                <a href="{{recipe['source_url']}}" target="_blank">
+                                    <div class="saved_img_box">
+                                        <h2 class="middle">{{recipe['title']}}</h2>
+                                        <img src="{{recipe['image_url']}}" class="recipe_img" alt="Picture can't be found.">
+                                        <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
+                                    </div>
+                                </a>
+                            </div>
+                        % end
+                    % end
+                </div>
+            </div>
+
+            <div class="outer">
+                <h1 data-count="{{count['fish']}}" class="left-side">Fish ({{count['fish']}})</h1>
+                <div class="flex-container">
+                    % for recipe in saved_recipes:
+                        % if recipe['category'] == "fish":
+                            <div data-recipe_id="{{recipe['recipe_id']}}" class="flex-content" class="inner">
+                                <a href="{{recipe['source_url']}}" target="_blank">
+                                    <div class="saved_img_box">
+                                        <h2 class="middle">{{recipe['title']}}</h2>
+                                        <img src="{{recipe['image_url']}}" class="recipe_img" alt="Picture can't be found.">
+                                        <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
+                                    </div>
+                                </a>
+                            </div>
+                        % end
+                    % end
+                </div>
+            </div>
+
+            <div class="outer">
+                <h1 data-count="{{count['seafood']}}" class="left-side">Seafood ({{count['seafood']}})</h1>
+                <div class="flex-container">
+                    % for recipe in saved_recipes:
+                        % if recipe['category'] == "seafood":
+                            <div data-recipe_id="{{recipe['recipe_id']}}" class="flex-content" class="inner">
+                                <a href="{{recipe['source_url']}}" target="_blank">
+                                    <div class="saved_img_box">
+                                        <h2 class="middle">{{recipe['title']}}</h2>
+                                        <img src="{{recipe['image_url']}}" class="recipe_img" alt="Picture can't be found.">
+                                        <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
+                                    </div>
+                                </a>
+                            </div>
+                        % end
+                    % end
+                </div>
+            </div>
+
+            <div class="outer">
+                <h1 data-count="{{count['veg']}}" class="left-side">Veg ({{count['veg']}})</h1>
+                <div class="flex-container">
+                    % for recipe in saved_recipes:
+                        % if recipe['category'] == "veg":
+                            <div data-recipe_id="{{recipe['recipe_id']}}" class="flex-content" class="inner">
+                                <a href="{{recipe['source_url']}}" target="_blank">
+                                    <div class="saved_img_box">
+                                        <h2 class="middle">{{recipe['title']}}</h2>
+                                        <img src="{{recipe['image_url']}}" class="recipe_img" alt="Picture can't be found.">
+                                        <input type="checkbox" class="star" data-recipe_id="{{recipe['recipe_id']}}" data-title="{{recipe['title']}}" data-source_url="{{recipe['source_url']}}" data-image_url="{{recipe['image_url']}}" data-category="{{recipe['category']}}" checked>
+                                    </div>
+                                </a>
+                            </div>
+                        % end
+                    % end
+                </div>
+            </div>
+        </div>
+
+    </main>
     <script>
         function openNav() {
             // Function for open navigation
