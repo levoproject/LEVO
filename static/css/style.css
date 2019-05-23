@@ -21,7 +21,7 @@ body {
 }
 
 .main_class {
-    width: 80%;
+    width: 60%;
     padding: 30px 10% 0 10%;
     margin-left: auto;
     margin-right: auto;
@@ -119,13 +119,13 @@ h2 {
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.295);
     color: black;
-    font-size: 20px;
+    font-size: 18px;
     padding: 1%;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
     border-radius: 20px;
-    width: 50%;
+    width: 65%;
 }
 
 .form {
@@ -258,10 +258,12 @@ h2 {
 #submit_again{
     position: absolute;
     margin-top: 470px;
+    width: 30%;
 }
 
 .button:hover {
     text-decoration: underline;
+    background-color: rgb(64, 134, 64);
 }
 
 #buttons {
@@ -297,7 +299,7 @@ a:visited {
 #progress_bar {
     width: 0;
     height: 5px;
-    background-color: rgb(51, 223, 35);
+    background-color: rgb(85, 177, 85);
     text-align: center;
     line-height: 32px;
     color: white;
@@ -477,9 +479,6 @@ label {
     }
     #open_nav{
         font-size: 100px;
-    }
-    #levo_logo{
-        
     }
 }
 

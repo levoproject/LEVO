@@ -66,6 +66,10 @@ main {
     font-family: 'Maven Pro', sans-serif;
 }
 
+#update_settings:hover{
+    background-color: rgb(64, 134, 64);
+}
+
 #settings {
     padding-left: 20px;
 }
@@ -181,7 +185,7 @@ main {
 .upload-button {
     padding: 10px;
     border: 2px solid white;
-    border-radius: 5px;
+    border-radius: 10px;
     float: left;
     display:block;
     background-color: #20bf6b;
@@ -204,7 +208,7 @@ main {
 .submit{
     padding:10px;
     border: 2px solid white;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-left: 120px;
     display: block;
     background-color: #20bf6b;
@@ -217,7 +221,6 @@ main {
     font-family: 'Yantramanav', sans-serif;
     font-size: 30px;
     display: flex;
-    margin-bottom: 0;
 }
 
 .profile-form{
