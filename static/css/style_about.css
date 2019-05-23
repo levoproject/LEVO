@@ -170,4 +170,9 @@ footer > a{
         margin-right: 1%;
         font-size: 15px;
     }
+    
+    #about2{
+        overflow:hidden;
+        margin: auto;
+    }
 }
