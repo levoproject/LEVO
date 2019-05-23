@@ -8,7 +8,7 @@ main {
     color: black;
     margin-top: 10px;
     margin-left: 15px;
-    width: 60%;
+    width: 80% !important;
     text-align: left;
     padding: 2%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
@@ -40,9 +40,9 @@ main {
 
 #cog {
     display: block;
-    float: left;
     margin-left: 8px;
     margin-top: 4px;
+    width: 100%;
 }
 
 #error_msg {
@@ -206,8 +206,7 @@ main {
     padding: 10px;
     border: 2px; 
     border-radius: 10px;
-    float: left;
-    display:block;
+    display: block;
     background-color: rgba(0, 160, 0, 0.3);
     color: black; 
     font-size: 20px;
@@ -221,7 +220,6 @@ main {
     display: block;
     background-color: rgba(0, 160, 0, 0.3);
     color: black;
-    float: left;
     font-size: 20px;
     font-weight: lighter;    
 }
@@ -258,6 +256,7 @@ main {
 .profile-buttons{
     display: flex;
     justify-content: center;
+    width: 200px;
 }
 
 .upload-button{

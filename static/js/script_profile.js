@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    $('.profile-buttons').hide(150);
+
     $('.outer > h1').each(function() {
         $(this).next().hide();
     });
@@ -27,6 +29,17 @@ $(document).ready(function() {
             $('html, body').animate({scrollTop: $(this).offset().top}, 400);
         } else {
             $(this).next().hide(150);
+        }
+    });
+
+    $('#cog').click( function() {
+        if ($('#settings > .outer > .inner').is(":hidden")) {
+            $('.profile-buttons').show(150);
+            $('#settings > .outer > .inner').show(150);
+            $('html, body').animate({scrollTop: $('.profile-pic').offset().top}, 400);
+        } else {
+            $('.profile-buttons').hide(150);
+            $('#settings > .outer > .inner').hide(150);
         }
     });
 
