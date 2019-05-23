@@ -66,6 +66,10 @@ label {
     cursor: pointer;
 }
 
+.forms .buttons:hover {
+    background-color: rgb(64, 134, 64);
+}
+
 #switch_forms_btn, .switch_forms_btn_back, #switch_forms_btn_forgot {
     background: none;
 	color: inherit;
