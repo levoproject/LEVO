@@ -21,7 +21,7 @@ body {
 }
 
 .main_class {
-    width: 80%;
+    width: 60%;
     padding: 30px 10% 0 10%;
     margin-left: auto;
     margin-right: auto;
@@ -258,6 +258,7 @@ h2 {
 #submit_again{
     position: absolute;
     margin-top: 470px;
+    
 }
 
 .button:hover {
