@@ -496,3 +496,11 @@ input:-webkit-autofill:active  {
 #h2_q1, #h2_q2 {
     width: 100% !important;
 }
+
+#current_user {
+    margin: 15px 0;
+    padding: 0 12px;
+    font-size: 24px;
+    float: left;
+    color: rgba(0,0,0,0.65);
+}
