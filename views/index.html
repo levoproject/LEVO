@@ -9,6 +9,7 @@
     <link rel="shortcut icon" type="image/png" href="static/img/favicon.png" alt="Image is not available.">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../static/js/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
         var $SCRIPT_ROOT = "{{ request.script_name }}";
 
@@ -50,11 +51,11 @@
 
     <nav id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" id="close_nav" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="/index/">Home</a>
-        <a href="/about/">About</a>
-        <a id="profile" href="/profile/">Profile</a>
-        <a id="login" href="/login/">Sign in</a>
-        <a id="logout" href="/logout/">Log out</a>
+        <a href="/index/"><i class="fa fa-home" style="font-size:20px;color:white"></i> Home</a>
+        <a href="/about/"><i class="fa fa-group" style="font-size:16px;color:white"></i> About</a>
+        <a id="profile" href="/profile/"><i class="fa fa-user" style="font-size:20px;color:white"></i> Profile</a>
+        <a id="login" href="/login/"><i class="fa fa-sign-in" style="font-size:20px;color:white"></i> Sign in</a>
+        <a id="logout" href="/logout/"><i class="fa fa-sign-out" style="font-size:20px;color:white"></i>&#8239;Log out</a>
     </nav>
 
     <main class="main_class">
@@ -166,13 +167,13 @@
                 <input type="hidden" name="used_ids" value="{{placeholder_used_ids}}"/>
 
                 <div id="buttons">
-                    <button type="button" class="button form_1" id="previous">&#8592; Previous question!</button>
-                    <button type="button" class="button form_1" id="next">Next question! &#8594;</button>
+                    <button type="button" class="button form_1" id="previous">&#10094; Previous question!</button>
+                    <button type="button" class="button form_1" id="next">Next question! &#10095;</button>
                 </div>
 
                 <div id="recipe_generator">
-                    <button type="submit" class="button form_1" id="submit">Give me recipes, please!</button>
-                    <button type="submit" class="button" id="submit_again">Give me new recipes, please!</button>
+                    <button type="submit" class="button form_1" id="submit">Give me recipes!</button>
+                    <button type="submit" class="button" id="submit_again">Give me new recipes! &#8634;</button>
                 </div>
 
             </form>

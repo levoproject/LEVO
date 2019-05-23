@@ -38,6 +38,12 @@ main {
     display: inline-block;
 }
 
+#settings_wheel{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
 #error_msg {
     display: none;
 }
@@ -70,10 +76,6 @@ main {
 #update_settings:hover{
     background-color: rgb(64, 134, 64);
 }
-
-#settings {
-}
-
 
 #recipe_header {
     text-align: left;
@@ -231,6 +233,7 @@ main {
     font-family: 'Yantramanav', sans-serif;
     font-size: 30px;
     display: flex;
+    margin-bottom: 10px;
 }
 
 .profile-form{
