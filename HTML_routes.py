@@ -74,18 +74,10 @@ def home_page():
     return template("home")
 
 
-@route('/my_profile/')
-def my_profile():
+@route('/profile/')
+def profile():
     '''
-    Returns my_profile.html with the current user.
-    '''
-    return template("my_profile", placeholder_current_user=current_user)
-
-
-@route('/my_recipes/')
-def my_recipes():
-    '''
-    Returns my_recipes.html with the user's saved recipes.
+    Returns profile.html with the user's saved recipes.
     '''
     if current_user == "":
         return redirect('/login/')
@@ -97,7 +89,7 @@ def my_recipes():
 
     get_profile_img(current_user)
 
-    return template("my_recipes", placeholder_current_user=current_user, placeholder_email=get_email(current_user), placeholder_error_msg="", saved_recipes=saved_recipes, count=category_count, request=request)
+    return template("profile", placeholder_current_user=current_user, placeholder_email=get_email(current_user), placeholder_error_msg="", saved_recipes=saved_recipes, count=category_count, request=request)
 
 
 @route('/login/')
@@ -459,7 +451,7 @@ def save_settings():
     change_email(user)
 
     if user["pass"] == "" and user["new_pass"] == "" and user["verify_pass"] == "":
-        return redirect('/my_recipes/')
+        return redirect('/profile/')
     else:
         if user["new_pass"] != user["verify_pass"]:
             return return_error_settings("The password is not verified!", user)
@@ -471,7 +463,7 @@ def save_settings():
         elif result == "password too long":
             return return_error_settings("The new password is too long!", user)
         elif result == "done":
-            return redirect('/my_recipes/')
+            return redirect('/profile/')
 
 
 def return_error_settings(msg, user):
@@ -485,7 +477,7 @@ def return_error_settings(msg, user):
 
     get_profile_img(current_user)
 
-    return template("my_recipes", placeholder_current_user=current_user, placeholder_email=user["email"], placeholder_error_msg=msg, saved_recipes=saved_recipes, count=category_count, request=request)
+    return template("profile", placeholder_current_user=current_user, placeholder_email=user["email"], placeholder_error_msg=msg, saved_recipes=saved_recipes, count=category_count, request=request)
 
 
 @route('/update_profile_img/', method="POST")
@@ -508,7 +500,7 @@ def update_profile_img():
     if result == "not connected":
         return connection_error_db()
     
-    return redirect('/my_recipes/')
+    return redirect('/profile/')
 
 
 @error(404)
