@@ -430,21 +430,26 @@ label {
     #questions{
         width: auto;
     }
+
     body{
         width: 100%;
     }
+
     h2{
         font-size: 80px;
     }
+
     .container{
         font-size: 70px;
     }
+
     .checkmark{
         height: 50px;
         width: 50px;
         margin-top: 20px;
         margin-left: 5px;
     }
+
     .checkbox_items{
         text-align: center;
     }
@@ -456,7 +461,7 @@ label {
     #questions_3 {
         width: 95%;
     }
-    #index_main{
+    .main_class{
         width: 98%;
     }
     .button{

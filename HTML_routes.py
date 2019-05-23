@@ -483,6 +483,8 @@ def return_error_settings(msg, user):
     # Counts the number of recipes stored by the user and groups them by category (protein).
     category_count = count_category(current_user)
 
+    get_profile_img(current_user)
+
     return template("my_recipes", placeholder_current_user=current_user, placeholder_email=user["email"], placeholder_error_msg=msg, saved_recipes=saved_recipes, count=category_count, request=request)
 
 
