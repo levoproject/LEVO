@@ -188,19 +188,35 @@ main {
 
 .upload-button {
     padding: 10px;
-    border: 2px solid white;
+    border: 2px; 
     border-radius: 10px;
     float: left;
     display:block;
-    background-color: #20bf6b;
-    color: white;
+    background-color: rgba(0, 160, 0, 0.3);
+    color: black; 
     font-size: 20px;
+    font-weight: lighter;
+}
 
+.submit{
+    padding:10px;
+    border: 2px;
+    border-radius: 10px;
+    margin-left: 120px;
+    display: block;
+    background-color: rgba(0, 160, 0, 0.3);
+    color: black; 
+    font-size: 20px;
+    font-weight: lighter;    
+}
+
+.upload-button:hover, .submit:hover {
+    box-shadow:  0 0 10px;
+    color: rgb(221, 221, 221); 
 }
 
 .profile-pic {
-    max-width: 200px;
-    max-height: 200px; 
+    max-width: 200px; 
     border-radius: 5px;
     
 }
@@ -209,16 +225,6 @@ main {
     display: none;
 }
 
-.submit{
-    padding:10px;
-    border: 2px solid white;
-    border-radius: 10px;
-    margin-left: 120px;
-    display: block;
-    background-color: #20bf6b;
-    color: white;
-    font-size: 20px;
-}
 
 .title{
     justify-content: center;
