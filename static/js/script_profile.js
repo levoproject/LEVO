@@ -15,6 +15,12 @@ $(document).ready(function() {
         }
     });
 
+    $('#hide_all_inner').click(function() {    
+        $('.outer > h1').next().each(function() {
+            $(this).hide(150);
+        });
+    });
+
     $('.outer > h1').click(function() {
         if ($(this).next().is(":hidden") && parseInt($(this).attr("data-count")) != 0) {
             $(this).next().show(150);
