@@ -160,7 +160,6 @@ h2 {
 #label {
     display: block;
     text-align: center;
-    color: white;
     font-size: 25px;
 }
 /* The container */
@@ -258,7 +257,8 @@ h2 {
 #submit_again{
     position: absolute;
     margin-top: 470px;
-    width: 30%;
+    width: 20%;
+    padding: 15px;
 }
 
 .button:hover {
