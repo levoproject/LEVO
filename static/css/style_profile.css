@@ -123,21 +123,22 @@ main {
 }
 
 .flex-content{
-    width: 50%;
     box-sizing: border-box;
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
-    width: 20%;
-    margin-left: 22px;
-    margin-right: 22px;
+    width: 30%;
+    margin-left: 18px;
+    margin-right: 12px;
     box-sizing: border-box;
+    margin-top: 8px;
 }
 
 .recipe_img {
     width: 100%;
     height: 200px;
     border-radius: 20px;
+    object-fit: cover;
 }
 
 .middle{
