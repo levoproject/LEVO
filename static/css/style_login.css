@@ -38,7 +38,7 @@ main {
 .forms input {
     padding: 5%;
     width: 80%;
-    border-radius: 2rem;
+    border-radius: 15px;
     background-clip: content-box;
     margin-bottom: 7px;
     margin-top: 7px;
@@ -62,7 +62,7 @@ label {
     color: #fff;
     background-color: rgb(85, 177, 85);
     width: 80%;
-    border-radius: 1rem;
+    border-radius: 10px;
     padding: 3%;
     border: none;
     cursor: pointer;
