@@ -119,13 +119,13 @@ h2 {
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.295);
     color: black;
-    font-size: 20px;
+    font-size: 18px;
     padding: 1%;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
     border-radius: 20px;
-    width: 50%;
+    width: 65%;
 }
 
 .form {
