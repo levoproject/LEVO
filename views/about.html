@@ -29,11 +29,12 @@
         <a href="/index/">LEVO</a>
         <div id="profile_icon_image">
             <a href="/profile/">
+                <p id="current_user">{{placeholder_current_user}}</p>
                 <img alt="profile_icon" id="profile_icon" src="../static/img/profile_icon.png" width="60" height="60">
                 <img alt="profile_icon_online" id="profile_icon_online" src="../static/img/profile_img.jpg" width="60" height="60">
             </a>
         </div>
-        <h1 id="current_user">{{placeholder_current_user}}</h1>
+        
     </div>
 
         <main class="main_class">
@@ -43,31 +44,56 @@
                     The group consists of Erica Sjöberg, Lukas Jönsson, Victor Persson, Olof Takman and Beaudouin Audrey Nsolo.</p>
                 <p>The product idea was founded in our shared interest with trying out new food recipes, and the fact that we had grown tired of the already non-inspiring websites.
                     The main purpose for the group is to create an Internet of Things product which works as a helping hand for the everyday hobby chef.</p>
-                    
-                <div id="about2">
-                    <h1 class="header">Who are we?</h1>
-                    <div class="sb1"></div>
-                    <div class="sb2"></div>
-                    <div class="sb3"></div>
-                    <div class="sb4"></div>
-                    <div class="sb5"></div>
-                </div>
             </div>
         </main>
     
         <main>
             <div id="about2" class="wrapper">
-            <h1 class="header">Who are we?</h1>
-            <div class="sb1"></div>
-            <div class="sb2"></div>
-            <div class="sb3"></div>
-            <div class="sb4"></div>
-            <div class="sb5"></div>
+            <h1 class="header1">Who are we?</h1>
+                
+            <div class="sb1" class="container">
+            <img src="../static/img/Beaudouin.jpg" alt="Avatar" style="width:120px" class="img-box">
+            <div class="wrapper-text">
+            <p><span class="span-text">Beaudouin Nsolo A.</span> Chief Digital Officier.</p><p class="middle-text">Encodes HTML, Python, and JavaScript. Works with full stack.</p>
             </div>
+            </div>
+                
+            <div class="sb2" class="container">
+            <img src="../static/img/Victor.jpg" alt="Avatar" style="width:120px" class="img-box">
+            <div class="wrapper-text">
+            <p><span class="span-text">Victor Persson</span> Chief Information Officer.</p><p class="middle-text">Works with design, usability and front end development. Responsible for design and front end development.</p>
+            </div>
+            </div>
+                
+            <div class="sb3" class="container">
+            <div class="wrapper-text">
+            <img src="../static/img/Lukas.jpg" alt="Avatar" style="width:120px" class="img-box">
+            <p><span class="span-text">Lukas Jönsson</span> Chief Strategy Officer.</p><p class="middle-text">Encodes HTML, Python, JavaScript and CSS design. Working with: usability and front end development.</p>
+            </div>
+            </div>
+            
+            <div class="sb4" class="container">
+            <div class="wrapper-text">
+            <img src="../static/img/Erica.jpg" alt="Avatar" style="width:120px" class="img-box">
+            <p><span class="span-text">Erica Sjöberg</span> Chief Executive Officer.</p><p class="middle-text">Working with frontend development. Responsible for group dynamics, individual well-being and project plan.</p>
+            </div>
+            </div>
+                
+            <div class="sb5" class="container">
+            <div class="wrapper-text">
+            <img src="../static/img/Olof.jpg" alt="Avatar" style="width:120px" class="img-box">
+              <p><span class="span-text">Olof Takman</span> Chief Technical Operations.</p><p class="middle-text">Working with backend development and API. Responsible for the project code.</p>
+            </div>
+            </div>
+                
+         </div>
         </main>
     
     <footer>
-        <p>Footer</p>
+        <a href="/index/">Home</a>
+        <a href="/profile/">Profile</a>
+        <a href="/about/">About</a>
+        <p>©LEVO</p>
     </footer>
     
     <script>
@@ -85,6 +111,6 @@
             document.body.style.backgroundColor = "rgba(0,0,0,0)";
         }
     </script>
-</body>
+   </body>
 
 </html>
