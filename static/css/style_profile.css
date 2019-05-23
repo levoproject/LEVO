@@ -38,10 +38,11 @@ main {
     display: inline-block;
 }
 
-#settings_wheel{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
+#cog {
+    display: block;
+    float: left;
+    margin-left: 8px;
+    margin-top: 4px;
 }
 
 #error_msg {
@@ -77,14 +78,27 @@ main {
     background-color: rgb(64, 134, 64);
 }
 
+#hide_all_inner {
+    float: right;
+    background: none;
+    color: inherit;
+    border: none;
+    text-decoration-line: underline;
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 16px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+
 #recipe_header {
     text-align: left;
     padding-left: 20px;
     margin: 0;
+    display: inline;
 }
 
-
-.outer > h1, h2{
+.outer > h1{
     cursor: pointer;
     color: black;
     font-size: 25px;
@@ -204,10 +218,10 @@ main {
     padding:10px;
     border: 2px;
     border-radius: 10px;
-    margin-left: 120px;
     display: block;
     background-color: rgba(0, 160, 0, 0.3);
-    color: black; 
+    color: black;
+    float: left;
     font-size: 20px;
     font-weight: lighter;    
 }
@@ -220,7 +234,6 @@ main {
 .profile-pic {
     max-width: 200px; 
     border-radius: 5px;
-    
 }
 
 .file-upload {
@@ -240,6 +253,19 @@ main {
     margin-left: auto;
     margin-right: auto;
     width: 200px;
+}
+
+.profile-buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.upload-button{
+    margin-right: 4px;
+}
+
+.submit{
+    margin-left: 4px;
 }
 
 .profile-buttons > button, .profile-buttons > input {
