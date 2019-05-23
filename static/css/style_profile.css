@@ -66,6 +66,10 @@ main {
     font-family: 'Maven Pro', sans-serif;
 }
 
+#update_settings:hover{
+    background-color: rgb(64, 134, 64);
+}
+
 #settings {
     padding-left: 20px;
 }
