@@ -18,7 +18,7 @@ $(document).ready(function() {
     $('.outer > h1').click(function() {
         if ($(this).next().is(":hidden") && parseInt($(this).attr("data-count")) != 0) {
             $(this).next().show(150);
-            $('html, body').animate({scrollTop: $(this).next().offset().top}, 400);
+            $('html, body').animate({scrollTop: $(this).offset().top}, 400);
         } else {
             $(this).next().hide(150);
         }
