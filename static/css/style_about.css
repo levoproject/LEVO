@@ -155,7 +155,7 @@ h1 {
 
 .wrapper-text > p {
     text-align: center;
-    font-size: 15px; 
+    font-size: 25px; 
 }
 
 @media screen and (max-width: 900px) {
