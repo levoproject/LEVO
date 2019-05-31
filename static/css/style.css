@@ -96,16 +96,6 @@ body {
     padding: 20px;
 }
 
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-
-    .sidenav a {
-        font-size: 18px;
-    }
-}
-
 h2 {
     text-align: center;
     color: black;
@@ -152,17 +142,18 @@ h2 {
     width: 40%;
 }
 
+/* Style the checkbox with the name don't know */
 #dont_know {
     width: 60%;
 }
-
 
 #label {
     display: block;
     text-align: center;
     font-size: 25px;
 }
-/* The container */
+
+/* The container for the checkbox */
 .container {
     display: block;
     position: relative;
@@ -174,19 +165,19 @@ h2 {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
+}
   
-  /* Hide the browser's default checkbox */
-  .container input {
+/* Hide the browser's default checkbox */
+.container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
     width: 0;
-  }
+}
   
-  /* Create a custom checkbox */
-  .checkmark {
+/* Create a custom checkbox */
+.checkmark {
     position: absolute;
     top: 0;
     left: 2px;
@@ -194,32 +185,32 @@ h2 {
     width: 25px;
     border-radius: 5px;
     background-color: #eee;
-  }
+}
   
-  /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
     background-color: #ccc;
-  }
+}
   
-  /* When the checkbox is checked, add a green background */
-  .container input:checked ~ .checkmark {
+/* When the checkbox is checked, add a green background */
+.container input:checked ~ .checkmark {
     background-color: green;
-  }
+}
   
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
     content: "";
     position: absolute;
     display: none;
-  }
+}
   
-  /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
     display: block;
-  }
+}
   
-  /* Style the checkmark/indicator */
-  .container .checkmark:after {
+/* Style the checkmark/indicator */
+.container .checkmark:after {
     left: 9px;
     top: 5px;
     width: 5px;
@@ -229,11 +220,10 @@ h2 {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-  }
+}
 
 #questions_1,
-#questions_2,
-#questions_3 {
+#questions_2 {
     margin-top: 10px !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -254,11 +244,13 @@ h2 {
     font-family: 'Yantramanav', sans-serif;
 }
 
+/* Style the button who brings the user new recipes */
 #submit_again{
     position: absolute;
     margin-top: 470px;
     width: 20%;
     padding: 15px;
+    text-align: center;
 }
 
 .button:hover {
@@ -276,11 +268,6 @@ h2 {
 #recipe_generator{
     display: flex;
     justify-content: center;
-}
-
-.extra {
-    font-size: 16px;
-    text-decoration: none;
 }
 
 a,
@@ -320,6 +307,7 @@ a:visited {
     border-bottom-right-radius: 20px;
 }
 
+/* Style the details inside the swiper-slide */
 .details {
     font-size: 15px;
     color: whitesmoke;
@@ -338,16 +326,16 @@ a:visited {
 .swiper-side:hover .imgBox{
     opacity: 0.3;
     color: white;
-  }
+}
   
-  .swiper-slide:hover .details {
+.swiper-slide:hover .details {
     opacity: 1;
-  }
+}
 
-  .details p{
+.details p{
     color: white;
     margin: 20px;
-  }
+}
 
 .swiper-pagination-bullet {
     opacity: 1;
@@ -390,10 +378,6 @@ a:visited {
     content: "\2605";
 }
 
-#submit_again {
-    text-align: center;
-}
-
 .swiper-button-prev {
     margin-left: 40%;
 }
@@ -427,6 +411,33 @@ label {
 
 .form_1 {
     font-weight: bold;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px rgb(187, 219, 191) inset !important;
+}
+
+#mySidenav > a {
+    white-space: nowrap;
+}
+
+#h2_q1, #h2_q2 {
+    width: 100% !important;
+}
+
+#current_user {
+    margin: 15px 0;
+    padding: 0 12px;
+    font-size: 24px;
+    float: left;
+    color: rgba(0,0,0,0.65);
+}
+
+#current_user:hover {
+    color: rgba(0,0,0,0.35);
 }
 
 @media screen and (max-width: 1024px) {
@@ -482,29 +493,12 @@ label {
     }
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active  {
-    -webkit-box-shadow: 0 0 0 30px rgb(187, 219, 191) inset !important;
-}
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
 
-#mySidenav > a {
-    white-space: nowrap;
-}
-
-#h2_q1, #h2_q2 {
-    width: 100% !important;
-}
-
-#current_user {
-    margin: 15px 0;
-    padding: 0 12px;
-    font-size: 24px;
-    float: left;
-    color: rgba(0,0,0,0.65);
-}
-
-#current_user:hover {
-    color: rgba(0,0,0,0.35);
+    .sidenav a {
+        font-size: 18px;
+    }
 }
