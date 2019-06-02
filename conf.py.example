@@ -1,0 +1,5 @@
+f2f_api_key = "" # Put your API key to food2fork here.
+cryptography_key = b'' # Put cryptography key in binary here.
+db_username = '' # Put your username to pgserver.mah.se here.
+db_password = '' # Put your password to pgserver.mah.se here.
+levo_password = "" # Email password for levoproject4@gmail.com.
