@@ -7,7 +7,7 @@
     <link href="../static/css/style_profile.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Yantramanav:300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/swiper.min.css">
-    <link rel="shortcut icon" type="image/png" href="static/img/favicon.png" alt="Image is not available.">
+    <link rel="shortcut icon" type="image/png" href="static/img/favicon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="../static/js/script_profile.js"></script>
@@ -40,7 +40,7 @@
         <div class="profile-header">
             <h1 class="title">{{placeholder_current_user}}</h1>
             <form action="/update_profile_img/" method="POST" class="profile-form" enctype="multipart/form-data">
-                <img class="profile-pic" src="/static/img/profile_img.jpg">
+                <img class="profile-pic" src="/static/img/profile_img.jpg" alt="profile_image_not_found">
                 <input type="file" name="upload" class="file-upload"accept="image/*">
                 <div class="profile-buttons">
                     <button type="button" name="button" class="upload-button">Upload</button>
