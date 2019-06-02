@@ -135,7 +135,7 @@ def login(user):
 
 def update_password(user_email, new_password):
     '''
-
+    Stores password in database without validating.
     '''
     if db_connect():
         # Encrypts the password.
@@ -162,7 +162,7 @@ def change_email(user):
 
 def change_pass(user):
     '''
-
+    If password validates it's stored in the database.
     '''
     if db_connect():
 
@@ -330,7 +330,7 @@ def get_email(username):
 
 def save_profile_img(username, filepath):
     '''
-    
+    Stores new_profile_img in database.
     '''
     if db_connect():
         new_profile_img = open('./static/img/new_profile_img.jpg','rb').read()
@@ -343,7 +343,7 @@ def save_profile_img(username, filepath):
 
 def get_profile_img(username):
     '''
-
+    Selects profile_img from database and writes it in /static/img/profile_img.jpg.
     '''
     if db_connect():
         cursor.execute("SELECT profile_img FROM users WHERE username=%s", (username,))

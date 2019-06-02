@@ -162,6 +162,9 @@ def login_form():
 
 
 def return_error_login(msg, user):
+    '''
+    Returns login-page with error message.
+    '''
     login = reset_login_placeholders()
         
     login['error_msg_login'] = msg
@@ -220,6 +223,9 @@ def register_form():
 
 
 def return_error_reg(msg, user):
+    '''
+    Returns register-page with error message.
+    '''
     login = reset_login_placeholders()
     
     login['form'] = "2"
@@ -233,7 +239,7 @@ def return_error_reg(msg, user):
 @route('/forgot_pass_form/', method='POST')
 def forgot_pass_form():
     '''
-    
+    Returns either error or sends email with new password to user.
     '''
     # Requests the email input from the forgot password form.
     user_email = request.forms.get('forgot_email')
@@ -253,6 +259,9 @@ def forgot_pass_form():
 
 
 def return_error_forgot(msg, user_email):
+    '''
+    Returns forgot-password-page with error message. 
+    '''
     login = reset_login_placeholders()
     
     login['form'] = "3"
@@ -264,7 +273,7 @@ def return_error_forgot(msg, user_email):
 
 def new_password_email(user_email):
     '''
-
+    Generates new password. Stores new password in database. Sends email to user with new password. Returns login-page.
     '''
     new_password = generate_password()
 
@@ -312,6 +321,9 @@ def new_password_email(user_email):
 
 
 def generate_password():
+    '''
+    Generates a random password.
+    '''
     password = ""
     for i in range(0,12):
         symbol = choice(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'])
@@ -439,7 +451,7 @@ def remove_star_recipe():
 @route('/save_settings/', method="POST")
 def save_settings():
     '''
-
+    Updates new email and password for the user.
     '''
     user = {}
     user["email"] = request.forms.get('email')
@@ -468,7 +480,7 @@ def save_settings():
 
 def return_error_settings(msg, user):
     '''
-
+    Returns settings-form on profile-page with error message.
     '''
     saved_recipes = get_saved_recipes(current_user)
     
@@ -483,7 +495,7 @@ def return_error_settings(msg, user):
 @route('/update_profile_img/', method="POST")
 def update_profile_img():
     '''
-
+    Saves new profile image locally. save_profile_img stores locally saved image in database. Returns profile-page.
     '''
     upload = request.files.get('upload')
     name, ext = os.path.splitext(upload.filename)
